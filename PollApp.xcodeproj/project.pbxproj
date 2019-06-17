@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6C559DCAB840EB20EB6C6590 /* Pods_PollApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EF3CCE1927B1751DF959AE7 /* Pods_PollApp.framework */; };
+		9602B756FC916F2BE8025048 /* Pods_PollAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50C0732744EA6C212C75E088 /* Pods_PollAppTests.framework */; };
 		BB72700022B7F3D5006C386B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB726FFF22B7F3D5006C386B /* AppDelegate.swift */; };
 		BB72700222B7F3D5006C386B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB72700122B7F3D5006C386B /* ViewController.swift */; };
 		BB72700522B7F3D5006C386B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB72700322B7F3D5006C386B /* Main.storyboard */; };
@@ -14,6 +16,8 @@
 		BB72700A22B7F3D7006C386B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB72700822B7F3D7006C386B /* LaunchScreen.storyboard */; };
 		BB72701522B7F3D7006C386B /* PollAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB72701422B7F3D7006C386B /* PollAppTests.swift */; };
 		BB72702022B7F3D7006C386B /* PollAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB72701F22B7F3D7006C386B /* PollAppUITests.swift */; };
+		BB72702E22B7FDF5006C386B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB72702D22B7FDF5006C386B /* GoogleService-Info.plist */; };
+		ECD13F2BBD4BA55E374062DA /* Pods_PollAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98270D507219851B08D7A341 /* Pods_PollAppUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +38,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0467D52E64D3E3B6FEE54461 /* Pods-PollAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PollAppUITests.release.xcconfig"; path = "Target Support Files/Pods-PollAppUITests/Pods-PollAppUITests.release.xcconfig"; sourceTree = "<group>"; };
+		07F513792EB8895E952C0192 /* Pods-PollAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PollAppTests.debug.xcconfig"; path = "Target Support Files/Pods-PollAppTests/Pods-PollAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		2EF3CCE1927B1751DF959AE7 /* Pods_PollApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PollApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		50C0732744EA6C212C75E088 /* Pods_PollAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PollAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		63B79D426906A945F3B53799 /* Pods-PollApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PollApp.debug.xcconfig"; path = "Target Support Files/Pods-PollApp/Pods-PollApp.debug.xcconfig"; sourceTree = "<group>"; };
+		8D1FC14EB0E5B63229D0D9A6 /* Pods-PollAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PollAppTests.release.xcconfig"; path = "Target Support Files/Pods-PollAppTests/Pods-PollAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		98270D507219851B08D7A341 /* Pods_PollAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PollAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB726FFC22B7F3D5006C386B /* PollApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PollApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB726FFF22B7F3D5006C386B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BB72700122B7F3D5006C386B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +58,9 @@
 		BB72701B22B7F3D7006C386B /* PollAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PollAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB72701F22B7F3D7006C386B /* PollAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollAppUITests.swift; sourceTree = "<group>"; };
 		BB72702122B7F3D7006C386B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BB72702D22B7FDF5006C386B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BDDF97E7AC452DF08ED85B36 /* Pods-PollAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PollAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-PollAppUITests/Pods-PollAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		E56D390605BA2557300FFF0D /* Pods-PollApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PollApp.release.xcconfig"; path = "Target Support Files/Pods-PollApp/Pods-PollApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C559DCAB840EB20EB6C6590 /* Pods_PollApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9602B756FC916F2BE8025048 /* Pods_PollAppTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,12 +84,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECD13F2BBD4BA55E374062DA /* Pods_PollAppUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A9DB56EC8B06E9764F07924 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2EF3CCE1927B1751DF959AE7 /* Pods_PollApp.framework */,
+				50C0732744EA6C212C75E088 /* Pods_PollAppTests.framework */,
+				98270D507219851B08D7A341 /* Pods_PollAppUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		BB726FF322B7F3D5006C386B = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +108,8 @@
 				BB72701322B7F3D7006C386B /* PollAppTests */,
 				BB72701E22B7F3D7006C386B /* PollAppUITests */,
 				BB726FFD22B7F3D5006C386B /* Products */,
+				BC6084CA03DD9D63FBB09782 /* Pods */,
+				3A9DB56EC8B06E9764F07924 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,6 +126,7 @@
 		BB726FFE22B7F3D5006C386B /* PollApp */ = {
 			isa = PBXGroup;
 			children = (
+				BB72702D22B7FDF5006C386B /* GoogleService-Info.plist */,
 				BB726FFF22B7F3D5006C386B /* AppDelegate.swift */,
 				BB72700122B7F3D5006C386B /* ViewController.swift */,
 				BB72700322B7F3D5006C386B /* Main.storyboard */,
@@ -125,6 +155,20 @@
 			path = PollAppUITests;
 			sourceTree = "<group>";
 		};
+		BC6084CA03DD9D63FBB09782 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				63B79D426906A945F3B53799 /* Pods-PollApp.debug.xcconfig */,
+				E56D390605BA2557300FFF0D /* Pods-PollApp.release.xcconfig */,
+				07F513792EB8895E952C0192 /* Pods-PollAppTests.debug.xcconfig */,
+				8D1FC14EB0E5B63229D0D9A6 /* Pods-PollAppTests.release.xcconfig */,
+				BDDF97E7AC452DF08ED85B36 /* Pods-PollAppUITests.debug.xcconfig */,
+				0467D52E64D3E3B6FEE54461 /* Pods-PollAppUITests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +176,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BB72702422B7F3D7006C386B /* Build configuration list for PBXNativeTarget "PollApp" */;
 			buildPhases = (
+				0B1F0BD988C1BCCD20DEF794 /* [CP] Check Pods Manifest.lock */,
 				BB726FF822B7F3D5006C386B /* Sources */,
 				BB726FF922B7F3D5006C386B /* Frameworks */,
 				BB726FFA22B7F3D5006C386B /* Resources */,
+				0A5B5C1D76CDCCEA0E3C6728 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -149,6 +195,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BB72702722B7F3D7006C386B /* Build configuration list for PBXNativeTarget "PollAppTests" */;
 			buildPhases = (
+				2DABF070BB9B49176A88185A /* [CP] Check Pods Manifest.lock */,
 				BB72700C22B7F3D7006C386B /* Sources */,
 				BB72700D22B7F3D7006C386B /* Frameworks */,
 				BB72700E22B7F3D7006C386B /* Resources */,
@@ -167,6 +214,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BB72702A22B7F3D7006C386B /* Build configuration list for PBXNativeTarget "PollAppUITests" */;
 			buildPhases = (
+				545B33727F1C3705014ACBC1 /* [CP] Check Pods Manifest.lock */,
 				BB72701722B7F3D7006C386B /* Sources */,
 				BB72701822B7F3D7006C386B /* Frameworks */,
 				BB72701922B7F3D7006C386B /* Resources */,
@@ -230,6 +278,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB72700A22B7F3D7006C386B /* LaunchScreen.storyboard in Resources */,
+				BB72702E22B7FDF5006C386B /* GoogleService-Info.plist in Resources */,
 				BB72700722B7F3D7006C386B /* Assets.xcassets in Resources */,
 				BB72700522B7F3D5006C386B /* Main.storyboard in Resources */,
 			);
@@ -250,6 +299,92 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0A5B5C1D76CDCCEA0E3C6728 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PollApp/Pods-PollApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PollApp/Pods-PollApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PollApp/Pods-PollApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		0B1F0BD988C1BCCD20DEF794 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PollApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2DABF070BB9B49176A88185A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PollAppTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		545B33727F1C3705014ACBC1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PollAppUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BB726FF822B7F3D5006C386B /* Sources */ = {
@@ -430,6 +565,7 @@
 		};
 		BB72702522B7F3D7006C386B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 63B79D426906A945F3B53799 /* Pods-PollApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -447,6 +583,7 @@
 		};
 		BB72702622B7F3D7006C386B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E56D390605BA2557300FFF0D /* Pods-PollApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -464,6 +601,7 @@
 		};
 		BB72702822B7F3D7006C386B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 07F513792EB8895E952C0192 /* Pods-PollAppTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -484,6 +622,7 @@
 		};
 		BB72702922B7F3D7006C386B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8D1FC14EB0E5B63229D0D9A6 /* Pods-PollAppTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -504,6 +643,7 @@
 		};
 		BB72702B22B7F3D7006C386B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BDDF97E7AC452DF08ED85B36 /* Pods-PollAppUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -523,6 +663,7 @@
 		};
 		BB72702C22B7F3D7006C386B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0467D52E64D3E3B6FEE54461 /* Pods-PollAppUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

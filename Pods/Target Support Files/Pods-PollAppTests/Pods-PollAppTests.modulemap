@@ -1,0 +1,6 @@
+framework module Pods_PollAppTests {
+  umbrella header "Pods-PollAppTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
