@@ -7,6 +7,7 @@ target 'PollApp' do
 
   # Pods for PollApp
   pod 'Firebase/Analytics'
+  pod 'Firebase/Auth'
 
   target 'PollAppTests' do
     inherit! :search_paths
