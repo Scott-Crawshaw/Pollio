@@ -9,6 +9,16 @@
 import Foundation
 
 class User{
-    var name: String
+    var username, name, picture, followers, following, posts : String?
     
+    init(){}
+    
+    func update(username : String, name : String, picture : String, followers : String, following : String, posts : String){
+        self.username = username
+        self.name = name
+        self.picture = picture
+        self.followers = followers
+        self.following = following
+        self.posts = posts
+    }
 }
