@@ -31,7 +31,9 @@ class VerifyViewController: UIViewController {
                 self.showMessagePrompt(message: error.localizedDescription)
                 return
             }
-            self.showMessagePrompt(message: authResult?.user.phoneNumber ?? "no number")
+            let helper : DatabaseHelper = DatabaseHelper()
+            let user = helper.getUserByUID(UID: (authResult?.user.uid)!)
+            self.showMessagePrompt(message: user.name ?? "no name")
         }
     }
     

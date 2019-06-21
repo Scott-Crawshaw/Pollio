@@ -18,7 +18,7 @@ class DatabaseHelper{
     
     func getUserByUID(UID: String) -> User{
         let user : User = User()
-        ref.child("users").child(UID).observeSingleEvent(of: .value, with: { (snapshot) in
+        ref?.child("users").child(UID).observe(.value, with: { (snapshot) in
             // Get user value
             let value = snapshot.value as? NSDictionary
             let username = value?["username"] as? String ?? ""

@@ -28,8 +28,7 @@ class ViewController: UIViewController {
     
     @IBAction func sendText(sender: UIButton) {
         var number = String(field.text!).filter("01234567890".contains)
-        let api = DatabaseHelper()
-        print(api.getUserByUID(UID: "Z9xV4G8OzDh6C5JMFppPNJanbr53"))
+        
         if number.count == 10 {
             number = "1" + number
         }
