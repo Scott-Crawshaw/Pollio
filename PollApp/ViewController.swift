@@ -12,13 +12,13 @@ import FirebaseAuth
 class ViewController: UIViewController {
 
     @IBOutlet weak var field: UITextField!
-    @IBOutlet weak var label: UILabel!
+
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        label.text = "Enter Your Phone Number"
+
     }
     
     override func viewWillAppear(_ animated: Bool) {

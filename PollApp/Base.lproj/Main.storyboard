@@ -24,42 +24,35 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" smartDashesType="yes" textContentType="tel"/>
                             </textField>
-                            <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spongeboy" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ldc-u9-Wnt">
-                                <rect key="frame" x="19.666666666666657" y="223.33333333333334" width="374" height="39.000000000000028"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" name="Thonburi" family="Thonburi" pointSize="29"/>
-                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                <color key="highlightedColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pn9-BI-ZrN">
-                                <rect key="frame" x="157" y="375" width="100" height="57"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pn9-BI-ZrN">
+                                <rect key="frame" x="157" y="376" width="100" height="57"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="37"/>
                                 <state key="normal" title="Go"/>
                                 <connections>
                                     <action selector="sendTextWithSender:" destination="BYZ-38-t0r" eventType="touchDown" id="zhc-4x-Kgm"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Welcome to Pollio!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Yd-2M-aVD">
+                                <rect key="frame" x="139" y="165" width="136" height="43"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="NotoNastaliqUrdu" family="Noto Nastaliq Urdu" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Pn9-BI-ZrN" secondAttribute="trailing" constant="157" id="00d-c6-3fD"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ldc-u9-Wnt" secondAttribute="trailing" constant="20.48" id="9gI-8g-Ycl"/>
-                            <constraint firstItem="ldc-u9-Wnt" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="179.33333333333337" id="BFQ-28-3SI"/>
                             <constraint firstItem="Pn9-BI-ZrN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="157" id="CWC-Ue-ww5"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="QOZ-5e-yd1" secondAttribute="trailing" constant="99.060000000000002" id="G1g-GS-xYU"/>
                             <constraint firstItem="QOZ-5e-yd1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="96.939999999999998" id="UzY-ra-5XD"/>
                             <constraint firstItem="Pn9-BI-ZrN" firstAttribute="top" secondItem="QOZ-5e-yd1" secondAttribute="bottom" constant="42.333333333333314" id="b9f-81-hcq"/>
-                            <constraint firstItem="QOZ-5e-yd1" firstAttribute="top" secondItem="ldc-u9-Wnt" secondAttribute="bottom" constant="89.150000000000006" id="bTt-Q8-Hkv"/>
-                            <constraint firstItem="QOZ-5e-yd1" firstAttribute="top" secondItem="ldc-u9-Wnt" secondAttribute="bottom" constant="41.333333333333314" id="hEq-Na-ToG"/>
-                            <constraint firstItem="ldc-u9-Wnt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="19.52" id="kZO-DU-HsW"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Pn9-BI-ZrN" secondAttribute="bottom" constant="429" id="xfg-xR-Ag9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="field" destination="QOZ-5e-yd1" id="VsU-dE-Y5o"/>
-                        <outlet property="label" destination="ldc-u9-Wnt" id="b7F-Mq-fOv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
