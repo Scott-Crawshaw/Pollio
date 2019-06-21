@@ -10,13 +10,7 @@ import UIKit
 import FirebaseAuth
 
 class VerifyViewController: UIViewController {
-    @IBOutlet weak var code: UITextField!
-    @IBOutlet weak var label: UILabel!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        label.text = "Enter Your Verification Code"
-    }
+    @IBOutlet var code: UITextField!
     
     override func viewWillAppear(_ animated: Bool) {
         setGradientBackground()
