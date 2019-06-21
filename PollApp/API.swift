@@ -9,8 +9,8 @@
 import Foundation
 import Firebase
 
-var ref: DatabaseReference!
-
-static func getUserByUID(UID: String){
-    
-}
+//var ref: DatabaseReference!
+//
+//static func getUserByUID(UID: String){
+//    
+//}

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class User{
-    var name: String
-    
-}
+//class User{
+//    var name: String
+//    
+//}
