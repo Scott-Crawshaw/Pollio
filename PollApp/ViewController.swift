@@ -13,7 +13,6 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var field: UITextField!
 
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,6 +67,7 @@ class ViewController: UIViewController {
         
         self.view.layer.insertSublayer(gradientLayer, at:0)
     }
+    
 
 
 }

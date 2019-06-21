@@ -10,11 +10,14 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="OpenSans-Light.ttf">
+            <string>OpenSans-Light</string>
+        </array>
         <array key="OpenSans-SemiBold.ttf">
             <string>OpenSans-SemiBold</string>
         </array>
-        <array key="SFUIText.ttf">
-            <string>.SFUIText</string>
+        <array key="SourceSansPro-Regular.ttf">
+            <string>SourceSansPro-Regular</string>
         </array>
     </customFonts>
     <scenes>
@@ -26,46 +29,52 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="###-###-####" textAlignment="center" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="QOZ-5e-yd1">
-                                <rect key="frame" x="96" y="453" width="218" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.83137254900000002" green="0.46666666670000001" blue="0.90196078430000004" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                            <textField opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="###-###-####" textAlignment="center" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="QOZ-5e-yd1">
+                                <rect key="frame" x="105.66666666666667" y="427" width="198.66666666666663" height="39"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans SemiBold" pointSize="25"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numberPad" smartDashesType="yes" textContentType="tel"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans Light" pointSize="25"/>
+                                <textInputTraits key="textInputTraits" keyboardType="phonePad" returnKeyType="go" enablesReturnKeyAutomatically="YES" smartDashesType="yes" textContentType="tel"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Welcome to Pollio!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Yd-2M-aVD">
-                                <rect key="frame" x="45.762286981950183" y="195" width="339.99999999999989" height="52.999999999999972"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Pollio!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Yd-2M-aVD">
+                                <rect key="frame" x="37" y="170" width="340" height="53"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="340" id="QJK-ks-TY6"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans SemiBold" pointSize="38"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" red="0.49019607840000001" green="0.14901960780000001" blue="0.80392156859999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <size key="shadowOffset" width="0.5" height="-1"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="To get started, enter your phone number below." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ZD-DU-Qdh">
-                                <rect key="frame" x="27.714893617021289" y="339" width="355.00000000000017" height="71"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name=".SFUIText" family=".SF UI Text" pointSize="23"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To get started, enter your phone number below." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ZD-DU-Qdh">
+                                <rect key="frame" x="28" y="313" width="355" height="71"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="0ZD-DU-Qdh" secondAttribute="height" multiplier="5:1" id="XNz-Z0-LqK"/>
+                                    <constraint firstAttribute="height" constant="71" id="Yud-0R-VR8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans Light" pointSize="23"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" red="0.63529411759999999" green="0.36470588240000001" blue="1" alpha="0.48512414380000002" colorSpace="custom" customColorSpace="sRGB"/>
                                 <size key="shadowOffset" width="0.5" height="-1"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pn9-BI-ZrN">
-                                <rect key="frame" x="96" y="511" width="218" height="56"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.83137254900000002" green="0.46666666670000001" blue="0.90196078430000004" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name=".SFUIText" family=".SF UI Text" pointSize="36"/>
-                                <size key="titleShadowOffset" width="1.2" height="0.29999999999999999"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pn9-BI-ZrN">
+                                <rect key="frame" x="144" y="485" width="122" height="50"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="82h-3p-Jn0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="36"/>
+                                <size key="titleShadowOffset" width="0.5" height="0.30000000000000004"/>
                                 <state key="normal" title="Confirm">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <color key="titleShadowColor" red="0.35251771840000001" green="0.22355258259999999" blue="0.57947291909999998" alpha="0.52801262842465757" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBorder" value="YES"/>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                        <integer key="value" value="1"/>
+                                        <real key="value" value="0.29999999999999999"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="5"/>
@@ -77,6 +86,21 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Pn9-BI-ZrN" firstAttribute="centerX" secondItem="6Yd-2M-aVD" secondAttribute="centerX" constant="-2" id="2a6-dD-N8T"/>
+                            <constraint firstItem="QOZ-5e-yd1" firstAttribute="centerX" secondItem="6Yd-2M-aVD" secondAttribute="centerX" constant="-2" id="AMO-v5-WlB"/>
+                            <constraint firstItem="6Yd-2M-aVD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="37" id="SK8-uP-X75"/>
+                            <constraint firstItem="Pn9-BI-ZrN" firstAttribute="top" secondItem="6Yd-2M-aVD" secondAttribute="top" constant="315" id="Xfv-u7-Xht"/>
+                            <constraint firstItem="QOZ-5e-yd1" firstAttribute="top" secondItem="6Yd-2M-aVD" secondAttribute="top" constant="257" id="Y5U-co-fVT"/>
+                            <constraint firstItem="QOZ-5e-yd1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="105.67" id="cLz-Ko-8dQ"/>
+                            <constraint firstItem="0ZD-DU-Qdh" firstAttribute="top" secondItem="6Yd-2M-aVD" secondAttribute="top" constant="143" id="eYo-7B-gic"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6Yd-2M-aVD" secondAttribute="trailing" constant="37" id="fzH-qm-20X"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="QOZ-5e-yd1" secondAttribute="trailing" constant="109.67" id="gk8-2a-5bz"/>
+                            <constraint firstItem="0ZD-DU-Qdh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="28" id="piv-lE-mee"/>
+                            <constraint firstItem="0ZD-DU-Qdh" firstAttribute="centerX" secondItem="6Yd-2M-aVD" secondAttribute="centerX" constant="-1.5" id="rLi-s8-ngw"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0ZD-DU-Qdh" secondAttribute="trailing" constant="31" id="vSe-Mf-1cd"/>
+                            <constraint firstItem="6Yd-2M-aVD" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="126" id="wTK-kh-sq9"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
