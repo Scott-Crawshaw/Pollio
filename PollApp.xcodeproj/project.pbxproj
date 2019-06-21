@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		6C559DCAB840EB20EB6C6590 /* Pods_PollApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EF3CCE1927B1751DF959AE7 /* Pods_PollApp.framework */; };
+		73FC9F4322BD519F0041B266 /* SourceSansPro-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73FC9F3B22BD519E0041B266 /* SourceSansPro-LightItalic.ttf */; };
+		73FC9F4422BD519F0041B266 /* OpenSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73FC9F3C22BD519E0041B266 /* OpenSans-SemiBold.ttf */; };
+		73FC9F4522BD519F0041B266 /* OpenSans-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73FC9F3D22BD519E0041B266 /* OpenSans-SemiBoldItalic.ttf */; };
+		73FC9F4622BD519F0041B266 /* SourceSansPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73FC9F3E22BD519E0041B266 /* SourceSansPro-Regular.ttf */; };
+		73FC9F4722BD519F0041B266 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73FC9F3F22BD519E0041B266 /* OpenSans-Light.ttf */; };
+		73FC9F4822BD519F0041B266 /* PlayfairDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73FC9F4022BD519E0041B266 /* PlayfairDisplay-Regular.ttf */; };
+		73FC9F4922BD519F0041B266 /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73FC9F4122BD519E0041B266 /* OpenSans-LightItalic.ttf */; };
+		73FC9F4A22BD519F0041B266 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73FC9F4222BD519F0041B266 /* OpenSans-Regular.ttf */; };
 		9602B756FC916F2BE8025048 /* Pods_PollAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50C0732744EA6C212C75E088 /* Pods_PollAppTests.framework */; };
 		BB14550122B958BA00CBF426 /* VerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB14550022B958BA00CBF426 /* VerifyViewController.swift */; };
 		BB5DEEAC22BD3C38006A0C81 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5DEEAB22BD3C38006A0C81 /* API.swift */; };
@@ -46,6 +54,14 @@
 		2EF3CCE1927B1751DF959AE7 /* Pods_PollApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PollApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50C0732744EA6C212C75E088 /* Pods_PollAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PollAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		63B79D426906A945F3B53799 /* Pods-PollApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PollApp.debug.xcconfig"; path = "Target Support Files/Pods-PollApp/Pods-PollApp.debug.xcconfig"; sourceTree = "<group>"; };
+		73FC9F3B22BD519E0041B266 /* SourceSansPro-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SourceSansPro-LightItalic.ttf"; path = "../../../../Downloads/fonts/fonts/SourceSansPro-LightItalic.ttf"; sourceTree = "<group>"; };
+		73FC9F3C22BD519E0041B266 /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-SemiBold.ttf"; path = "../../../../Downloads/fonts/fonts/OpenSans-SemiBold.ttf"; sourceTree = "<group>"; };
+		73FC9F3D22BD519E0041B266 /* OpenSans-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-SemiBoldItalic.ttf"; path = "../../../../Downloads/fonts/fonts/OpenSans-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		73FC9F3E22BD519E0041B266 /* SourceSansPro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SourceSansPro-Regular.ttf"; path = "../../../../Downloads/fonts/fonts/SourceSansPro-Regular.ttf"; sourceTree = "<group>"; };
+		73FC9F3F22BD519E0041B266 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Light.ttf"; path = "../../../../Downloads/fonts/fonts/OpenSans-Light.ttf"; sourceTree = "<group>"; };
+		73FC9F4022BD519E0041B266 /* PlayfairDisplay-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "PlayfairDisplay-Regular.ttf"; path = "../../../../Downloads/fonts/fonts/PlayfairDisplay-Regular.ttf"; sourceTree = "<group>"; };
+		73FC9F4122BD519E0041B266 /* OpenSans-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-LightItalic.ttf"; path = "../../../../Downloads/fonts/fonts/OpenSans-LightItalic.ttf"; sourceTree = "<group>"; };
+		73FC9F4222BD519F0041B266 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Regular.ttf"; path = "../../../../Downloads/fonts/fonts/OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		8D1FC14EB0E5B63229D0D9A6 /* Pods-PollAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PollAppTests.release.xcconfig"; path = "Target Support Files/Pods-PollAppTests/Pods-PollAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		98270D507219851B08D7A341 /* Pods_PollAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PollAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB14550022B958BA00CBF426 /* VerifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +127,14 @@
 		7363F66222BD377D00FA70C2 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
+				73FC9F3F22BD519E0041B266 /* OpenSans-Light.ttf */,
+				73FC9F4122BD519E0041B266 /* OpenSans-LightItalic.ttf */,
+				73FC9F4222BD519F0041B266 /* OpenSans-Regular.ttf */,
+				73FC9F3C22BD519E0041B266 /* OpenSans-SemiBold.ttf */,
+				73FC9F3D22BD519E0041B266 /* OpenSans-SemiBoldItalic.ttf */,
+				73FC9F4022BD519E0041B266 /* PlayfairDisplay-Regular.ttf */,
+				73FC9F3B22BD519E0041B266 /* SourceSansPro-LightItalic.ttf */,
+				73FC9F3E22BD519E0041B266 /* SourceSansPro-Regular.ttf */,
 			);
 			path = fonts;
 			sourceTree = "<group>";
@@ -309,9 +333,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73FC9F4822BD519F0041B266 /* PlayfairDisplay-Regular.ttf in Resources */,
+				73FC9F4322BD519F0041B266 /* SourceSansPro-LightItalic.ttf in Resources */,
 				BB72700A22B7F3D7006C386B /* LaunchScreen.storyboard in Resources */,
 				BB72702E22B7FDF5006C386B /* GoogleService-Info.plist in Resources */,
+				73FC9F4622BD519F0041B266 /* SourceSansPro-Regular.ttf in Resources */,
+				73FC9F4922BD519F0041B266 /* OpenSans-LightItalic.ttf in Resources */,
 				BB72700722B7F3D7006C386B /* Assets.xcassets in Resources */,
+				73FC9F4422BD519F0041B266 /* OpenSans-SemiBold.ttf in Resources */,
+				73FC9F4722BD519F0041B266 /* OpenSans-Light.ttf in Resources */,
+				73FC9F4522BD519F0041B266 /* OpenSans-SemiBoldItalic.ttf in Resources */,
+				73FC9F4A22BD519F0041B266 /* OpenSans-Regular.ttf in Resources */,
 				BB72700522B7F3D5006C386B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
