@@ -18,6 +18,8 @@
 		7363F67222BD380900FA70C2 /* OpenSans-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7363F66D22BD380900FA70C2 /* OpenSans-SemiBoldItalic.ttf */; };
 		9602B756FC916F2BE8025048 /* Pods_PollAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50C0732744EA6C212C75E088 /* Pods_PollAppTests.framework */; };
 		BB14550122B958BA00CBF426 /* VerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB14550022B958BA00CBF426 /* VerifyViewController.swift */; };
+		BB5DEEAC22BD3C38006A0C81 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5DEEAB22BD3C38006A0C81 /* API.swift */; };
+		BB5DEEAE22BD3D19006A0C81 /* user.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5DEEAD22BD3D19006A0C81 /* user.swift */; };
 		BB72700022B7F3D5006C386B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB726FFF22B7F3D5006C386B /* AppDelegate.swift */; };
 		BB72700222B7F3D5006C386B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB72700122B7F3D5006C386B /* ViewController.swift */; };
 		BB72700522B7F3D5006C386B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB72700322B7F3D5006C386B /* Main.storyboard */; };
@@ -63,6 +65,8 @@
 		8D1FC14EB0E5B63229D0D9A6 /* Pods-PollAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PollAppTests.release.xcconfig"; path = "Target Support Files/Pods-PollAppTests/Pods-PollAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		98270D507219851B08D7A341 /* Pods_PollAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PollAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB14550022B958BA00CBF426 /* VerifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyViewController.swift; sourceTree = "<group>"; };
+		BB5DEEAB22BD3C38006A0C81 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		BB5DEEAD22BD3D19006A0C81 /* user.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = user.swift; sourceTree = "<group>"; };
 		BB726FFC22B7F3D5006C386B /* PollApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PollApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB726FFF22B7F3D5006C386B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BB72700122B7F3D5006C386B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -160,6 +164,8 @@
 		BB726FFE22B7F3D5006C386B /* PollApp */ = {
 			isa = PBXGroup;
 			children = (
+				BB5DEEAB22BD3C38006A0C81 /* API.swift */,
+				BB5DEEAD22BD3D19006A0C81 /* user.swift */,
 				7363F66222BD377D00FA70C2 /* fonts */,
 				BB7360D422B944B9002210D3 /* PollApp.entitlements */,
 				BB72702D22B7FDF5006C386B /* GoogleService-Info.plist */,
@@ -449,8 +455,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB5DEEAE22BD3D19006A0C81 /* user.swift in Sources */,
 				BB14550122B958BA00CBF426 /* VerifyViewController.swift in Sources */,
 				BB72700222B7F3D5006C386B /* ViewController.swift in Sources */,
+				BB5DEEAC22BD3C38006A0C81 /* API.swift in Sources */,
 				BB72700022B7F3D5006C386B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
