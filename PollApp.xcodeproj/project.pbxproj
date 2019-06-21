@@ -8,14 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		6C559DCAB840EB20EB6C6590 /* Pods_PollApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EF3CCE1927B1751DF959AE7 /* Pods_PollApp.framework */; };
-		73FC9F4B22BD52680041B266 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73FC9F4D22BD52680041B266 /* OpenSans-Light.ttf */; };
-		73FC9F4E22BD526C0041B266 /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73FC9F5022BD526C0041B266 /* OpenSans-LightItalic.ttf */; };
-		73FC9F5122BD527D0041B266 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73FC9F5322BD527D0041B266 /* OpenSans-Regular.ttf */; };
-		73FC9F5422BD52810041B266 /* OpenSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73FC9F5622BD52810041B266 /* OpenSans-SemiBold.ttf */; };
-		73FC9F5722BD52840041B266 /* OpenSans-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73FC9F5922BD52840041B266 /* OpenSans-SemiBoldItalic.ttf */; };
-		73FC9F5A22BD52890041B266 /* PlayfairDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73FC9F5C22BD52890041B266 /* PlayfairDisplay-Regular.ttf */; };
-		73FC9F5D22BD528C0041B266 /* SourceSansPro-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73FC9F5F22BD528C0041B266 /* SourceSansPro-LightItalic.ttf */; };
-		73FC9F6022BD52900041B266 /* SourceSansPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73FC9F6222BD52900041B266 /* SourceSansPro-Regular.ttf */; };
 		9602B756FC916F2BE8025048 /* Pods_PollAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50C0732744EA6C212C75E088 /* Pods_PollAppTests.framework */; };
 		BB14550122B958BA00CBF426 /* VerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB14550022B958BA00CBF426 /* VerifyViewController.swift */; };
 		BB5DEEAC22BD3C38006A0C81 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5DEEAB22BD3C38006A0C81 /* API.swift */; };
@@ -54,14 +46,6 @@
 		2EF3CCE1927B1751DF959AE7 /* Pods_PollApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PollApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50C0732744EA6C212C75E088 /* Pods_PollAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PollAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		63B79D426906A945F3B53799 /* Pods-PollApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PollApp.debug.xcconfig"; path = "Target Support Files/Pods-PollApp/Pods-PollApp.debug.xcconfig"; sourceTree = "<group>"; };
-		73FC9F4C22BD52680041B266 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file; name = Base; path = "Base.lproj/OpenSans-Light.ttf"; sourceTree = "<group>"; };
-		73FC9F4F22BD526C0041B266 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file; name = Base; path = "Base.lproj/OpenSans-LightItalic.ttf"; sourceTree = "<group>"; };
-		73FC9F5222BD527D0041B266 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file; name = Base; path = "Base.lproj/OpenSans-Regular.ttf"; sourceTree = "<group>"; };
-		73FC9F5522BD52810041B266 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file; name = Base; path = "Base.lproj/OpenSans-SemiBold.ttf"; sourceTree = "<group>"; };
-		73FC9F5822BD52840041B266 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file; name = Base; path = "Base.lproj/OpenSans-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
-		73FC9F5B22BD52890041B266 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file; name = Base; path = "Base.lproj/PlayfairDisplay-Regular.ttf"; sourceTree = "<group>"; };
-		73FC9F5E22BD528C0041B266 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file; name = Base; path = "Base.lproj/SourceSansPro-LightItalic.ttf"; sourceTree = "<group>"; };
-		73FC9F6122BD52900041B266 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file; name = Base; path = "Base.lproj/SourceSansPro-Regular.ttf"; sourceTree = "<group>"; };
 		8D1FC14EB0E5B63229D0D9A6 /* Pods-PollAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PollAppTests.release.xcconfig"; path = "Target Support Files/Pods-PollAppTests/Pods-PollAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		98270D507219851B08D7A341 /* Pods_PollAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PollAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB14550022B958BA00CBF426 /* VerifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyViewController.swift; sourceTree = "<group>"; };
@@ -124,22 +108,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		7363F66222BD377D00FA70C2 /* fonts */ = {
-			isa = PBXGroup;
-			children = (
-				73FC9F4D22BD52680041B266 /* OpenSans-Light.ttf */,
-				73FC9F5022BD526C0041B266 /* OpenSans-LightItalic.ttf */,
-				73FC9F5322BD527D0041B266 /* OpenSans-Regular.ttf */,
-				73FC9F5622BD52810041B266 /* OpenSans-SemiBold.ttf */,
-				73FC9F5922BD52840041B266 /* OpenSans-SemiBoldItalic.ttf */,
-				73FC9F5C22BD52890041B266 /* PlayfairDisplay-Regular.ttf */,
-				73FC9F5F22BD528C0041B266 /* SourceSansPro-LightItalic.ttf */,
-				73FC9F6222BD52900041B266 /* SourceSansPro-Regular.ttf */,
-			);
-			name = fonts;
-			path = /Users/benstewart/Documents/PollApp/PollApp/fonts;
-			sourceTree = "<absolute>";
-		};
 		BB726FF322B7F3D5006C386B = {
 			isa = PBXGroup;
 			children = (
@@ -167,7 +135,6 @@
 			children = (
 				BB5DEEAB22BD3C38006A0C81 /* API.swift */,
 				BB5DEEAF22BD49F0006A0C81 /* user.swift */,
-				7363F66222BD377D00FA70C2 /* fonts */,
 				BB7360D422B944B9002210D3 /* PollApp.entitlements */,
 				BB72702D22B7FDF5006C386B /* GoogleService-Info.plist */,
 				BB726FFF22B7F3D5006C386B /* AppDelegate.swift */,
@@ -334,17 +301,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				73FC9F5A22BD52890041B266 /* PlayfairDisplay-Regular.ttf in Resources */,
-				73FC9F5D22BD528C0041B266 /* SourceSansPro-LightItalic.ttf in Resources */,
 				BB72700A22B7F3D7006C386B /* LaunchScreen.storyboard in Resources */,
 				BB72702E22B7FDF5006C386B /* GoogleService-Info.plist in Resources */,
-				73FC9F6022BD52900041B266 /* SourceSansPro-Regular.ttf in Resources */,
-				73FC9F4E22BD526C0041B266 /* OpenSans-LightItalic.ttf in Resources */,
 				BB72700722B7F3D7006C386B /* Assets.xcassets in Resources */,
-				73FC9F5422BD52810041B266 /* OpenSans-SemiBold.ttf in Resources */,
-				73FC9F4B22BD52680041B266 /* OpenSans-Light.ttf in Resources */,
-				73FC9F5722BD52840041B266 /* OpenSans-SemiBoldItalic.ttf in Resources */,
-				73FC9F5122BD527D0041B266 /* OpenSans-Regular.ttf in Resources */,
 				BB72700522B7F3D5006C386B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -496,78 +455,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		73FC9F4D22BD52680041B266 /* OpenSans-Light.ttf */ = {
-			isa = PBXVariantGroup;
-			children = (
-				73FC9F4C22BD52680041B266 /* Base */,
-			);
-			name = "OpenSans-Light.ttf";
-			path = ../../../../Users/benstewart/Downloads/fonts/fonts;
-			sourceTree = DEVELOPER_DIR;
-		};
-		73FC9F5022BD526C0041B266 /* OpenSans-LightItalic.ttf */ = {
-			isa = PBXVariantGroup;
-			children = (
-				73FC9F4F22BD526C0041B266 /* Base */,
-			);
-			name = "OpenSans-LightItalic.ttf";
-			path = ../../../../Users/benstewart/Downloads/fonts/fonts;
-			sourceTree = DEVELOPER_DIR;
-		};
-		73FC9F5322BD527D0041B266 /* OpenSans-Regular.ttf */ = {
-			isa = PBXVariantGroup;
-			children = (
-				73FC9F5222BD527D0041B266 /* Base */,
-			);
-			name = "OpenSans-Regular.ttf";
-			path = ../../../../Users/benstewart/Downloads/fonts/fonts;
-			sourceTree = DEVELOPER_DIR;
-		};
-		73FC9F5622BD52810041B266 /* OpenSans-SemiBold.ttf */ = {
-			isa = PBXVariantGroup;
-			children = (
-				73FC9F5522BD52810041B266 /* Base */,
-			);
-			name = "OpenSans-SemiBold.ttf";
-			path = ../../../../Users/benstewart/Downloads/fonts/fonts;
-			sourceTree = DEVELOPER_DIR;
-		};
-		73FC9F5922BD52840041B266 /* OpenSans-SemiBoldItalic.ttf */ = {
-			isa = PBXVariantGroup;
-			children = (
-				73FC9F5822BD52840041B266 /* Base */,
-			);
-			name = "OpenSans-SemiBoldItalic.ttf";
-			path = ../../../../Users/benstewart/Downloads/fonts/fonts;
-			sourceTree = DEVELOPER_DIR;
-		};
-		73FC9F5C22BD52890041B266 /* PlayfairDisplay-Regular.ttf */ = {
-			isa = PBXVariantGroup;
-			children = (
-				73FC9F5B22BD52890041B266 /* Base */,
-			);
-			name = "PlayfairDisplay-Regular.ttf";
-			path = ../../../../Users/benstewart/Downloads/fonts/fonts;
-			sourceTree = DEVELOPER_DIR;
-		};
-		73FC9F5F22BD528C0041B266 /* SourceSansPro-LightItalic.ttf */ = {
-			isa = PBXVariantGroup;
-			children = (
-				73FC9F5E22BD528C0041B266 /* Base */,
-			);
-			name = "SourceSansPro-LightItalic.ttf";
-			path = ../../../../Users/benstewart/Downloads/fonts/fonts;
-			sourceTree = DEVELOPER_DIR;
-		};
-		73FC9F6222BD52900041B266 /* SourceSansPro-Regular.ttf */ = {
-			isa = PBXVariantGroup;
-			children = (
-				73FC9F6122BD52900041B266 /* Base */,
-			);
-			name = "SourceSansPro-Regular.ttf";
-			path = ../../../../Users/benstewart/Downloads/fonts/fonts;
-			sourceTree = DEVELOPER_DIR;
-		};
 		BB72700322B7F3D5006C386B /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
