@@ -7,32 +7,24 @@
 //
 
 import Foundation
-import FirebaseDatabase
+import FirebaseFirestore
 
 class DatabaseHelper{
-    var ref: DatabaseReference!
-
-    init(){
-        self.ref = Database.database().reference()
+    static var db: Firestore!
+ 
+    static func getUserByUID(UID: String, callback: @escaping (Dictionary<String, Any>?) -> Void) {
+        db = Firestore.firestore()
+        let docRef = db.collection("users").document(UID)
+        
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                callback(document.data())
+            }
+            else{
+                callback(nil)
+            }
+        }
     }
     
-    func getUserByUID(UID: String) -> User{
-        let user : User = User()
-        ref?.child("users").child(UID).observe(.value, with: { (snapshot) in
-            // Get user value
-            let value = snapshot.value as? NSDictionary
-            let username = value?["username"] as? String ?? ""
-            let name = value?["name"] as? String ?? ""
-            let followers = value?["followers"] as? String ?? ""
-            let following = value?["following"] as? String ?? ""
-            let picture = value?["picture"] as? String ?? ""
-            let posts = value?["posts"] as? String ?? ""
-            user.update(username: username, name: name, picture: picture, followers: followers, following: following, posts: posts)
-        }) { (error) in
-            print(error.localizedDescription)
-        }
-        return user
-
-    }
 
 }
