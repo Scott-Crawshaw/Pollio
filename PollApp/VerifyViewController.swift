@@ -17,6 +17,10 @@ class VerifyViewController: UIViewController {
         super.viewWillAppear(animated)
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
     @IBAction func submitCode(sender: UIButton) {
         let verificationCode = String(code.text!)
         let verificationID = String(UserDefaults.standard.string(forKey: "authVerificationID")!)
