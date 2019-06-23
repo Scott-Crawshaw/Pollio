@@ -120,7 +120,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="Now enter the verification code sent to you." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="nLQ-tT-BbD">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="Now enter the verification code we sent you." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="nLQ-tT-BbD">
                                 <rect key="frame" x="71" y="276.5" width="280" height="64"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="9Fy-xr-EaU"/>
@@ -201,6 +201,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AFk-or-foc">
+                                <rect key="frame" x="1" y="44" width="413" height="818"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="818" id="Ggs-1o-lqr"/>
+                                    <constraint firstAttribute="width" constant="413" id="iaC-JV-S4p"/>
+                                </constraints>
+                            </scrollView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" layoutMarginsFollowReadableWidth="YES" text="Let's get you started." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="eCB-Ry-Zi7">
                                 <rect key="frame" x="15" y="116" width="384" height="53"/>
                                 <constraints>
@@ -231,14 +238,17 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="OXo-6K-AdV">
-                                <rect key="frame" x="188" y="805" width="39" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="OXo-6K-AdV">
+                                <rect key="frame" x="187.5" y="805" width="39" height="37"/>
                             </pageControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="AFk-or-foc" firstAttribute="centerX" secondItem="Fw1-aL-NaH" secondAttribute="centerX" id="6E1-3W-WPo"/>
                             <constraint firstItem="Nbm-Lv-S2W" firstAttribute="width" secondItem="Nbm-Lv-S2W" secondAttribute="height" multiplier="5:1" id="G9s-fj-RQa"/>
+                            <constraint firstItem="SRN-fo-Vkh" firstAttribute="bottom" secondItem="OXo-6K-AdV" secondAttribute="bottom" constant="20" id="anp-Hb-GLX"/>
+                            <constraint firstItem="AFk-or-foc" firstAttribute="centerY" secondItem="Fw1-aL-NaH" secondAttribute="centerY" id="frE-0L-lBH"/>
+                            <constraint firstItem="OXo-6K-AdV" firstAttribute="centerX" secondItem="Fw1-aL-NaH" secondAttribute="centerX" id="lAi-rY-E1y"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="SRN-fo-Vkh"/>
                     </view>
