@@ -34,9 +34,18 @@ class VerifyViewController: UIViewController {
                 self.showMessagePrompt(message: error.localizedDescription)
                 return
             }
+            
             //here is where we should do something with authResult
+            //DatabaseHelper.getUserByUID(UID: (authResult?.user.uid)!, callback: self.testCallback)
+            
         }
     }
+    
+    /*
+    func testCallback(dict: Dictionary<String, Any>?){
+        self.showMessagePrompt(message: dict!.description)
+    }
+     */
     
     func showMessagePrompt(message: String){
         let alert = UIAlertController(title: "Alert", message: message, preferredStyle: UIAlertController.Style.alert)
