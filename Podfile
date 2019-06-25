@@ -7,9 +7,12 @@ target 'PollApp' do
 
   # Pods for PollApp
   pod 'Firebase/Analytics'
+  pod 'Firebase/Performance'
   pod 'Firebase/Auth'
   pod 'Firebase/Core'
   pod 'Firebase/Firestore'
+  pod 'Fabric', '~> 1.10.2'
+  pod 'Crashlytics', '~> 3.13.2'
 
   target 'PollAppTests' do
     inherit! :search_paths
