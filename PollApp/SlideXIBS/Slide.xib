@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Light.ttf">
+            <string>OpenSans-Light</string>
+        </array>
+        <array key="OpenSans-SemiBold.ttf">
+            <string>OpenSans-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" userLabel="Slide" customClass="Slide" customModule="PollApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="Let's get you started." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="tSH-Ik-kzm">
+                    <rect key="frame" x="0.0" y="102" width="384" height="53"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="53" id="Gfa-DA-d6Y"/>
+                        <constraint firstAttribute="width" relation="lessThanOrEqual" priority="750" constant="340" id="zi8-cH-2hQ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans SemiBold" pointSize="32"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                    <color key="shadowColor" red="0.49019607840000001" green="0.14901960780000001" blue="0.80392156859999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <size key="shadowOffset" width="0.5" height="-1"/>
+                </label>
+                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4mn-ao-Xhe">
+                    <rect key="frame" x="37" y="217" width="211" height="50"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="Pick a username:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="x4s-ji-WZl">
+                    <rect key="frame" x="-9" y="163" width="269" height="71"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="71" id="nyh-qb-VDd"/>
+                        <constraint firstAttribute="width" secondItem="x4s-ji-WZl" secondAttribute="height" multiplier="5:1" constant="-86" id="suu-O5-gDf"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans Light" pointSize="23"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                    <color key="shadowColor" red="0.63529411759999999" green="0.36470588240000001" blue="1" alpha="0.48512414380000002" colorSpace="custom" customColorSpace="sRGB"/>
+                    <size key="shadowOffset" width="0.5" height="-1"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="tSH-Ik-kzm" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="58" id="EsW-gt-Znx"/>
+                <constraint firstItem="tSH-Ik-kzm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="LeY-QS-IrH"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="tSH-Ik-kzm" secondAttribute="trailing" constant="30" id="SG2-aq-WGz"/>
+                <constraint firstItem="x4s-ji-WZl" firstAttribute="top" secondItem="tSH-Ik-kzm" secondAttribute="bottom" constant="8" symbolic="YES" id="dJw-yc-FeH"/>
+                <constraint firstItem="x4s-ji-WZl" firstAttribute="width" secondItem="x4s-ji-WZl" secondAttribute="height" multiplier="5:1" constant="-86" id="kre-3y-pq2"/>
+                <constraint firstItem="x4s-ji-WZl" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="-9" id="o3h-0k-hqw"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="66.666666666666671" y="132.58928571428572"/>
+        </view>
+    </objects>
+</document>

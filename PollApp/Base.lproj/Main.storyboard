@@ -208,36 +208,6 @@
                                     <constraint firstAttribute="width" constant="413" id="iaC-JV-S4p"/>
                                 </constraints>
                             </scrollView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" layoutMarginsFollowReadableWidth="YES" text="Let's get you started." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="eCB-Ry-Zi7">
-                                <rect key="frame" x="15" y="116" width="384" height="53"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="lessThanOrEqual" priority="750" constant="340" id="Rhj-8Y-ZkE"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans SemiBold" pointSize="32"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                                <color key="shadowColor" red="0.49019607840000001" green="0.14901960780000001" blue="0.80392156859999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <size key="shadowOffset" width="0.5" height="-1"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" layoutMarginsFollowReadableWidth="YES" text="Pick a username:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Nbm-Lv-S2W">
-                                <rect key="frame" x="36" y="177" width="205" height="56"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="Nbm-Lv-S2W" secondAttribute="height" multiplier="5:1" id="fnN-jF-XWw"/>
-                                    <constraint firstAttribute="height" constant="71" id="iXI-BW-do0"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans Light" pointSize="23"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                                <color key="shadowColor" red="0.63529411759999999" green="0.36470588240000001" blue="1" alpha="0.48512414380000002" colorSpace="custom" customColorSpace="sRGB"/>
-                                <size key="shadowOffset" width="0.5" height="-1"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ime-Yc-Rjg">
-                                <rect key="frame" x="52" y="231" width="171" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="OXo-6K-AdV">
                                 <rect key="frame" x="187.5" y="805" width="39" height="37"/>
                             </pageControl>
@@ -245,13 +215,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="AFk-or-foc" firstAttribute="centerX" secondItem="Fw1-aL-NaH" secondAttribute="centerX" id="6E1-3W-WPo"/>
-                            <constraint firstItem="Nbm-Lv-S2W" firstAttribute="width" secondItem="Nbm-Lv-S2W" secondAttribute="height" multiplier="5:1" id="G9s-fj-RQa"/>
                             <constraint firstItem="SRN-fo-Vkh" firstAttribute="bottom" secondItem="OXo-6K-AdV" secondAttribute="bottom" constant="20" id="anp-Hb-GLX"/>
                             <constraint firstItem="AFk-or-foc" firstAttribute="centerY" secondItem="Fw1-aL-NaH" secondAttribute="centerY" id="frE-0L-lBH"/>
                             <constraint firstItem="OXo-6K-AdV" firstAttribute="centerX" secondItem="Fw1-aL-NaH" secondAttribute="centerX" id="lAi-rY-E1y"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="SRN-fo-Vkh"/>
                     </view>
+                    <connections>
+                        <outlet property="scrollView" destination="AFk-or-foc" id="dA3-Xh-9lc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4eh-6a-eYB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
