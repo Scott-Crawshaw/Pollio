@@ -18,7 +18,7 @@ class Slide: UIView {
     }
     */
      //hopefully this shit fucking works...
-    func viewWillAppear(_ animated: Bool) {
+     func viewWillAppear(_ animated: Bool) {
         setGradientBackground()
         self.viewWillAppear(animated)
     }

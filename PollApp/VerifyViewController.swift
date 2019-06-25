@@ -37,7 +37,9 @@ class VerifyViewController: UIViewController {
             
             //here is where we should do something with authResult
             //DatabaseHelper.getUserByUID(UID: (authResult?.user.uid)!, callback: self.testCallback)
-            
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let newViewController = storyBoard.instantiateViewController(withIdentifier: "AccountSetUpView") as! AccountSetUpView
+            self.present(newViewController, animated: true, completion: nil)
         }
     }
     

@@ -68,5 +68,53 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="66.666666666666671" y="132.58928571428572"/>
         </view>
+        <view contentMode="scaleToFill" id="1FJ-6u-nBq" userLabel="Slide1" customClass="Slide" customModule="PollApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="Let's get you started." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="0aa-2Y-lE7">
+                    <rect key="frame" x="0.0" y="102" width="384" height="53"/>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="lessThanOrEqual" priority="750" constant="340" id="gRf-rX-MJg"/>
+                        <constraint firstAttribute="height" constant="53" id="stw-fB-Ufc"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans SemiBold" pointSize="32"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                    <color key="shadowColor" red="0.49019607840000001" green="0.14901960780000001" blue="0.80392156859999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <size key="shadowOffset" width="0.5" height="-1"/>
+                </label>
+                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zm9-Tf-AqA">
+                    <rect key="frame" x="37" y="217" width="211" height="50"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="Go for it!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ko5-8o-PaR">
+                    <rect key="frame" x="-9" y="163" width="269" height="71"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="ko5-8o-PaR" secondAttribute="height" multiplier="5:1" constant="-86" id="2JB-xX-m0B"/>
+                        <constraint firstAttribute="height" constant="71" id="5Tz-w0-Bnv"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans Light" pointSize="23"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                    <color key="shadowColor" red="0.63529411759999999" green="0.36470588240000001" blue="1" alpha="0.48512414380000002" colorSpace="custom" customColorSpace="sRGB"/>
+                    <size key="shadowOffset" width="0.5" height="-1"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="0aa-2Y-lE7" firstAttribute="leading" secondItem="1FJ-6u-nBq" secondAttribute="leading" id="00i-2y-mNF"/>
+                <constraint firstItem="ko5-8o-PaR" firstAttribute="width" secondItem="ko5-8o-PaR" secondAttribute="height" multiplier="5:1" constant="-86" id="60f-p7-8xk"/>
+                <constraint firstItem="ko5-8o-PaR" firstAttribute="top" secondItem="0aa-2Y-lE7" secondAttribute="bottom" constant="8" symbolic="YES" id="UXl-Jb-dns"/>
+                <constraint firstItem="feV-cF-Pwq" firstAttribute="trailing" secondItem="0aa-2Y-lE7" secondAttribute="trailing" constant="30" id="hmf-F5-ALa"/>
+                <constraint firstItem="0aa-2Y-lE7" firstAttribute="top" secondItem="feV-cF-Pwq" secondAttribute="top" constant="58" id="q72-pR-Mc9"/>
+                <constraint firstItem="ko5-8o-PaR" firstAttribute="leading" secondItem="feV-cF-Pwq" secondAttribute="leading" constant="-9" id="qy4-d3-OsI"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="feV-cF-Pwq"/>
+            <point key="canvasLocation" x="864" y="133"/>
+        </view>
     </objects>
 </document>
