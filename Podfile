@@ -7,6 +7,7 @@ target 'PollApp' do
 
   # Pods for PollApp
   pod 'Firebase/Analytics'
+  pod 'Firebase/Performance'
   pod 'Firebase/Auth'
   pod 'Firebase/Core'
   pod 'Firebase/Firestore'
