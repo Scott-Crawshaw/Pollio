@@ -17,6 +17,7 @@ class AccountSetUpView: UIViewController {
     }
     
 
+    @IBOutlet weak var scrollView: UIScrollView!
     /*
     // MARK: - Navigation
 
