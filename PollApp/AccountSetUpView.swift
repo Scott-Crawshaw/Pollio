@@ -32,7 +32,7 @@ class AccountSetUpView: UIViewController, UIScrollViewDelegate {
     func createSlides() -> [Slide] {
         let slide1:Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
         
-        let slide2:Slide = Bundle.main.loadNibNamed("Slide1", owner: self, options: nil)?.first as! Slide
+        let slide2:Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
         
         return [slide1, slide2]
     }
