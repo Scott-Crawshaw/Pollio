@@ -12,12 +12,16 @@ import Contacts
 class Slide: UIView {
 
     @IBOutlet var contactSwitch: UISwitch!
+    @IBOutlet var loadPrompt: UIActivityIndicatorView!
+    @IBOutlet var scrollView: UIScrollView!
+    
     var cDict: [String: String] = [:]
 
     
     
     @IBAction func isSwitched(sender: UISwitch) {
-        if contactSwitch.isOn == false {return}
+        if contactSwitch.isOn == false {loadPrompt.stopAnimating(); return}
+        loadPrompt.startAnimating()
         
         let store = CNContactStore()
         store.requestAccess(for: .contacts, completionHandler: {
@@ -50,9 +54,6 @@ class Slide: UIView {
                     self.cDict[contact.phoneNumbers[ind].value.stringValue.filter("0123456789".contains)] = "\(fullName)"
                 }
                 
-            }
-            for (number, name) in self.cDict{
-                print("\(name) please fucking work: \(number)")
             }
         })
 
