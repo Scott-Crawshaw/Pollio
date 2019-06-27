@@ -16,6 +16,12 @@ class AccountSetUpView: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var pageControl : UIPageControl!
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        setGradientBackground()
+        super.viewWillAppear(animated)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,12 +35,15 @@ class AccountSetUpView: UIViewController, UIScrollViewDelegate {
         view.bringSubviewToFront(pageControl)
     }
     
+    
+    
     func createSlides() -> [Slide] {
-        let slide1:Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
+        let slide0:Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
         
-        let slide2:Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
+        let slide1:Slide = Bundle.main.loadNibNamed("Slide1", owner: self, options: nil)?.first as! Slide
         
-        return [slide1, slide2]
+        
+        return [slide0, slide1]
     }
     
     func setupSlideScrollView(slides : [Slide]) {
@@ -100,6 +109,18 @@ class AccountSetUpView: UIViewController, UIScrollViewDelegate {
             slides[3].imageView.transform = CGAffineTransform(scaleX: (1-percentOffset.x)/0.25, y: (1-percentOffset.x)/0.25)
             slides[4].imageView.transform = CGAffineTransform(scaleX: percentOffset.x, y: percentOffset.x)
         }*/
+    }
+    
+    func setGradientBackground() {
+        let colorTop =  UIColor(red: 212/255.0, green: 119/255.0, blue: 230/255.0, alpha: 0.9).cgColor
+        let colorBottom = UIColor(red: 161/255.0, green: 84/255.0, blue: 194/255.0, alpha: 1.0).cgColor
+        
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [colorTop,colorBottom]
+        gradientLayer.locations = [0.0, 1.0]
+        gradientLayer.frame = self.view.bounds
+        
+        self.view.layer.insertSublayer(gradientLayer, at:0)
     }
 
 }
