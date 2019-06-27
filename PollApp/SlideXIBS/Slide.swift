@@ -47,16 +47,26 @@ class Slide: UIView {
                 let fullName = CNContactFormatter.string(from: contact, style: .fullName) ?? "No Name"
                 for ind in 0..<contact.phoneNumbers.count
                 {
-                    self.cDict[contact.phoneNumbers[ind].value.stringValue.filter("0123456789".contains)] = "\(fullName)"
+                    var number = contact.phoneNumbers[ind].value.stringValue.filter("0123456789".contains)
+                    if number.count == 10 {
+                        number = "1" + number
+                    }
+                    number = "+" + number
+                    
+                    self.cDict[number] = "\(fullName)"
                 }
                 
             }
-            for (number, name) in self.cDict{
-                print("\(name) please fucking work: \(number)")
-            }
+            DatabaseHelper.getUsersFromNumbers(numbers: Array(self.cDict.keys), callback: self.populateTableView)
         })
 
         
+    }
+    
+    func populateTableView(contacts: [[String: Any]]){
+        //this is where you fill the table view. the format of the data is as follows
+        //[[number:+16176108187, userID:djakdn23rj2k3nds], [number:+17815550111, userID:djakdn23rj2k3nds]]
+        print(contacts)
     }
 
     

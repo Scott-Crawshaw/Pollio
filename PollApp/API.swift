@@ -65,10 +65,10 @@ class DatabaseHelper{
         return Storage.storage().reference(forURL: cloudPath)
     }
     
-    static func getUsersFromNumbers(numbers: [String], callback: @escaping ([String: Any]) -> Void){
+    static func getUsersFromNumbers(numbers: [String], callback: @escaping ([[String: Any]]) -> Void){
         let functions = Functions.functions()
         functions.httpsCallable("getFriends").call(["numbers": numbers]) { (result, error) in
-            callback(result?.data as? [String: Any] ?? [:])
+            callback(result?.data as? [[String: Any]] ?? [[:]])
         }
 
     }
