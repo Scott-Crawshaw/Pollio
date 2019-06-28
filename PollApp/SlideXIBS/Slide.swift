@@ -12,12 +12,16 @@ import Contacts
 class Slide: UIView {
 
     @IBOutlet var contactSwitch: UISwitch!
+    @IBOutlet var loadPrompt: UIActivityIndicatorView!
+    @IBOutlet var scrollView: UIScrollView!
+    
     var cDict: [String: String] = [:]
 
     
     
     @IBAction func isSwitched(sender: UISwitch) {
-        if contactSwitch.isOn == false {return}
+        if contactSwitch.isOn == false {loadPrompt.stopAnimating(); return}
+        loadPrompt.startAnimating()
         
         let store = CNContactStore()
         store.requestAccess(for: .contacts, completionHandler: {
