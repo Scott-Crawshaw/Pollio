@@ -13,9 +13,9 @@ class Slide: UIView {
 
     @IBOutlet var contactSwitch: UISwitch!
     @IBOutlet var loadPrompt: UIActivityIndicatorView!
-    @IBOutlet var scrollView: UIScrollView!
     
     var cDict: [String: String] = [:]
+    var numArray: [String] = []
 
     
     
@@ -70,10 +70,15 @@ class Slide: UIView {
     func populateTableView(contacts: [[String: Any]]){
         //this is where you fill the table view. the format of the data is as follows
         //[[number:+16176108187, userID:djakdn23rj2k3nds], [number:+17815550111, userID:djakdn23rj2k3nds]]
-        print(contacts)
-    }
+        for c in contacts{
+            numArray.append(c["number:"] as! String)
+        }
+        UserDefaults.standard.set(numArray, forKey: "numberArray")
+        UserDefaults.standard.set(cDict, forKey: "contactDictionary")
+        
 
-    
+
+    }
     
     override func draw(_ rect: CGRect) {
         // Drawing code

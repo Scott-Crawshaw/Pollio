@@ -54,18 +54,12 @@
                     <rect key="frame" x="189" y="250" width="37" height="37"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </activityIndicatorView>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZZ4-7V-XNk">
-                    <rect key="frame" x="45" y="313" width="321" height="471"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                </tableView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="contactSwitch" destination="oxY-nR-WmX" id="773-jH-Rt6"/>
-                <outlet property="loadPromt" destination="nea-LX-RfG" id="iGS-Yb-4E6"/>
-                <outlet property="scrollView" destination="ZZ4-7V-XNk" id="8mI-1P-ObQ"/>
+                <outlet property="loadPrompt" destination="nea-LX-RfG" id="XoK-zn-SBr"/>
             </connections>
             <point key="canvasLocation" x="66.666666666666671" y="132.58928571428572"/>
         </view>
