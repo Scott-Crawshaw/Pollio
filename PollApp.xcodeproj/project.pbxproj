@@ -9,10 +9,8 @@
 /* Begin PBXBuildFile section */
 		6C559DCAB840EB20EB6C6590 /* Pods_PollApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EF3CCE1927B1751DF959AE7 /* Pods_PollApp.framework */; };
 		731DFA8922C267490095EA1A /* Slide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731DFA8822C267490095EA1A /* Slide.swift */; };
-		731DFA8B22C267CF0095EA1A /* Slide.xib in Resources */ = {isa = PBXBuildFile; fileRef = 731DFA8A22C267CF0095EA1A /* Slide.xib */; };
-		731DFA9022C2C81F0095EA1A /* Slide1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 731DFA8F22C2C81F0095EA1A /* Slide1.xib */; };
 		73241BA322C6732100104FA7 /* ContactTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73241BA222C6732100104FA7 /* ContactTableController.swift */; };
-		7370B79122BEA04200B23CA6 /* AccountSetUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7370B79022BEA04200B23CA6 /* AccountSetUpView.swift */; };
+		73241BA522C68E1A00104FA7 /* SlideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73241BA422C68E1A00104FA7 /* SlideViewController.swift */; };
 		73A2BEBD22BD566D00B71A37 /* OpenSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73A2BEB522BD566D00B71A37 /* OpenSans-SemiBold.ttf */; };
 		73A2BEBE22BD566D00B71A37 /* SourceSansPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73A2BEB622BD566D00B71A37 /* SourceSansPro-Regular.ttf */; };
 		73A2BEBF22BD566D00B71A37 /* SourceSansPro-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73A2BEB722BD566D00B71A37 /* SourceSansPro-LightItalic.ttf */; };
@@ -59,10 +57,8 @@
 		50C0732744EA6C212C75E088 /* Pods_PollAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PollAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		63B79D426906A945F3B53799 /* Pods-PollApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PollApp.debug.xcconfig"; path = "Target Support Files/Pods-PollApp/Pods-PollApp.debug.xcconfig"; sourceTree = "<group>"; };
 		731DFA8822C267490095EA1A /* Slide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slide.swift; sourceTree = "<group>"; };
-		731DFA8A22C267CF0095EA1A /* Slide.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Slide.xib; sourceTree = "<group>"; };
-		731DFA8F22C2C81F0095EA1A /* Slide1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Slide1.xib; sourceTree = "<group>"; };
 		73241BA222C6732100104FA7 /* ContactTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableController.swift; sourceTree = "<group>"; };
-		7370B79022BEA04200B23CA6 /* AccountSetUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSetUpView.swift; sourceTree = "<group>"; };
+		73241BA422C68E1A00104FA7 /* SlideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideViewController.swift; sourceTree = "<group>"; };
 		73A2BEB522BD566D00B71A37 /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiBold.ttf"; sourceTree = "<group>"; };
 		73A2BEB622BD566D00B71A37 /* SourceSansPro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Regular.ttf"; sourceTree = "<group>"; };
 		73A2BEB722BD566D00B71A37 /* SourceSansPro-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-LightItalic.ttf"; sourceTree = "<group>"; };
@@ -132,16 +128,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		731DFA8C22C275090095EA1A /* SlideXIBS */ = {
-			isa = PBXGroup;
-			children = (
-				731DFA8822C267490095EA1A /* Slide.swift */,
-				731DFA8A22C267CF0095EA1A /* Slide.xib */,
-				731DFA8F22C2C81F0095EA1A /* Slide1.xib */,
-			);
-			path = SlideXIBS;
-			sourceTree = "<group>";
-		};
 		73A2BEB422BD566D00B71A37 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -182,17 +168,17 @@
 		BB726FFE22B7F3D5006C386B /* PollApp */ = {
 			isa = PBXGroup;
 			children = (
-				731DFA8C22C275090095EA1A /* SlideXIBS */,
 				BB5DEEC422BD6B23006A0C81 /* GoogleService-Info.plist */,
 				BB5DEEAB22BD3C38006A0C81 /* API.swift */,
 				BB7360D422B944B9002210D3 /* PollApp.entitlements */,
 				BB726FFF22B7F3D5006C386B /* AppDelegate.swift */,
 				BB72700122B7F3D5006C386B /* ViewController.swift */,
+				731DFA8822C267490095EA1A /* Slide.swift */,
 				73A2BEB422BD566D00B71A37 /* fonts */,
 				BB14550022B958BA00CBF426 /* VerifyViewController.swift */,
 				BB72700322B7F3D5006C386B /* Main.storyboard */,
+				73241BA422C68E1A00104FA7 /* SlideViewController.swift */,
 				73241BA222C6732100104FA7 /* ContactTableController.swift */,
-				7370B79022BEA04200B23CA6 /* AccountSetUpView.swift */,
 				BB72700622B7F3D7006C386B /* Assets.xcassets */,
 				BB72700822B7F3D7006C386B /* LaunchScreen.storyboard */,
 				BB72700B22B7F3D7006C386B /* Info.plist */,
@@ -360,8 +346,6 @@
 				73A2BEC022BD566D00B71A37 /* OpenSans-Light.ttf in Resources */,
 				73A2BEC222BD566D00B71A37 /* OpenSans-LightItalic.ttf in Resources */,
 				BB5DEEC522BD6B24006A0C81 /* GoogleService-Info.plist in Resources */,
-				731DFA8B22C267CF0095EA1A /* Slide.xib in Resources */,
-				731DFA9022C2C81F0095EA1A /* Slide1.xib in Resources */,
 				73A2BEBD22BD566D00B71A37 /* OpenSans-SemiBold.ttf in Resources */,
 				BB72700722B7F3D7006C386B /* Assets.xcassets in Resources */,
 				73A2BEC322BD566D00B71A37 /* OpenSans-SemiBoldItalic.ttf in Resources */,
@@ -500,8 +484,8 @@
 				BB72700222B7F3D5006C386B /* ViewController.swift in Sources */,
 				BB5DEEAC22BD3C38006A0C81 /* API.swift in Sources */,
 				731DFA8922C267490095EA1A /* Slide.swift in Sources */,
+				73241BA522C68E1A00104FA7 /* SlideViewController.swift in Sources */,
 				73241BA322C6732100104FA7 /* ContactTableController.swift in Sources */,
-				7370B79122BEA04200B23CA6 /* AccountSetUpView.swift in Sources */,
 				BB72700022B7F3D5006C386B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,7 +9,7 @@
 import UIKit
 import Contacts
 
-class Slide: UIView {
+class Slide: UIViewController {
 
     @IBOutlet var contactSwitch: UISwitch!
     @IBOutlet var loadPrompt: UIActivityIndicatorView!
@@ -17,6 +17,10 @@ class Slide: UIView {
     var cDict: [String: String] = [:]
     var numArray: [String] = []
 
+    override func viewWillAppear(_ animated: Bool) {
+        setGradientBackground()
+        super.viewWillAppear(animated)
+    }
     
     
     @IBAction func isSwitched(sender: UISwitch) {
@@ -76,14 +80,11 @@ class Slide: UIView {
         UserDefaults.standard.set(numArray, forKey: "numberArray")
         UserDefaults.standard.set(cDict, forKey: "contactDictionary")
         
-
+        //pulling up the next VC
 
     }
+  
     
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-        setGradientBackground()
-    }
     
     func setGradientBackground() {
         let colorTop =  UIColor(red: 212/255.0, green: 119/255.0, blue: 230/255.0, alpha: 0.9).cgColor
@@ -92,9 +93,9 @@ class Slide: UIView {
         let gradientLayer = CAGradientLayer()
         gradientLayer.colors = [colorTop,colorBottom]
         gradientLayer.locations = [0.0, 1.0]
-        gradientLayer.frame = self.bounds
+        gradientLayer.frame = self.view.bounds
         
-        self.layer.insertSublayer(gradientLayer, at:0)
+        self.view.layer.insertSublayer(gradientLayer, at:0)
     }
 
 }
