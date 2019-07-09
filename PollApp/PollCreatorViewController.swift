@@ -19,7 +19,7 @@ class PollCreatorViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var choice2: UITextField!
     @IBOutlet weak var choice3: UITextField!
     @IBOutlet weak var choice4: UITextField!
-    @IBOutlet weak var visibilityPicker: UISegmentedControl!
+    @IBOutlet weak var visibility: UISegmentedControl!
 
     
     override func viewDidLoad() {
@@ -101,13 +101,13 @@ class PollCreatorViewController: UIViewController, UITextViewDelegate {
         }
         let question : String = questionView.text
         let time = Timestamp()
-        var visibility : [String: Bool] = ["author" : false, "viewers": false]
+        var visibilityOpts : [String: Bool] = ["author" : false, "viewers": false]
         
-        if visibilityPicker.selectedSegmentIndex == 0{
-            visibility = ["author" : true, "viewers": true]
+        if visibility.selectedSegmentIndex == 0{
+            visibilityOpts = ["author" : true, "viewers": true]
         }
-        if visibilityPicker.selectedSegmentIndex == 1{
-            visibility = ["author" : true, "viewers": false]
+        if visibility.selectedSegmentIndex == 1{
+            visibilityOpts = ["author" : true, "viewers": false]
         }
         
         let comments = ""
@@ -120,7 +120,7 @@ class PollCreatorViewController: UIViewController, UITextViewDelegate {
             "options" : options,
             "question" : question,
             "time" : time,
-            "visibility" : visibility,
+            "visibility" : visibilityOpts,
             "votes" : votes
         ]
         
