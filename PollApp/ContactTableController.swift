@@ -8,14 +8,12 @@
 
 import UIKit
 
-class ContactTableController: UITableViewController{
+class ContactTableController: NSObject, UITableViewDataSource, UITableViewDelegate{
 
     var cDict: [String: String] = [:]
     var numArray: [String] = []
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    override init() {
         cDict = UserDefaults.standard.dictionary(forKey: "contactDictionary") as! [String : String]
         numArray = UserDefaults.standard.array(forKey: "numberArray") as! [String]
         // Uncomment the following line to preserve selection between presentations
@@ -27,18 +25,17 @@ class ContactTableController: UITableViewController{
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
+//    override func numberOfSections(in tableView: UITableView) -> Int {
+//        // #warning Incomplete implementation, return the number of sections
+//        return 1
+//    }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return numArray.count
     }
 
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
         let key = numArray[indexPath.item]
         cell.textLabel?.text = (cDict[key])

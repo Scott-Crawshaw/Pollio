@@ -13,12 +13,18 @@ class Slide: UIViewController {
 
     @IBOutlet var contactSwitch: UISwitch!
     @IBOutlet var loadPrompt: UIActivityIndicatorView!
+    @IBOutlet var tabView: UITableView!
+    var tabDataSource: ContactTableController!
     
     var cDict: [String: String] = [:]
     var numArray: [String] = []
 
     override func viewWillAppear(_ animated: Bool) {
         setGradientBackground()
+        tabView.isHidden = true
+        tabView.dataSource = tabDataSource
+        tabView.delegate = tabDataSource
+
         super.viewWillAppear(animated)
     }
     
@@ -79,7 +85,7 @@ class Slide: UIViewController {
         }
         UserDefaults.standard.set(numArray, forKey: "numberArray")
         UserDefaults.standard.set(cDict, forKey: "contactDictionary")
-        
+        tabView.isHidden = false
         //pulling up the next VC
 
     }
