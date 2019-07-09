@@ -21,6 +21,7 @@
 		73A2BEC422BD566D00B71A37 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73A2BEBC22BD566D00B71A37 /* OpenSans-Regular.ttf */; };
 		9602B756FC916F2BE8025048 /* Pods_PollAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50C0732744EA6C212C75E088 /* Pods_PollAppTests.framework */; };
 		BB14550122B958BA00CBF426 /* VerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB14550022B958BA00CBF426 /* VerifyViewController.swift */; };
+		BB487F2322D3B97800BED4A4 /* PollCreatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB487F2222D3B97800BED4A4 /* PollCreatorViewController.swift */; };
 		BB5DEEAC22BD3C38006A0C81 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5DEEAB22BD3C38006A0C81 /* API.swift */; };
 		BB5DEEC522BD6B24006A0C81 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB5DEEC422BD6B23006A0C81 /* GoogleService-Info.plist */; };
 		BB72700022B7F3D5006C386B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB726FFF22B7F3D5006C386B /* AppDelegate.swift */; };
@@ -70,6 +71,7 @@
 		8D1FC14EB0E5B63229D0D9A6 /* Pods-PollAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PollAppTests.release.xcconfig"; path = "Target Support Files/Pods-PollAppTests/Pods-PollAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		98270D507219851B08D7A341 /* Pods_PollAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PollAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB14550022B958BA00CBF426 /* VerifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyViewController.swift; sourceTree = "<group>"; };
+		BB487F2222D3B97800BED4A4 /* PollCreatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollCreatorViewController.swift; sourceTree = "<group>"; };
 		BB5DEEAB22BD3C38006A0C81 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		BB5DEEC422BD6B23006A0C81 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BB726FFC22B7F3D5006C386B /* PollApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PollApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -177,6 +179,7 @@
 				73A2BEB422BD566D00B71A37 /* fonts */,
 				BB14550022B958BA00CBF426 /* VerifyViewController.swift */,
 				BB72700322B7F3D5006C386B /* Main.storyboard */,
+				BB487F2222D3B97800BED4A4 /* PollCreatorViewController.swift */,
 				73241BA422C68E1A00104FA7 /* SlideViewController.swift */,
 				73241BA222C6732100104FA7 /* ContactTableController.swift */,
 				BB72700622B7F3D7006C386B /* Assets.xcassets */,
@@ -480,6 +483,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB487F2322D3B97800BED4A4 /* PollCreatorViewController.swift in Sources */,
 				BB14550122B958BA00CBF426 /* VerifyViewController.swift in Sources */,
 				BB72700222B7F3D5006C386B /* ViewController.swift in Sources */,
 				BB5DEEAC22BD3C38006A0C81 /* API.swift in Sources */,
