@@ -137,7 +137,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DKe-Wf-e2d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3354" y="750"/>
+            <point key="canvasLocation" x="4277" y="750"/>
         </scene>
         <!--Slide-->
         <scene sceneID="nfd-ad-44a">
@@ -151,6 +151,16 @@
                                 <rect key="frame" x="45" y="345" width="324" height="486"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="W3g-Ky-T7v" customClass="ItemCell" customModule="PollApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="324" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="W3g-Ky-T7v" id="1bW-k6-G6t">
+                                            <rect key="frame" x="0.0" y="0.0" width="324" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" layoutMarginsFollowReadableWidth="YES" text="Add friends from Contacts" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="eUb-qY-xIl">
                                 <rect key="frame" x="22" y="189" width="282" height="33"/>
@@ -189,11 +199,12 @@
                     <connections>
                         <outlet property="contactSwitch" destination="wUg-qe-ydU" id="Dm3-wb-tYF"/>
                         <outlet property="loadPrompt" destination="bqp-v2-una" id="AlY-mW-QWS"/>
+                        <outlet property="tabView" destination="Ptr-d8-o7x" id="CZl-oi-Drt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sdS-lr-j4z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4117" y="751"/>
+            <point key="canvasLocation" x="3342" y="750"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
