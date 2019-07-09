@@ -27,7 +27,7 @@
                 <pageViewController storyboardIdentifier="SlideViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="VI4-F5-D5B" customClass="SlideViewController" customModule="PollApp" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l95-db-0Cp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1949" y="41"/>
+            <point key="canvasLocation" x="2109" y="41"/>
         </scene>
         <!--Slide-->
         <scene sceneID="8zG-f6-eoi">
