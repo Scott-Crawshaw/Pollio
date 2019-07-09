@@ -204,14 +204,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="###-###-####" textAlignment="center" minimumFontSize="25" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="QOZ-5e-yd1">
-                                <rect key="frame" x="105.5" y="427" width="199" height="30"/>
+                                <rect key="frame" x="105.5" y="427" width="199" height="32"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans Light" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="go" enablesReturnKeyAutomatically="YES" textContentType="tel"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="Welcome to Pollio!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="6Yd-2M-aVD">
-                                <rect key="frame" x="37" y="170" width="340" height="45.5"/>
+                                <rect key="frame" x="37" y="170" width="340" height="53"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" priority="750" constant="340" id="QJK-ks-TY6"/>
                                 </constraints>
@@ -370,7 +370,6 @@
         <!--Table View Controller-->
         <scene sceneID="C5c-cX-EAp">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lMV-z0-d93" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="esr-G4-YUF" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="hNu-zA-rzW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -392,6 +391,7 @@
                         </connections>
                     </tableView>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lMV-z0-d93" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2622" y="750"/>
         </scene>
@@ -404,7 +404,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Poll Creator" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="dw2-Lq-UhA">
-                                <rect key="frame" x="83.5" y="78" width="247.5" height="61.5"/>
+                                <rect key="frame" x="83" y="78" width="248" height="61.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="61.5" id="AYt-3a-hRn"/>
                                 </constraints>
@@ -440,18 +440,38 @@
                                 </userDefinedRuntimeAttributes>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YGu-e9-MBC">
-                                <rect key="frame" x="154" y="591" width="106" height="40"/>
+                                <rect key="frame" x="147" y="591" width="118" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="20"/>
                                 <state key="normal" title="Add Choice">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" red="0.63529411759999999" green="0.36470588240000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBorder" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <real key="value" value="0.29999999999999999"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ABJ-hO-eOu">
-                                <rect key="frame" x="160.5" y="770" width="93" height="53"/>
+                                <rect key="frame" x="154" y="770" width="106" height="53"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="30"/>
                                 <state key="normal" title="Create">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" red="0.63529411759999999" green="0.36470588240000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBorder" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <real key="value" value="0.29999999999999999"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="3qx-JL-vbX">
                                 <rect key="frame" x="66" y="704" width="282" height="29"/>
@@ -473,8 +493,8 @@
                                     <action selector="moreInformationWithSender:" destination="7NX-Z9-G4K" eventType="touchUpInside" id="1mE-Kj-ML9"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Choices" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XmV-yQ-icc">
-                                <rect key="frame" x="76" y="394" width="261" height="51"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choices" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XmV-yQ-icc">
+                                <rect key="frame" x="152.5" y="410" width="109" height="51"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="51" id="Xjg-uz-YXK"/>
                                 </constraints>
@@ -482,8 +502,8 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a choice here" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FV3-YI-YGQ">
-                                <rect key="frame" x="36" y="453" width="342" height="32"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a choice here" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FV3-YI-YGQ">
+                                <rect key="frame" x="36" y="469" width="342" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="Bas-Fa-O4a"/>
                                     <constraint firstAttribute="width" constant="342" id="WEA-kE-jc2"/>
@@ -492,8 +512,8 @@
                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a choice here" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pxZ-vG-HpQ">
-                                <rect key="frame" x="35" y="508" width="342" height="32"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a choice here" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pxZ-vG-HpQ">
+                                <rect key="frame" x="35" y="524" width="342" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="DgY-t8-Plq"/>
                                     <constraint firstAttribute="width" constant="342" id="kUD-lh-NF9"/>
@@ -507,27 +527,28 @@
                         <constraints>
                             <constraint firstItem="FV3-YI-YGQ" firstAttribute="top" secondItem="XmV-yQ-icc" secondAttribute="bottom" constant="8" id="0ab-49-8ME"/>
                             <constraint firstItem="FV3-YI-YGQ" firstAttribute="centerX" secondItem="KOs-Hb-BTC" secondAttribute="centerX" id="10h-nh-q1j"/>
-                            <constraint firstItem="ABJ-hO-eOu" firstAttribute="top" secondItem="3qx-JL-vbX" secondAttribute="bottom" constant="38" id="7o5-qJ-D6Y"/>
                             <constraint firstItem="KOs-Hb-BTC" firstAttribute="trailing" secondItem="OJD-WY-PLW" secondAttribute="trailing" constant="20.5" id="9Ie-ku-6aw"/>
                             <constraint firstItem="3qx-JL-vbX" firstAttribute="top" secondItem="YGu-e9-MBC" secondAttribute="bottom" constant="73" id="9cG-Oz-gx3"/>
                             <constraint firstItem="KOs-Hb-BTC" firstAttribute="bottom" secondItem="ABJ-hO-eOu" secondAttribute="bottom" constant="39" id="Avq-14-hg4"/>
+                            <constraint firstItem="YGu-e9-MBC" firstAttribute="centerX" secondItem="pxZ-vG-HpQ" secondAttribute="centerX" id="E6M-54-yKI"/>
                             <constraint firstItem="pxZ-vG-HpQ" firstAttribute="centerX" secondItem="KOs-Hb-BTC" secondAttribute="centerX" constant="-1" id="Emd-ax-chW"/>
+                            <constraint firstItem="YGu-e9-MBC" firstAttribute="leading" secondItem="KOs-Hb-BTC" secondAttribute="leading" constant="147" id="FAL-yf-nyQ"/>
                             <constraint firstItem="3qx-JL-vbX" firstAttribute="centerX" secondItem="KOs-Hb-BTC" secondAttribute="centerX" id="MVE-lH-hRO"/>
-                            <constraint firstItem="ABJ-hO-eOu" firstAttribute="top" secondItem="Pql-lx-UhO" secondAttribute="bottom" constant="38" id="NtS-WW-28m"/>
                             <constraint firstItem="XmV-yQ-icc" firstAttribute="top" secondItem="OJD-WY-PLW" secondAttribute="bottom" constant="54" id="Ogp-0Z-yJv"/>
-                            <constraint firstItem="YGu-e9-MBC" firstAttribute="centerX" secondItem="KOs-Hb-BTC" secondAttribute="centerX" id="QsF-XU-14S"/>
                             <constraint firstItem="Pql-lx-UhO" firstAttribute="leading" secondItem="3qx-JL-vbX" secondAttribute="trailing" constant="8" id="SfX-2X-aPr"/>
                             <constraint firstItem="dw2-Lq-UhA" firstAttribute="centerX" secondItem="KOs-Hb-BTC" secondAttribute="centerX" id="Trg-Hp-18i"/>
-                            <constraint firstItem="YGu-e9-MBC" firstAttribute="top" secondItem="pxZ-vG-HpQ" secondAttribute="bottom" constant="35" id="WTo-pG-Mn5"/>
                             <constraint firstItem="pxZ-vG-HpQ" firstAttribute="top" secondItem="FV3-YI-YGQ" secondAttribute="bottom" constant="23" id="b8p-NJ-Jvr"/>
                             <constraint firstItem="gTa-ca-Lrf" firstAttribute="top" secondItem="dw2-Lq-UhA" secondAttribute="bottom" constant="21.5" id="c8h-pZ-3V8"/>
+                            <constraint firstItem="ABJ-hO-eOu" firstAttribute="centerX" secondItem="3qx-JL-vbX" secondAttribute="centerX" id="d8q-pG-I80"/>
                             <constraint firstItem="OJD-WY-PLW" firstAttribute="leading" secondItem="KOs-Hb-BTC" secondAttribute="leading" constant="20.5" id="f55-Eh-s7k"/>
+                            <constraint firstItem="Pql-lx-UhO" firstAttribute="bottom" secondItem="3qx-JL-vbX" secondAttribute="bottom" id="h6Y-ER-xFJ"/>
                             <constraint firstItem="gTa-ca-Lrf" firstAttribute="centerX" secondItem="KOs-Hb-BTC" secondAttribute="centerX" id="kU3-Pb-mf1"/>
                             <constraint firstItem="OJD-WY-PLW" firstAttribute="centerX" secondItem="KOs-Hb-BTC" secondAttribute="centerX" id="onl-m3-WId"/>
                             <constraint firstItem="OJD-WY-PLW" firstAttribute="top" secondItem="gTa-ca-Lrf" secondAttribute="bottom" constant="8" id="qMt-MS-4db"/>
                             <constraint firstItem="dw2-Lq-UhA" firstAttribute="top" secondItem="KOs-Hb-BTC" secondAttribute="top" constant="34" id="qfs-rG-0rq"/>
                             <constraint firstItem="XmV-yQ-icc" firstAttribute="centerX" secondItem="KOs-Hb-BTC" secondAttribute="centerX" id="shP-6R-Jat"/>
-                            <constraint firstItem="ABJ-hO-eOu" firstAttribute="centerX" secondItem="KOs-Hb-BTC" secondAttribute="centerX" id="vZF-QQ-ldh"/>
+                            <constraint firstItem="ABJ-hO-eOu" firstAttribute="top" secondItem="3qx-JL-vbX" secondAttribute="bottom" constant="38" id="tgT-Zd-wZb"/>
+                            <constraint firstItem="ABJ-hO-eOu" firstAttribute="leading" secondItem="KOs-Hb-BTC" secondAttribute="leading" constant="154" id="zT1-ir-3bL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="KOs-Hb-BTC"/>
                     </view>
