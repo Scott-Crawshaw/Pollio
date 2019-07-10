@@ -545,6 +545,10 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textFieldDidBeginEditing2:" destination="7NX-Z9-G4K" eventType="editingDidBegin" id="h84-uY-Gfz"/>
+                                    <action selector="textFieldDidEndEditing2:" destination="7NX-Z9-G4K" eventType="editingDidEnd" id="Mpa-hf-71b"/>
+                                </connections>
                             </textField>
                             <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a choice here" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JJo-wk-bpx">
                                 <rect key="frame" x="36" y="596" width="342" height="32"/>
@@ -555,6 +559,10 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textFieldDidBeginEditing3:" destination="7NX-Z9-G4K" eventType="editingDidBegin" id="Fdb-zi-Zu4"/>
+                                    <action selector="textFieldDidEndEditing3:" destination="7NX-Z9-G4K" eventType="editingDidEnd" id="Iep-yf-25j"/>
+                                </connections>
                             </textField>
                             <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a choice here" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GhL-kc-Kfn">
                                 <rect key="frame" x="36" y="649" width="342" height="32"/>
@@ -565,6 +573,10 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textFieldDidBeginEditing4:" destination="7NX-Z9-G4K" eventType="editingDidBegin" id="Sbt-Of-Taj"/>
+                                    <action selector="textFieldDidEndEditing4:" destination="7NX-Z9-G4K" eventType="editingDidEnd" id="Jde-n2-CPO"/>
+                                </connections>
                             </textField>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n2n-3h-EmR">
                                 <rect key="frame" x="132.5" y="649" width="149" height="31"/>
