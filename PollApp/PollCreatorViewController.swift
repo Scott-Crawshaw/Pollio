@@ -7,10 +7,20 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseFirestore
 
 class PollCreatorViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var questionView: UITextView!
+    @IBOutlet weak var addChoice3: UIButton!
+    @IBOutlet weak var addChoice4: UIButton!
+    @IBOutlet weak var choice1: UITextField!
+    @IBOutlet weak var choice2: UITextField!
+    @IBOutlet weak var choice3: UITextField!
+    @IBOutlet weak var choice4: UITextField!
+    @IBOutlet weak var visibility: UISegmentedControl!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,13 +28,17 @@ class PollCreatorViewController: UIViewController, UITextViewDelegate {
         questionView.delegate = self
         questionView.text = "Enter your question here"
         questionView.textColor = UIColor.lightGray
-
-        // Do any additional setup after loading the view.
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         setGradientBackground()
         super.viewWillAppear(animated)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+        super.touchesBegan(touches, with: event)
     }
     
     @IBAction func moreInformation(sender: UIButton){
@@ -61,6 +75,56 @@ class PollCreatorViewController: UIViewController, UITextViewDelegate {
             questionView.text = "Placeholder text ..."
             questionView.textColor = UIColor.lightGray
         }
+    }
+    
+    @IBAction func addChoice(sender: UIButton){ //342, 32
+        if sender == addChoice3{
+            choice3.isHidden = false
+            addChoice3.isHidden = true
+            addChoice4.isHidden = false
+        }
+        if sender == addChoice4{
+            choice4.isHidden = false
+            addChoice4.isHidden = true
+        }
+    }
+    
+    @IBAction func addPost(sender: UIButton){
+        let author = "/users/" + Auth.auth().currentUser!.uid
+        let image = ""
+        var options = [choice1.text, choice2.text]
+        if choice3.text?.isEmpty == false{
+            options.append(choice3.text)
+        }
+        if choice4.text?.isEmpty == false{
+            options.append(choice4.text)
+        }
+        let question : String = questionView.text
+        let time = Timestamp()
+        var visibilityOpts : [String: Bool] = ["author" : false, "viewers": false]
+        
+        if visibility.selectedSegmentIndex == 0{
+            visibilityOpts = ["author" : true, "viewers": true]
+        }
+        if visibility.selectedSegmentIndex == 1{
+            visibilityOpts = ["author" : true, "viewers": false]
+        }
+        
+        let comments = ""
+        let votes = ""
+        
+        let data : [String : Any] = [
+            "author" : author,
+            "comments" : comments,
+            "image" : image,
+            "options" : options,
+            "question" : question,
+            "time" : time,
+            "visibility" : visibilityOpts,
+            "votes" : votes
+        ]
+        
+        DatabaseHelper.addPost(data: data)
     }
     
     

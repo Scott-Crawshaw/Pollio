@@ -84,4 +84,8 @@ class DatabaseHelper{
         db.collection("following").document(user).updateData(["following": FieldValue.arrayRemove(follows)])
     }
     
+    static func addPost(data: [String: Any]){
+        let db = Firestore.firestore()
+        db.collection("posts").addDocument(data: data)
+    }
 }
