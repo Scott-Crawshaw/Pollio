@@ -92,4 +92,8 @@ class DatabaseHelper{
         full_data["votes"] = "/votes/" + newPost.documentID
         newPost.setData(full_data)
     }
+    
+    static func searchUsers(search: String, callback: @escaping ([[String : String]]) -> Void){
+        callback([["name":"Scott Crawshaw", "uid":"dafefkw"], ["name":"Ben Stewart", "uid":"fasads"], ["name":"Tommy Elliott", "uid":"dafesfaadfkw"]])
+    }
 }
