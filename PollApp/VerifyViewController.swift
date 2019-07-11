@@ -37,12 +37,12 @@ class VerifyViewController: UIViewController {
             
             //here is where we should do something with authResult
             //DatabaseHelper.getUserByUID(UID: (authResult?.user.uid)!, callback: self.testCallback)
-            /*let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let newViewController = storyBoard.instantiateViewController(withIdentifier: "SlideViewController") as! SlideViewController
-            self.present(newViewController, animated: true, completion: nil)*/
             let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let newViewController = storyBoard.instantiateViewController(withIdentifier: "PollCreatorViewController") as! PollCreatorViewController
+            let newViewController = storyBoard.instantiateViewController(withIdentifier: "SlideViewController") as! SlideViewController
             self.present(newViewController, animated: true, completion: nil)
+//            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//            let newViewController = storyBoard.instantiateViewController(withIdentifier: "PollCreatorViewController") as! PollCreatorViewController
+//            self.present(newViewController, animated: true, completion: nil)
         }
     }
     
