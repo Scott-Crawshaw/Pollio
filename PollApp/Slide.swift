@@ -94,6 +94,7 @@ class Slide: UIViewController, UITableViewDataSource, UITableViewDelegate {
     func populateTableView(contacts: [[String: Any]]){
         //this is where you fill the table view. the format of the data is as follows
         //[[number:+16176108187, userID:djakdn23rj2k3nds], [number:+17815550111, userID:djakdn23rj2k3nds]]
+        print(contacts)
         for c in contacts{
            numArray.append(c["number"] as! String)
         }
