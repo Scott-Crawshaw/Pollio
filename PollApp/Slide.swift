@@ -98,11 +98,9 @@ class Slide: UIViewController, UITableViewDataSource, UITableViewDelegate {
         for c in contacts{
            numArray.append(c["number"] as! String)
         }
-        UserDefaults.standard.set(numArray, forKey: "numberArray")
-        UserDefaults.standard.set(cDict, forKey: "contactDictionary")
-        cDict = UserDefaults.standard.dictionary(forKey: "contactDictionary") as! [String : String]
-        numArray = UserDefaults.standard.array(forKey: "numberArray") as! [String]
+
         //pulling up the next VC
+        tabView.reloadData()
 
     }
   
