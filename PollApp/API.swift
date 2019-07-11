@@ -86,6 +86,10 @@ class DatabaseHelper{
     
     static func addPost(data: [String: Any]){
         let db = Firestore.firestore()
-        db.collection("posts").addDocument(data: data)
+        let newPost = db.collection("posts").document()
+        var full_data = data
+        full_data["comments"] = "/comments/" + newPost.documentID
+        full_data["votes"] = "/votes/" + newPost.documentID
+        newPost.setData(full_data)
     }
 }

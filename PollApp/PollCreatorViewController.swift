@@ -60,6 +60,40 @@ class PollCreatorViewController: UIViewController, UITextViewDelegate {
         self.view.layer.insertSublayer(gradientLayer, at:0)
     }
     
+    @IBAction func textFieldDidBeginEditing2(_ textField: UITextField) {
+        animateViewMoving(up: true, moveValue: 100)
+    }
+    
+    @IBAction func textFieldDidEndEditing2(_ textField: UITextField) {
+        animateViewMoving(up: false, moveValue: 100)
+    }
+    
+    @IBAction func textFieldDidBeginEditing3(_ textField: UITextField) {
+        animateViewMoving(up: true, moveValue: 150)
+    }
+    
+    @IBAction func textFieldDidEndEditing3(_ textField: UITextField) {
+        animateViewMoving(up: false, moveValue: 150)
+    }
+    
+    @IBAction func textFieldDidBeginEditing4(_ textField: UITextField) {
+        animateViewMoving(up: true, moveValue: 200)
+    }
+    
+    @IBAction func textFieldDidEndEditing4(_ textField: UITextField) {
+        animateViewMoving(up: false, moveValue: 200)
+    }
+    
+    func animateViewMoving (up:Bool, moveValue :CGFloat){
+        let movementDuration:TimeInterval = 0.3
+        let movement:CGFloat = ( up ? -moveValue : moveValue)
+        UIView.beginAnimations( "animateView", context: nil)
+        UIView.setAnimationBeginsFromCurrentState(true)
+        UIView.setAnimationDuration(movementDuration )
+        self.view.frame = self.view.frame.offsetBy(dx: 0, dy: movement)
+        UIView.commitAnimations()
+    }
+    
     func textViewDidBeginEditing(_ textView: UITextView) {
         
         if questionView.textColor == UIColor.lightGray {
@@ -90,41 +124,45 @@ class PollCreatorViewController: UIViewController, UITextViewDelegate {
     }
     
     @IBAction func addPost(sender: UIButton){
-        let author = "/users/" + Auth.auth().currentUser!.uid
-        let image = ""
-        var options = [choice1.text, choice2.text]
-        if choice3.text?.isEmpty == false{
-            options.append(choice3.text)
+        if choice1.text?.isEmpty == true || choice2.text?.isEmpty == true || questionView.text?.isEmpty == true{
+            let message = "Polls must have a question and at least two choices. Make sure your poll contains all the required information."
+            let alert = UIAlertController(title: "Missing Information", message: message, preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
-        if choice4.text?.isEmpty == false{
-            options.append(choice4.text)
-        }
-        let question : String = questionView.text
-        let time = Timestamp()
-        var visibilityOpts : [String: Bool] = ["author" : false, "viewers": false]
+        else{
+            let author = "/users/" + Auth.auth().currentUser!.uid
+            let image = ""
+            var options = [choice1.text, choice2.text]
+            if choice3.text?.isEmpty == false{
+                options.append(choice3.text)
+            }
+            if choice4.text?.isEmpty == false{
+                options.append(choice4.text)
+            }
+            let question : String = questionView.text
+            let time = Timestamp()
+            var visibilityOpts : [String: Bool] = ["author" : false, "viewers": false]
         
-        if visibility.selectedSegmentIndex == 0{
-            visibilityOpts = ["author" : true, "viewers": true]
-        }
-        if visibility.selectedSegmentIndex == 1{
-            visibilityOpts = ["author" : true, "viewers": false]
-        }
+            if visibility.selectedSegmentIndex == 0{
+                visibilityOpts = ["author" : true, "viewers": true]
+            }
+            if visibility.selectedSegmentIndex == 1{
+                visibilityOpts = ["author" : true, "viewers": false]
+            }
         
-        let comments = ""
-        let votes = ""
+            let data : [String : Any] = [
+                "author" : author,
+                "image" : image,
+                "options" : options,
+                "question" : question,
+                "time" : time,
+                "visibility" : visibilityOpts,
+            ]
         
-        let data : [String : Any] = [
-            "author" : author,
-            "comments" : comments,
-            "image" : image,
-            "options" : options,
-            "question" : question,
-            "time" : time,
-            "visibility" : visibilityOpts,
-            "votes" : votes
-        ]
-        
-        DatabaseHelper.addPost(data: data)
+            DatabaseHelper.addPost(data: data)
+    }
+    
     }
     
     
