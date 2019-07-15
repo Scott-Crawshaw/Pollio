@@ -92,4 +92,14 @@ class DatabaseHelper{
         full_data["votes"] = "/votes/" + newPost.documentID
         newPost.setData(full_data)
     }
+    
+    static func searchUsers(search: String, callback: @escaping ([[String : String]]) -> Void){
+        let searchTerm = search.lowercased()
+        let functions = Functions.functions()
+        functions.httpsCallable("searchUsers").call(["search": searchTerm]) { (result, error) in
+            print(result?.data)
+            print(error)
+            callback([["name":"dood"]])
+        }
+    }
 }
