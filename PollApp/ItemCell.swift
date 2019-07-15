@@ -10,6 +10,27 @@ import UIKit
 
 class ItemCell: UITableViewCell {
 
+    @IBOutlet weak var adder: UIButton!
+    var num_idData = UserDefaults.standard.array(forKey: "number_idData")
+    var cellNum: String = ""
+
+    @IBAction func contactSelected(sender: UIButton)
+    {
+        adder.backgroundColor = .black
+        for person in num_idData!{
+            let p = person as! [String:String]
+            if p["number"] == cellNum {
+                var selectedUsers = UserDefaults.standard.array(forKey: "selectedUsers") as! [String]
+                selectedUsers.append(p["userID"] ?? "Unknown")
+                UserDefaults.standard.set(selectedUsers, forKey: "selectedUsers")
+                print(selectedUsers)
+            }
+        }
+        
+        
+        
+       // UserDefaults.standard.array
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -8,6 +8,8 @@
 
 import UIKit
 import Contacts
+import FirebaseAuth
+
 
 class Slide: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -17,10 +19,10 @@ class Slide: UIViewController, UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as! ItemCell
         let key = numArray[indexPath.item]
         cell.textLabel?.text = (cDict[key])
-        
+        cell.cellNum = key
         return cell
     }
     
@@ -32,6 +34,7 @@ class Slide: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var cDict: [String: String] = [:]
     var numArray: [String] = []
+    var selectedUsers: [String] = []
     
     override func viewDidLoad() {
     
@@ -94,12 +97,21 @@ class Slide: UIViewController, UITableViewDataSource, UITableViewDelegate {
     func populateTableView(contacts: [[String: Any]]){
         //this is where you fill the table view. the format of the data is as follows
         //[[number:+16176108187, userID:djakdn23rj2k3nds], [number:+17815550111, userID:djakdn23rj2k3nds]]
+        
         for c in contacts{
-           numArray.append(c["number"] as! String)
+            if c["number"] as? String != Auth.auth().currentUser?.phoneNumber{
+                numArray.append(c["number"] as! String)
+            }
         }
-
+        
+        UserDefaults.standard.set(contacts, forKey: "number_idData")
+        UserDefaults.standard.set(cDict, forKey: "number_nameDict")
+        UserDefaults.standard.set(selectedUsers, forKey: "selectedUsers")
+        
+        
         //pulling up the next VC
         tabView.reloadData()
+        loadPrompt.stopAnimating()
 
     }
   

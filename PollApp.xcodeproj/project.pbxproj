@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		6C559DCAB840EB20EB6C6590 /* Pods_PollApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EF3CCE1927B1751DF959AE7 /* Pods_PollApp.framework */; };
 		731DFA8922C267490095EA1A /* Slide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731DFA8822C267490095EA1A /* Slide.swift */; };
-		73241BA322C6732100104FA7 /* ContactTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73241BA222C6732100104FA7 /* ContactTableController.swift */; };
 		73241BA522C68E1A00104FA7 /* SlideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73241BA422C68E1A00104FA7 /* SlideViewController.swift */; };
 		734C0A6322D527FD008F8A3A /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734C0A6222D527FD008F8A3A /* ItemCell.swift */; };
 		73A2BEBD22BD566D00B71A37 /* OpenSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73A2BEB522BD566D00B71A37 /* OpenSans-SemiBold.ttf */; };
@@ -59,7 +58,6 @@
 		50C0732744EA6C212C75E088 /* Pods_PollAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PollAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		63B79D426906A945F3B53799 /* Pods-PollApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PollApp.debug.xcconfig"; path = "Target Support Files/Pods-PollApp/Pods-PollApp.debug.xcconfig"; sourceTree = "<group>"; };
 		731DFA8822C267490095EA1A /* Slide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slide.swift; sourceTree = "<group>"; };
-		73241BA222C6732100104FA7 /* ContactTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableController.swift; sourceTree = "<group>"; };
 		73241BA422C68E1A00104FA7 /* SlideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideViewController.swift; sourceTree = "<group>"; };
 		734C0A6222D527FD008F8A3A /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		73A2BEB522BD566D00B71A37 /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiBold.ttf"; sourceTree = "<group>"; };
@@ -183,7 +181,6 @@
 				BB72700322B7F3D5006C386B /* Main.storyboard */,
 				BB487F2222D3B97800BED4A4 /* PollCreatorViewController.swift */,
 				73241BA422C68E1A00104FA7 /* SlideViewController.swift */,
-				73241BA222C6732100104FA7 /* ContactTableController.swift */,
 				734C0A6222D527FD008F8A3A /* ItemCell.swift */,
 				BB72700622B7F3D7006C386B /* Assets.xcassets */,
 				BB72700822B7F3D7006C386B /* LaunchScreen.storyboard */,
@@ -493,7 +490,6 @@
 				BB5DEEAC22BD3C38006A0C81 /* API.swift in Sources */,
 				731DFA8922C267490095EA1A /* Slide.swift in Sources */,
 				73241BA522C68E1A00104FA7 /* SlideViewController.swift in Sources */,
-				73241BA322C6732100104FA7 /* ContactTableController.swift in Sources */,
 				BB72700022B7F3D5006C386B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
