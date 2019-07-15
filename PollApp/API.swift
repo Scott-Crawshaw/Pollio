@@ -94,6 +94,12 @@ class DatabaseHelper{
     }
     
     static func searchUsers(search: String, callback: @escaping ([[String : String]]) -> Void){
-        callback([["name":"Scott Crawshaw", "uid":"dafefkw"], ["name":"Ben Stewart", "uid":"fasads"], ["name":"Tommy Elliott", "uid":"dafesfaadfkw"]])
+        let searchTerm = search.lowercased()
+        let functions = Functions.functions()
+        functions.httpsCallable("searchUsers").call(["search": searchTerm]) { (result, error) in
+            print(result?.data)
+            print(error)
+            callback([["name":"dood"]])
+        }
     }
 }

@@ -2,20 +2,36 @@
 //  SearchTableViewController.swift
 //  PollApp
 //
-//  Created by Scott Crawshaw on 7/11/19.
+//  Created by Scott Crawshaw on 7/15/19.
 //  Copyright © 2019 Crawtech. All rights reserved.
 //
 
 import UIKit
 
-class SearchTableViewController: UITableViewController, UISearchBarDelegate {
+class SearchTableViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate {
     
-    @IBOutlet weak var searchBar: UISearchBar!
-    var data : [String]!
+    var filteredTableData : [String]! = []
+    var resultSearchController = UISearchController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        searchBar.delegate = self
+        
+        resultSearchController = ({
+            let controller = UISearchController(searchResultsController: nil)
+            controller.searchResultsUpdater = self
+            controller.dimsBackgroundDuringPresentation = false
+            controller.searchBar.sizeToFit()
+            
+            tableView.tableHeaderView = controller.searchBar
+            
+            return controller
+        })()
+        
+        resultSearchController.searchBar.delegate = self
+        
+        // Reload the table
+        tableView.reloadData()
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -26,43 +42,42 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 0
+        // 1
+        // return the number of sections
+        return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+        // 2
+        // return the number of rows
+        return filteredTableData.count
     }
-
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-        cell.textLabel?.text = data[indexPath.row]
+        // 3
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        
+        cell.textLabel?.text = filteredTableData[indexPath.row]
+        
         return cell
     }
     
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        self.searchBar.showsCancelButton = true
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        DatabaseHelper.searchUsers(search: resultSearchController.searchBar.text!, callback: self.updateData)
     }
     
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.showsCancelButton = false
-        searchBar.text = ""
-        searchBar.resignFirstResponder()
-    }
-    
-    // This method updates filteredData based on the text in the Search Box
-    func searchBar(_ searchBar: UISearchBar, searchBarSearchButtonClicked searchText: String) {
-        DatabaseHelper.searchUsers(search: searchBar.text!, callback: self.getNewData)
-    }
-    
-    func getNewData(array : [[String : String]]){
-        data.removeAll()
-        for entry in array{
-            data.append(entry["name"]!)
+    func updateData(data : [[String : String]]){
+        filteredTableData.removeAll(keepingCapacity: false)
+        for entry in data{
+            filteredTableData.append(entry["name"] ?? "")
         }
-        tableView.reloadData()
+        self.tableView.reloadData()
+        
     }
     
+    func updateSearchResults(for searchController: UISearchController) {
+        //only would need this if i wanted the table to update for every letter typed
+    }
 
     /*
     // Override to support conditional editing of the table view.
