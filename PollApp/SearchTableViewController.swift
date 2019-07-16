@@ -66,10 +66,13 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating,
         DatabaseHelper.searchUsers(search: resultSearchController.searchBar.text!, callback: self.updateData)
     }
     
-    func updateData(data : [[String : String]]){
+    func updateData(data : [[[String : String]]]){
         filteredTableData.removeAll(keepingCapacity: false)
-        for entry in data{
-            filteredTableData.append(entry["name"] ?? "")
+        for array in data{
+            print(array)
+            for entry in array{
+                filteredTableData.append(entry["name"]! + " ~ " + entry["username"]!)
+            }
         }
         self.tableView.reloadData()
         
