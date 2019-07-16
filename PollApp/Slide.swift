@@ -36,9 +36,7 @@ class Slide: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet var name : UITextField!
     @IBOutlet var nextButton : UIButton!
 
-
-    
-    
+    var status: Bool = false //true = good username, false = bad
     var cDict: [String: String] = [:]
     var numArray: [String] = []
     var selectedUsers: [String] = []
@@ -134,26 +132,13 @@ class Slide: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     }
     
-    func setUsernameStatus(){
-        //this is gonna get fucky.
-        //
-        /*
-         
-         var status: Bool //true = good username, false = bad username
-         var runCheckLoop: Bool // true = run, false = exit loop
-         while(runCheckLoop == true)
-         {
-            checkImage.isHidden = true
-            indicator.isAnimated = true
-         }
-        */
-    }
+
   
     
     @IBAction func editingChanged(_ sender: UITextField) {
         usernameImage.isHidden = true
         usernameLoading.startAnimating()
-        var status: Bool = false //true = good username, false = bad
+        DatabaseHelper.checkUsername(username: username.text!, callback: setUsernameStatus(isAvaliable:))
         
         if(status == true)
         {
@@ -166,6 +151,9 @@ class Slide: UIViewController, UITableViewDataSource, UITableViewDelegate {
             usernameImage.isHidden = false
             usernameLoading.stopAnimating()
         }
+    }
+    func setUsernameStatus(isAvaliable: Bool){
+        status = isAvaliable
     }
     
     
