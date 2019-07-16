@@ -26,7 +26,9 @@ class Slide: UIViewController, UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
-
+    @IBOutlet weak var usernameLoading: UIActivityIndicatorView!
+    
+    @IBOutlet weak var usernameImage: UIImageView!
     @IBOutlet var contactSwitch: UISwitch!
     @IBOutlet var loadPrompt: UIActivityIndicatorView!
     @IBOutlet weak var tabView: UITableView!
@@ -40,6 +42,7 @@ class Slide: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var selectedUsers: [String] = []
     
     override func viewDidLoad() {
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -117,7 +120,40 @@ class Slide: UIViewController, UITableViewDataSource, UITableViewDelegate {
         loadPrompt.stopAnimating()
 
     }
+    
+    func setUsernameStatus(){
+        //this is gonna get fucky.
+        //
+        /*
+         
+         var status: Bool //true = good username, false = bad username
+         var runCheckLoop: Bool // true = run, false = exit loop
+         while(runCheckLoop == true)
+         {
+            checkImage.isHidden = true
+            indicator.isAnimated = true
+         }
+        */
+    }
   
+    
+    @IBAction func editingChanged(_ sender: UITextField) {
+        usernameImage.isHidden = true
+        usernameLoading.startAnimating()
+        var status: Bool = false //true = good username, false = bad
+        
+        if(status == true)
+        {
+            usernameImage.image = UIImage(named: "green_check")
+            usernameImage.isHidden = false
+            usernameLoading.stopAnimating()
+        }
+        else{
+            usernameImage.image = UIImage(named: "red_x")
+            usernameImage.isHidden = false
+            usernameLoading.stopAnimating()
+        }
+    }
     
     
     func setGradientBackground() {
