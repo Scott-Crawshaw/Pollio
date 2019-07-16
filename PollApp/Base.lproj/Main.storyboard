@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VI4-F5-D5B">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -195,10 +195,10 @@
                                 </connections>
                             </switch>
                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZtQ-Id-K8t">
-                                <rect key="frame" x="23" y="295" width="368" height="525"/>
+                                <rect key="frame" x="23" y="235" width="368" height="585"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="ZtQ-Id-K8t" secondAttribute="height" multiplier="368:525" id="W9p-J0-yeG"/>
+                                    <constraint firstAttribute="width" secondItem="ZtQ-Id-K8t" secondAttribute="height" multiplier="368:525" constant="-42.057142857142878" id="W9p-J0-yeG"/>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="reuseIdentifier" id="0aR-ki-jl6" customClass="ItemCell" customModule="PollApp" customModuleProvider="target">
@@ -242,7 +242,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="ZtQ-Id-K8t" firstAttribute="top" secondItem="bqp-v2-una" secondAttribute="bottom" constant="38.5" id="9gX-PV-k4a"/>
+                            <constraint firstItem="ZtQ-Id-K8t" firstAttribute="top" secondItem="bqp-v2-una" secondAttribute="bottom" constant="-21.5" id="9gX-PV-k4a"/>
                             <constraint firstItem="80g-xS-iZj" firstAttribute="centerX" secondItem="pDa-wA-Im3" secondAttribute="centerX" id="9vw-Zm-bLb"/>
                             <constraint firstItem="VBE-qX-eMF" firstAttribute="leading" secondItem="eUb-qY-xIl" secondAttribute="leading" id="FyG-HY-R15"/>
                             <constraint firstItem="pDa-wA-Im3" firstAttribute="trailing" secondItem="wUg-qe-ydU" secondAttribute="trailing" constant="53" id="GdH-Jm-9EP"/>

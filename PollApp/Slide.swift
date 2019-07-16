@@ -34,7 +34,6 @@ class Slide: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var tabView: UITableView!
     @IBOutlet var nextButton : UIButton!
 
-    var status: Bool = false //true = good username, false = bad
     var cDict: [String: String] = [:]
     var numArray: [String] = []
     var selectedUsers: [String] = []
@@ -146,9 +145,16 @@ class Slide: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBAction func editingChanged(_ sender: UITextField) {
         usernameImage.isHidden = true
         usernameLoading.startAnimating()
-        DatabaseHelper.checkUsername(username: username.text!, callback: setUsernameStatus(isAvaliable:))
+        DatabaseHelper.checkUsername(username: username.text!, callback: self.setUsernameStatus)
         
-        if(status == true)
+    }
+    func setUsernameStatus(isAvaliable: Bool){
+        if(username.text?.isEmpty == true)
+        {
+            usernameImage.isHidden = true
+            usernameLoading.stopAnimating()
+        }
+        else if(isAvaliable == true)
         {
             usernameImage.image = UIImage(named: "green_check")
             usernameImage.isHidden = false
@@ -159,9 +165,9 @@ class Slide: UIViewController, UITableViewDataSource, UITableViewDelegate {
             usernameImage.isHidden = false
             usernameLoading.stopAnimating()
         }
-    }
-    func setUsernameStatus(isAvaliable: Bool){
-        status = isAvaliable
+        print(isAvaliable)
+        print(username.text!)
+
     }
     
     
