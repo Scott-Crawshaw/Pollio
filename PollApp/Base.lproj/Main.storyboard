@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VI4-F5-D5B">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -165,7 +165,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="Add friends from Contacts" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="eUb-qY-xIl">
-                                <rect key="frame" x="22" y="179" width="282" height="32.5"/>
+                                <rect key="frame" x="22" y="179" width="282" height="33"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans Light" pointSize="23"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -173,7 +173,7 @@
                                 <size key="shadowOffset" width="0.5" height="-1"/>
                             </label>
                             <activityIndicatorView hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="bqp-v2-una">
-                                <rect key="frame" x="188" y="219.5" width="38" height="37"/>
+                                <rect key="frame" x="188" y="220" width="38" height="37"/>
                             </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" layoutMarginsFollowReadableWidth="YES" text="How about some friends?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="VBE-qX-eMF">
                                 <rect key="frame" x="22" y="101" width="369" height="51"/>
@@ -184,28 +184,25 @@
                                 <size key="shadowOffset" width="0.5" height="-1"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="wUg-qe-ydU" userLabel="Contacts Switch">
-                                <rect key="frame" x="312" y="180.5" width="51" height="31"/>
+                                <rect key="frame" x="312" y="181" width="51" height="31"/>
                                 <color key="onTintColor" red="0.35251771840000001" green="0.22355258259999999" blue="0.57947291909999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <connections>
                                     <action selector="isSwitchedWithSender:" destination="BGR-bY-2xn" eventType="valueChanged" id="yzV-pq-Twt"/>
                                 </connections>
                             </switch>
                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZtQ-Id-K8t">
-                                <rect key="frame" x="23" y="235" width="368" height="585"/>
+                                <rect key="frame" x="0.0" y="235" width="414" height="585"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="ZtQ-Id-K8t" secondAttribute="height" multiplier="368:525" constant="-42.057142857142878" id="W9p-J0-yeG"/>
-                                </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="reuseIdentifier" id="0aR-ki-jl6" customClass="ItemCell" customModule="PollApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="368" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0aR-ki-jl6" id="enL-S5-zdD">
-                                            <rect key="frame" x="0.0" y="0.0" width="368" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lFj-3C-wNZ">
-                                                    <rect key="frame" x="332" y="11" width="22" height="22"/>
+                                                    <rect key="frame" x="378" y="11" width="22" height="22"/>
                                                     <connections>
                                                         <action selector="contactSelectedWithSender:" destination="0aR-ki-jl6" eventType="touchDown" id="sO7-vo-uao"/>
                                                     </connections>
@@ -238,7 +235,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="ZtQ-Id-K8t" firstAttribute="top" secondItem="bqp-v2-una" secondAttribute="bottom" constant="-21.5" id="9gX-PV-k4a"/>
+                            <constraint firstItem="ZtQ-Id-K8t" firstAttribute="leading" secondItem="CYd-Az-RGk" secondAttribute="leading" id="2Sw-xZ-HH0"/>
                             <constraint firstItem="80g-xS-iZj" firstAttribute="centerX" secondItem="pDa-wA-Im3" secondAttribute="centerX" id="9vw-Zm-bLb"/>
                             <constraint firstItem="VBE-qX-eMF" firstAttribute="leading" secondItem="eUb-qY-xIl" secondAttribute="leading" id="FyG-HY-R15"/>
                             <constraint firstItem="pDa-wA-Im3" firstAttribute="trailing" secondItem="wUg-qe-ydU" secondAttribute="trailing" constant="53" id="GdH-Jm-9EP"/>
@@ -246,10 +243,12 @@
                             <constraint firstItem="80g-xS-iZj" firstAttribute="bottom" secondItem="pDa-wA-Im3" secondAttribute="bottom" constant="18" id="JKS-Z6-gnv"/>
                             <constraint firstItem="wUg-qe-ydU" firstAttribute="top" secondItem="VBE-qX-eMF" secondAttribute="bottom" constant="39" id="Lj3-EF-idp"/>
                             <constraint firstItem="VBE-qX-eMF" firstAttribute="top" secondItem="pDa-wA-Im3" secondAttribute="top" constant="57" id="Miq-W2-HPK"/>
+                            <constraint firstItem="80g-xS-iZj" firstAttribute="top" secondItem="ZtQ-Id-K8t" secondAttribute="bottom" constant="11" id="SCu-ao-1KQ"/>
                             <constraint firstItem="ZtQ-Id-K8t" firstAttribute="centerX" secondItem="CYd-Az-RGk" secondAttribute="centerX" id="SL0-AD-Cvs"/>
+                            <constraint firstItem="ZtQ-Id-K8t" firstAttribute="top" secondItem="CYd-Az-RGk" secondAttribute="top" constant="235" id="UrB-6P-m6C"/>
+                            <constraint firstItem="ZtQ-Id-K8t" firstAttribute="top" secondItem="eUb-qY-xIl" secondAttribute="bottom" constant="23" id="UuE-30-sWr"/>
                             <constraint firstItem="bqp-v2-una" firstAttribute="centerX" secondItem="VBE-qX-eMF" secondAttribute="centerX" id="a8I-oN-eIm"/>
                             <constraint firstItem="bqp-v2-una" firstAttribute="centerX" secondItem="CYd-Az-RGk" secondAttribute="centerX" id="b75-rb-b8Q"/>
-                            <constraint firstItem="pDa-wA-Im3" firstAttribute="bottom" secondItem="ZtQ-Id-K8t" secondAttribute="bottom" constant="42" id="mV2-eT-SMt"/>
                             <constraint firstItem="bqp-v2-una" firstAttribute="top" secondItem="eUb-qY-xIl" secondAttribute="bottom" constant="8" id="r6K-Np-ezc"/>
                             <constraint firstItem="wUg-qe-ydU" firstAttribute="leading" secondItem="eUb-qY-xIl" secondAttribute="trailing" constant="8" symbolic="YES" id="tOw-lw-I6k"/>
                             <constraint firstItem="eUb-qY-xIl" firstAttribute="bottom" secondItem="wUg-qe-ydU" secondAttribute="bottom" id="vWW-2b-Pom"/>
