@@ -32,13 +32,16 @@ class Slide: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet var contactSwitch: UISwitch!
     @IBOutlet var loadPrompt: UIActivityIndicatorView!
     @IBOutlet weak var tabView: UITableView!
+    @IBOutlet var nextButton : UIButton!
     @IBOutlet var username : UITextField!
     @IBOutlet var name : UITextField!
-    @IBOutlet var nextButton : UIButton!
 
+    
     var cDict: [String: String] = [:]
     var numArray: [String] = []
     var selectedUsers: [String] = []
+    var usernameText : String = ""
+    var nameText : String = ""
     
     override func viewDidLoad() {
         
@@ -49,8 +52,16 @@ class Slide: UIViewController, UITableViewDataSource, UITableViewDelegate {
         super.viewWillAppear(animated)
     }
     
+    @IBAction func changeUsername(sender: UITextField){
+        usernameText = sender.text!
+    }
+    
+    @IBAction func changeName(sender: UITextField){
+        nameText = sender.text!
+    }
+    
     @IBAction func addUser(sender: UIButton){
-        DatabaseHelper.addUser(name: name.text!, username: username.text!, followMethod: self.addInitialFollows)
+        DatabaseHelper.addUser(name: nameText, username: usernameText.lowercased(), followMethod: self.addInitialFollows)
     }
     
     func addInitialFollows(userCreated: Bool){

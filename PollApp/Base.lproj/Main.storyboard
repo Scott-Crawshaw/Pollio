@@ -48,7 +48,7 @@
                                 <color key="shadowColor" red="0.49019607840000001" green="0.14901960780000001" blue="0.80392156859999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <size key="shadowOffset" width="0.5" height="-1"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="sTo-Yj-6Tl" userLabel="Username">
+                            <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="center" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="sTo-Yj-6Tl" userLabel="Username">
                                 <rect key="frame" x="100" y="292" width="211" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="RYe-XB-eSx"/>
@@ -57,6 +57,7 @@
                                 <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans SemiBold" pointSize="23"/>
                                 <textInputTraits key="textInputTraits" textContentType="username"/>
                                 <connections>
+                                    <action selector="changeUsernameWithSender:" destination="weW-3Z-uHH" eventType="valueChanged" id="eOj-rU-cts"/>
                                     <action selector="editingChanged:" destination="weW-3Z-uHH" eventType="editingChanged" id="xxY-pm-kLY"/>
                                 </connections>
                             </textField>
@@ -78,7 +79,10 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans SemiBold" pointSize="23"/>
-                                <textInputTraits key="textInputTraits" textContentType="name"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" textContentType="name"/>
+                                <connections>
+                                    <action selector="changeNameWithSender:" destination="weW-3Z-uHH" eventType="valueChanged" id="Au1-6g-oGj"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="Don't worry about a password yet." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="698-x0-09E">
                                 <rect key="frame" x="32" y="470" width="350" height="32.5"/>
