@@ -30,6 +30,9 @@ class Slide: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet var contactSwitch: UISwitch!
     @IBOutlet var loadPrompt: UIActivityIndicatorView!
     @IBOutlet weak var tabView: UITableView!
+    @IBOutlet var username : UITextField!
+    @IBOutlet var name : UITextField!
+
     
     
     var cDict: [String: String] = [:]
