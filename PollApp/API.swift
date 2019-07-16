@@ -105,8 +105,9 @@ class DatabaseHelper{
     
     static func checkUsername(username: String, callback: @escaping (Bool) -> Void){
         let db = Firestore.firestore()
-        let query = db.collection("users").whereField("user", isEqualTo: username).limit(to: 1)
+        let query = db.collection("users").whereField("username", isEqualTo: username).limit(to: 1)
         query.getDocuments { (result, error) in
+            print(result)
             if result!.isEmpty {
                 callback(true)
             }
