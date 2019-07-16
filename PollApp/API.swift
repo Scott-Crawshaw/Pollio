@@ -10,6 +10,8 @@ import Foundation
 import FirebaseFirestore
 import FirebaseStorage
 import FirebaseFunctions
+import FirebaseAuth
+
 
 class DatabaseHelper{
 
@@ -99,5 +101,51 @@ class DatabaseHelper{
         functions.httpsCallable("searchUsers").call(["search": searchTerm]) { (result, error) in
             callback(result?.data as! [[[String : String]]])
         }
+    }
+    
+    static func checkUsername(username: String, callback: @escaping (Bool) -> Void){
+        let db = Firestore.firestore()
+        let query = db.collection("users").whereField("user", isEqualTo: username).limit(to: 1)
+        query.getDocuments { (result, error) in
+            if result!.isEmpty {
+                callback(true)
+            }
+            else{
+                callback(false)
+            }
+        }
+    }
+    
+    static func addUser(name: String, username: String, followMethod: @escaping (Bool) -> Void){
+        let searchName = name.lowercased().replacingOccurrences(of: " ", with: "")
+        let time = Timestamp()
+        let uid = Auth.auth().currentUser!.uid
+        let followers = "/followers/" + uid
+        let following = "/following/" + uid
+        let posts = "/posts/" + uid
+        let picture = ""
+        
+        let data : [String : Any] = [
+            "creation" : time,
+            "followers" : followers,
+            "following" : following,
+            "name" : name,
+            "picture" : picture,
+            "posts" : posts,
+            "searchName" : searchName,
+            "username" : username
+        ]
+        
+        let db = Firestore.firestore()
+        db.collection("users").document(uid).setData(data){ err in
+            if err != nil{
+                followMethod(false)
+            }
+            else{
+                db.collection("phoneNumbers").document(Auth.auth().currentUser!.phoneNumber!).setData(["user" : "/users/" + uid])
+                followMethod(true)
+            }
+        }
+        
     }
 }
