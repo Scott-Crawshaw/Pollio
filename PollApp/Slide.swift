@@ -37,7 +37,6 @@ class Slide: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var selectedUsers: [String] = []
     
     override func viewDidLoad() {
-    
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -47,7 +46,7 @@ class Slide: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     
     @IBAction func isSwitched(sender: UISwitch) {
-        if contactSwitch.isOn == false {loadPrompt.stopAnimating(); return}
+        if contactSwitch.isOn == false {loadPrompt.stopAnimating(); tabView.isHidden = true; return}
         loadPrompt.startAnimating()
         
         let store = CNContactStore()
@@ -110,6 +109,7 @@ class Slide: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
         
         //pulling up the next VC
+        tabView.isHidden = false
         tabView.reloadData()
         loadPrompt.stopAnimating()
 

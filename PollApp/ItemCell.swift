@@ -16,14 +16,30 @@ class ItemCell: UITableViewCell {
 
     @IBAction func contactSelected(sender: UIButton)
     {
-        adder.backgroundColor = .black
         for person in num_idData!{
             let p = person as! [String:String]
             if p["number"] == cellNum {
                 var selectedUsers = UserDefaults.standard.array(forKey: "selectedUsers") as! [String]
-                selectedUsers.append(p["userID"] ?? "Unknown")
-                UserDefaults.standard.set(selectedUsers, forKey: "selectedUsers")
+                if(adder.isSelected == false)
+                {
+                    selectedUsers.append(p["user"] ?? "Unknown")
+                    UserDefaults.standard.set(selectedUsers, forKey: "selectedUsers")
+                    adder.isSelected = true
+                }
+                else{
+                    let index = selectedUsers.firstIndex(of: p["user"]!)!
+                    selectedUsers.remove(at: index)
+                    UserDefaults.standard.set(selectedUsers, forKey: "selectedUsers")
+                    adder.isSelected = false
+                }
+                
+                //Below are print statements to check that the number/id/cellnumber swap is going ok.
+                
+                print("p[number] from num_idData is: \(String(describing: p["number"]))")
+                print("cellNum is: \(cellNum)")
                 print(selectedUsers)
+                print("num_idData being loaded as: \(num_idData)")
+                
             }
         }
         
@@ -34,6 +50,7 @@ class ItemCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
