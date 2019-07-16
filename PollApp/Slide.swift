@@ -26,7 +26,9 @@ class Slide: UIViewController, UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
-
+    @IBOutlet weak var usernameLoading: UIActivityIndicatorView!
+    
+    @IBOutlet weak var usernameImage: UIImageView!
     @IBOutlet var contactSwitch: UISwitch!
     @IBOutlet var loadPrompt: UIActivityIndicatorView!
     @IBOutlet weak var tabView: UITableView!
@@ -34,14 +36,13 @@ class Slide: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet var name : UITextField!
     @IBOutlet var nextButton : UIButton!
 
-
-    
-    
+    var status: Bool = false //true = good username, false = bad
     var cDict: [String: String] = [:]
     var numArray: [String] = []
     var selectedUsers: [String] = []
     
     override func viewDidLoad() {
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -130,7 +131,30 @@ class Slide: UIViewController, UITableViewDataSource, UITableViewDelegate {
         loadPrompt.stopAnimating()
 
     }
+    
+
   
+    
+    @IBAction func editingChanged(_ sender: UITextField) {
+        usernameImage.isHidden = true
+        usernameLoading.startAnimating()
+        DatabaseHelper.checkUsername(username: username.text!, callback: setUsernameStatus(isAvaliable:))
+        
+        if(status == true)
+        {
+            usernameImage.image = UIImage(named: "green_check")
+            usernameImage.isHidden = false
+            usernameLoading.stopAnimating()
+        }
+        else{
+            usernameImage.image = UIImage(named: "red_x")
+            usernameImage.isHidden = false
+            usernameLoading.stopAnimating()
+        }
+    }
+    func setUsernameStatus(isAvaliable: Bool){
+        status = isAvaliable
+    }
     
     
     func setGradientBackground() {
