@@ -78,7 +78,7 @@
                                 <textInputTraits key="textInputTraits" textContentType="name"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="Don't worry about a password yet." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="698-x0-09E">
-                                <rect key="frame" x="32" y="470" width="350" height="28"/>
+                                <rect key="frame" x="32" y="470" width="350" height="32.5"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans Light" pointSize="23"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -86,7 +86,7 @@
                                 <size key="shadowOffset" width="0.5" height="-1"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="You can verify and secure your account later." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="hXh-fC-s2j">
-                                <rect key="frame" x="50" y="506" width="314" height="22"/>
+                                <rect key="frame" x="50" y="510.5" width="314" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="hqn-Ca-4Xt"/>
                                 </constraints>
@@ -214,13 +214,23 @@
                                     <outlet property="delegate" destination="BGR-bY-2xn" id="gkZ-pX-FVH"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="80g-xS-iZj">
+                                <rect key="frame" x="180" y="831" width="60" height="49"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="27"/>
+                                <state key="normal" title="Next"/>
+                                <connections>
+                                    <action selector="addUserWithSender:" destination="BGR-bY-2xn" eventType="touchUpInside" id="fhp-lL-WMH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="ZtQ-Id-K8t" firstAttribute="top" secondItem="bqp-v2-una" secondAttribute="bottom" constant="38.5" id="9gX-PV-k4a"/>
+                            <constraint firstItem="80g-xS-iZj" firstAttribute="centerX" secondItem="pDa-wA-Im3" secondAttribute="centerX" id="9vw-Zm-bLb"/>
                             <constraint firstItem="VBE-qX-eMF" firstAttribute="leading" secondItem="eUb-qY-xIl" secondAttribute="leading" id="FyG-HY-R15"/>
                             <constraint firstItem="pDa-wA-Im3" firstAttribute="trailing" secondItem="wUg-qe-ydU" secondAttribute="trailing" constant="53" id="GdH-Jm-9EP"/>
                             <constraint firstItem="bqp-v2-una" firstAttribute="leading" secondItem="pDa-wA-Im3" secondAttribute="leading" constant="188" id="J5a-Iy-hf2"/>
+                            <constraint firstItem="80g-xS-iZj" firstAttribute="bottom" secondItem="pDa-wA-Im3" secondAttribute="bottom" constant="18" id="JKS-Z6-gnv"/>
                             <constraint firstItem="wUg-qe-ydU" firstAttribute="top" secondItem="VBE-qX-eMF" secondAttribute="bottom" constant="39" id="Lj3-EF-idp"/>
                             <constraint firstItem="VBE-qX-eMF" firstAttribute="top" secondItem="pDa-wA-Im3" secondAttribute="top" constant="57" id="Miq-W2-HPK"/>
                             <constraint firstItem="ZtQ-Id-K8t" firstAttribute="centerX" secondItem="CYd-Az-RGk" secondAttribute="centerX" id="SL0-AD-Cvs"/>
@@ -237,6 +247,7 @@
                     <connections>
                         <outlet property="contactSwitch" destination="wUg-qe-ydU" id="Dm3-wb-tYF"/>
                         <outlet property="loadPrompt" destination="bqp-v2-una" id="AlY-mW-QWS"/>
+                        <outlet property="nextButton" destination="80g-xS-iZj" id="gPH-qs-6dd"/>
                         <outlet property="tabView" destination="ZtQ-Id-K8t" id="A1N-Tn-Skv"/>
                     </connections>
                 </viewController>

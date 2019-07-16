@@ -32,6 +32,8 @@ class Slide: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var tabView: UITableView!
     @IBOutlet var username : UITextField!
     @IBOutlet var name : UITextField!
+    @IBOutlet var nextButton : UIButton!
+
 
     
     
@@ -45,6 +47,17 @@ class Slide: UIViewController, UITableViewDataSource, UITableViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         setGradientBackground()
         super.viewWillAppear(animated)
+    }
+    
+    @IBAction func addUser(sender: UIButton){
+        DatabaseHelper.addUser(name: name.text!, username: username.text!, followMethod: self.addInitialFollows)
+    }
+    
+    func addInitialFollows(userCreated: Bool){
+        if userCreated{
+            let selectedUsers = UserDefaults.standard.array(forKey: "selectedUsers") as! [String]
+            DatabaseHelper.followUsers(user: Auth.auth().currentUser!.uid, follows: selectedUsers)
+        }
     }
     
     
