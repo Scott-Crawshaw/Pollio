@@ -134,6 +134,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="a5F-vr-Wy9"/>
                     </view>
+                    <connections>
+                        <outlet property="name" destination="wKA-Ka-k2W" id="4A9-jg-pg7"/>
+                        <outlet property="username" destination="sTo-Yj-6Tl" id="lJ4-v4-Y2p"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DKe-Wf-e2d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
