@@ -40,8 +40,6 @@ class Slide: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var cDict: [String: String] = [:]
     var numArray: [String] = []
     var selectedUsers: [String] = []
-    var usernameText : String = ""
-    var nameText : String = ""
     
     override func viewDidLoad() {
         
@@ -53,21 +51,25 @@ class Slide: UIViewController, UITableViewDataSource, UITableViewDelegate {
     }
     
     @IBAction func changeUsername(sender: UITextField){
-        usernameText = sender.text!
+        UserDefaults.standard.set(sender.text?.lowercased(), forKey: "username")
+
     }
     
     @IBAction func changeName(sender: UITextField){
-        nameText = sender.text!
+        UserDefaults.standard.set(sender.text, forKey: "name")
     }
     
     @IBAction func addUser(sender: UIButton){
-        DatabaseHelper.addUser(name: nameText, username: usernameText.lowercased(), followMethod: self.addInitialFollows)
+        let nameText = UserDefaults.standard.string(forKey: "name")!
+        let usernameText = UserDefaults.standard.string(forKey: "username")!
+
+        DatabaseHelper.addUser(name: nameText, username: usernameText, followMethod: self.addInitialFollows)
     }
     
     func addInitialFollows(userCreated: Bool){
         if userCreated{
-            let selectedUsers = UserDefaults.standard.array(forKey: "selectedUsers") as! [String]
-            DatabaseHelper.followUsers(user: Auth.auth().currentUser!.uid, follows: selectedUsers)
+            let selectedUsers = UserDefaults.standard.array(forKey: "selectedUsers") as? [String] ?? []
+            DatabaseHelper.initialFollowUsers(user: Auth.auth().currentUser!.uid, follows: selectedUsers)
         }
     }
     
