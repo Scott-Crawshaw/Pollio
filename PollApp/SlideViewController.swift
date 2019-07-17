@@ -8,11 +8,16 @@
 
 import UIKit
 
-class SlideViewController: UIPageViewController {
+class SlideViewController: UIPageViewController{
+    
+    
     fileprivate lazy var pages: [UIViewController] = {
         return [
             self.getViewController(withIdentifier: "NameController"),
-            self.getViewController(withIdentifier: "ContactSelect")
+            self.getViewController(withIdentifier: "ContactSelect"),
+            self.getViewController(withIdentifier: "AllSetVC"),
+            self.getViewController(withIdentifier: "AllSetVC2")
+
         ]
     }()
     
@@ -26,7 +31,9 @@ class SlideViewController: UIPageViewController {
         super.viewDidLoad()
         self.dataSource = self
         self.delegate   = self
-        
+        var appearance = UIPageControl.appearance(whenContainedInInstancesOf: [UIPageViewController.self])
+        appearance.pageIndicatorTintColor = UIColor.red
+        appearance.currentPageIndicatorTintColor = UIColor.red
         if let firstVC = pages.first
         {
             setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)

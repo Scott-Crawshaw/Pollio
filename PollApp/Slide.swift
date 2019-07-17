@@ -170,9 +170,6 @@ class Slide: UIViewController, UITableViewDataSource, UITableViewDelegate {
             usernameImage.isHidden = false
             usernameLoading.stopAnimating()
         }
-        print(isAvaliable)
-        print(username.text!)
-
     }
     
     
