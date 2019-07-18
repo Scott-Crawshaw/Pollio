@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VI4-F5-D5B">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -367,41 +367,25 @@
             </objects>
             <point key="canvasLocation" x="666.66666666666674" y="40.848214285714285"/>
         </scene>
-        <!--Item 1-->
-        <scene sceneID="heQ-ra-T32">
-            <objects>
-                <viewController id="zaf-PV-UJR" customClass="UITableViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="7Sy-LY-m4c">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="AAw-gA-VcD"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="hgF-e1-N0J"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="BVg-jn-QQn" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-65" y="1250"/>
-        </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab Superview-->
         <scene sceneID="EtX-7N-xC6">
             <objects>
-                <tabBarController id="bBS-6X-3Ix" sceneMemberID="viewController">
+                <tabBarController id="bBS-6X-3Ix" customClass="TabSuperview" customModule="PollApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Yyo-Il-gaJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="zaf-PV-UJR" kind="relationship" relationship="viewControllers" id="6AA-2a-4ya"/>
                         <segue destination="Gbl-Cr-BxQ" kind="relationship" relationship="viewControllers" id="fsf-m9-0Iu"/>
+                        <segue destination="7NX-Z9-G4K" kind="relationship" relationship="viewControllers" id="IvU-wY-GBf"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7ld-io-5jW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1216" y="1522"/>
+            <point key="canvasLocation" x="-1248" y="1657"/>
         </scene>
-        <!--Item-->
+        <!--Polls-->
         <scene sceneID="ZTp-Bp-dON">
             <objects>
                 <tableViewController id="Gbl-Cr-BxQ" sceneMemberID="viewController">
@@ -424,11 +408,14 @@
                             <outlet property="delegate" destination="Gbl-Cr-BxQ" id="KkV-pD-NuV"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="jCu-q5-6TG"/>
+                    <tabBarItem key="tabBarItem" title="Polls" image="bars" selectedImage="bars" id="jCu-q5-6TG">
+                        <inset key="imageInsets" minX="0.0" minY="23" maxX="0.0" maxY="24"/>
+                        <inset key="largeContentSizeImageInsets" minX="1" minY="1" maxX="1" maxY="1"/>
+                    </tabBarItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6sK-Rh-Qow" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1080" y="1683"/>
+            <point key="canvasLocation" x="-65" y="2013"/>
         </scene>
         <!--Verify View Controller-->
         <scene sceneID="Q2d-Go-wIW">
@@ -515,7 +502,7 @@
             </objects>
             <point key="canvasLocation" x="1286.9565217391305" y="40.848214285714285"/>
         </scene>
-        <!--Poll Creator View Controller-->
+        <!--Create Poll-->
         <scene sceneID="ljJ-TT-DbF">
             <objects>
                 <viewController storyboardIdentifier="PollCreatorViewController" id="7NX-Z9-G4K" customClass="PollCreatorViewController" customModule="PollApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -543,7 +530,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OJD-WY-PLW">
-                                <rect key="frame" x="20.5" y="178" width="373" height="245"/>
+                                <rect key="frame" x="20.5" y="178" width="373" height="196"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="245" id="IPi-1Q-VTl"/>
@@ -559,7 +546,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YGu-e9-MBC">
-                                <rect key="frame" x="132.5" y="596" width="149" height="32"/>
+                                <rect key="frame" x="132.5" y="547" width="149" height="32"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="149" id="4MS-6m-CXL"/>
@@ -583,7 +570,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ABJ-hO-eOu">
-                                <rect key="frame" x="154" y="780" width="106" height="53"/>
+                                <rect key="frame" x="154" y="731" width="106" height="53"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="106" id="6lU-c7-JDG"/>
@@ -607,7 +594,7 @@
                                 </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="3qx-JL-vbX">
-                                <rect key="frame" x="66" y="724" width="282" height="29"/>
+                                <rect key="frame" x="66" y="675" width="282" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="RFJ-hB-NDz"/>
                                     <constraint firstAttribute="width" constant="282" id="xvd-Db-a3M"/>
@@ -620,14 +607,14 @@
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pql-lx-UhO">
-                                <rect key="frame" x="356" y="727" width="25" height="25"/>
+                                <rect key="frame" x="356" y="678" width="25" height="25"/>
                                 <state key="normal" image="info_icon"/>
                                 <connections>
                                     <action selector="moreInformationWithSender:" destination="7NX-Z9-G4K" eventType="touchUpInside" id="1mE-Kj-ML9"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choices" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XmV-yQ-icc">
-                                <rect key="frame" x="152.5" y="431" width="109" height="51"/>
+                                <rect key="frame" x="152.5" y="382" width="109" height="51"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="51" id="Xjg-uz-YXK"/>
                                 </constraints>
@@ -636,7 +623,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a choice here" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FV3-YI-YGQ">
-                                <rect key="frame" x="36" y="490" width="342" height="32"/>
+                                <rect key="frame" x="36" y="441" width="342" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="Bas-Fa-O4a"/>
                                     <constraint firstAttribute="width" constant="342" id="WEA-kE-jc2"/>
@@ -646,7 +633,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a choice here" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pxZ-vG-HpQ">
-                                <rect key="frame" x="36" y="543" width="342" height="32"/>
+                                <rect key="frame" x="36" y="494" width="342" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="DgY-t8-Plq"/>
                                     <constraint firstAttribute="width" constant="342" id="kUD-lh-NF9"/>
@@ -660,7 +647,7 @@
                                 </connections>
                             </textField>
                             <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a choice here" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JJo-wk-bpx">
-                                <rect key="frame" x="36" y="596" width="342" height="32"/>
+                                <rect key="frame" x="36" y="547" width="342" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="342" id="0XT-w7-PjM"/>
                                     <constraint firstAttribute="height" constant="32" id="jdT-wT-wYH"/>
@@ -674,7 +661,7 @@
                                 </connections>
                             </textField>
                             <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a choice here" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GhL-kc-Kfn">
-                                <rect key="frame" x="36" y="649" width="342" height="32"/>
+                                <rect key="frame" x="36" y="600" width="342" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="342" id="mlo-NC-q6c"/>
                                     <constraint firstAttribute="height" constant="32" id="ud4-q9-1OF"/>
@@ -688,7 +675,7 @@
                                 </connections>
                             </textField>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n2n-3h-EmR">
-                                <rect key="frame" x="132.5" y="649" width="149" height="31"/>
+                                <rect key="frame" x="132.5" y="600" width="149" height="31"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="149" id="C3B-lu-iBw"/>
@@ -747,6 +734,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="KOs-Hb-BTC"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Create Poll" image="add" selectedImage="add" id="Srb-JF-pbZ">
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="3"/>
+                    </tabBarItem>
                     <connections>
                         <outlet property="addChoice3" destination="YGu-e9-MBC" id="2Uw-wO-jbH"/>
                         <outlet property="addChoice4" destination="n2n-3h-EmR" id="dX4-wY-2nE"/>
@@ -760,7 +750,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jCy-kc-CJ3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3518.840579710145" y="38.839285714285715"/>
+            <point key="canvasLocation" x="-65" y="1326"/>
         </scene>
         <!--Find Friends-->
         <scene sceneID="Dza-Ql-cOJ">
@@ -986,6 +976,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="add" width="50" height="50"/>
+        <image name="bars" width="128" height="128"/>
         <image name="info_icon" width="25" height="25"/>
     </resources>
 </document>

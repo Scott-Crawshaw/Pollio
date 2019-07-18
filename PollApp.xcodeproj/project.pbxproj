@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		6C559DCAB840EB20EB6C6590 /* Pods_PollApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EF3CCE1927B1751DF959AE7 /* Pods_PollApp.framework */; };
+		731DA04722E0EC370044749B /* TabSuperview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731DA04622E0EC370044749B /* TabSuperview.swift */; };
+		731DA04922E0F9AC0044749B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 731DA04822E0F9AC0044749B /* Assets.xcassets */; };
 		731DFA8922C267490095EA1A /* Slide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731DFA8822C267490095EA1A /* Slide.swift */; };
 		73241BA522C68E1A00104FA7 /* SlideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73241BA422C68E1A00104FA7 /* SlideViewController.swift */; };
 		734C0A6322D527FD008F8A3A /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734C0A6222D527FD008F8A3A /* ItemCell.swift */; };
@@ -29,7 +31,6 @@
 		BB72700022B7F3D5006C386B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB726FFF22B7F3D5006C386B /* AppDelegate.swift */; };
 		BB72700222B7F3D5006C386B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB72700122B7F3D5006C386B /* ViewController.swift */; };
 		BB72700522B7F3D5006C386B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB72700322B7F3D5006C386B /* Main.storyboard */; };
-		BB72700722B7F3D7006C386B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB72700622B7F3D7006C386B /* Assets.xcassets */; };
 		BB72700A22B7F3D7006C386B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB72700822B7F3D7006C386B /* LaunchScreen.storyboard */; };
 		BB72701522B7F3D7006C386B /* PollAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB72701422B7F3D7006C386B /* PollAppTests.swift */; };
 		BB72702022B7F3D7006C386B /* PollAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB72701F22B7F3D7006C386B /* PollAppUITests.swift */; };
@@ -59,6 +60,8 @@
 		2EF3CCE1927B1751DF959AE7 /* Pods_PollApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PollApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50C0732744EA6C212C75E088 /* Pods_PollAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PollAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		63B79D426906A945F3B53799 /* Pods-PollApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PollApp.debug.xcconfig"; path = "Target Support Files/Pods-PollApp/Pods-PollApp.debug.xcconfig"; sourceTree = "<group>"; };
+		731DA04622E0EC370044749B /* TabSuperview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabSuperview.swift; sourceTree = "<group>"; };
+		731DA04822E0F9AC0044749B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../.Trash/Assets.xcassets; sourceTree = "<group>"; };
 		731DFA8822C267490095EA1A /* Slide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slide.swift; sourceTree = "<group>"; };
 		73241BA422C68E1A00104FA7 /* SlideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideViewController.swift; sourceTree = "<group>"; };
 		734C0A6222D527FD008F8A3A /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
@@ -82,7 +85,6 @@
 		BB726FFF22B7F3D5006C386B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BB72700122B7F3D5006C386B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BB72700422B7F3D5006C386B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		BB72700622B7F3D7006C386B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BB72700922B7F3D7006C386B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BB72700B22B7F3D7006C386B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB72701022B7F3D7006C386B /* PollAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PollAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -183,12 +185,13 @@
 				73A2BEB422BD566D00B71A37 /* fonts */,
 				BB14550022B958BA00CBF426 /* VerifyViewController.swift */,
 				BB72700322B7F3D5006C386B /* Main.storyboard */,
+				731DA04622E0EC370044749B /* TabSuperview.swift */,
 				BB3D2F8122E0D5DD00723A10 /* PollTableViewCell.swift */,
 				BB3A846622DCEE1E0082AB64 /* SearchTableViewController.swift */,
 				BB487F2222D3B97800BED4A4 /* PollCreatorViewController.swift */,
 				73241BA422C68E1A00104FA7 /* SlideViewController.swift */,
 				734C0A6222D527FD008F8A3A /* ItemCell.swift */,
-				BB72700622B7F3D7006C386B /* Assets.xcassets */,
+				731DA04822E0F9AC0044749B /* Assets.xcassets */,
 				BB72700822B7F3D7006C386B /* LaunchScreen.storyboard */,
 				BB72700B22B7F3D7006C386B /* Info.plist */,
 			);
@@ -356,10 +359,10 @@
 				73A2BEC222BD566D00B71A37 /* OpenSans-LightItalic.ttf in Resources */,
 				BB5DEEC522BD6B24006A0C81 /* GoogleService-Info.plist in Resources */,
 				73A2BEBD22BD566D00B71A37 /* OpenSans-SemiBold.ttf in Resources */,
-				BB72700722B7F3D7006C386B /* Assets.xcassets in Resources */,
 				73A2BEC322BD566D00B71A37 /* OpenSans-SemiBoldItalic.ttf in Resources */,
 				BB72700522B7F3D5006C386B /* Main.storyboard in Resources */,
 				73A2BEC422BD566D00B71A37 /* OpenSans-Regular.ttf in Resources */,
+				731DA04922E0F9AC0044749B /* Assets.xcassets in Resources */,
 				73A2BEBE22BD566D00B71A37 /* SourceSansPro-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -497,6 +500,7 @@
 				731DFA8922C267490095EA1A /* Slide.swift in Sources */,
 				73241BA522C68E1A00104FA7 /* SlideViewController.swift in Sources */,
 				BB3A846722DCEE1E0082AB64 /* SearchTableViewController.swift in Sources */,
+				731DA04722E0EC370044749B /* TabSuperview.swift in Sources */,
 				BB3D2F8222E0D5DD00723A10 /* PollTableViewCell.swift in Sources */,
 				BB72700022B7F3D5006C386B /* AppDelegate.swift in Sources */,
 			);
