@@ -34,11 +34,11 @@ class ItemCell: UITableViewCell {
                 }
                 
                 //Below are print statements to check that the number/id/cellnumber swap is going ok.
-                
+                /*
                 print("p[number] from num_idData is: \(String(describing: p["number"]))")
                 print("cellNum is: \(cellNum)")
                 print(selectedUsers)
-                print("num_idData being loaded as: \(num_idData)")
+                print("num_idData being loaded as: \(num_idData)")*/
                 
             }
         }
