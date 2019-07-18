@@ -410,7 +410,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="feedCell" rowHeight="417" id="Ovb-bP-DbZ">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="feedCell" rowHeight="417" id="Ovb-bP-DbZ" customClass="PollTableViewCell" customModule="PollApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="417"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ovb-bP-DbZ" id="Etz-ec-mYx">
@@ -556,6 +556,16 @@
                                     </subviews>
                                     <color key="backgroundColor" red="0.83139709456596977" green="0.83139709456596977" blue="0.83139709456596977" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="choice1_text" destination="Jd9-lT-Ept" id="7M4-D7-kJd"/>
+                                    <outlet property="choice2_text" destination="tXf-Am-cLY" id="mPd-m9-tPb"/>
+                                    <outlet property="choice3_text" destination="czz-G9-2UE" id="FMq-ct-d5X"/>
+                                    <outlet property="choice4_text" destination="GPM-PM-Gx4" id="RUr-fz-RlP"/>
+                                    <outlet property="question" destination="qTV-oI-q8s" id="Xxa-UR-Ud0"/>
+                                    <outlet property="time" destination="yhJ-62-qG4" id="SaM-aI-2rg"/>
+                                    <outlet property="username" destination="KNw-Db-26A" id="s5k-Vf-zIj"/>
+                                    <outlet property="visibility" destination="Yly-Bs-iiJ" id="Xak-vI-YBe"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

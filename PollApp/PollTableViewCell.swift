@@ -10,6 +10,14 @@ import UIKit
 
 class PollTableViewCell: UITableViewCell {
 
+    @IBOutlet var choice4_text: UILabel!
+    @IBOutlet var choice3_text: UILabel!
+    @IBOutlet var choice2_text: UILabel!
+    @IBOutlet var choice1_text: UILabel!
+    @IBOutlet var question: UILabel!
+    @IBOutlet var visibility: UILabel!
+    @IBOutlet var time: UILabel!
+    @IBOutlet var username: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
