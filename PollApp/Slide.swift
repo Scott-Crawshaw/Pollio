@@ -27,7 +27,6 @@ class Slide: UIViewController, UITableViewDataSource, UITableViewDelegate {
     }
     
     @IBOutlet weak var usernameLoading: UIActivityIndicatorView!
-    
     @IBOutlet weak var usernameImage: UIImageView!
     @IBOutlet var contactSwitch: UISwitch!
     @IBOutlet var loadPrompt: UIActivityIndicatorView!
@@ -35,8 +34,8 @@ class Slide: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet var nextButton : UIButton!
     @IBOutlet var username : UITextField!
     @IBOutlet var name : UITextField!
-
     
+    var scroller: UIPageControl!
     var cDict: [String: String] = [:]
     var numArray: [String] = []
     var selectedUsers: [String] = []

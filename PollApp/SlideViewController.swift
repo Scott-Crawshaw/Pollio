@@ -47,7 +47,7 @@ extension SlideViewController: UIPageViewControllerDataSource
         
         let previousIndex = viewControllerIndex - 1
         
-        guard previousIndex >= 0          else { return pages.last }
+        guard previousIndex >= 0          else { return nil }
         
         guard pages.count > previousIndex else { return nil        }
         
@@ -60,9 +60,9 @@ extension SlideViewController: UIPageViewControllerDataSource
         
         let nextIndex = viewControllerIndex + 1
         
-        guard nextIndex < pages.count else { return pages.first }
+        guard nextIndex < pages.count else { return nil }
         
-        guard pages.count > nextIndex else { return nil         }
+        guard pages.count > nextIndex else { return nil }
         
         return pages[nextIndex]
     }
