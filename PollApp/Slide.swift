@@ -63,13 +63,19 @@ class Slide: UIViewController, UITableViewDataSource, UITableViewDelegate {
         let usernameText = UserDefaults.standard.string(forKey: "username")!
 
         DatabaseHelper.addUser(name: nameText, username: usernameText, followMethod: self.addInitialFollows)
+        
     }
     
     func addInitialFollows(userCreated: Bool){
         if userCreated{
             let selectedUsers = UserDefaults.standard.array(forKey: "selectedUsers") as? [String] ?? []
             DatabaseHelper.initialFollowUsers(user: Auth.auth().currentUser!.uid, follows: selectedUsers)
+            
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let newViewController = storyBoard.instantiateViewController(withIdentifier: "main") as! TabSuperview
+            self.present(newViewController, animated: true, completion: nil)
         }
+        
     }
     
     
