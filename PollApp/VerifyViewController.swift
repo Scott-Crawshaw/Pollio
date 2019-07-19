@@ -34,15 +34,16 @@ class VerifyViewController: UIViewController {
                 self.showMessagePrompt(message: error.localizedDescription)
                 return
             }
-            
-            //here is where we should do something with authResult
-            //DatabaseHelper.getUserByUID(UID: (authResult?.user.uid)!, callback: self.testCallback)
-            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let newViewController = storyBoard.instantiateViewController(withIdentifier: "SlideViewController") as! SlideViewController
-            self.present(newViewController, animated: true, completion: nil)
-//            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-//            let newViewController = storyBoard.instantiateViewController(withIdentifier: "PollCreatorViewController") as! PollCreatorViewController
-//            self.present(newViewController, animated: true, completion: nil)
+            if((authResult?.additionalUserInfo!.isNewUser)!){
+                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let newViewController = storyBoard.instantiateViewController(withIdentifier: "SlideViewController") as! SlideViewController
+                self.present(newViewController, animated: true, completion: nil)
+            }
+            else{
+                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let newViewController = storyBoard.instantiateViewController(withIdentifier: "FeedTableViewController") as! FeedTableViewController
+                self.present(newViewController, animated: true, completion: nil)
+            }
         }
     }
     

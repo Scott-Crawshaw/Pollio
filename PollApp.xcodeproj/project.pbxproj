@@ -25,6 +25,7 @@
 		BB14550122B958BA00CBF426 /* VerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB14550022B958BA00CBF426 /* VerifyViewController.swift */; };
 		BB3A846722DCEE1E0082AB64 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3A846622DCEE1E0082AB64 /* SearchTableViewController.swift */; };
 		BB3D2F8222E0D5DD00723A10 /* PollTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3D2F8122E0D5DD00723A10 /* PollTableViewCell.swift */; };
+		BB3D2F8622E22B9500723A10 /* FeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3D2F8522E22B9500723A10 /* FeedTableViewController.swift */; };
 		BB487F2322D3B97800BED4A4 /* PollCreatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB487F2222D3B97800BED4A4 /* PollCreatorViewController.swift */; };
 		BB5DEEAC22BD3C38006A0C81 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5DEEAB22BD3C38006A0C81 /* API.swift */; };
 		BB5DEEC522BD6B24006A0C81 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB5DEEC422BD6B23006A0C81 /* GoogleService-Info.plist */; };
@@ -78,6 +79,7 @@
 		BB14550022B958BA00CBF426 /* VerifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyViewController.swift; sourceTree = "<group>"; };
 		BB3A846622DCEE1E0082AB64 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		BB3D2F8122E0D5DD00723A10 /* PollTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollTableViewCell.swift; sourceTree = "<group>"; };
+		BB3D2F8522E22B9500723A10 /* FeedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewController.swift; sourceTree = "<group>"; };
 		BB487F2222D3B97800BED4A4 /* PollCreatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollCreatorViewController.swift; sourceTree = "<group>"; };
 		BB5DEEAB22BD3C38006A0C81 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		BB5DEEC422BD6B23006A0C81 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 				73A2BEB422BD566D00B71A37 /* fonts */,
 				BB14550022B958BA00CBF426 /* VerifyViewController.swift */,
 				BB72700322B7F3D5006C386B /* Main.storyboard */,
+				BB3D2F8522E22B9500723A10 /* FeedTableViewController.swift */,
 				731DA04622E0EC370044749B /* TabSuperview.swift */,
 				BB3D2F8122E0D5DD00723A10 /* PollTableViewCell.swift */,
 				BB3A846622DCEE1E0082AB64 /* SearchTableViewController.swift */,
@@ -499,6 +502,7 @@
 				BB5DEEAC22BD3C38006A0C81 /* API.swift in Sources */,
 				731DFA8922C267490095EA1A /* Slide.swift in Sources */,
 				73241BA522C68E1A00104FA7 /* SlideViewController.swift in Sources */,
+				BB3D2F8622E22B9500723A10 /* FeedTableViewController.swift in Sources */,
 				BB3A846722DCEE1E0082AB64 /* SearchTableViewController.swift in Sources */,
 				731DA04722E0EC370044749B /* TabSuperview.swift in Sources */,
 				BB3D2F8222E0D5DD00723A10 /* PollTableViewCell.swift in Sources */,

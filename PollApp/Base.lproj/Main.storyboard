@@ -447,22 +447,15 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="snazzy_scott" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KNw-Db-26A">
-                                                    <rect key="frame" x="15" y="8" width="111" height="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="snazzy_scott" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KNw-Db-26A">
+                                                    <rect key="frame" x="8" y="8" width="93" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans Light" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Public" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yly-Bs-iiJ">
-                                                    <rect key="frame" x="289" y="8" width="70" height="17"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans Light" pointSize="13"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Yesterday at 11:52am" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yhJ-62-qG4">
-                                                    <rect key="frame" x="134" y="8" width="147" height="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Anonymous" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yly-Bs-iiJ">
+                                                    <rect key="frame" x="273" y="8" width="86" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans Light" pointSize="13"/>
                                                     <nil key="textColor"/>
@@ -534,17 +527,48 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Yesterday at 11:52am" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yhJ-62-qG4">
+                                                    <rect key="frame" x="109" y="8" width="156" height="17"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans Light" pointSize="13"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="1"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="NO"/>
+                                                <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                                    <size key="value" width="-0.20000000000000001" height="-0.20000000000000001"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                                    <integer key="value" value="1"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                                    <real key="value" value="0.20000000000000001"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
                                         </view>
                                     </subviews>
                                     <color key="backgroundColor" red="0.83139709456596977" green="0.83139709456596977" blue="0.83139709456596977" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="choice1_bar" destination="SPN-Bl-mMh" id="suW-fD-yy9"/>
+                                    <outlet property="choice1_button" destination="8lp-WX-8PY" id="4qI-wT-eqB"/>
                                     <outlet property="choice1_text" destination="Jd9-lT-Ept" id="7M4-D7-kJd"/>
+                                    <outlet property="choice2_bar" destination="Fu6-OA-SM3" id="07j-GA-AcB"/>
+                                    <outlet property="choice2_button" destination="JJa-1Y-RNn" id="daE-Sq-lJM"/>
                                     <outlet property="choice2_text" destination="tXf-Am-cLY" id="mPd-m9-tPb"/>
+                                    <outlet property="choice3_bar" destination="h2G-p0-QMh" id="LxV-9e-bXT"/>
+                                    <outlet property="choice3_button" destination="O9j-a3-NFa" id="Qq6-dj-53V"/>
                                     <outlet property="choice3_text" destination="czz-G9-2UE" id="FMq-ct-d5X"/>
+                                    <outlet property="choice4_bar" destination="qwX-J6-jnN" id="tDl-1i-7Yd"/>
+                                    <outlet property="choice4_button" destination="jmD-Ca-nkJ" id="nff-cO-UxJ"/>
                                     <outlet property="choice4_text" destination="GPM-PM-Gx4" id="RUr-fz-RlP"/>
+                                    <outlet property="comments_button" destination="oNz-yv-hKR" id="wNA-LR-oa8"/>
                                     <outlet property="question" destination="qTV-oI-q8s" id="Xxa-UR-Ud0"/>
                                     <outlet property="time" destination="yhJ-62-qG4" id="SaM-aI-2rg"/>
                                     <outlet property="username" destination="KNw-Db-26A" id="s5k-Vf-zIj"/>
@@ -564,7 +588,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6sK-Rh-Qow" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-65" y="2013"/>
+            <point key="canvasLocation" x="-65.217391304347828" y="2012.9464285714284"/>
         </scene>
         <!--Verify View Controller-->
         <scene sceneID="Q2d-Go-wIW">
@@ -682,7 +706,7 @@
                                 <rect key="frame" x="20.5" y="178" width="373" height="196"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="245" id="IPi-1Q-VTl"/>
+                                    <constraint firstAttribute="height" constant="196" id="IPi-1Q-VTl"/>
                                 </constraints>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="20"/>
@@ -755,13 +779,6 @@
                                 </segments>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </segmentedControl>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pql-lx-UhO">
-                                <rect key="frame" x="356" y="678" width="25" height="25"/>
-                                <state key="normal" image="info_icon"/>
-                                <connections>
-                                    <action selector="moreInformationWithSender:" destination="7NX-Z9-G4K" eventType="touchUpInside" id="1mE-Kj-ML9"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choices" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XmV-yQ-icc">
                                 <rect key="frame" x="152.5" y="382" width="109" height="51"/>
                                 <constraints>
@@ -847,6 +864,13 @@
                                     <action selector="addChoiceWithSender:" destination="7NX-Z9-G4K" eventType="touchUpInside" id="FsU-82-v3a"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pql-lx-UhO">
+                                <rect key="frame" x="362" y="678" width="16" height="22"/>
+                                <state key="normal" image="info_icon"/>
+                                <connections>
+                                    <action selector="moreInformationWithSender:" destination="7NX-Z9-G4K" eventType="touchUpInside" id="1mE-Kj-ML9"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -862,7 +886,7 @@
                             <constraint firstItem="3qx-JL-vbX" firstAttribute="centerX" secondItem="KOs-Hb-BTC" secondAttribute="centerX" id="MVE-lH-hRO"/>
                             <constraint firstItem="XmV-yQ-icc" firstAttribute="top" secondItem="OJD-WY-PLW" secondAttribute="bottom" constant="8" id="Ogp-0Z-yJv"/>
                             <constraint firstItem="KOs-Hb-BTC" firstAttribute="bottom" secondItem="ABJ-hO-eOu" secondAttribute="bottom" constant="29" id="ScE-ru-N6X"/>
-                            <constraint firstItem="Pql-lx-UhO" firstAttribute="leading" secondItem="3qx-JL-vbX" secondAttribute="trailing" constant="8" id="SfX-2X-aPr"/>
+                            <constraint firstItem="Pql-lx-UhO" firstAttribute="leading" secondItem="3qx-JL-vbX" secondAttribute="trailing" constant="14" id="SfX-2X-aPr"/>
                             <constraint firstItem="dw2-Lq-UhA" firstAttribute="centerX" secondItem="KOs-Hb-BTC" secondAttribute="centerX" id="Trg-Hp-18i"/>
                             <constraint firstItem="YGu-e9-MBC" firstAttribute="top" secondItem="pxZ-vG-HpQ" secondAttribute="bottom" constant="21" id="WNZ-0a-86W"/>
                             <constraint firstItem="n2n-3h-EmR" firstAttribute="top" secondItem="YGu-e9-MBC" secondAttribute="bottom" constant="21" id="YZn-b5-vrH"/>
@@ -871,7 +895,7 @@
                             <constraint firstItem="ABJ-hO-eOu" firstAttribute="centerX" secondItem="KOs-Hb-BTC" secondAttribute="centerX" id="dY5-ye-x56"/>
                             <constraint firstItem="OJD-WY-PLW" firstAttribute="leading" secondItem="KOs-Hb-BTC" secondAttribute="leading" constant="20.5" id="f55-Eh-s7k"/>
                             <constraint firstItem="3qx-JL-vbX" firstAttribute="top" secondItem="n2n-3h-EmR" secondAttribute="bottom" constant="44" id="fcq-eD-RQ9"/>
-                            <constraint firstItem="Pql-lx-UhO" firstAttribute="bottom" secondItem="3qx-JL-vbX" secondAttribute="bottom" id="h6Y-ER-xFJ"/>
+                            <constraint firstItem="Pql-lx-UhO" firstAttribute="bottom" secondItem="3qx-JL-vbX" secondAttribute="bottom" constant="-3" id="h6Y-ER-xFJ"/>
                             <constraint firstItem="gTa-ca-Lrf" firstAttribute="centerX" secondItem="KOs-Hb-BTC" secondAttribute="centerX" id="kU3-Pb-mf1"/>
                             <constraint firstItem="GhL-kc-Kfn" firstAttribute="centerX" secondItem="KOs-Hb-BTC" secondAttribute="centerX" id="lfm-Wn-fdU"/>
                             <constraint firstItem="OJD-WY-PLW" firstAttribute="centerX" secondItem="KOs-Hb-BTC" secondAttribute="centerX" id="onl-m3-WId"/>
@@ -1094,6 +1118,9 @@
                                         <integer key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="addUserWithSender:" destination="IsS-eP-bEc" eventType="touchUpInside" id="vR8-pL-zt1"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
