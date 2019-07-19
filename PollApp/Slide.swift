@@ -72,7 +72,7 @@ class Slide: UIViewController, UITableViewDataSource, UITableViewDelegate {
             DatabaseHelper.initialFollowUsers(user: Auth.auth().currentUser!.uid, follows: selectedUsers)
             
             let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let newViewController = storyBoard.instantiateViewController(withIdentifier: "FeedTableViewController") as! FeedTableViewController
+            let newViewController = storyBoard.instantiateViewController(withIdentifier: "main") as! TabSuperview
             self.present(newViewController, animated: true, completion: nil)
         }
         

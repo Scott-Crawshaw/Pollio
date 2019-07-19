@@ -36,12 +36,12 @@ class VerifyViewController: UIViewController {
             }
             if((authResult?.additionalUserInfo!.isNewUser)!){
                 let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                let newViewController = storyBoard.instantiateViewController(withIdentifier: "SlideViewController") as! SlideViewController
+                let newViewController = storyBoard.instantiateViewController(withIdentifier: "main") as! TabSuperview
                 self.present(newViewController, animated: true, completion: nil)
             }
             else{
                 let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                let newViewController = storyBoard.instantiateViewController(withIdentifier: "FeedTableViewController") as! FeedTableViewController
+                let newViewController = storyBoard.instantiateViewController(withIdentifier: "main") as! TabSuperview
                 self.present(newViewController, animated: true, completion: nil)
             }
         }

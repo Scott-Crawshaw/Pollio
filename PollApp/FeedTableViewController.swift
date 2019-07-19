@@ -22,8 +22,6 @@ class FeedTableViewController: UITableViewController {
         //get the data
         DatabaseHelper.getDocumentByReference(reference: "/feed/" + Auth.auth().currentUser!.uid, callback: self.getFeed)
         
-        // Reload the table
-        tableView.reloadData()
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -37,6 +35,8 @@ class FeedTableViewController: UITableViewController {
         for post in posts{
             DatabaseHelper.getDocumentByReference(reference: post, callback: self.populateData)
         }
+        print("get feed")
+
     }
     
     func populateData(post: [String : Any]?){
@@ -44,6 +44,7 @@ class FeedTableViewController: UITableViewController {
             return
         }
         data.append(post1)
+        print("populate")
         tableView.reloadData()
     }
 
