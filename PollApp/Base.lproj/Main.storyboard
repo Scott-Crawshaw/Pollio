@@ -656,7 +656,6 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Polls" image="bars" selectedImage="bars" id="jCu-q5-6TG">
-                        <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-22"/>
                         <inset key="largeContentSizeImageInsets" minX="1" minY="0.0" maxX="1" maxY="0.0"/>
                     </tabBarItem>
                 </tableViewController>
