@@ -656,6 +656,7 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Polls" image="bars" selectedImage="bars" id="jCu-q5-6TG">
+                        <inset key="imageInsets" minX="0.0" minY="22" maxX="0.0" maxY="25"/>
                         <inset key="largeContentSizeImageInsets" minX="1" minY="0.0" maxX="1" maxY="0.0"/>
                     </tabBarItem>
                 </tableViewController>
@@ -980,7 +981,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="KOs-Hb-BTC"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Create Poll" image="add" selectedImage="add" id="Srb-JF-pbZ">
+                    <tabBarItem key="tabBarItem" title="Create Poll" image="add" selectedImage="icons8-add-new-50" id="Srb-JF-pbZ">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="3"/>
                     </tabBarItem>
                     <connections>
@@ -1228,6 +1229,7 @@
     <resources>
         <image name="add" width="6" height="6"/>
         <image name="bars" width="128" height="128"/>
+        <image name="icons8-add-new-50" width="50" height="50"/>
         <image name="info_icon" width="25" height="25"/>
     </resources>
 </document>
