@@ -36,7 +36,7 @@ class VerifyViewController: UIViewController {
             }
             if((authResult?.additionalUserInfo!.isNewUser)!){
                 let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                let newViewController = storyBoard.instantiateViewController(withIdentifier: "main") as! TabSuperview
+                let newViewController = storyBoard.instantiateViewController(withIdentifier: "SlideViewController") as! SlideViewController
                 self.present(newViewController, animated: true, completion: nil)
             }
             else{

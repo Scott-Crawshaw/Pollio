@@ -30,12 +30,19 @@ class FeedTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
+    func getFeedStarter(){
+        DatabaseHelper.getDocumentByReference(reference: "/feed/" + Auth.auth().currentUser!.uid, callback: self.getFeed)
+    }
+    
     func getFeed(feed: [String : Any]?){
+        if (feed?["posts"] as? [String])?.isEmpty ?? true{
+            self.getFeedStarter()
+            return
+        }
         let posts : [String] = feed?["posts"] as? [String] ?? []
         for post in posts{
             DatabaseHelper.getDocumentByReference(reference: post, callback: self.populateData)
         }
-        print("get feed")
 
     }
     
@@ -44,7 +51,6 @@ class FeedTableViewController: UITableViewController {
             return
         }
         data.append(post1)
-        print("populate")
         tableView.reloadData()
     }
 
@@ -64,9 +70,32 @@ class FeedTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "feedCell", for: indexPath) as! PollTableViewCell
 
         cell.username.text = data[indexPath.row]["username"] as? String ?? "Unknown"
+        
         let FBtime : Timestamp = data[indexPath.row]["time"] as! Timestamp
         let time = FBtime.dateValue()
-        cell.time.text = time.description
+        var timeText = ""
+        let calendar = Calendar.current
+        let dateFormatter = DateFormatter()
+        if calendar.isDateInToday(time){
+            timeText += "Today"
+        }
+        else if calendar.isDateInYesterday(time){
+            timeText += "Yesterday"
+        }
+        else if calendar.isDate(Date(), equalTo: time, toGranularity: .year){
+            dateFormatter.dateFormat = "MMM dd"
+            timeText += dateFormatter.string(from: time)
+        }
+        else{
+            dateFormatter.dateFormat = "MMM dd, yyyy"
+            timeText += dateFormatter.string(from: time)
+        }
+        timeText += " at "
+        dateFormatter.dateFormat = "h:mm a"
+        timeText += dateFormatter.string(from: time)
+        
+        cell.time.text = timeText
+        
         let visArr = data[indexPath.row]["visibility"] as? [String : Bool] ?? ["author":false, "viewers":false]
         
         if visArr["author"]! && visArr["viewers"]!{
@@ -82,16 +111,33 @@ class FeedTableViewController: UITableViewController {
         cell.question.text = data[indexPath.row]["question"] as? String ?? "Unknown"
         let options = data[indexPath.row]["options"] as? [String] ?? []
         
-        if options.count > 0{
+        cell.choice1_bar.isHidden = true
+        cell.choice2_bar.isHidden = true
+        cell.choice3_bar.isHidden = true
+        cell.choice4_bar.isHidden = true
+
+        if options.count == 2{
+            cell.choice2_text.text = options[0]
+            cell.choice3_text.text = options[1]
+            
+            cell.choice1_button.isHidden = true
+            cell.choice1_text.isHidden = true
+            cell.choice4_button.isHidden = true
+            cell.choice4_text.isHidden = true
+
+        }
+        if options.count == 3{
+            cell.choice2_text.text = options[0]
+            cell.choice3_text.text = options[1]
+            cell.choice4_text.text = options[2]
+            
+            cell.choice1_button.isHidden = true
+            cell.choice1_text.isHidden = true
+        }
+        if options.count == 4{
             cell.choice1_text.text = options[0]
-        }
-        if options.count > 1{
             cell.choice2_text.text = options[1]
-        }
-        if options.count > 2{
             cell.choice3_text.text = options[2]
-        }
-        if options.count > 3{
             cell.choice4_text.text = options[3]
         }
         
