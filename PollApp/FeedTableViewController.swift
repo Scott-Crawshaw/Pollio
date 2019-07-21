@@ -30,12 +30,19 @@ class FeedTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
+    func getFeedStarter(){
+        DatabaseHelper.getDocumentByReference(reference: "/feed/" + Auth.auth().currentUser!.uid, callback: self.getFeed)
+    }
+    
     func getFeed(feed: [String : Any]?){
+        if (feed?["posts"] as? [String])?.isEmpty ?? true{
+            self.getFeedStarter()
+            return
+        }
         let posts : [String] = feed?["posts"] as? [String] ?? []
         for post in posts{
             DatabaseHelper.getDocumentByReference(reference: post, callback: self.populateData)
         }
-        print("get feed")
 
     }
     
@@ -44,7 +51,6 @@ class FeedTableViewController: UITableViewController {
             return
         }
         data.append(post1)
-        print("populate")
         tableView.reloadData()
     }
 

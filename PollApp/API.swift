@@ -78,7 +78,8 @@ class DatabaseHelper{
     
     static func initialFollowUsers(user: String, follows: [String]){
         let db = Firestore.firestore()
-        db.collection("following").document(user).setData(["following": FieldValue.arrayUnion(follows)])
+        db.collection("following").document(user).setData(["following": []])
+        db.collection("following").document(user).updateData(["following": FieldValue.arrayUnion(follows)])
     }
     
     static func unfollowUsers(user: String, follows: [String]){
