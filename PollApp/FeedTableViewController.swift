@@ -69,18 +69,27 @@ class FeedTableViewController: UITableViewController {
         let time = FBtime.dateValue()
         var timeText = ""
         let calendar = Calendar.current
+        let dateFormatter = DateFormatter()
         if calendar.isDateInToday(time){
-            timeText += "Today at "
+            timeText += "Today"
         }
         else if calendar.isDateInYesterday(time){
-            timeText += "Yesterday at "
+            timeText += "Yesterday"
         }
-        else if calendar.{
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "MMM dd,yyyy"
+        else if calendar.isDate(Date(), equalTo: time, toGranularity: .year){
+            dateFormatter.dateFormat = "MMM dd"
+            timeText += dateFormatter.string(from: time)
         }
+        else{
+            dateFormatter.dateFormat = "MMM dd, yyyy"
+            timeText += dateFormatter.string(from: time)
+        }
+        timeText += " at "
+        dateFormatter.dateFormat = "h:mm a"
+        timeText += dateFormatter.string(from: time)
         
-        cell.time.text = time.description
+        cell.time.text = timeText
+        
         let visArr = data[indexPath.row]["visibility"] as? [String : Bool] ?? ["author":false, "viewers":false]
         
         if visArr["author"]! && visArr["viewers"]!{
@@ -96,17 +105,38 @@ class FeedTableViewController: UITableViewController {
         cell.question.text = data[indexPath.row]["question"] as? String ?? "Unknown"
         let options = data[indexPath.row]["options"] as? [String] ?? []
         
+        cell.choice1_bar.isHidden = true
+        cell.choice2_bar.isHidden = true
+        cell.choice3_bar.isHidden = true
+        cell.choice4_bar.isHidden = true
+
         if options.count > 0{
             cell.choice1_text.text = options[0]
+        }
+        else{
+            cell.choice1_text.isHidden = true
+            cell.choice1_button.isHidden = true
         }
         if options.count > 1{
             cell.choice2_text.text = options[1]
         }
+        else{
+            cell.choice2_text.isHidden = true
+            cell.choice2_button.isHidden = true
+        }
         if options.count > 2{
             cell.choice3_text.text = options[2]
         }
+        else{
+            cell.choice3_text.isHidden = true
+            cell.choice3_button.isHidden = true
+        }
         if options.count > 3{
             cell.choice4_text.text = options[3]
+        }
+        else{
+            cell.choice4_text.isHidden = true
+            cell.choice4_button.isHidden = true
         }
         
         return cell
