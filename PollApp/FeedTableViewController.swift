@@ -64,8 +64,22 @@ class FeedTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "feedCell", for: indexPath) as! PollTableViewCell
 
         cell.username.text = data[indexPath.row]["username"] as? String ?? "Unknown"
+        
         let FBtime : Timestamp = data[indexPath.row]["time"] as! Timestamp
         let time = FBtime.dateValue()
+        var timeText = ""
+        let calendar = Calendar.current
+        if calendar.isDateInToday(time){
+            timeText += "Today at "
+        }
+        else if calendar.isDateInYesterday(time){
+            timeText += "Yesterday at "
+        }
+        else if calendar.{
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MMM dd,yyyy"
+        }
+        
         cell.time.text = time.description
         let visArr = data[indexPath.row]["visibility"] as? [String : Bool] ?? ["author":false, "viewers":false]
         
