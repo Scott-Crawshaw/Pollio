@@ -110,33 +110,29 @@ class FeedTableViewController: UITableViewController {
         cell.choice3_bar.isHidden = true
         cell.choice4_bar.isHidden = true
 
-        if options.count > 0{
-            cell.choice1_text.text = options[0]
-        }
-        else{
-            cell.choice1_text.isHidden = true
+        if options.count == 2{
+            cell.choice2_text.text = options[0]
+            cell.choice3_text.text = options[1]
+            
             cell.choice1_button.isHidden = true
-        }
-        if options.count > 1{
-            cell.choice2_text.text = options[1]
-        }
-        else{
-            cell.choice2_text.isHidden = true
-            cell.choice2_button.isHidden = true
-        }
-        if options.count > 2{
-            cell.choice3_text.text = options[2]
-        }
-        else{
-            cell.choice3_text.isHidden = true
-            cell.choice3_button.isHidden = true
-        }
-        if options.count > 3{
-            cell.choice4_text.text = options[3]
-        }
-        else{
-            cell.choice4_text.isHidden = true
+            cell.choice1_text.isHidden = true
             cell.choice4_button.isHidden = true
+            cell.choice4_text.isHidden = true
+
+        }
+        if options.count == 3{
+            cell.choice2_text.text = options[0]
+            cell.choice3_text.text = options[1]
+            cell.choice4_text.text = options[2]
+            
+            cell.choice1_button.isHidden = true
+            cell.choice1_text.isHidden = true
+        }
+        if options.count == 4{
+            cell.choice1_text.text = options[0]
+            cell.choice2_text.text = options[1]
+            cell.choice3_text.text = options[2]
+            cell.choice4_text.text = options[3]
         }
         
         return cell
