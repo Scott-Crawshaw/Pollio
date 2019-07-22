@@ -34,6 +34,7 @@ class Slide: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet var nextButton : UIButton!
     @IBOutlet var username : UITextField!
     @IBOutlet var name : UITextField!
+    @IBOutlet var nextPage: UIButton!
     
     var scroller: UIPageControl!
     var cDict: [String: String] = [:]
@@ -41,6 +42,7 @@ class Slide: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var selectedUsers: [String] = []
     
     override func viewDidLoad() {
+        UserDefaults.standard.set(false, forKey: "nextPage")
         
     }
 
@@ -150,7 +152,10 @@ class Slide: UIViewController, UITableViewDataSource, UITableViewDelegate {
     }
     
 
-  
+    @IBAction func editsChanged(_ sender: UITextField) {
+        DatabaseHelper.checkUsername(username: username.text!, callback: self.setUsernameStatus)
+    }
+    
     
     @IBAction func editingChanged(_ sender: UITextField) {
         usernameImage.isHidden = true
@@ -163,18 +168,42 @@ class Slide: UIViewController, UITableViewDataSource, UITableViewDelegate {
         {
             usernameImage.isHidden = true
             usernameLoading.stopAnimating()
+            allowNextPage(evalUsername: false)
         }
         else if(isAvaliable == true)
         {
             usernameImage.image = UIImage(named: "green_check")
             usernameImage.isHidden = false
             usernameLoading.stopAnimating()
+            allowNextPage(evalUsername: true)
         }
         else{
             usernameImage.image = UIImage(named: "red_x")
             usernameImage.isHidden = false
             usernameLoading.stopAnimating()
+            allowNextPage(evalUsername: false)
         }
+    }
+
+    func allowNextPage(evalUsername: Bool)
+    {
+        if(evalUsername == true && name.text?.isEmpty == false)
+        {
+            nextPage.isHidden = false
+            UserDefaults.standard.set(true, forKey: "nextPage")
+
+        }
+        else{
+            nextPage.isHidden = true
+            UserDefaults.standard.set(false, forKey: "nextPage")
+        }
+    }
+    
+    @IBAction func triggerNextPage(_ sender: UIButton) {
+        let notifyChange = Notification.Name("buttonClickedNotification")
+        NotificationCenter.default.post(.init(name: notifyChange))
+
+
     }
     
     
