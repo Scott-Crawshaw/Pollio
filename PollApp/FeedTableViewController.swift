@@ -13,15 +13,12 @@ import FirebaseFirestore
 class FeedTableViewController: UITableViewController {
 
     var data : [[String : Any]] = []
+    var postLinks : [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tableView.separatorColor = UIColor.clear
-
-        //get the data
-        DatabaseHelper.getDocumentByReference(reference: "/feed/" + Auth.auth().currentUser!.uid, callback: self.getFeed)
-        
+        self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -30,45 +27,40 @@ class FeedTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
-    func getFeedStarter(){
-        DatabaseHelper.getDocumentByReference(reference: "/feed/" + Auth.auth().currentUser!.uid, callback: self.getFeed)
-    }
-    
-    func getFeed(feed: [String : Any]?){
-        if (feed?["posts"] as? [String])?.isEmpty ?? true{
-            self.getFeedStarter()
-            return
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        let db = Firestore.firestore()
+        let docRef = db.document("/feed/" + Auth.auth().currentUser!.uid)
+        
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                
+            }
+            else{
+                
+            }
         }
-        let posts : [String] = feed?["posts"] as? [String] ?? []
-        for post in posts{
-            DatabaseHelper.getDocumentByReference(reference: post, callback: self.populateData)
-        }
-
-    }
-    
-    func populateData(post: [String : Any]?){
-        guard let post1 : [String : Any] = post else{
-            return
-        }
-        data.append(post1)
-        tableView.reloadData()
+        
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return data.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "feedCell", for: indexPath) as! PollTableViewCell
 
+        return self.modifyCell(cell: cell, indexPath: indexPath)
+    }
+    
+    func modifyCell(cell : PollTableViewCell, indexPath : IndexPath) -> UITableViewCell{
         cell.username.text = data[indexPath.row]["username"] as? String ?? "Unknown"
         
         let FBtime : Timestamp = data[indexPath.row]["time"] as! Timestamp
@@ -115,7 +107,7 @@ class FeedTableViewController: UITableViewController {
         cell.choice2_bar.isHidden = true
         cell.choice3_bar.isHidden = true
         cell.choice4_bar.isHidden = true
-
+        
         if options.count == 2{
             cell.choice2_text.text = options[0]
             cell.choice3_text.text = options[1]
@@ -124,7 +116,7 @@ class FeedTableViewController: UITableViewController {
             cell.choice1_text.isHidden = true
             cell.choice4_button.isHidden = true
             cell.choice4_text.isHidden = true
-
+            
         }
         if options.count == 3{
             cell.choice2_text.text = options[0]
@@ -140,7 +132,6 @@ class FeedTableViewController: UITableViewController {
             cell.choice3_text.text = options[2]
             cell.choice4_text.text = options[3]
         }
-        
         return cell
     }
 
