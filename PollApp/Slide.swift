@@ -200,10 +200,7 @@ class Slide: UIViewController, UITableViewDataSource, UITableViewDelegate {
     }
     
     @IBAction func triggerNextPage(_ sender: UIButton) {
-        let notifyChange = Notification.Name("buttonClickedNotification")
-        NotificationCenter.default.post(.init(name: notifyChange))
-
-
+        NotificationCenter.default.post(name: .triggerNextPageN, object: nil)
     }
     
     
@@ -224,4 +221,7 @@ class Slide: UIViewController, UITableViewDataSource, UITableViewDelegate {
         self.view.layer.insertSublayer(gradientLayer, at:0)
     }
 
+}
+extension Notification.Name {
+    static let triggerNextPageN = Notification.Name("triggerNextPageN")
 }

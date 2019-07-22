@@ -29,7 +29,7 @@ class SlideViewController: UIPageViewController{
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: Selector(("receivedChange")), name: Notification.Name("buttonClickedNotification"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(receivedChange(_:)), name: .triggerNextPageN, object: nil)
         self.dataSource = self
         self.delegate   = self
     
@@ -69,9 +69,9 @@ extension SlideViewController: UIPageViewControllerDataSource
         {return pages[nextIndex]}
         else {return nil}
     }
-    func receivedChange (_ notification: Notification) {
+    @objc func receivedChange (_ notification: Notification) {
         print("YEETUS")
-    
+        //pageViewController(<#T##pageViewController: UIPageViewController##UIPageViewController#>, viewControllerAfter: <#T##UIViewController#>)
     }
  
     
