@@ -47,7 +47,7 @@ class DatabaseHelper{
     static func getDocumentByReference(reference: String, callback: @escaping (Dictionary<String, Any>?) -> Void){
         let db = Firestore.firestore()
         let docRef = db.document(reference)
-        
+
         docRef.getDocument { (document, error) in
             if let document = document, document.exists {
                 callback(document.data())

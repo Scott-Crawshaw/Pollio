@@ -19,6 +19,7 @@ class FeedTableViewController: UITableViewController {
         super.viewDidLoad()
         
         self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        self.tableView.dataSource = self
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -35,10 +36,8 @@ class FeedTableViewController: UITableViewController {
         
         docRef.getDocument { (document, error) in
             if let document = document, document.exists {
-                
-            }
-            else{
-                
+                let docData : [String : Any] = document.data()!
+                self.postLinks = docData["posts"] as! [String]
             }
         }
         
@@ -59,6 +58,7 @@ class FeedTableViewController: UITableViewController {
 
         return self.modifyCell(cell: cell, indexPath: indexPath)
     }
+    
     
     func modifyCell(cell : PollTableViewCell, indexPath : IndexPath) -> UITableViewCell{
         cell.username.text = data[indexPath.row]["username"] as? String ?? "Unknown"
