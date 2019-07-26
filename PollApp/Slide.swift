@@ -166,10 +166,8 @@ class Slide: UIViewController, UITableViewDataSource, UITableViewDelegate {
     func setUsernameStatus(isAvaliable: Bool){
         if(username.text?.isEmpty == true)
         {
-            UserDefaults.standard.set(false, forKey: "nextPage")
             usernameImage.isHidden = true
             usernameLoading.stopAnimating()
-            allowNextPage(evalUsername: false)
 
         }
         else if(isAvaliable == true)
@@ -177,35 +175,17 @@ class Slide: UIViewController, UITableViewDataSource, UITableViewDelegate {
             usernameImage.image = UIImage(named: "green_check")
             usernameImage.isHidden = false
             usernameLoading.stopAnimating()
-            allowNextPage(evalUsername: true)
         }
         else{
-            UserDefaults.standard.set(false, forKey: "nextPage")
             usernameImage.image = UIImage(named: "red_x")
             usernameImage.isHidden = false
             usernameLoading.stopAnimating()
-            allowNextPage(evalUsername: false)
 
         }
     }
 
-    func allowNextPage(evalUsername: Bool)
-    {
-        if(evalUsername == true && name.text?.isEmpty == false)
-        {
-            UserDefaults.standard.set(true, forKey: "nextPage")
-            nextPage.isHidden = false
 
-        }
-        else{
-            UserDefaults.standard.set(false, forKey: "nextPage")
-            nextPage.isHidden = true
-        }
-    }
     
-    @IBAction func triggerNextPage(_ sender: UIButton) {
-        NotificationCenter.default.post(name: .triggerNextPageN, object: nil)
-    }
     
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -225,7 +205,4 @@ class Slide: UIViewController, UITableViewDataSource, UITableViewDelegate {
         self.view.layer.insertSublayer(gradientLayer, at:0)
     }
 
-}
-extension Notification.Name {
-    static let triggerNextPageN = Notification.Name("triggerNextPageN")
 }
