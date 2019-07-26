@@ -166,9 +166,11 @@ class Slide: UIViewController, UITableViewDataSource, UITableViewDelegate {
     func setUsernameStatus(isAvaliable: Bool){
         if(username.text?.isEmpty == true)
         {
+            UserDefaults.standard.set(false, forKey: "nextPage")
             usernameImage.isHidden = true
             usernameLoading.stopAnimating()
             allowNextPage(evalUsername: false)
+
         }
         else if(isAvaliable == true)
         {
@@ -178,10 +180,12 @@ class Slide: UIViewController, UITableViewDataSource, UITableViewDelegate {
             allowNextPage(evalUsername: true)
         }
         else{
+            UserDefaults.standard.set(false, forKey: "nextPage")
             usernameImage.image = UIImage(named: "red_x")
             usernameImage.isHidden = false
             usernameLoading.stopAnimating()
             allowNextPage(evalUsername: false)
+
         }
     }
 
@@ -189,13 +193,13 @@ class Slide: UIViewController, UITableViewDataSource, UITableViewDelegate {
     {
         if(evalUsername == true && name.text?.isEmpty == false)
         {
-            nextPage.isHidden = false
             UserDefaults.standard.set(true, forKey: "nextPage")
+            nextPage.isHidden = false
 
         }
         else{
-            nextPage.isHidden = true
             UserDefaults.standard.set(false, forKey: "nextPage")
+            nextPage.isHidden = true
         }
     }
     

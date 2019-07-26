@@ -9,7 +9,7 @@
 import UIKit
 
 class SlideViewController: UIPageViewController{
-    
+    var countedIndex: Int!
 
     fileprivate lazy var pages: [UIViewController] = {
         return [
@@ -32,11 +32,15 @@ class SlideViewController: UIPageViewController{
         NotificationCenter.default.addObserver(self, selector: #selector(receivedChange(_:)), name: .triggerNextPageN, object: nil)
         self.dataSource = self
         self.delegate   = self
-    
+        countedIndex = 0
         if let firstVC = pages.first
         {
             setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)
         }
+    }
+    @objc func receivedChange (_ notification: Notification) {
+        countedIndex+=1
+        setViewControllers([pages[countedIndex]], direction: .forward, animated: true, completion: nil)
     }
 }
 
@@ -52,6 +56,7 @@ extension SlideViewController: UIPageViewControllerDataSource
         
         guard pages.count > previousIndex else { return nil        }
         
+        countedIndex = countedIndex - 1
         return pages[previousIndex]
     }
     
@@ -66,13 +71,10 @@ extension SlideViewController: UIPageViewControllerDataSource
         guard pages.count > nextIndex else { return nil }
         
         if(UserDefaults.standard.bool(forKey: "nextPage") == true)
-        {return pages[nextIndex]}
+        {countedIndex+=1; return pages[nextIndex]}
         else {return nil}
     }
-    @objc func receivedChange (_ notification: Notification) {
-        print("YEETUS")
-        //pageViewController(<#T##pageViewController: UIPageViewController##UIPageViewController#>, viewControllerAfter: <#T##UIViewController#>)
-    }
+
  
     
 }
