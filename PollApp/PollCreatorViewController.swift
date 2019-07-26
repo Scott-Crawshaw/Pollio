@@ -162,10 +162,9 @@ class PollCreatorViewController: UIViewController, UITextViewDelegate {
         
             DatabaseHelper.addPost(data: data)
             
-            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let newViewController = storyBoard.instantiateViewController(withIdentifier: "Feed") as! FeedTableViewController
-            self.present(newViewController, animated: true, completion: nil)
-    }
+            
+        }
+        
     
     }
     

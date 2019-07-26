@@ -10,16 +10,21 @@ import UIKit
 import FirebaseAuth
 import FirebaseFirestore
 
-class FeedTableViewController: UITableViewController {
+class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefetching {
 
     var data : [[String : Any]] = []
     var postLinks : [String] = []
+    var lastCurrentPageDoc: DocumentSnapshot?
+    let countPerPage = 10
+    var totalCount = 0
+    var isFetchInProgress = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         self.tableView.dataSource = self
+        self.tableView.prefetchDataSource = self
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -38,6 +43,7 @@ class FeedTableViewController: UITableViewController {
             if let document = document, document.exists {
                 let docData : [String : Any] = document.data()!
                 self.postLinks = docData["posts"] as! [String]
+                self.fetch()
             }
         }
         
@@ -50,13 +56,129 @@ class FeedTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+        return self.totalCount
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "feedCell", for: indexPath) as! PollTableViewCell
-
+        if isLoadingCell(for: indexPath) {
+            return cell
+        }
         return self.modifyCell(cell: cell, indexPath: indexPath)
+    }
+    
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        print("prefetch rows at index paths: \(indexPaths)")
+        if indexPaths.contains(where: isLoadingCell) {
+            fetch()
+        }
+    }
+    
+    func fetch() {
+        guard !isFetchInProgress else {
+            return
+        }
+        
+        isFetchInProgress = true
+        
+        fetchTotalCountIfNeeded { (totalCount, err) in
+            guard err == nil else {
+                print("Error when get total count: \(err!)")
+                return
+            }
+            
+            self.totalCount = totalCount!
+            print("total count: \(self.totalCount)")
+            
+            self.fetchFeed(completed: { (snapshot, err) in
+                guard err == nil else {
+                    print("Error when get feed: \(err!)")
+                    return
+                }
+                
+                guard let snapshot = snapshot else {
+                    print("feed docs is null")
+                    return
+                }
+                
+                guard snapshot.documents.count > 0 else {
+                    print("feed docs is empty")
+                    return
+                }
+                
+                let newData = snapshot.documents.compactMap({$0.data()})
+                
+                print("Fetched \(newData.count) posts")
+                
+                self.lastCurrentPageDoc = snapshot.documents.last
+                
+                if self.data.count == 0 {
+                    self.data.append(contentsOf: newData)
+                    self.tableView.reloadData()
+                }
+                else {
+                    self.data.append(contentsOf: newData)
+                    let range = (self.data.count - newData.count)..<self.data.count
+                    let newIndexPathsToReload = range.map{ IndexPath(row: $0, section: 0) }
+                    let indexPathsToReload = self.visibleIndexPathsToReload(intersecting: newIndexPathsToReload)
+                    if indexPathsToReload.count > 0 {
+                        self.tableView.reloadRows(at: indexPathsToReload, with: .fade)
+                    }
+                }
+                
+                self.isFetchInProgress = false
+            })
+        }
+    }
+    
+    func visibleIndexPathsToReload(intersecting indexPaths: [IndexPath]) -> [IndexPath] {
+        let indexPathsForVisibleRows = tableView.indexPathsForVisibleRows ?? []
+        let indexPathsIntersection = Set(indexPathsForVisibleRows).intersection(indexPaths)
+        return Array(indexPathsIntersection)
+    }
+    
+    func fetchTotalCountIfNeeded(completed: @escaping (Int?, Error?)->Void) {
+        guard totalCount == 0 else {
+            completed(totalCount, nil)
+            return
+        }
+        
+        let usersCountRef = Firestore.firestore().collection("feedCount").document(Auth.auth().currentUser!.uid)
+        usersCountRef.getDocument { (doc, error) in
+            if let error = error {
+                completed(nil, error)
+            }
+            else {
+                let totalCount = doc!.data()!["count"] as! Int
+                completed(totalCount, nil)
+            }
+        }
+    }
+    
+    func fetchFeed(completed: @escaping (QuerySnapshot?, Error?)->Void) {
+        let feedDB = Firestore.firestore().collection("feed").document(Auth.auth().currentUser!.uid)
+        
+        /*if self.data.count == 0 {
+            query = feedDB
+                .limit(to: countPerPage)
+        }
+        else {
+            query = feedDB
+                .limit(to: countPerPage)
+                .start(afterDocument: lastCurrentPageDoc!)
+        }
+        query.getDocuments { (snapshot, err) in
+            if let err = err {
+                completed(nil, err)
+            }
+            else {
+                completed(snapshot, nil)
+            }
+        }*/
+    }
+    
+    func isLoadingCell(for indexPath: IndexPath) -> Bool {
+        return indexPath.row >= data.count
     }
     
     
@@ -108,6 +230,17 @@ class FeedTableViewController: UITableViewController {
         cell.choice3_bar.isHidden = true
         cell.choice4_bar.isHidden = true
         
+        cell.choice1_button.tag = indexPath.row
+        cell.choice2_button.tag = indexPath.row
+        cell.choice3_button.tag = indexPath.row
+        cell.choice4_button.tag = indexPath.row
+        
+        cell.choice1_button.addTarget(self, action: #selector(vote(sender:)), for: .touchUpInside)
+        cell.choice2_button.addTarget(self, action: #selector(vote(sender:)), for: .touchUpInside)
+        cell.choice3_button.addTarget(self, action: #selector(vote(sender:)), for: .touchUpInside)
+        cell.choice4_button.addTarget(self, action: #selector(vote(sender:)), for: .touchUpInside)
+
+        
         if options.count == 2{
             cell.choice2_text.text = options[0]
             cell.choice3_text.text = options[1]
@@ -133,6 +266,13 @@ class FeedTableViewController: UITableViewController {
             cell.choice4_text.text = options[3]
         }
         return cell
+    }
+    
+    @objc func vote(sender: UIButton){
+        let index = sender.tag
+        let indexPath = IndexPath(row: index, section: 0)
+        let cell = tableView.cellForRow(at: indexPath)
+        
     }
 
     /*
