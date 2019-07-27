@@ -134,11 +134,14 @@ class PollCreatorViewController: UIViewController, UITextViewDelegate {
             let author = "/users/" + Auth.auth().currentUser!.uid
             let image = ""
             var options = [choice1.text, choice2.text]
+            var results : [String : [String]] = ["0" : [], "1" : []]
             if choice3.text?.isEmpty == false{
                 options.append(choice3.text)
+                results["2"] = []
             }
             if choice4.text?.isEmpty == false{
                 options.append(choice4.text)
+                results["3"] = []
             }
             let question : String = questionView.text
             let time = Timestamp()
@@ -158,6 +161,7 @@ class PollCreatorViewController: UIViewController, UITextViewDelegate {
                 "question" : question,
                 "time" : time,
                 "visibility" : visibilityOpts,
+                "results" : results
             ]
         
             DatabaseHelper.addPost(data: data)

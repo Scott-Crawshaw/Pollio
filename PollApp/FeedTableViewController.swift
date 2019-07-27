@@ -14,11 +14,18 @@ import FirebaseFirestore
 class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefetching {
 
     var data : [[String : Any]] = []
-    var postLinks : [String] = []
     var lastCurrentPageDoc = 0
-    let countPerPage = 10
+    let countPerPage = 5
     var totalCount = 0
     var isFetchInProgress = false
+    var refresh = false
+    
+    @objc func refreshFeed(sender:AnyObject) {
+        refresh = true
+        data = []
+        lastCurrentPageDoc = 0
+        self.fetch()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +33,7 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
         self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         self.tableView.dataSource = self
         self.tableView.prefetchDataSource = self
+        self.refreshControl?.addTarget(self, action: #selector(refreshFeed), for: UIControl.Event.valueChanged)
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -33,6 +41,7 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -48,6 +57,11 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if self.totalCount == 0 {
+            self.tableView.setEmptyMessage("It looks like your feed is empty.\n\nTry finding some friends using the search tab.")
+        } else {
+            self.tableView.restore()
+        }
         return self.totalCount
     }
 
@@ -60,7 +74,6 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
     }
     
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
-        print("prefetch rows at index paths: \(indexPaths)")
         if indexPaths.contains(where: isLoadingCell) {
             fetch()
         }
@@ -75,21 +88,30 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
         
         fetchTotalCountIfNeeded { (totalCount, err) in
             guard err == nil else {
-                print("Error when get total count: \(err!)")
+                if(self.refresh){
+                    self.refresh = false
+                    self.refreshControl?.endRefreshing()
+                }
+                self.isFetchInProgress = false
                 return
             }
-            
+
             self.totalCount = totalCount!
-            print("total count: \(self.totalCount)")
             
             self.fetchFeed(completed: { (newData, err) in
+
+                if(self.refresh){
+                    self.refresh = false
+                    self.refreshControl?.endRefreshing()
+                }
+                
                 guard err == nil else {
-                    print("Error when get feed: \(err!)")
+                    self.isFetchInProgress = false
                     return
                 }
                 
                 guard newData.count > 0 else {
-                    print("feed docs is empty")
+                    self.isFetchInProgress = false
                     return
                 }
                 
@@ -110,6 +132,7 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
                 }
                 
                 self.isFetchInProgress = false
+                
             })
         }
     }
@@ -121,7 +144,7 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
     }
     
     func fetchTotalCountIfNeeded(completed: @escaping (Int?, Error?)->Void) {
-        guard totalCount == 0 else {
+        guard totalCount == 0 || refresh == true else {
             completed(totalCount, nil)
             return
         }
@@ -132,7 +155,7 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
                 completed(nil, error)
             }
             else {
-                let totalCount = doc!.data()!["count"] as! Int
+                let totalCount = doc?.data()?["count"] as? Int ?? 0
                 completed(totalCount, nil)
             }
         }
@@ -154,9 +177,12 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
     
     
     func modifyCell(cell : PollTableViewCell, indexPath : IndexPath) -> UITableViewCell{
+        cell.results = data[indexPath.row]["results"] as? [String : [String]]
+        cell.commentsDoc = data[indexPath.row]["comments"] as? String
+        cell.postID = cell.commentsDoc.subString(from: 10, to: cell.commentsDoc.count-1)
         cell.username.text = data[indexPath.row]["username"] as? String ?? "Unknown"
-        print(data[indexPath.row])
-        let FBtime : Timestamp = data[indexPath.row]["time"] as! Timestamp
+        let timeMap = data[indexPath.row]["time"] as! [String : Any]
+        let FBtime : Timestamp = Timestamp(seconds: timeMap["_seconds"] as! Int64, nanoseconds: timeMap["_nanoseconds"] as! Int32)
         let time = FBtime.dateValue()
         var timeText = ""
         let calendar = Calendar.current
@@ -236,15 +262,64 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
             cell.choice3_text.text = options[2]
             cell.choice4_text.text = options[3]
         }
+        
+        let currentUser = Auth.auth().currentUser!.uid
+        for (_, votes) in cell.results {
+            print(votes)
+            if votes.contains(currentUser){
+                cell.showResults()
+            }
+        }
+        
         return cell
     }
     
     @objc func vote(sender: UIButton){
         let index = sender.tag
         let indexPath = IndexPath(row: index, section: 0)
-        let cell = tableView.cellForRow(at: indexPath)
+        let cell = tableView.cellForRow(at: indexPath) as! PollTableViewCell
+        let currentUID = Auth.auth().currentUser!.uid
+        var option = "0"
+        if sender == cell.choice1_button{
+            cell.results["0"]!.append(currentUID)
+            option = "0"
+        }
+        if sender == cell.choice2_button{
+            if cell.results.count != 4{
+                cell.results["0"]!.append(currentUID)
+                option = "0"
+            }
+            else{
+                cell.results["1"]!.append(currentUID)
+                option = "1"
+            }
+        }
+        if sender == cell.choice3_button{
+            if cell.results.count != 4{
+                cell.results["1"]!.append(currentUID)
+                option = "1"
+            }
+            else{
+                cell.results["2"]!.append(currentUID)
+                option = "2"
+            }
+        }
+        if sender == cell.choice4_button{
+            if cell.results.count != 4{
+                cell.results["3"]!.append(currentUID)
+                option = "3"
+            }
+            else{
+                cell.results["4"]!.append(currentUID)
+                option = "4"
+            }
+        }
+
+        cell.showResults()
+        DatabaseHelper.addVote(postID: cell.postID, option: option)
         
     }
+    
 
     /*
     // Override to support conditional editing of the table view.
@@ -291,4 +366,31 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
     }
     */
 
+}
+
+extension UITableView {
+    
+    func setEmptyMessage(_ message: String) {
+        let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.size.height))
+        messageLabel.text = message
+        messageLabel.textColor = .gray
+        messageLabel.numberOfLines = 0;
+        messageLabel.textAlignment = .center;
+        messageLabel.font = UIFont(name: "TrebuchetMS", size: 30)
+        messageLabel.sizeToFit()
+        
+        self.backgroundView = messageLabel;
+    }
+    
+    func restore() {
+        self.backgroundView = nil
+    }
+}
+
+extension String {
+    func subString(from: Int, to: Int) -> String {
+        let startIndex = self.index(self.startIndex, offsetBy: from)
+        let endIndex = self.index(self.startIndex, offsetBy: to)
+        return String(self[startIndex...endIndex])
+    }
 }

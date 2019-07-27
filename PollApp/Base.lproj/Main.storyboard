@@ -669,6 +669,10 @@
                     <tabBarItem key="tabBarItem" title="Polls" image="bars" selectedImage="bars" id="jCu-q5-6TG">
                         <inset key="largeContentSizeImageInsets" minX="1" minY="0.0" maxX="1" maxY="0.0"/>
                     </tabBarItem>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="8lM-3T-hyL">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <attributedString key="attributedTitle"/>
+                    </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6sK-Rh-Qow" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -848,6 +852,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="addPostWithSender:" destination="7NX-Z9-G4K" eventType="touchUpInside" id="G9Q-cj-4x6"/>
+                                    <segue destination="bBS-6X-3Ix" kind="show" id="FdJ-ZQ-Zez"/>
                                 </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="3qx-JL-vbX">
@@ -1240,4 +1245,7 @@
         <image name="icons8-right-arrow-90" width="30" height="30"/>
         <image name="info_icon" width="25" height="25"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="FdJ-ZQ-Zez"/>
+    </inferredMetricsTieBreakers>
 </document>

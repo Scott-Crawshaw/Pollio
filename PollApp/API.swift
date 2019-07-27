@@ -92,7 +92,6 @@ class DatabaseHelper{
         let newPost = db.collection("posts").document()
         var full_data = data
         full_data["comments"] = "/comments/" + newPost.documentID
-        full_data["votes"] = "/votes/" + newPost.documentID
         newPost.setData(full_data)
     }
     
@@ -117,6 +116,11 @@ class DatabaseHelper{
         }
     }
     
+    static func addVote(postID: String, option: String){
+        let db = Firestore.firestore()
+        db.collection("posts").document(postID).updateData(["results." + option : FieldValue.arrayUnion([Auth.auth().currentUser!.uid])])
+    }
+    
     static func addUser(name: String, username: String, followMethod: @escaping (Bool) -> Void){
         let searchName = name.lowercased().replacingOccurrences(of: " ", with: "")
         let time = Timestamp()
@@ -139,12 +143,15 @@ class DatabaseHelper{
         
         let db = Firestore.firestore()
         db.collection("users").document(uid).setData(data){ err in
-            if err != nil{
-                followMethod(false)
-            }
-            else{
-                followMethod(true)
-            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: {
+                if err != nil{
+                    followMethod(false)
+                }
+                else{
+                    followMethod(true)
+                }
+            })
+            
         }
         
     }
