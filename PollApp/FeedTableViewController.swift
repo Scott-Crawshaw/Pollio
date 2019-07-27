@@ -8,13 +8,14 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseFunctions
 import FirebaseFirestore
 
 class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefetching {
 
     var data : [[String : Any]] = []
     var postLinks : [String] = []
-    var lastCurrentPageDoc: DocumentSnapshot?
+    var lastCurrentPageDoc = 0
     let countPerPage = 10
     var totalCount = 0
     var isFetchInProgress = false
@@ -36,16 +37,7 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-        let db = Firestore.firestore()
-        let docRef = db.document("/feed/" + Auth.auth().currentUser!.uid)
-        
-        docRef.getDocument { (document, error) in
-            if let document = document, document.exists {
-                let docData : [String : Any] = document.data()!
-                self.postLinks = docData["posts"] as! [String]
-                self.fetch()
-            }
-        }
+        self.fetch()
         
     }
 
@@ -90,27 +82,18 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
             self.totalCount = totalCount!
             print("total count: \(self.totalCount)")
             
-            self.fetchFeed(completed: { (snapshot, err) in
+            self.fetchFeed(completed: { (newData, err) in
                 guard err == nil else {
                     print("Error when get feed: \(err!)")
                     return
                 }
                 
-                guard let snapshot = snapshot else {
-                    print("feed docs is null")
-                    return
-                }
-                
-                guard snapshot.documents.count > 0 else {
+                guard newData.count > 0 else {
                     print("feed docs is empty")
                     return
                 }
                 
-                let newData = snapshot.documents.compactMap({$0.data()})
-                
-                print("Fetched \(newData.count) posts")
-                
-                self.lastCurrentPageDoc = snapshot.documents.last
+                self.lastCurrentPageDoc += newData.count
                 
                 if self.data.count == 0 {
                     self.data.append(contentsOf: newData)
@@ -155,26 +138,14 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
         }
     }
     
-    func fetchFeed(completed: @escaping (QuerySnapshot?, Error?)->Void) {
-        let feedDB = Firestore.firestore().collection("feed").document(Auth.auth().currentUser!.uid)
+    func fetchFeed(completed: @escaping ([[String : Any]], Error?)->Void) {
+        let functions = Functions.functions()
+        var newData : [[String : Any]] = []
+        functions.httpsCallable("getFeed").call(["start": lastCurrentPageDoc, "end": lastCurrentPageDoc + countPerPage]) { (result, error) in
+            newData = result?.data as! [[String : Any]]
+            completed(newData, nil)
+        }
         
-        /*if self.data.count == 0 {
-            query = feedDB
-                .limit(to: countPerPage)
-        }
-        else {
-            query = feedDB
-                .limit(to: countPerPage)
-                .start(afterDocument: lastCurrentPageDoc!)
-        }
-        query.getDocuments { (snapshot, err) in
-            if let err = err {
-                completed(nil, err)
-            }
-            else {
-                completed(snapshot, nil)
-            }
-        }*/
     }
     
     func isLoadingCell(for indexPath: IndexPath) -> Bool {
@@ -184,7 +155,7 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
     
     func modifyCell(cell : PollTableViewCell, indexPath : IndexPath) -> UITableViewCell{
         cell.username.text = data[indexPath.row]["username"] as? String ?? "Unknown"
-        
+        print(data[indexPath.row])
         let FBtime : Timestamp = data[indexPath.row]["time"] as! Timestamp
         let time = FBtime.dateValue()
         var timeText = ""
