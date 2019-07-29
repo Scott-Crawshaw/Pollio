@@ -149,14 +149,15 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
             return
         }
         
-        let usersCountRef = Firestore.firestore().collection("feedCount").document(Auth.auth().currentUser!.uid)
-        usersCountRef.getDocument { (doc, error) in
+        let feedCountRef = Firestore.firestore().collection("feedCount").document(Auth.auth().currentUser!.uid)
+        feedCountRef.getDocument { (doc, error) in
             if let error = error {
                 completed(nil, error)
             }
             else {
-                let totalCount = doc?.data()?["count"] as? Int ?? 0
-                completed(totalCount, nil)
+                let totalC = doc?.data()?["count"] as? Int ?? 0
+                print("Got new totalCount : " + totalC.description)
+                completed(totalC, nil)
             }
         }
     }
@@ -164,6 +165,7 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
     func fetchFeed(completed: @escaping ([[String : Any]], Error?)->Void) {
         let functions = Functions.functions()
         var newData : [[String : Any]] = []
+        print("let's get feed : " + lastCurrentPageDoc.description)
         functions.httpsCallable("getFeed").call(["start": lastCurrentPageDoc, "end": lastCurrentPageDoc + countPerPage]) { (result, error) in
             newData = result?.data as! [[String : Any]]
             completed(newData, nil)
@@ -177,6 +179,7 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
     
     
     func modifyCell(cell : PollTableViewCell, indexPath : IndexPath) -> UITableViewCell{
+        cell.resetCell()
         cell.results = data[indexPath.row]["results"] as? [String : [String]]
         cell.commentsDoc = data[indexPath.row]["comments"] as? String
         cell.postID = cell.commentsDoc.subString(from: 10, to: cell.commentsDoc.count-1)
@@ -222,6 +225,7 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
         cell.question.text = data[indexPath.row]["question"] as? String ?? "Unknown"
         let options = data[indexPath.row]["options"] as? [String] ?? []
         
+        
         cell.choice1_bar.isHidden = true
         cell.choice2_bar.isHidden = true
         cell.choice3_bar.isHidden = true
@@ -265,8 +269,8 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
         
         let currentUser = Auth.auth().currentUser!.uid
         for (_, votes) in cell.results {
-            print(votes)
             if votes.contains(currentUser){
+                print("displaying results for " + cell.question.text!)
                 cell.showResults()
             }
         }
@@ -278,6 +282,7 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
         let index = sender.tag
         let indexPath = IndexPath(row: index, section: 0)
         let cell = tableView.cellForRow(at: indexPath) as! PollTableViewCell
+        print("voting for " + cell.question.text!)
         let currentUID = Auth.auth().currentUser!.uid
         var option = "0"
         if sender == cell.choice1_button{
@@ -285,6 +290,7 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
             option = "0"
         }
         if sender == cell.choice2_button{
+            cell.choice1_button.isHighlighted = true
             if cell.results.count != 4{
                 cell.results["0"]!.append(currentUID)
                 option = "0"
@@ -306,14 +312,15 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
         }
         if sender == cell.choice4_button{
             if cell.results.count != 4{
+                cell.results["2"]!.append(currentUID)
+                option = "2"
+            }
+            else{
                 cell.results["3"]!.append(currentUID)
                 option = "3"
             }
-            else{
-                cell.results["4"]!.append(currentUID)
-                option = "4"
-            }
         }
+        print("voted for option " + option)
 
         cell.showResults()
         DatabaseHelper.addVote(postID: cell.postID, option: option)
