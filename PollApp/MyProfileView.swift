@@ -10,12 +10,11 @@ import UIKit
 
 class MyProfileView: UIViewController {
     
-    @IBOutlet weak var scroller: UIPickerView!
+    @IBOutlet weak var scroller: UITabBar!
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        scroller.delegate = self
-        scroller.dataSource = self
 
         // Do any additional setup after loading the view.
     }
@@ -33,15 +32,9 @@ class MyProfileView: UIViewController {
 
 }
 
-extension MyProfileView: UIPickerViewDelegate, UIPickerViewDataSource
+/*
+extension MyProfileView
 {
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 2
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 2
-    }
-    
     
 }
+*/

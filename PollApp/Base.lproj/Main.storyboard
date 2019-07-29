@@ -1062,10 +1062,15 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a8L-kc-oCK">
-                                <rect key="frame" x="0.0" y="307" width="414" height="47"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            </pickerView>
+                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9jz-ZE-KEv">
+                                <rect key="frame" x="0.0" y="313" width="414" height="49"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <items>
+                                    <tabBarItem title="Posted Polls" id="2zu-Is-g1e"/>
+                                    <tabBarItem systemItem="more" id="Dix-1B-HZT"/>
+                                </items>
+                            </tabBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -1077,9 +1082,6 @@
                         <viewLayoutGuide key="safeArea" id="Zk5-h0-lng"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="My Account" image="user" selectedImage="user" id="C4m-zt-Cr0"/>
-                    <connections>
-                        <outlet property="scroller" destination="a8L-kc-oCK" id="JBl-Vi-YIk"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Njx-Y2-d9u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
