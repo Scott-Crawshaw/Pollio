@@ -20,6 +20,7 @@
 		73A2BEC222BD566D00B71A37 /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73A2BEBA22BD566D00B71A37 /* OpenSans-LightItalic.ttf */; };
 		73A2BEC322BD566D00B71A37 /* OpenSans-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73A2BEBB22BD566D00B71A37 /* OpenSans-SemiBoldItalic.ttf */; };
 		73A2BEC422BD566D00B71A37 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73A2BEBC22BD566D00B71A37 /* OpenSans-Regular.ttf */; };
+		73A92E7422EF78A40063C3F4 /* MyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A92E7322EF78A40063C3F4 /* MyProfileView.swift */; };
 		73EF61DB22E4EB1B00293245 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73EF61DA22E4EB1B00293245 /* Media.xcassets */; };
 		9602B756FC916F2BE8025048 /* Pods_PollAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50C0732744EA6C212C75E088 /* Pods_PollAppTests.framework */; };
 		BB14550122B958BA00CBF426 /* VerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB14550022B958BA00CBF426 /* VerifyViewController.swift */; };
@@ -73,6 +74,7 @@
 		73A2BEBA22BD566D00B71A37 /* OpenSans-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-LightItalic.ttf"; sourceTree = "<group>"; };
 		73A2BEBB22BD566D00B71A37 /* OpenSans-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		73A2BEBC22BD566D00B71A37 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		73A92E7322EF78A40063C3F4 /* MyProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileView.swift; sourceTree = "<group>"; };
 		73EF61DA22E4EB1B00293245 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		8D1FC14EB0E5B63229D0D9A6 /* Pods-PollAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PollAppTests.release.xcconfig"; path = "Target Support Files/Pods-PollAppTests/Pods-PollAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		98270D507219851B08D7A341 /* Pods_PollAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PollAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -187,6 +189,7 @@
 				73A2BEB422BD566D00B71A37 /* fonts */,
 				BB14550022B958BA00CBF426 /* VerifyViewController.swift */,
 				BB72700322B7F3D5006C386B /* Main.storyboard */,
+				73A92E7322EF78A40063C3F4 /* MyProfileView.swift */,
 				73EF61DA22E4EB1B00293245 /* Media.xcassets */,
 				BB3D2F8522E22B9500723A10 /* FeedTableViewController.swift */,
 				731DA04622E0EC370044749B /* TabSuperview.swift */,
@@ -498,6 +501,7 @@
 				BB487F2322D3B97800BED4A4 /* PollCreatorViewController.swift in Sources */,
 				BB14550122B958BA00CBF426 /* VerifyViewController.swift in Sources */,
 				734C0A6322D527FD008F8A3A /* ItemCell.swift in Sources */,
+				73A92E7422EF78A40063C3F4 /* MyProfileView.swift in Sources */,
 				BB72700222B7F3D5006C386B /* ViewController.swift in Sources */,
 				BB5DEEAC22BD3C38006A0C81 /* API.swift in Sources */,
 				731DFA8922C267490095EA1A /* Slide.swift in Sources */,
