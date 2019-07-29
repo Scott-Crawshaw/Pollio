@@ -153,7 +153,7 @@ class PollCreatorViewController: UIViewController, UITextViewDelegate {
             if visibility.selectedSegmentIndex == 1{
                 visibilityOpts = ["author" : true, "viewers": false]
             }
-        
+            print(author)
             let data : [String : Any] = [
                 "author" : author,
                 "image" : image,

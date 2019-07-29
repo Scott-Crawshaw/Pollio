@@ -42,18 +42,40 @@ class PollTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func resetCell(){
+        choice1_button.isHidden = false
+        choice2_button.isHidden = false
+        choice3_button.isHidden = false
+        choice4_button.isHidden = false
+        
+        choice1_button.isEnabled = true
+        choice2_button.isEnabled = true
+        choice3_button.isEnabled = true
+        choice4_button.isEnabled = true
+        
+        choice1_bar.isHidden = false
+        choice2_bar.isHidden = false
+        choice3_bar.isHidden = false
+        choice4_bar.isHidden = false
+        
+        choice1_text.isHidden = false
+        choice2_text.isHidden = false
+        choice3_text.isHidden = false
+        choice4_text.isHidden = false
+    }
+    
     func showResults(){
-        var totalVotes = 0
+        var totalVotes : Float = 0.0
         for (_, votes) in results{
-            totalVotes += votes.count
+            totalVotes += Float(votes.count)
         }
         
         let fullWidth = choice1_button.frame.width
         let fullHeight = choice1_button.frame.height
 
         if results.count == 2{
-            let firstBarPercent = results["0"]!.count / totalVotes
-            let secondBarPercent = results["1"]!.count / totalVotes
+            let firstBarPercent = Float(results["0"]!.count) / totalVotes
+            let secondBarPercent = Float(results["1"]!.count) / totalVotes
             
             choice2_bar.frame.size = CGSize(width: fullWidth * CGFloat(firstBarPercent), height: fullHeight)
             choice2_bar.isHidden = false
@@ -63,25 +85,25 @@ class PollTableViewCell: UITableViewCell {
             
         }
         if results.count == 3{
-            let firstBarPercent = results["0"]!.count / totalVotes
-            let secondBarPercent = results["1"]!.count / totalVotes
-            let thirdBarPercent = results["2"]!.count / totalVotes
+            let firstBarPercent = Float(results["0"]!.count) / totalVotes
+            let secondBarPercent = Float(results["1"]!.count) / totalVotes
+            let thirdBarPercent = Float(results["2"]!.count) / totalVotes
             
-            choice1_bar.frame.size = CGSize(width: fullWidth * CGFloat(firstBarPercent), height: fullHeight)
-            choice1_bar.isHidden = false
-            
-            choice2_bar.frame.size = CGSize(width: fullWidth * CGFloat(secondBarPercent), height: fullHeight)
+            choice2_bar.frame.size = CGSize(width: fullWidth * CGFloat(firstBarPercent), height: fullHeight)
             choice2_bar.isHidden = false
             
-            choice3_bar.frame.size = CGSize(width: fullWidth * CGFloat(thirdBarPercent), height: fullHeight)
+            choice3_bar.frame.size = CGSize(width: fullWidth * CGFloat(secondBarPercent), height: fullHeight)
             choice3_bar.isHidden = false
+            
+            choice4_bar.frame.size = CGSize(width: fullWidth * CGFloat(thirdBarPercent), height: fullHeight)
+            choice4_bar.isHidden = false
             
         }
         if results.count == 4{
-            let firstBarPercent = results["0"]!.count / totalVotes
-            let secondBarPercent = results["1"]!.count / totalVotes
-            let thirdBarPercent = results["2"]!.count / totalVotes
-            let fourthBarPercent = results["3"]!.count / totalVotes
+            let firstBarPercent = Float(results["0"]!.count) / totalVotes
+            let secondBarPercent = Float(results["1"]!.count) / totalVotes
+            let thirdBarPercent = Float(results["2"]!.count) / totalVotes
+            let fourthBarPercent = Float(results["3"]!.count) / totalVotes
 
             
             choice1_bar.frame.size = CGSize(width: fullWidth * CGFloat(firstBarPercent), height: fullHeight)
