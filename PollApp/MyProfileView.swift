@@ -26,7 +26,7 @@ class MyProfileView: UIViewController {
         
         //Need to pull down user data from database
         
-        
+        //let me pull
         
         //These will set following/er count once database pulls numbers into the Ints following/followers
         label_followers.setTitle("\(String(describing: followers)) Followers", for: .normal)
