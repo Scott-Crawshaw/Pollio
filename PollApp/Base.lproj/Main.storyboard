@@ -407,9 +407,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <imageView key="tableHeaderView" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Draft2" id="cD1-XB-6cb">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="76"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="feedCell" rowHeight="417" id="Ovb-bP-DbZ" customClass="PollTableViewCell" customModule="PollApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="417"/>
+                                <rect key="frame" x="0.0" y="104" width="414" height="417"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ovb-bP-DbZ" id="Etz-ec-mYx">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="416.5"/>
@@ -773,8 +777,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Poll Creator" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="dw2-Lq-UhA">
-                                <rect key="frame" x="83.5" y="60" width="247.5" height="61.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a Poll" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="dw2-Lq-UhA">
+                                <rect key="frame" x="75" y="60" width="264" height="61.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="61.5" id="AYt-3a-hRn"/>
                                 </constraints>
@@ -1130,7 +1134,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="36"/>
                                 <size key="titleShadowOffset" width="0.5" height="0.30000000000000004"/>
-                                <state key="normal" title="Submit">
+                                <state key="normal" title="Update">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -1426,7 +1430,7 @@
                                 <size key="shadowOffset" width="0.5" height="-1"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="Public - You &amp; your followers can see who voted for each choice." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="cHQ-T3-ASQ">
-                                <rect key="frame" x="13" y="222" width="387" height="52.5"/>
+                                <rect key="frame" x="13" y="222" width="387" height="61"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="22"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -1434,7 +1438,7 @@
                                 <size key="shadowOffset" width="1.5" height="-1"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="Anonymous - Nobody can see who voted for each choice." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="3fD-Nz-wts">
-                                <rect key="frame" x="23" y="388" width="371" height="52.5"/>
+                                <rect key="frame" x="23" y="405" width="371" height="61"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="22"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -1442,7 +1446,7 @@
                                 <size key="shadowOffset" width="1.5" height="-1"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="Private - Only you can see who voted for each choice." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="hEc-dP-SJb">
-                                <rect key="frame" x="13" y="307.5" width="387" height="52.5"/>
+                                <rect key="frame" x="13" y="316" width="387" height="61"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="22"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -1450,7 +1454,7 @@
                                 <size key="shadowOffset" width="1.5" height="-1"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vqg-e7-jQk">
-                                <rect key="frame" x="107.5" y="591.5" width="199" height="58"/>
+                                <rect key="frame" x="107.5" y="617" width="199" height="58"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="199" id="0MI-lM-bk2"/>
@@ -1503,10 +1507,10 @@
             </objects>
             <point key="canvasLocation" x="5792.753623188406" y="750"/>
         </scene>
-        <!--My Account-->
+        <!--Your Profile View-->
         <scene sceneID="H3s-dM-dia">
             <objects>
-                <viewController id="wu0-Tx-BLA" customClass="MyProfileView" customModule="PollApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="wu0-Tx-BLA" customClass="YourProfileView" customModule="PollApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="W1y-BA-n58">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1641,7 +1645,6 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rQJ-z9-c6f"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="My Account" image="user" selectedImage="user" id="Lgx-Ib-cNy"/>
                     <connections>
                         <outlet property="label_bio" destination="CEJ-vW-sIQ" id="jFS-AM-P4Z"/>
                         <outlet property="label_followers" destination="5L6-LB-kcR" id="HSE-Wb-igL"/>
@@ -1657,6 +1660,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Draft2" width="115" height="115"/>
         <image name="back" width="25" height="25"/>
         <image name="bars" width="69" height="69"/>
         <image name="icons8-add-new-50" width="25" height="25"/>

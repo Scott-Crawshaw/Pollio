@@ -12,6 +12,7 @@
 		731DFA8922C267490095EA1A /* Slide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731DFA8822C267490095EA1A /* Slide.swift */; };
 		73241BA522C68E1A00104FA7 /* SlideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73241BA422C68E1A00104FA7 /* SlideViewController.swift */; };
 		734C0A6322D527FD008F8A3A /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734C0A6222D527FD008F8A3A /* ItemCell.swift */; };
+		7363BD5222F0BDBA007F00D1 /* YourProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7363BD5122F0BDBA007F00D1 /* YourProfileView.swift */; };
 		73A2BEBD22BD566D00B71A37 /* OpenSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73A2BEB522BD566D00B71A37 /* OpenSans-SemiBold.ttf */; };
 		73A2BEBE22BD566D00B71A37 /* SourceSansPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73A2BEB622BD566D00B71A37 /* SourceSansPro-Regular.ttf */; };
 		73A2BEBF22BD566D00B71A37 /* SourceSansPro-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73A2BEB722BD566D00B71A37 /* SourceSansPro-LightItalic.ttf */; };
@@ -68,6 +69,7 @@
 		731DFA8822C267490095EA1A /* Slide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slide.swift; sourceTree = "<group>"; };
 		73241BA422C68E1A00104FA7 /* SlideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideViewController.swift; sourceTree = "<group>"; };
 		734C0A6222D527FD008F8A3A /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
+		7363BD5122F0BDBA007F00D1 /* YourProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourProfileView.swift; sourceTree = "<group>"; };
 		73A2BEB522BD566D00B71A37 /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiBold.ttf"; sourceTree = "<group>"; };
 		73A2BEB622BD566D00B71A37 /* SourceSansPro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Regular.ttf"; sourceTree = "<group>"; };
 		73A2BEB722BD566D00B71A37 /* SourceSansPro-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-LightItalic.ttf"; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 				BB4610C622F0A310008A6191 /* BioViewController.swift */,
 				BB4610C422F09CD3008A6191 /* SettingsViewController.swift */,
 				73A92E7322EF78A40063C3F4 /* MyProfileView.swift */,
+				7363BD5122F0BDBA007F00D1 /* YourProfileView.swift */,
 				73EF61DA22E4EB1B00293245 /* Media.xcassets */,
 				BB3D2F8522E22B9500723A10 /* FeedTableViewController.swift */,
 				731DA04622E0EC370044749B /* TabSuperview.swift */,
@@ -515,6 +518,7 @@
 				BB3D2F8622E22B9500723A10 /* FeedTableViewController.swift in Sources */,
 				BB4610C522F09CD3008A6191 /* SettingsViewController.swift in Sources */,
 				BB3A846722DCEE1E0082AB64 /* SearchTableViewController.swift in Sources */,
+				7363BD5222F0BDBA007F00D1 /* YourProfileView.swift in Sources */,
 				731DA04722E0EC370044749B /* TabSuperview.swift in Sources */,
 				BB3D2F8222E0D5DD00723A10 /* PollTableViewCell.swift in Sources */,
 				BB72700022B7F3D5006C386B /* AppDelegate.swift in Sources */,
