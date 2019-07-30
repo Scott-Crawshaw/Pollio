@@ -268,10 +268,9 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
         }
         
         let currentUser = Auth.auth().currentUser!.uid
-        for (_, votes) in cell.results {
+        for (choice, votes) in cell.results {
             if votes.contains(currentUser){
-                print("displaying results for " + cell.question.text!)
-                cell.showResults()
+                cell.showResults(choice: choice)
             }
         }
         
@@ -290,7 +289,6 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
             option = "0"
         }
         if sender == cell.choice2_button{
-            cell.choice1_button.isHighlighted = true
             if cell.results.count != 4{
                 cell.results["0"]!.append(currentUID)
                 option = "0"
@@ -320,9 +318,8 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
                 option = "3"
             }
         }
-        print("voted for option " + option)
 
-        cell.showResults()
+        cell.showResults(choice: option)
         DatabaseHelper.addVote(postID: cell.postID, option: option)
         
     }

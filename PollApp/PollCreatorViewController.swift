@@ -143,6 +143,7 @@ class PollCreatorViewController: UIViewController, UITextViewDelegate {
                 options.append(choice4.text)
                 results["3"] = []
             }
+            
             let question : String = questionView.text
             let time = Timestamp()
             var visibilityOpts : [String: Bool] = ["author" : false, "viewers": false]
@@ -150,10 +151,11 @@ class PollCreatorViewController: UIViewController, UITextViewDelegate {
             if visibility.selectedSegmentIndex == 0{
                 visibilityOpts = ["author" : true, "viewers": true]
             }
+            
             if visibility.selectedSegmentIndex == 1{
                 visibilityOpts = ["author" : true, "viewers": false]
             }
-            print(author)
+
             let data : [String : Any] = [
                 "author" : author,
                 "image" : image,

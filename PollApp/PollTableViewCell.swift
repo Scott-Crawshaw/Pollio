@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class PollTableViewCell: UITableViewCell {
 
@@ -62,9 +63,14 @@ class PollTableViewCell: UITableViewCell {
         choice2_text.isHidden = false
         choice3_text.isHidden = false
         choice4_text.isHidden = false
+        
+        choice1_button.layer.borderWidth = 0.0
+        choice2_button.layer.borderWidth = 0.0
+        choice3_button.layer.borderWidth = 0.0
+        choice4_button.layer.borderWidth = 0.0
     }
     
-    func showResults(){
+    func showResults(choice: String){
         var totalVotes : Float = 0.0
         for (_, votes) in results{
             totalVotes += Float(votes.count)
@@ -72,7 +78,7 @@ class PollTableViewCell: UITableViewCell {
         
         let fullWidth = choice1_button.frame.width
         let fullHeight = choice1_button.frame.height
-
+        
         if results.count == 2{
             let firstBarPercent = Float(results["0"]!.count) / totalVotes
             let secondBarPercent = Float(results["1"]!.count) / totalVotes
@@ -82,6 +88,15 @@ class PollTableViewCell: UITableViewCell {
             
             choice3_bar.frame.size = CGSize(width: fullWidth * CGFloat(secondBarPercent), height: fullHeight)
             choice3_bar.isHidden = false
+            
+            if choice == "0"{
+                choice2_button.layer.borderColor = UIColor.black.cgColor
+                choice2_button.layer.borderWidth = 1
+            }
+            if choice == "1"{
+                choice3_button.layer.borderColor = UIColor.black.cgColor
+                choice3_button.layer.borderWidth = 1
+            }
             
         }
         if results.count == 3{
@@ -97,6 +112,19 @@ class PollTableViewCell: UITableViewCell {
             
             choice4_bar.frame.size = CGSize(width: fullWidth * CGFloat(thirdBarPercent), height: fullHeight)
             choice4_bar.isHidden = false
+            
+            if choice == "0"{
+                choice2_button.layer.borderColor = UIColor.black.cgColor
+                choice2_button.layer.borderWidth = 1
+            }
+            if choice == "1"{
+                choice3_button.layer.borderColor = UIColor.black.cgColor
+                choice3_button.layer.borderWidth = 1
+            }
+            if choice == "2"{
+                choice4_button.layer.borderColor = UIColor.black.cgColor
+                choice4_button.layer.borderWidth = 1
+            }
             
         }
         if results.count == 4{
@@ -117,6 +145,23 @@ class PollTableViewCell: UITableViewCell {
             
             choice4_bar.frame.size = CGSize(width: fullWidth * CGFloat(fourthBarPercent), height: fullHeight)
             choice4_bar.isHidden = false
+            
+            if choice == "0"{
+                choice1_button.layer.borderColor = UIColor.black.cgColor
+                choice1_button.layer.borderWidth = 1
+            }
+            if choice == "1"{
+                choice2_button.layer.borderColor = UIColor.black.cgColor
+                choice2_button.layer.borderWidth = 1
+            }
+            if choice == "2"{
+                choice3_button.layer.borderColor = UIColor.black.cgColor
+                choice3_button.layer.borderWidth = 1
+            }
+            if choice == "3"{
+                choice4_button.layer.borderColor = UIColor.black.cgColor
+                choice4_button.layer.borderWidth = 1
+            }
         }
         choice1_button.isEnabled = false
         choice2_button.isEnabled = false

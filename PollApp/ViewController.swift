@@ -27,6 +27,16 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         setGradientBackground()
         super.viewWillAppear(animated)
+        
+        Auth.auth().addStateDidChangeListener { auth, user in
+            if user != nil {
+                print("we have arrived")
+                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let newViewController = storyBoard.instantiateViewController(withIdentifier: "main") as! TabSuperview
+                self.present(newViewController, animated: true, completion: nil)
+            }
+        }
+
     }
     
     @IBAction func sendText(sender: UIButton) {
