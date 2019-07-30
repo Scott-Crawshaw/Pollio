@@ -58,7 +58,7 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.totalCount == 0 {
-            self.tableView.setEmptyMessage("It looks like your feed is empty.\n\nTry finding some friends using the search tab.")
+            self.tableView.setEmptyMessage("Loading...")
         } else {
             self.tableView.restore()
         }
@@ -112,6 +112,7 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
                 
                 guard newData.count > 0 else {
                     self.isFetchInProgress = false
+                    self.tableView.setEmptyMessage("It looks like your feed is empty.\n\nTry finding some friends using the search tab.")
                     return
                 }
                 
