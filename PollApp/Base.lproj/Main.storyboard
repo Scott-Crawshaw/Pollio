@@ -408,12 +408,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <imageView key="tableHeaderView" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Draft2" id="cD1-XB-6cb">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="76"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="54"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="feedCell" rowHeight="417" id="Ovb-bP-DbZ" customClass="PollTableViewCell" customModule="PollApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="104" width="414" height="417"/>
+                                <rect key="frame" x="0.0" y="82" width="414" height="417"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ovb-bP-DbZ" id="Etz-ec-mYx">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="416.5"/>
@@ -1565,9 +1565,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="user bio  - 74 characters" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="CEJ-vW-sIQ">
-                                <rect key="frame" x="32" y="158" width="336" height="55"/>
+                                <rect key="frame" x="32" y="147" width="336" height="66"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="55" id="bLn-xt-qMo"/>
+                                    <constraint firstAttribute="height" constant="66" id="bLn-xt-qMo"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans Light" pointSize="17"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1643,7 +1643,7 @@
                             <constraint firstAttribute="trailing" secondItem="qTY-V6-PLx" secondAttribute="trailing" id="HZr-Ue-gND"/>
                             <constraint firstItem="sXb-dx-PdC" firstAttribute="top" secondItem="CEJ-vW-sIQ" secondAttribute="bottom" constant="55" id="R0Z-xh-Ss8"/>
                             <constraint firstItem="CEJ-vW-sIQ" firstAttribute="trailing" secondItem="sXb-dx-PdC" secondAttribute="trailing" id="R8N-Bm-dna"/>
-                            <constraint firstItem="CEJ-vW-sIQ" firstAttribute="top" secondItem="x8R-gv-oYs" secondAttribute="bottom" constant="49" id="aK8-dH-zdc"/>
+                            <constraint firstItem="CEJ-vW-sIQ" firstAttribute="top" secondItem="x8R-gv-oYs" secondAttribute="bottom" constant="38" id="aK8-dH-zdc"/>
                             <constraint firstItem="x8R-gv-oYs" firstAttribute="leading" secondItem="rQJ-z9-c6f" secondAttribute="leading" constant="32" id="bYy-NC-NeY"/>
                             <constraint firstItem="x8R-gv-oYs" firstAttribute="leading" secondItem="CEJ-vW-sIQ" secondAttribute="leading" id="c4a-qu-fhL"/>
                             <constraint firstItem="ySV-jT-cMz" firstAttribute="trailing" secondItem="qTY-V6-PLx" secondAttribute="trailing" id="fkr-ep-3qq"/>
@@ -1672,7 +1672,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xi8-Fa-e8X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1607" y="2790"/>
+            <point key="canvasLocation" x="1605.7971014492755" y="2789.7321428571427"/>
         </scene>
     </scenes>
     <resources>
