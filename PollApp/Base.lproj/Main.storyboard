@@ -1231,8 +1231,24 @@
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="realname" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="edz-uP-7wQ">
+                                <rect key="frame" x="32" y="109" width="248" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="DyS-iP-Arn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans SemiBold" pointSize="25"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oPd-rb-ZGD">
+                                <rect key="frame" x="344" y="44" width="50" height="50"/>
+                                <state key="normal" image="settings_icon"/>
+                                <connections>
+                                    <action selector="settingsWithSender:" destination="Od1-6e-2vf" eventType="touchUpInside" id="GUY-XZ-MA2"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pq1-8l-sfD">
-                                <rect key="frame" x="32" y="218" width="168" height="30"/>
+                                <rect key="frame" x="32" y="241" width="168" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="nm5-Lz-7cx"/>
                                     <constraint firstAttribute="width" constant="168" id="yDN-YB-Pk1"/>
@@ -1248,19 +1264,11 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="realname" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="edz-uP-7wQ">
-                                <rect key="frame" x="32" y="109" width="248" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="DyS-iP-Arn"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans SemiBold" pointSize="25"/>
-                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Me8-Y1-fAX">
-                                <rect key="frame" x="200" y="218" width="168" height="30"/>
+                                <rect key="frame" x="200" y="241" width="168" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="k9O-iI-7Ls"/>
+                                    <constraint firstAttribute="width" constant="168" id="t2U-aZ-syM"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="17"/>
                                 <state key="normal" title="0 Following">
@@ -1272,13 +1280,6 @@
                                         <real key="value" value="0.5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oPd-rb-ZGD">
-                                <rect key="frame" x="344" y="44" width="50" height="50"/>
-                                <state key="normal" image="settings_icon"/>
-                                <connections>
-                                    <action selector="settingsWithSender:" destination="Od1-6e-2vf" eventType="touchUpInside" id="GUY-XZ-MA2"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1294,7 +1295,7 @@
                             <constraint firstItem="9jz-ZE-KEv" firstAttribute="trailing" secondItem="YNW-eX-x44" secondAttribute="trailing" id="Pad-9p-jhe"/>
                             <constraint firstItem="pq1-8l-sfD" firstAttribute="leading" secondItem="BOt-JS-KAg" secondAttribute="leading" id="Ruf-Go-jiq"/>
                             <constraint firstItem="pq1-8l-sfD" firstAttribute="baseline" secondItem="Me8-Y1-fAX" secondAttribute="baseline" id="XX7-Gu-S3g"/>
-                            <constraint firstItem="pq1-8l-sfD" firstAttribute="top" secondItem="BOt-JS-KAg" secondAttribute="bottom" constant="5" id="YKm-H1-kFB"/>
+                            <constraint firstItem="pq1-8l-sfD" firstAttribute="top" secondItem="BOt-JS-KAg" secondAttribute="bottom" constant="28" id="YKm-H1-kFB"/>
                             <constraint firstItem="edz-uP-7wQ" firstAttribute="leading" secondItem="BOt-JS-KAg" secondAttribute="leading" id="ZCW-FX-Exv"/>
                             <constraint firstItem="edz-uP-7wQ" firstAttribute="top" secondItem="Ph2-Pf-NG9" secondAttribute="bottom" id="fva-yc-GQ8"/>
                             <constraint firstItem="9jz-ZE-KEv" firstAttribute="leading" secondItem="YNW-eX-x44" secondAttribute="leading" id="hSf-u0-e5v"/>
