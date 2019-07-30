@@ -81,6 +81,12 @@ class SettingsViewController: UITableViewController {
         self.present(newViewController, animated: true, completion: nil)
     }
     
+    @IBAction func goBack(sender: UIBarButtonItem){
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "main") as! TabSuperview
+        self.present(newViewController, animated: true, completion: nil)
+    }
+    
 
     /*
     // Override to support conditional editing of the table view.

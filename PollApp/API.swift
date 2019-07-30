@@ -29,6 +29,36 @@ class DatabaseHelper{
         }
     }
     
+    static func getFollowingCount(UID: String, callback: @escaping (Int) -> Void) {
+        let db = Firestore.firestore()
+        let docRef = db.collection("following").document(UID)
+        
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                let followingArr : [String] = document.data()?["following"] as? [String] ?? []
+                callback(followingArr.count)
+            }
+            else{
+                callback(0)
+            }
+        }
+    }
+    
+    static func getFollowersCount(UID: String, callback: @escaping (Int) -> Void) {
+        let db = Firestore.firestore()
+        let docRef = db.collection("followers").document(UID)
+        
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                let followingArr : [String] = document.data()?["followers"] as? [String] ?? []
+                callback(followingArr.count)
+            }
+            else{
+                callback(0)
+            }
+        }
+    }
+    
     static func getPostByID(ID: String, callback: @escaping (Dictionary<String, Any>?) -> Void){
         let db = Firestore.firestore()
         let docRef = db.collection("posts").document(ID)
