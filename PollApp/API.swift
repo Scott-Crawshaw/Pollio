@@ -116,6 +116,19 @@ class DatabaseHelper{
         }
     }
     
+    static func deleteAccount(){
+        let uid = Auth.auth().currentUser!.uid
+        let db = Firestore.firestore()
+        
+        db.collection("users").document(uid).delete()
+    }
+    
+    static func editBio(bio: String){
+        let uid = Auth.auth().currentUser!.uid
+        let db = Firestore.firestore()
+        db.collection("users").document(uid).updateData(["bio":bio])
+    }
+    
     static func addVote(postID: String, option: String){
         let db = Firestore.firestore()
         db.collection("posts").document(postID).updateData(["results." + option : FieldValue.arrayUnion([Auth.auth().currentUser!.uid])])
@@ -129,6 +142,7 @@ class DatabaseHelper{
         let following = "/following/" + uid
         let posts = "/posts/" + uid
         let picture = ""
+        let bio = ""
         
         let data : [String : Any] = [
             "creation" : time,
@@ -138,7 +152,8 @@ class DatabaseHelper{
             "picture" : picture,
             "posts" : posts,
             "searchName" : searchName,
-            "username" : username
+            "username" : username,
+            "bio" : bio
         ]
         
         let db = Firestore.firestore()
