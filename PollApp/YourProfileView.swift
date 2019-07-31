@@ -29,7 +29,7 @@ class YourProfileView: UIViewController {
         //These will set following/er count once database pulls numbers into the Ints following/followers
         label_followers.setTitle("\(String(describing: followers)) Followers", for: .normal)
         label_following.setTitle("\(String(describing: following)) Following", for: .normal)
-        
+        //let me pull
         
         // Do any additional setup after loading the view.
     }
