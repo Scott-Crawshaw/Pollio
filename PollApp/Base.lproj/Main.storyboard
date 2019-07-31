@@ -86,7 +86,7 @@
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="Don't worry about a password yet." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="698-x0-09E">
-                                <rect key="frame" x="32" y="408" width="350" height="28"/>
+                                <rect key="frame" x="32" y="408" width="350" height="32.5"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans Light" pointSize="23"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -94,7 +94,7 @@
                                 <size key="shadowOffset" width="0.5" height="-1"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="You can verify and secure your account later." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="hXh-fC-s2j">
-                                <rect key="frame" x="50" y="444" width="314" height="22"/>
+                                <rect key="frame" x="50" y="448.5" width="314" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="hqn-Ca-4Xt"/>
                                 </constraints>
@@ -1034,16 +1034,50 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="80.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JJr-J7-RGe">
-                                            <rect key="frame" x="169" y="30" width="76" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JJr-J7-RGe">
+                                            <rect key="frame" x="20" y="11" width="216" height="31"/>
+                                            <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans SemiBold" pointSize="20"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="realname" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="apZ-fb-gFd">
+                                            <rect key="frame" x="20" y="45" width="189" height="25"/>
+                                            <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans SemiBold" pointSize="18"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron" translatesAutoresizingMaskIntoConstraints="NO" id="mYk-Kg-OBF">
+                                            <rect key="frame" x="357" y="24.5" width="31.5" height="31.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="mYk-Kg-OBF" secondAttribute="height" multiplier="1:1" id="v5M-mZ-UWQ"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="mutualfollowers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ahn-3g-J7P">
+                                            <rect key="frame" x="198" y="14" width="151" height="25"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans Light" pointSize="18"/>
+                                            <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="mYk-Kg-OBF" secondAttribute="trailing" constant="5.5" id="2dU-ru-xel"/>
+                                        <constraint firstItem="JJr-J7-RGe" firstAttribute="top" secondItem="qzI-Nt-Aix" secondAttribute="topMargin" id="4n0-Ln-DO0"/>
+                                        <constraint firstItem="JJr-J7-RGe" firstAttribute="trailing" secondItem="apZ-fb-gFd" secondAttribute="trailing" constant="27" id="61s-yA-JkH"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="mYk-Kg-OBF" secondAttribute="bottom" constant="14" id="QwN-JV-TAc"/>
+                                        <constraint firstItem="JJr-J7-RGe" firstAttribute="leading" secondItem="apZ-fb-gFd" secondAttribute="leading" id="WPJ-yO-xhF"/>
+                                        <constraint firstItem="apZ-fb-gFd" firstAttribute="bottom" secondItem="qzI-Nt-Aix" secondAttribute="bottomMargin" id="Yku-dK-dVr"/>
+                                        <constraint firstItem="mYk-Kg-OBF" firstAttribute="leading" secondItem="apZ-fb-gFd" secondAttribute="trailing" constant="148" id="kYF-02-WYi"/>
+                                        <constraint firstItem="apZ-fb-gFd" firstAttribute="bottom" secondItem="qzI-Nt-Aix" secondAttribute="bottomMargin" id="mo0-Xz-edC"/>
+                                        <constraint firstItem="JJr-J7-RGe" firstAttribute="leading" secondItem="qzI-Nt-Aix" secondAttribute="leadingMargin" id="seH-AB-inf"/>
+                                        <constraint firstItem="mYk-Kg-OBF" firstAttribute="top" secondItem="qzI-Nt-Aix" secondAttribute="topMargin" constant="13.5" id="uRF-OK-1WJ"/>
+                                        <constraint firstAttribute="bottom" secondItem="apZ-fb-gFd" secondAttribute="bottom" constant="10.5" id="yCY-j8-PPx"/>
+                                        <constraint firstItem="apZ-fb-gFd" firstAttribute="top" secondItem="JJr-J7-RGe" secondAttribute="bottom" constant="3" id="yct-zU-P7v"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="mutual_followers" destination="Ahn-3g-J7P" id="Idg-Y3-iif"/>
+                                    <outlet property="name_label" destination="apZ-fb-gFd" id="LXh-fZ-5BM"/>
                                     <outlet property="username_label" destination="JJr-J7-RGe" id="lWZ-b9-vW9"/>
                                 </connections>
                             </tableViewCell>
@@ -1259,6 +1293,7 @@
                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pq1-8l-sfD">
                                 <rect key="frame" x="32" y="235" width="170" height="36"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" secondItem="pq1-8l-sfD" secondAttribute="height" multiplier="85:18" id="4bT-Eo-eF2"/>
                                     <constraint firstAttribute="width" constant="170" id="NSL-Rj-DEI"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="17"/>
@@ -1275,6 +1310,7 @@
                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Me8-Y1-fAX">
                                 <rect key="frame" x="205" y="235" width="171" height="36"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" secondItem="Me8-Y1-fAX" secondAttribute="height" multiplier="19:4" id="Pgu-2N-9fS"/>
                                     <constraint firstAttribute="width" constant="171" id="hTL-jB-YzI"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="17"/>
@@ -1299,10 +1335,12 @@
                             <constraint firstItem="Ph2-Pf-NG9" firstAttribute="leading" secondItem="Zk5-h0-lng" secondAttribute="leading" constant="32" id="A3U-uf-6Qb"/>
                             <constraint firstItem="9jz-ZE-KEv" firstAttribute="top" secondItem="pq1-8l-sfD" secondAttribute="bottom" constant="40" id="CQC-nE-zVW"/>
                             <constraint firstItem="YNW-eX-x44" firstAttribute="top" secondItem="Zk5-h0-lng" secondAttribute="top" constant="318" id="Dgy-4U-5fl"/>
+                            <constraint firstItem="Me8-Y1-fAX" firstAttribute="top" secondItem="BOt-JS-KAg" secondAttribute="bottom" constant="59.5" id="GBM-s0-s5l"/>
                             <constraint firstItem="Ph2-Pf-NG9" firstAttribute="top" secondItem="Zk5-h0-lng" secondAttribute="top" constant="23" id="Hkh-AB-BUc"/>
                             <constraint firstItem="Zk5-h0-lng" firstAttribute="trailing" secondItem="Me8-Y1-fAX" secondAttribute="trailing" constant="38" id="Me9-5Q-cAG"/>
                             <constraint firstItem="9jz-ZE-KEv" firstAttribute="trailing" secondItem="YNW-eX-x44" secondAttribute="trailing" id="Pad-9p-jhe"/>
                             <constraint firstItem="9jz-ZE-KEv" firstAttribute="top" secondItem="Me8-Y1-fAX" secondAttribute="bottom" constant="40" id="Xt0-eW-G92"/>
+                            <constraint firstItem="pq1-8l-sfD" firstAttribute="top" secondItem="BOt-JS-KAg" secondAttribute="bottom" constant="59.5" id="YOH-hP-JXI"/>
                             <constraint firstItem="BOt-JS-KAg" firstAttribute="leading" secondItem="edz-uP-7wQ" secondAttribute="leading" id="ZWU-In-2Yk"/>
                             <constraint firstItem="pq1-8l-sfD" firstAttribute="leading" secondItem="Zk5-h0-lng" secondAttribute="leading" constant="32" id="b25-bK-wkW"/>
                             <constraint firstItem="edz-uP-7wQ" firstAttribute="top" secondItem="Ph2-Pf-NG9" secondAttribute="bottom" constant="-2" id="fva-yc-GQ8"/>
@@ -1549,7 +1587,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ySV-jT-cMz">
-                                <rect key="frame" x="0.0" y="311" width="414" height="49"/>
+                                <rect key="frame" x="0.0" y="277" width="414" height="49"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <tabBarItem title="Posted Polls" image="transparent" selectedImage="transparent" id="Kg1-Pe-5fb">
@@ -1580,7 +1618,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sXb-dx-PdC">
-                                <rect key="frame" x="32" y="268" width="336" height="30"/>
+                                <rect key="frame" x="32" y="234" width="348" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="tFr-wA-ck7"/>
                                 </constraints>
@@ -1622,7 +1660,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G3a-gN-yGL">
-                                <rect key="frame" x="200" y="218" width="168" height="30"/>
+                                <rect key="frame" x="200" y="218" width="180" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="KNo-u1-egL"/>
                                 </constraints>
@@ -1695,6 +1733,7 @@
         <image name="Draft2" width="115" height="115"/>
         <image name="back" width="25" height="25"/>
         <image name="bars" width="69" height="69"/>
+        <image name="chevron" width="75" height="75"/>
         <image name="icons8-add-new-50" width="25" height="25"/>
         <image name="icons8-right-arrow-90" width="30" height="30"/>
         <image name="info_icon" width="25" height="25"/>
