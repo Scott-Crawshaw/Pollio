@@ -64,6 +64,7 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating,
     
     func populateCell(cell: SearchViewCell, indexPath: IndexPath){
         var entry : [String : Any] = tableData[indexPath.row]
+        
 
         cell.username_label.text? = entry["username"]! as! String
         cell.name_label.text? = "\(entry["name"]!)"
@@ -81,12 +82,13 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating,
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         DatabaseHelper.searchUsers(search: resultSearchController.searchBar.text!, callback: self.updateData)
+        tableView.setEmptyMessage1("Loading...")
     }
     
     func updateData(data : [[String : Any]]){
         tableData = data
+        tableView.restore1()
         self.tableView.reloadData()
-        
     }
     
     func updateSearchResults(for searchController: UISearchController) {
@@ -138,4 +140,25 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating,
     }
     */
 
+}
+
+extension UITableView {
+    
+    func setEmptyMessage1(_ message: String) {
+        let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.size.height))
+        messageLabel.text = message
+        messageLabel.textColor = .gray
+        messageLabel.numberOfLines = 0;
+        messageLabel.textAlignment = .center;
+        messageLabel.font = UIFont(name: "TrebuchetMS", size: 30)
+        messageLabel.sizeToFit()
+        
+        self.backgroundView = messageLabel;
+        self.separatorStyle = UITableViewCell.SeparatorStyle.none
+    }
+    
+    func restore1() {
+        self.backgroundView = nil
+        self.separatorStyle = UITableViewCell.SeparatorStyle.singleLine
+    }
 }
