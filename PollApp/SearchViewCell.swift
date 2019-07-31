@@ -15,7 +15,7 @@ class SearchViewCell: UITableViewCell {
     @IBOutlet weak var username_label: UILabel!
     @IBOutlet weak var name_label: UILabel!
     @IBOutlet weak var mutual_followers: UILabel!
-    
+    //
     
     override func awakeFromNib() {
         super.awakeFromNib()
