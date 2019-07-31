@@ -163,7 +163,7 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
         }
     }
     
-    func fetchFeed(completed: @escaping ([[String : Any]], Error?)->Void) {
+    func fetchFeed(completed: @escaping ([[String : Any]], Error?) -> Void) {
         let functions = Functions.functions()
         var newData : [[String : Any]] = []
         print("let's get feed : " + lastCurrentPageDoc.description)
