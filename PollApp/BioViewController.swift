@@ -48,9 +48,7 @@ class BioViewController: UIViewController, UITextViewDelegate {
     
     @IBAction func submitBio(_ sender: UIButton) {
         DatabaseHelper.editBio(bio: bioTextView.text)
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let newViewController = storyBoard.instantiateViewController(withIdentifier: "settings") as! SettingsViewController
-        self.present(newViewController, animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
     func setGradientBackground() {

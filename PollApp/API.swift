@@ -125,11 +125,12 @@ class DatabaseHelper{
         newPost.setData(full_data)
     }
     
-    static func searchUsers(search: String, callback: @escaping ([[[String : String]]]) -> Void){
+    static func searchUsers(search: String, callback: @escaping ([[String : Any]]) -> Void){
         let searchTerm = search.lowercased()
         let functions = Functions.functions()
         functions.httpsCallable("searchUsers").call(["search": searchTerm]) { (result, error) in
-            callback(result?.data as! [[[String : String]]])
+            print(result?.data)
+            callback(result?.data as! [[String : Any]])
         }
     }
     

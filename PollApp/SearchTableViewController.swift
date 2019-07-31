@@ -10,8 +10,7 @@ import UIKit
 
 class SearchTableViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate {
     
-    var tableData : [[String : String]] = []
-    var uids : [String] = []
+    var tableData : [[String : Any]] = []
     var resultSearchController = UISearchController()
     
     override func viewDidLoad() {
@@ -64,19 +63,19 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating,
     }
     
     func populateCell(cell: SearchViewCell, indexPath: IndexPath){
-        var entry : [String : String] = tableData[indexPath.row]
-        let mutualFollowerCount: Int = 0 //retrieve mutual followers per person and return here
-        cell.username_label.text? = entry["username"]!
-        cell.name_label.text? = "\(entry["name"]!)"
-        cell.mutual_followers.text? = "\(mutualFollowerCount) mutual followers"
+        var entry : [String : Any] = tableData[indexPath.row]
 
-        cell.uid = entry["user"]!
+        cell.username_label.text? = entry["username"]! as! String
+        cell.name_label.text? = "\(entry["name"]!)"
+        cell.mutual_followers.text? = "\(entry["commonFollowersCount"]!) mutual followers"
+
+        cell.uid = entry["user"]! as! String
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "yourProfile") as! YourProfileView
-        newViewController.uid = tableData[indexPath.row]["user"]!
+        newViewController.uid = tableData[indexPath.row]["user"]! as! String
         self.present(newViewController, animated: true, completion: nil)
     }
     
@@ -84,18 +83,8 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating,
         DatabaseHelper.searchUsers(search: resultSearchController.searchBar.text!, callback: self.updateData)
     }
     
-    func updateData(data : [[[String : String]]]){
-        tableData.removeAll(keepingCapacity: false)
-        uids.removeAll(keepingCapacity: false)
-        for array in data{
-            for entry in array{
-                if !(uids.contains(entry["user"]!)){
-                    uids.append(entry["user"]!)
-                    tableData.append(entry)
-                }
-                
-            }
-        }
+    func updateData(data : [[String : Any]]){
+        tableData = data
         self.tableView.reloadData()
         
     }
