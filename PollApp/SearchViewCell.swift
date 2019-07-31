@@ -11,12 +11,17 @@ import UIKit
 class SearchViewCell: UITableViewCell {
 
     var uid : String = ""
+
+    @IBOutlet weak var username_label: UILabel!
+    @IBOutlet weak var name_label: UILabel!
+    @IBOutlet weak var mutual_followers: UILabel!
     
-    @IBOutlet var username_label: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

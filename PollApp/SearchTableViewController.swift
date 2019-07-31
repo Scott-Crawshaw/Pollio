@@ -65,7 +65,11 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating,
     
     func populateCell(cell: SearchViewCell, indexPath: IndexPath){
         var entry : [String : String] = tableData[indexPath.row]
-        cell.username_label.text? = entry["name"]! + " ~ " + entry["username"]!
+        let mutualFollowerCount: Int = 0 //retrieve mutual followers per person and return here
+        cell.username_label.text? = entry["username"]!
+        cell.name_label.text? = "\(entry["name"]!)"
+        cell.mutual_followers.text? = "\(mutualFollowerCount) mutual followers"
+
         cell.uid = entry["user"]!
     }
     
