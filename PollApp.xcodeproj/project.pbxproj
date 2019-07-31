@@ -39,6 +39,7 @@
 		BB72700A22B7F3D7006C386B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB72700822B7F3D7006C386B /* LaunchScreen.storyboard */; };
 		BB72701522B7F3D7006C386B /* PollAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB72701422B7F3D7006C386B /* PollAppTests.swift */; };
 		BB72702022B7F3D7006C386B /* PollAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB72701F22B7F3D7006C386B /* PollAppUITests.swift */; };
+		BBF1F33822F2003E00E358AB /* SearchViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF1F33722F2003E00E358AB /* SearchViewCell.swift */; };
 		ECD13F2BBD4BA55E374062DA /* Pods_PollAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98270D507219851B08D7A341 /* Pods_PollAppUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -104,6 +105,7 @@
 		BB72701F22B7F3D7006C386B /* PollAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollAppUITests.swift; sourceTree = "<group>"; };
 		BB72702122B7F3D7006C386B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB7360D422B944B9002210D3 /* PollApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PollApp.entitlements; sourceTree = "<group>"; };
+		BBF1F33722F2003E00E358AB /* SearchViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewCell.swift; sourceTree = "<group>"; };
 		BDDF97E7AC452DF08ED85B36 /* Pods-PollAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PollAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-PollAppUITests/Pods-PollAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E56D390605BA2557300FFF0D /* Pods-PollApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PollApp.release.xcconfig"; path = "Target Support Files/Pods-PollApp/Pods-PollApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -204,6 +206,7 @@
 				731DA04622E0EC370044749B /* TabSuperview.swift */,
 				BB3D2F8122E0D5DD00723A10 /* PollTableViewCell.swift */,
 				BB3A846622DCEE1E0082AB64 /* SearchTableViewController.swift */,
+				BBF1F33722F2003E00E358AB /* SearchViewCell.swift */,
 				BB487F2222D3B97800BED4A4 /* PollCreatorViewController.swift */,
 				73241BA422C68E1A00104FA7 /* SlideViewController.swift */,
 				734C0A6222D527FD008F8A3A /* ItemCell.swift */,
@@ -518,6 +521,7 @@
 				BB3D2F8622E22B9500723A10 /* FeedTableViewController.swift in Sources */,
 				BB4610C522F09CD3008A6191 /* SettingsViewController.swift in Sources */,
 				BB3A846722DCEE1E0082AB64 /* SearchTableViewController.swift in Sources */,
+				BBF1F33822F2003E00E358AB /* SearchViewCell.swift in Sources */,
 				7363BD5222F0BDBA007F00D1 /* YourProfileView.swift in Sources */,
 				731DA04722E0EC370044749B /* TabSuperview.swift in Sources */,
 				BB3D2F8222E0D5DD00723A10 /* PollTableViewCell.swift in Sources */,

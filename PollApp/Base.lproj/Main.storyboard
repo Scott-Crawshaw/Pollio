@@ -461,7 +461,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Oh no! Something went wrong" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qTV-oI-q8s">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Oh no! Something went wrong." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qTV-oI-q8s">
                                                     <rect key="frame" x="8" y="33" width="358" height="140"/>
                                                     <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans Light" pointSize="20"/>
                                                     <nil key="textColor"/>
@@ -1027,13 +1027,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="6fo-AI-wb3">
-                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="81" id="6fo-AI-wb3" customClass="SearchViewCell" customModule="PollApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="81"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6fo-AI-wb3" id="qzI-Nt-Aix">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="80.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JJr-J7-RGe">
+                                            <rect key="frame" x="169" y="30" width="76" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="username_label" destination="JJr-J7-RGe" id="lWZ-b9-vW9"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -1045,7 +1057,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z8r-Rl-pfj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="783" y="2790"/>
+            <point key="canvasLocation" x="782.60869565217399" y="2789.7321428571427"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="YgM-Rc-Wuv">
@@ -1526,7 +1538,7 @@
         <!--Your Profile View-->
         <scene sceneID="H3s-dM-dia">
             <objects>
-                <viewController id="wu0-Tx-BLA" customClass="YourProfileView" customModule="PollApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="yourProfile" id="wu0-Tx-BLA" customClass="YourProfileView" customModule="PollApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="W1y-BA-n58">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1631,6 +1643,13 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZUB-yr-tDA">
+                                <rect key="frame" x="20" y="44" width="25" height="25"/>
+                                <state key="normal" image="back"/>
+                                <connections>
+                                    <action selector="goBack:" destination="wu0-Tx-BLA" eventType="touchUpInside" id="JbS-Bt-H2O"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -1643,6 +1662,8 @@
                             <constraint firstAttribute="trailing" secondItem="qTY-V6-PLx" secondAttribute="trailing" id="HZr-Ue-gND"/>
                             <constraint firstItem="sXb-dx-PdC" firstAttribute="top" secondItem="CEJ-vW-sIQ" secondAttribute="bottom" constant="55" id="R0Z-xh-Ss8"/>
                             <constraint firstItem="CEJ-vW-sIQ" firstAttribute="trailing" secondItem="sXb-dx-PdC" secondAttribute="trailing" id="R8N-Bm-dna"/>
+                            <constraint firstItem="ZUB-yr-tDA" firstAttribute="top" secondItem="rQJ-z9-c6f" secondAttribute="top" id="V5Y-cD-ohS"/>
+                            <constraint firstItem="ZUB-yr-tDA" firstAttribute="leading" secondItem="W1y-BA-n58" secondAttribute="leadingMargin" id="WrF-zu-ZYV"/>
                             <constraint firstItem="CEJ-vW-sIQ" firstAttribute="top" secondItem="x8R-gv-oYs" secondAttribute="bottom" constant="38" id="aK8-dH-zdc"/>
                             <constraint firstItem="x8R-gv-oYs" firstAttribute="leading" secondItem="rQJ-z9-c6f" secondAttribute="leading" constant="32" id="bYy-NC-NeY"/>
                             <constraint firstItem="x8R-gv-oYs" firstAttribute="leading" secondItem="CEJ-vW-sIQ" secondAttribute="leading" id="c4a-qu-fhL"/>
@@ -1662,6 +1683,7 @@
                         <viewLayoutGuide key="safeArea" id="rQJ-z9-c6f"/>
                     </view>
                     <connections>
+                        <outlet property="back_button" destination="ZUB-yr-tDA" id="xeM-sx-4Wc"/>
                         <outlet property="label_bio" destination="CEJ-vW-sIQ" id="jFS-AM-P4Z"/>
                         <outlet property="label_followers" destination="5L6-LB-kcR" id="HSE-Wb-igL"/>
                         <outlet property="label_following" destination="G3a-gN-yGL" id="mal-SP-zhM"/>

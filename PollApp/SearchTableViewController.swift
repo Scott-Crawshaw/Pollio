@@ -10,7 +10,8 @@ import UIKit
 
 class SearchTableViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate {
     
-    var filteredTableData : [String]! = []
+    var tableData : [[String : String]] = []
+    var uids : [String] = []
     var resultSearchController = UISearchController()
     
     override func viewDidLoad() {
@@ -50,16 +51,29 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating,
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // 2
         // return the number of rows
-        return filteredTableData.count
+        return tableData.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // 3
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! SearchViewCell
         
-        cell.textLabel?.text = filteredTableData[indexPath.row]
+        populateCell(cell: cell, indexPath: indexPath)
         
         return cell
+    }
+    
+    func populateCell(cell: SearchViewCell, indexPath: IndexPath){
+        var entry : [String : String] = tableData[indexPath.row]
+        cell.username_label.text? = entry["name"]! + " ~ " + entry["username"]!
+        cell.uid = entry["user"]!
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "yourProfile") as! YourProfileView
+        newViewController.uid = tableData[indexPath.row]["user"]!
+        self.present(newViewController, animated: true, completion: nil)
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -67,11 +81,15 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating,
     }
     
     func updateData(data : [[[String : String]]]){
-        filteredTableData.removeAll(keepingCapacity: false)
+        tableData.removeAll(keepingCapacity: false)
+        uids.removeAll(keepingCapacity: false)
         for array in data{
-            print(array)
             for entry in array{
-                filteredTableData.append(entry["name"]! + " ~ " + entry["username"]!)
+                if !(uids.contains(entry["user"]!)){
+                    uids.append(entry["user"]!)
+                    tableData.append(entry)
+                }
+                
             }
         }
         self.tableView.reloadData()

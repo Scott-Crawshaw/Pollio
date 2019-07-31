@@ -43,9 +43,7 @@ class BioViewController: UIViewController, UITextViewDelegate {
     }
     
     @IBAction func back(_ sender: UIButton) {
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let newViewController = storyBoard.instantiateViewController(withIdentifier: "settings") as! SettingsViewController
-        self.present(newViewController, animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func submitBio(_ sender: UIButton) {
