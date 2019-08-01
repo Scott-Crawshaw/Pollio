@@ -1415,7 +1415,7 @@
                                 </constraints>
                                 <state key="normal" image="adduser"/>
                                 <connections>
-                                    <action selector="settingsWithSender:" destination="Od1-6e-2vf" eventType="touchUpInside" id="iul-cN-k5y"/>
+                                    <action selector="followRequestsWithSender:" destination="Od1-6e-2vf" eventType="touchDown" id="mBe-03-6OJ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1763,7 +1763,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="o89-lb-ozC" firstAttribute="top" secondItem="T4G-Ja-cys" secondAttribute="bottom" constant="5" id="3Ku-EC-aOK"/>
+                            <constraint firstItem="BQJ-Gt-AA9" firstAttribute="top" secondItem="xlZ-dr-yeY" secondAttribute="bottom" constant="8" id="3Rc-9S-g16"/>
                             <constraint firstItem="c3f-gL-Y1T" firstAttribute="leading" secondItem="xlZ-dr-yeY" secondAttribute="trailing" constant="2" id="96q-pc-IQ1"/>
+                            <constraint firstItem="BQJ-Gt-AA9" firstAttribute="top" secondItem="c3f-gL-Y1T" secondAttribute="bottom" constant="8" id="9Uk-zx-RQf"/>
                             <constraint firstItem="b9u-yV-24Q" firstAttribute="trailing" secondItem="c3f-gL-Y1T" secondAttribute="trailing" constant="39" id="BH5-OY-zS7"/>
                             <constraint firstItem="T4G-Ja-cys" firstAttribute="leading" secondItem="b9u-yV-24Q" secondAttribute="leading" constant="32" id="CTa-MM-uSp"/>
                             <constraint firstItem="mf9-SL-3Wm" firstAttribute="leading" secondItem="b9u-yV-24Q" secondAttribute="leading" constant="32" id="D92-PU-1J6"/>
