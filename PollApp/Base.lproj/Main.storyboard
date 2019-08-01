@@ -86,7 +86,7 @@
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="Don't worry about a password yet." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="698-x0-09E">
-                                <rect key="frame" x="32" y="408" width="350" height="28"/>
+                                <rect key="frame" x="32" y="408" width="350" height="32.5"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans Light" pointSize="23"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -94,7 +94,7 @@
                                 <size key="shadowOffset" width="0.5" height="-1"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="You can verify and secure your account later." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="hXh-fC-s2j">
-                                <rect key="frame" x="50" y="444" width="314" height="22"/>
+                                <rect key="frame" x="50" y="448.5" width="314" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="hqn-Ca-4Xt"/>
                                 </constraints>
@@ -727,7 +727,7 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mutualfollowers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5uZ-ja-8Wt">
-                                            <rect key="frame" x="121" y="14" width="127" height="21"/>
+                                            <rect key="frame" x="130" y="14" width="130" height="25"/>
                                             <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans Light" pointSize="18"/>
                                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
@@ -1717,7 +1717,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="seeFollowing:" destination="9bL-eO-Op8" eventType="touchUpInside" id="X3J-gI-7fn"/>
+                                    <action selector="seeFollowing:" destination="9bL-eO-Op8" eventType="touchUpInside" id="gZr-Hv-dqu"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BQJ-Gt-AA9">
@@ -1756,7 +1756,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="seeFollowers:" destination="9bL-eO-Op8" eventType="touchUpInside" id="iCI-sQ-dKM"/>
+                                    <action selector="seeFollowers:" destination="9bL-eO-Op8" eventType="touchUpInside" id="Vlx-xv-QL6"/>
                                 </connections>
                             </button>
                         </subviews>

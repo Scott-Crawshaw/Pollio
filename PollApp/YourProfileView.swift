@@ -51,6 +51,29 @@ class YourProfileView: UIViewController {
         }
     }
     
+    @IBAction func seeFollowing(_ sender: UIButton) {
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "userListView") as! UserListViewController
+        
+        newViewController.infoRef = "/following/" + uid
+        newViewController.arrName = "following"
+        newViewController.titleText = "Following"
+        
+        self.present(newViewController, animated: true, completion: nil)
+    }
+    
+    
+    @IBAction func seeFollowers(_ sender: UIButton) {
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "userListView") as! UserListViewController
+        
+        newViewController.infoRef = "/followers/" + uid
+        newViewController.arrName = "followers"
+        newViewController.titleText = "Followers"
+        
+        self.present(newViewController, animated: true, completion: nil)
+    }
+    
     
     @IBAction func goBack(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
