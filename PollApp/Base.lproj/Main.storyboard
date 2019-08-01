@@ -86,7 +86,7 @@
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="Don't worry about a password yet." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="698-x0-09E">
-                                <rect key="frame" x="32" y="408" width="350" height="28"/>
+                                <rect key="frame" x="32" y="408" width="350" height="32.5"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans Light" pointSize="23"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -94,7 +94,7 @@
                                 <size key="shadowOffset" width="0.5" height="-1"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="You can verify and secure your account later." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="hXh-fC-s2j">
-                                <rect key="frame" x="50" y="444" width="314" height="22"/>
+                                <rect key="frame" x="50" y="448.5" width="314" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="hqn-Ca-4Xt"/>
                                 </constraints>
@@ -727,7 +727,7 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mutualfollowers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5uZ-ja-8Wt">
-                                            <rect key="frame" x="121" y="14" width="127" height="21"/>
+                                            <rect key="frame" x="130" y="14" width="130" height="25"/>
                                             <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans Light" pointSize="18"/>
                                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
@@ -1763,7 +1763,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="o89-lb-ozC" firstAttribute="top" secondItem="T4G-Ja-cys" secondAttribute="bottom" constant="5" id="3Ku-EC-aOK"/>
+                            <constraint firstItem="BQJ-Gt-AA9" firstAttribute="top" secondItem="xlZ-dr-yeY" secondAttribute="bottom" constant="8" id="3Rc-9S-g16"/>
                             <constraint firstItem="c3f-gL-Y1T" firstAttribute="leading" secondItem="xlZ-dr-yeY" secondAttribute="trailing" constant="2" id="96q-pc-IQ1"/>
+                            <constraint firstItem="BQJ-Gt-AA9" firstAttribute="top" secondItem="c3f-gL-Y1T" secondAttribute="bottom" constant="8" id="9Uk-zx-RQf"/>
                             <constraint firstItem="b9u-yV-24Q" firstAttribute="trailing" secondItem="c3f-gL-Y1T" secondAttribute="trailing" constant="39" id="BH5-OY-zS7"/>
                             <constraint firstItem="T4G-Ja-cys" firstAttribute="leading" secondItem="b9u-yV-24Q" secondAttribute="leading" constant="32" id="CTa-MM-uSp"/>
                             <constraint firstItem="mf9-SL-3Wm" firstAttribute="leading" secondItem="b9u-yV-24Q" secondAttribute="leading" constant="32" id="D92-PU-1J6"/>
