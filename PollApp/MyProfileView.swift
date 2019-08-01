@@ -61,6 +61,16 @@ class MyProfileView: UIViewController {
     }
     
 
+    @IBAction func seeFollowing(_ sender: UIButton) {
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "settings") as! SettingsViewController
+        self.present(newViewController, animated: true, completion: nil)
+    }
+    
+    
+    @IBAction func seeFollowers(_ sender: UIButton) {
+        
+    }
     /*
     // MARK: - Navigation
 
