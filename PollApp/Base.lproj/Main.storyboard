@@ -1717,7 +1717,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="seeFollowing:" destination="9bL-eO-Op8" eventType="touchUpInside" id="X3J-gI-7fn"/>
+                                    <action selector="seeFollowing:" destination="9bL-eO-Op8" eventType="touchUpInside" id="gZr-Hv-dqu"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BQJ-Gt-AA9">
@@ -1756,7 +1756,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="seeFollowers:" destination="9bL-eO-Op8" eventType="touchUpInside" id="iCI-sQ-dKM"/>
+                                    <action selector="seeFollowers:" destination="9bL-eO-Op8" eventType="touchUpInside" id="Vlx-xv-QL6"/>
                                 </connections>
                             </button>
                         </subviews>
