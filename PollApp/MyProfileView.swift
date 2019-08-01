@@ -63,13 +63,25 @@ class MyProfileView: UIViewController {
 
     @IBAction func seeFollowing(_ sender: UIButton) {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let newViewController = storyBoard.instantiateViewController(withIdentifier: "settings") as! SettingsViewController
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "userList") as! UserListViewController
+        
+        newViewController.infoRef = "/following/" + userID
+        newViewController.arrName = "following"
+        newViewController.titleText = "Following"
+        
         self.present(newViewController, animated: true, completion: nil)
     }
     
     
     @IBAction func seeFollowers(_ sender: UIButton) {
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "userList") as! UserListViewController
         
+        newViewController.infoRef = "/followers/" + userID
+        newViewController.arrName = "followers"
+        newViewController.titleText = "Followers"
+        
+        self.present(newViewController, animated: true, completion: nil)
     }
     /*
     // MARK: - Navigation

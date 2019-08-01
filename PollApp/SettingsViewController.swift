@@ -82,9 +82,7 @@ class SettingsViewController: UITableViewController {
     }
     
     @IBAction func goBack(sender: UIBarButtonItem){
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let newViewController = storyBoard.instantiateViewController(withIdentifier: "main") as! TabSuperview
-        self.present(newViewController, animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
 
