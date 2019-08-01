@@ -61,7 +61,7 @@ class MyProfileView: UIViewController {
 
     @IBAction func seeFollowing(_ sender: UIButton) {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let newViewController = storyBoard.instantiateViewController(withIdentifier: "userList") as! UserListViewController
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "userListView") as! UserListViewController
         
         newViewController.infoRef = "/following/" + Auth.auth().currentUser!.uid
         newViewController.arrName = "following"
@@ -73,7 +73,7 @@ class MyProfileView: UIViewController {
     
     @IBAction func seeFollowers(_ sender: UIButton) {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let newViewController = storyBoard.instantiateViewController(withIdentifier: "userList") as! UserListViewController
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "userListView") as! UserListViewController
         
         newViewController.infoRef = "/followers/" + Auth.auth().currentUser!.uid
         newViewController.arrName = "followers"
