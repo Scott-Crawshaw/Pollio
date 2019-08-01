@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bBS-6X-3Ix">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="y3p-Z1-88z">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -683,6 +683,102 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6sK-Rh-Qow" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-65.217391304347828" y="2012.9464285714284"/>
+        </scene>
+        <!--Search Table View Controller-->
+        <scene sceneID="jlZ-y3-SwC">
+            <objects>
+                <tableViewController id="y3p-Z1-88z" customClass="SearchTableViewController" customModule="PollApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="hfa-Co-DVM">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="TJ0-x7-scL">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="y3p-Z1-88z" id="tz8-aG-0Yj"/>
+                            </connections>
+                        </searchBar>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="81" id="zHY-uG-3HO" customClass="SearchViewCell" customModule="PollApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="72" width="414" height="81"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zHY-uG-3HO" id="nHJ-Xu-GDN">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="80.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dse-9C-ct8">
+                                            <rect key="frame" x="20" y="11" width="98" height="28"/>
+                                            <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans SemiBold" pointSize="20"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="realname" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HPI-VD-yUy">
+                                            <rect key="frame" x="20" y="45" width="189" height="25"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="189" id="gSP-bp-TAp"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans SemiBold" pointSize="18"/>
+                                            <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron" translatesAutoresizingMaskIntoConstraints="NO" id="QZo-i1-yZy">
+                                            <rect key="frame" x="355.5" y="23.5" width="33.5" height="33.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="QZo-i1-yZy" secondAttribute="height" multiplier="1:1" id="7Gg-5U-e2u"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mutualfollowers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5uZ-ja-8Wt">
+                                            <rect key="frame" x="130" y="14" width="130" height="25"/>
+                                            <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans Light" pointSize="18"/>
+                                            <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="HPI-VD-yUy" firstAttribute="top" secondItem="dse-9C-ct8" secondAttribute="bottom" constant="6" id="CGC-9c-qWK"/>
+                                        <constraint firstItem="HPI-VD-yUy" firstAttribute="bottom" secondItem="nHJ-Xu-GDN" secondAttribute="bottomMargin" id="CMi-np-Pem"/>
+                                        <constraint firstItem="QZo-i1-yZy" firstAttribute="centerY" secondItem="nHJ-Xu-GDN" secondAttribute="centerY" id="EmX-XL-bLz"/>
+                                        <constraint firstItem="HPI-VD-yUy" firstAttribute="bottom" secondItem="nHJ-Xu-GDN" secondAttribute="bottomMargin" id="TUJ-YX-r1f"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="QZo-i1-yZy" secondAttribute="bottom" constant="13" id="XMs-E4-RJg"/>
+                                        <constraint firstItem="HPI-VD-yUy" firstAttribute="leading" secondItem="dse-9C-ct8" secondAttribute="leading" id="fB6-ni-YF8"/>
+                                        <constraint firstItem="5uZ-ja-8Wt" firstAttribute="top" secondItem="nHJ-Xu-GDN" secondAttribute="topMargin" constant="3" id="g9H-se-bdP"/>
+                                        <constraint firstAttribute="bottom" secondItem="HPI-VD-yUy" secondAttribute="bottom" constant="10.5" id="hn3-ye-0iA"/>
+                                        <constraint firstItem="dse-9C-ct8" firstAttribute="top" secondItem="nHJ-Xu-GDN" secondAttribute="topMargin" id="qqa-rq-JVe"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="QZo-i1-yZy" secondAttribute="trailing" constant="5" id="s7a-pc-7gt"/>
+                                        <constraint firstItem="dse-9C-ct8" firstAttribute="leading" secondItem="nHJ-Xu-GDN" secondAttribute="leadingMargin" id="wd1-sU-fPY"/>
+                                        <constraint firstItem="5uZ-ja-8Wt" firstAttribute="leading" secondItem="dse-9C-ct8" secondAttribute="trailing" constant="12" id="wru-iF-IrP"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="mutual_followers" destination="5uZ-ja-8Wt" id="uRq-mt-dno"/>
+                                    <outlet property="name_label" destination="HPI-VD-yUy" id="m4D-Tl-FBp"/>
+                                    <outlet property="username_label" destination="dse-9C-ct8" id="5ge-LT-kGr"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="y3p-Z1-88z" id="L7L-N8-l7Q"/>
+                            <outlet property="delegate" destination="y3p-Z1-88z" id="Tof-2x-DW8"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="5c4-rr-aZX" id="nn8-W0-WpH"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="W9j-xD-duI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="5c4-rr-aZX">
+                    <connections>
+                        <outlet property="delegate" destination="y3p-Z1-88z" id="4yg-Ka-kqQ"/>
+                        <outlet property="searchBar" destination="TJ0-x7-scL" id="t5W-OW-PN2"/>
+                        <outlet property="searchContentsController" destination="y3p-Z1-88z" id="W6O-os-HV2"/>
+                        <outlet property="searchResultsDataSource" destination="y3p-Z1-88z" id="iFJ-XV-xxj"/>
+                        <outlet property="searchResultsDelegate" destination="y3p-Z1-88z" id="Jq1-hu-XRn"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="1176.8115942028987" y="1961.3839285714284"/>
         </scene>
         <!--Verify View Controller-->
         <scene sceneID="Q2d-Go-wIW">
