@@ -18,8 +18,6 @@ class MyProfileView: UIViewController {
     @IBOutlet weak var label_following: UIButton!
     @IBOutlet weak var label_followers: UIButton!
     
-    let userID : String = ""
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBar.selectedItem = tabBar.items?.first
@@ -65,7 +63,7 @@ class MyProfileView: UIViewController {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "userList") as! UserListViewController
         
-        newViewController.infoRef = "/following/" + userID
+        newViewController.infoRef = "/following/" + Auth.auth().currentUser!.uid
         newViewController.arrName = "following"
         newViewController.titleText = "Following"
         
@@ -77,7 +75,7 @@ class MyProfileView: UIViewController {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "userList") as! UserListViewController
         
-        newViewController.infoRef = "/followers/" + userID
+        newViewController.infoRef = "/followers/" + Auth.auth().currentUser!.uid
         newViewController.arrName = "followers"
         newViewController.titleText = "Followers"
         

@@ -36,6 +36,8 @@ class UserListViewController: UITableViewController {
     func populateData(result: [[String : Any]]?){
         if result != nil{
             data = result!
+            print(data)
+            self.tableView.reloadData()
         }
         else{
             self.dismiss(animated: true, completion: nil)
@@ -51,12 +53,13 @@ class UserListViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
+        print(data.count)
         return data.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! UserListViewCell
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "userCell", for: indexPath) as! UserListViewCell
+        print("got cell")
         cell.username_label.text = data[indexPath.row]["username"] as? String ?? "error"
         cell.name_label.text = data[indexPath.row]["name"] as? String ?? "error"
         cell.uid = data[indexPath.row]["user"] as? String ?? ""

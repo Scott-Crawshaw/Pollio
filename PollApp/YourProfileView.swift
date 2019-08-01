@@ -47,9 +47,7 @@ class YourProfileView: UIViewController {
             label_name.text = user?["name"] as? String ?? ""
         }
         else{
-            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let newViewController = storyBoard.instantiateViewController(withIdentifier: "main") as! TabSuperview
-            self.present(newViewController, animated: true, completion: nil)
+            self.dismiss(animated: true, completion: nil)
         }
     }
     

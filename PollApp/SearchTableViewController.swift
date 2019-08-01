@@ -15,7 +15,7 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating,
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        definesPresentationContext = true
         resultSearchController = ({
             let controller = UISearchController(searchResultsController: nil)
             controller.searchResultsUpdater = self
@@ -55,7 +55,7 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating,
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // 3
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! SearchViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath) as! SearchViewCell
         
         populateCell(cell: cell, indexPath: indexPath)
         
