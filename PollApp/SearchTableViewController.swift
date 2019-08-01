@@ -78,6 +78,7 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating,
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "yourProfile") as! YourProfileView
         newViewController.uid = tableData[indexPath.row]["user"]! as! String
         self.present(newViewController, animated: true, completion: nil)
+        //fix this
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
