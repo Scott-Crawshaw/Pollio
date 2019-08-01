@@ -58,6 +58,10 @@ class MyProfileView: UIViewController {
         self.present(newViewController, animated: true, completion: nil)
     }
     
+    @IBAction func followRequests(sender: UIButton){
+        
+    }
+    
 
     @IBAction func seeFollowing(_ sender: UIButton) {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
