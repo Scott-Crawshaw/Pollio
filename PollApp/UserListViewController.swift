@@ -12,7 +12,10 @@ class UserListViewController: UITableViewController {
 
     var infoRef : String = ""
     var arrName : String = ""
+    var titleText : String = ""
     var data : [[String : Any]] = []
+    
+    @IBOutlet var navTitle: UINavigationItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +24,8 @@ class UserListViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if infoRef != "" && arrName != ""{
+        if infoRef != "" && arrName != "" && titleText != ""{
+            navTitle.title = titleText
             DatabaseHelper.getUserList(ref: infoRef, arrName: arrName, callback: populateData)
         }
         else{
@@ -65,6 +69,10 @@ class UserListViewController: UITableViewController {
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "yourProfile") as! YourProfileView
         newViewController.uid = data[indexPath.row]["user"]! as! String
         self.present(newViewController, animated: true, completion: nil)
+    }
+    
+    @IBAction func goBack(sender: UIBarButtonItem){
+        self.dismiss(animated: true, completion: nil)
     }
 
 }
