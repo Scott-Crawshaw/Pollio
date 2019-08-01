@@ -1415,7 +1415,7 @@
                                 </constraints>
                                 <state key="normal" image="adduser"/>
                                 <connections>
-                                    <action selector="settingsWithSender:" destination="Od1-6e-2vf" eventType="touchUpInside" id="iul-cN-k5y"/>
+                                    <action selector="followRequestsWithSender:" destination="Od1-6e-2vf" eventType="touchDown" id="mBe-03-6OJ"/>
                                 </connections>
                             </button>
                         </subviews>
