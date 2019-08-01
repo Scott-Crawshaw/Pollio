@@ -140,6 +140,13 @@ class DatabaseHelper{
         }
     }
     
+    static func getUserPosts(uid: String, callback: @escaping ([[String : Any]]?) -> Void){
+        let functions = Functions.functions()
+        functions.httpsCallable("getUserPosts").call(["uid": uid]) { (result, error) in
+            callback(result?.data as? [[String : Any]])
+        }
+    }
+    
     static func checkUsername(username: String, callback: @escaping (Bool) -> Void){
         let db = Firestore.firestore()
         let query = db.collection("users").whereField("username", isEqualTo: username).limit(to: 1)
