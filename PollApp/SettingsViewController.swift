@@ -44,19 +44,21 @@ class SettingsViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0{
-            do{
-                try Auth.auth().signOut()
-                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                let newViewController = storyBoard.instantiateViewController(withIdentifier: "login") as! ViewController
-                self.present(newViewController, animated: true, completion: nil)
-            }
-            catch{
-                let message = "Your logout request could not be completed at this time."
-                let alert = UIAlertController(title: "Logout Failed", message: message, preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-            }
-            
+            self.view.window!.rootViewController?.dismiss(animated: true, completion:
+                {
+                do{
+                    try Auth.auth().signOut()
+                    let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    let newViewController = storyBoard.instantiateViewController(withIdentifier: "login") as! ViewController
+                    self.present(newViewController, animated: true, completion: nil)
+                }
+                catch{
+                    let message = "Your logout request could not be completed at this time."
+                    let alert = UIAlertController(title: "Logout Failed", message: message, preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
+            })
         }
         if indexPath.row == 1{
             let message = "All of your data will be completely removed from our servers. This action cannot be undone."
@@ -74,11 +76,13 @@ class SettingsViewController: UITableViewController {
     }
     
     func deleteAccount(sender: UIAlertAction){
-        DatabaseHelper.deleteAccount()
-        
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let newViewController = storyBoard.instantiateViewController(withIdentifier: "login") as! ViewController
-        self.present(newViewController, animated: true, completion: nil)
+        self.view.window!.rootViewController?.dismiss(animated: true, completion: {
+            DatabaseHelper.deleteAccount()
+            
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let newViewController = storyBoard.instantiateViewController(withIdentifier: "login") as! ViewController
+            self.present(newViewController, animated: true, completion: nil)
+        })
     }
     
     @IBAction func goBack(sender: UIBarButtonItem){

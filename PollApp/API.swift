@@ -165,6 +165,10 @@ class DatabaseHelper{
         let db = Firestore.firestore()
         
         db.collection("users").document(uid).delete()
+        do{
+        try Auth.auth().signOut()
+        }
+        catch{}
     }
     
     static func editBio(bio: String){
