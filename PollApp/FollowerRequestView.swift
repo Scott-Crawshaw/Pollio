@@ -8,8 +8,8 @@
 
 import UIKit
 
-class UserListViewController: UITableViewController {
-
+class FollowerRequestView: UITableViewController {
+    
     var infoRef : String = ""
     var arrName : String = ""
     var titleText : String = ""
@@ -45,26 +45,26 @@ class UserListViewController: UITableViewController {
             self.dismiss(animated: true, completion: nil)
         }
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return tableData.count
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "userCell", for: indexPath) as! FollowerRequestCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "userCell", for: indexPath) as! UserListViewCell
         print("got cell")
         cell.username_label.text = tableData[indexPath.row]["username"] as? String ?? "error"
         cell.name_label.text = tableData[indexPath.row]["name"] as? String ?? "error"
         cell.uid = tableData[indexPath.row]["user"] as? String ?? ""
-
+        
         return cell
     }
     
@@ -79,5 +79,5 @@ class UserListViewController: UITableViewController {
     @IBAction func goBack(sender: UIBarButtonItem){
         self.dismiss(animated: true, completion: nil)
     }
-
+    
 }
