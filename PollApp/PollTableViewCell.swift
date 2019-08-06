@@ -83,7 +83,7 @@ class PollTableViewCell: UITableViewCell {
         if results.count == 2{
             let firstBarPercent = Float(results["0"]!.count) / totalVotes
             let secondBarPercent = Float(results["1"]!.count) / totalVotes
-            
+
             choice2_bar.frame.size = CGSize(width: fullWidth * CGFloat(firstBarPercent), height: fullHeight)
             choice2_bar.isHidden = false
             

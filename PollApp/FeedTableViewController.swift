@@ -72,6 +72,7 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
         let cell = tableView.dequeueReusableCell(withIdentifier: "feedCell", for: indexPath) as! PollTableViewCell
         if isLoadingCell(for: indexPath) {
             return cell
@@ -281,7 +282,7 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
                 cell.showResults(choice: choice)
             }
         }
-        
+    
         return cell
     }
     
