@@ -45,8 +45,14 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        self.fetch()
+        if Auth.auth().currentUser == nil{
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let newViewController = storyBoard.instantiateViewController(withIdentifier: "login") as! ViewController
+            self.present(newViewController, animated: true, completion: nil)
+        }
+        else{
+            self.refreshFeed(sender: self)
+        }
         
     }
 
@@ -66,10 +72,12 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
         let cell = tableView.dequeueReusableCell(withIdentifier: "feedCell", for: indexPath) as! PollTableViewCell
         if isLoadingCell(for: indexPath) {
             return cell
         }
+        
         return self.modifyCell(cell: cell, indexPath: indexPath)
     }
     
@@ -274,7 +282,7 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
                 cell.showResults(choice: choice)
             }
         }
-        
+    
         return cell
     }
     
