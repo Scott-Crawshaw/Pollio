@@ -191,6 +191,24 @@ class DatabaseHelper{
         
     }
     
+    static func getFollowRequests(callback: @escaping ([String : [String]]) -> Void){
+        let db = Firestore.firestore()
+        let uid = Auth.auth().currentUser!.uid
+        
+        db.collection("followRequests").document(uid).getDocument { (snap, err) in
+            callback(snap?.data() as? [String : [String]] ?? ["requests" : []])
+        }
+    }
+    
+    static func getFollowingState(callback: @escaping ([String : [String]]) -> Void){
+        let db = Firestore.firestore()
+        let uid = Auth.auth().currentUser!.uid
+        
+        db.collection("followRequests").document(uid).getDocument { (snap, err) in
+            callback(snap?.data() as? [String : [String]] ?? ["requests" : []])
+        }
+    }
+    
     static func deleteAccount(){
         let uid = Auth.auth().currentUser!.uid
         let db = Firestore.firestore()
