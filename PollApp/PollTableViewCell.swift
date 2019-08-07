@@ -71,7 +71,6 @@ class PollTableViewCell: UITableViewCell {
     }
     
     func showResults(choice: String){
-        print("boi he boutta do it " + question.text!)
         var totalVotes : Float = 0.0
         for (_, votes) in results{
             totalVotes += Float(votes.count)
@@ -168,10 +167,6 @@ class PollTableViewCell: UITableViewCell {
         choice2_button.isEnabled = false
         choice3_button.isEnabled = false
         choice4_button.isEnabled = false
-        print(choice1_bar.frame.size)
-        print(choice2_bar.frame.size)
-        print(choice3_bar.frame.size)
-        print(choice4_bar.frame.size)
 
     }
 
