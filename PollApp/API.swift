@@ -200,12 +200,27 @@ class DatabaseHelper{
         }
     }
     
-    static func getFollowingState(callback: @escaping ([String : [String]]) -> Void){
+    static func getFollowingState(followerUID: String, followingUID: String, callback: @escaping (Int) -> Void){
         let db = Firestore.firestore()
-        let uid = Auth.auth().currentUser!.uid
-        
-        db.collection("followRequests").document(uid).getDocument { (snap, err) in
-            callback(snap?.data() as? [String : [String]] ?? ["requests" : []])
+        //0 : not following, 1 : requested, 2 : following
+        //followerUID : UID of the person who would hypothetically be following the other person
+        //followingUID : the person who would hypothetically be being followed
+        db.collection("following").document(followerUID).getDocument { (snap, err) in
+            let result = snap?.data() as? [String : [String]] ?? ["following" : []]
+            if result["following"]!.contains("/users/" + followingUID){
+                callback(2)
+            }
+            else{
+                db.collection("followRequests").document(followingUID).getDocument(completion: { (snap, err) in
+                    let result = snap?.data() as? [String : [String]] ?? ["requests" : []]
+                    if result["requests"]!.contains("/users/" + followerUID){
+                        callback(1)
+                    }
+                    else{
+                        callback(0)
+                    }
+                })
+            }
         }
     }
     
