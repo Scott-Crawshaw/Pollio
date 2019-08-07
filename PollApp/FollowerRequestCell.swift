@@ -36,11 +36,12 @@ class FollowerRequestCell: UITableViewCell {
     
     @IBAction func acceptedButton(_ sender: UIButton) {
         
+        DatabaseHelper.acceptFollowRequest(requestUID: uid)
         /*if(user is already following the requester)
          {
          accept_button.isHidden = true
          decline_button.isHidden = true
-         send accept request
+         
          inactiveFollowing_button.isHidden = false
          }
          
