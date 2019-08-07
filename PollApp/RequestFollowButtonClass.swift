@@ -19,8 +19,18 @@ class RequestFollowButtonClass: UIButton {
     */
 
     override func awakeFromNib() {
+        //There needs to be 3 different states of a user's relationship with another
+        //Not Following, Requested, and Following -- the button class needs to display different things for these:
+        
+        //IF FOLLOWING
         //check database OR userdefaults if you (the main user) is following someone else
         //if so, display "Following" on profile and remove user interaction
-        //
+        self.setTitle("Following", for: .normal)
+        
+        //Requested
+        self.setTitle("Requested", for: .normal)
+        
+        //Not Following
+        self.setTitle("Request to Follow", for: .normal)
     }
 }
