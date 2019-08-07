@@ -30,6 +30,7 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating,
         resultSearchController.searchBar.delegate = self
         
         // Reload the table
+        self.tableView.tableFooterView = UIView()
         tableView.reloadData()
 
         // Uncomment the following line to preserve selection between presentations
@@ -84,6 +85,8 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating,
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         DatabaseHelper.searchUsers(search: resultSearchController.searchBar.text!, callback: self.updateData)
         tableView.setEmptyMessage1("Loading...")
+        tableData = []
+        self.tableView.reloadData()
     }
     
     func updateData(data : [[String : Any]]){
@@ -146,6 +149,7 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating,
 extension UITableView {
     
     func setEmptyMessage1(_ message: String) {
+        self.separatorStyle = .none
         let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.size.height))
         messageLabel.text = message
         messageLabel.textColor = .gray
@@ -153,13 +157,12 @@ extension UITableView {
         messageLabel.textAlignment = .center;
         messageLabel.font = UIFont(name: "TrebuchetMS", size: 30)
         messageLabel.sizeToFit()
-        
         self.backgroundView = messageLabel;
-        self.separatorStyle = UITableViewCell.SeparatorStyle.none
+        
     }
     
     func restore1() {
         self.backgroundView = nil
-        self.separatorStyle = UITableViewCell.SeparatorStyle.singleLine
+        self.separatorStyle = .singleLine
     }
 }

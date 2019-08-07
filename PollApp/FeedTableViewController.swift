@@ -16,7 +16,7 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
     var data : [[String : Any]] = []
     
     var lastCurrentPageDoc = 0
-    let countPerPage = 15
+    let countPerPage = 10
     var totalCount = 0
     var isFetchInProgress = false
     var refresh = false
