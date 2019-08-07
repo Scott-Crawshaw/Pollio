@@ -36,7 +36,6 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
         self.tableView.dataSource = self
         self.tableView.prefetchDataSource = self
         self.refreshControl?.addTarget(self, action: #selector(refreshFeed), for: UIControl.Event.valueChanged)
-        self.tableView.reloadData()
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -90,6 +89,12 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
     }
     
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        if Auth.auth().currentUser == nil{
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let newViewController = storyBoard.instantiateViewController(withIdentifier: "login") as! ViewController
+            self.present(newViewController, animated: true, completion: nil)
+            return
+        }
         if indexPaths.contains(where: isLoadingCell) {
             fetch()
         }
