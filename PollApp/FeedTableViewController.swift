@@ -72,7 +72,7 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
             self.tableView.restore()
         }
         if first{
-            return 3
+            return 5
         }
         return self.totalCount
     }
