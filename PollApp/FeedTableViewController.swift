@@ -16,7 +16,7 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
     var data : [[String : Any]] = []
     
     var lastCurrentPageDoc = 0
-    let countPerPage = 5
+    let countPerPage = 15
     var totalCount = 0
     var isFetchInProgress = false
     var refresh = false
@@ -67,11 +67,9 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.totalCount == 0 {
             self.tableView.setEmptyMessage("Loading...")
-        } else {
-            self.tableView.restore()
         }
         if first{
-            return 5
+            return countPerPage
         }
         return self.totalCount
     }
@@ -101,6 +99,7 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
     }
     
     func fetch() {
+        
         guard !isFetchInProgress else {
             return
         }
@@ -136,6 +135,7 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
                     self.tableView.setEmptyMessage("It looks like your feed is empty.\n\nTry finding some friends using the search tab.")
                     return
                 }
+                self.tableView.restore()
                 
                 self.lastCurrentPageDoc += newData.count
                 
@@ -152,7 +152,10 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
                         self.tableView.reloadRows(at: indexPathsToReload, with: .fade)
                     }
                 }
-                self.first = false
+                if(self.first == true){
+                    self.first = false
+                    self.tableView.reloadData()
+                }
                 self.isFetchInProgress = false
                 
             })
@@ -178,7 +181,6 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
             }
             else {
                 let totalC = doc?.data()?["count"] as? Int ?? 0
-                print("Got new totalCount : " + totalC.description)
                 completed(totalC, nil)
             }
         }
@@ -187,10 +189,8 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
     func fetchFeed(completed: @escaping ([[String : Any]], Error?) -> Void) {
         let functions = Functions.functions()
         var newData : [[String : Any]] = []
-        print("let's get feed : " + lastCurrentPageDoc.description)
         
         functions.httpsCallable("getFeed").call(["start": lastCurrentPageDoc, "end": lastCurrentPageDoc + countPerPage]) { (result, error) in
-            print(result?.data)
             newData = result?.data as! [[String : Any]]
             completed(newData, nil)
         }
@@ -305,7 +305,6 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
         let index = sender.tag
         let indexPath = IndexPath(row: index, section: 0)
         let cell = tableView.cellForRow(at: indexPath) as! PollTableViewCell
-        print("voting for " + cell.question.text!)
         let currentUID = Auth.auth().currentUser!.uid
         var option = "0"
         if sender == cell.choice1_button{
