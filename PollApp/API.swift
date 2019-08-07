@@ -160,6 +160,36 @@ class DatabaseHelper{
         }
     }
     
+    static func addFollowRequest(followUID: String){
+        let uid = Auth.auth().currentUser!.uid
+        let db = Firestore.firestore()
+        
+        db.collection("followRequests").document(followUID).updateData(["requests" : FieldValue.arrayUnion(["/users/" + uid])])
+    }
+    
+    static func removeFollowRequest(followUID: String){
+        let db = Firestore.firestore()
+        let uid = Auth.auth().currentUser!.uid
+        
+        db.collection("followRequests").document(followUID).updateData(["requests" : FieldValue.arrayRemove(["/users/" + uid])])
+    }
+    
+    static func acceptFollowRequest(requestUID: String){
+        let db = Firestore.firestore()
+        let uid = Auth.auth().currentUser!.uid
+        
+        db.collection("followRequests").document(uid).updateData(["requests" : FieldValue.arrayRemove(["/users/" + requestUID])])
+        
+        db.collection("following").document(requestUID).updateData(["following" : FieldValue.arrayUnion(["/users/" + uid])])
+    }
+    
+    static func declineFollowRequest(requestUID: String){
+        let db = Firestore.firestore()
+        let uid = Auth.auth().currentUser!.uid
+        
+        db.collection("followRequests").document(uid).updateData(["requests" : FieldValue.arrayRemove(["/users/" + requestUID])])
+    }
+    
     static func deleteAccount(){
         let uid = Auth.auth().currentUser!.uid
         let db = Firestore.firestore()
