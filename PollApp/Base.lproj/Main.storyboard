@@ -30,7 +30,7 @@
                 <pageViewController storyboardIdentifier="SlideViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="VI4-F5-D5B" customClass="SlideViewController" customModule="PollApp" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l95-db-0Cp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2109" y="41"/>
+            <point key="canvasLocation" x="1914" y="41"/>
         </scene>
         <!--Slide-->
         <scene sceneID="8zG-f6-eoi">
@@ -281,7 +281,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sdS-lr-j4z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3778" y="750"/>
+            <point key="canvasLocation" x="3825" y="750"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -758,7 +758,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="-65" y="2763"/>
+            <point key="canvasLocation" x="-320" y="2763"/>
         </scene>
         <!--Verify View Controller-->
         <scene sceneID="Q2d-Go-wIW">
@@ -1134,7 +1134,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="edc-FI-zvB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2374" y="2799"/>
+            <point key="canvasLocation" x="-2267" y="2763"/>
         </scene>
         <!--Bio View Controller-->
         <scene sceneID="IZx-Jb-CM7">
@@ -1531,7 +1531,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mzq-D4-qHa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5118.840579710145" y="750"/>
+            <point key="canvasLocation" x="5080" y="750"/>
         </scene>
         <!--Slide-->
         <scene sceneID="NDq-Ao-Fj4">
@@ -1628,7 +1628,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mj6-im-OKA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5792.753623188406" y="750"/>
+            <point key="canvasLocation" x="5709" y="750"/>
         </scene>
         <!--My Account-->
         <scene sceneID="G4L-3m-xY9">
@@ -1789,7 +1789,146 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YGm-HD-c3z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1639.1304347826087" y="2762.9464285714284"/>
+            <point key="canvasLocation" x="-1609" y="2763"/>
+        </scene>
+        <!--Follower Request View-->
+        <scene sceneID="LkM-NZ-i4o">
+            <objects>
+                <tableViewController storyboardIdentifier="followerRequestView" id="SWj-Rb-ZGQ" customClass="FollowerRequestView" customModule="PollApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="bzT-4a-hCJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="15Y-BT-PFW">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <items>
+                                <navigationItem title="Title" id="747-fX-cxd">
+                                    <barButtonItem key="leftBarButtonItem" image="back" id="bFq-VO-9BR">
+                                        <connections>
+                                            <action selector="goBackWithSender:" destination="SWj-Rb-ZGQ" id="JLL-2V-3jm"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </navigationItem>
+                            </items>
+                        </navigationBar>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="userCell" rowHeight="81" id="6xe-NJ-mAG" customClass="FollowerRequestCell" customModule="PollApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="72" width="414" height="81"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6xe-NJ-mAG" id="dmi-IS-Je7">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="80.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TSi-OG-8L1">
+                                            <rect key="frame" x="20" y="11" width="98" height="28"/>
+                                            <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans SemiBold" pointSize="20"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="realname" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eMx-hs-Pci">
+                                            <rect key="frame" x="20" y="45" width="83.5" height="25"/>
+                                            <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans SemiBold" pointSize="18"/>
+                                            <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bNf-v2-GGh">
+                                            <rect key="frame" x="239" y="22.5" width="74" height="36"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="36" id="utZ-RD-tGq"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="17"/>
+                                            <state key="normal" title="Accept">
+                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBorder" value="YES"/>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                    <real key="value" value="0.5"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="acceptedButton:" destination="6xe-NJ-mAG" eventType="touchDown" id="oUW-QQ-mjo"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xjv-AY-dEF">
+                                            <rect key="frame" x="320" y="22.5" width="74" height="36"/>
+                                            <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="17"/>
+                                            <state key="normal" title="Decline">
+                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBorder" value="YES"/>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                    <real key="value" value="0.5"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="declineButton:" destination="6xe-NJ-mAG" eventType="touchDown" id="4A3-ui-gZI"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rgP-2g-TxB">
+                                            <rect key="frame" x="239" y="22.5" width="155" height="36"/>
+                                            <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="17"/>
+                                            <state key="normal" title="Following">
+                                                <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBorder" value="YES"/>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                    <real key="value" value="0.5"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </button>
+                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="skC-Uc-MX0">
+                                            <rect key="frame" x="239" y="22.5" width="155" height="36"/>
+                                            <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="17"/>
+                                            <state key="normal" title="Request to Follow">
+                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBorder" value="YES"/>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                    <real key="value" value="0.5"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="rgP-2g-TxB" firstAttribute="height" secondItem="skC-Uc-MX0" secondAttribute="height" id="0v6-fm-5Nu"/>
+                                        <constraint firstItem="eMx-hs-Pci" firstAttribute="top" secondItem="TSi-OG-8L1" secondAttribute="bottom" constant="6" id="105-Ip-yZ3"/>
+                                        <constraint firstItem="rgP-2g-TxB" firstAttribute="width" secondItem="skC-Uc-MX0" secondAttribute="width" id="5pW-gZ-WX6"/>
+                                        <constraint firstAttribute="bottom" secondItem="eMx-hs-Pci" secondAttribute="bottom" constant="10.5" id="Alh-OG-UYH"/>
+                                        <constraint firstItem="xjv-AY-dEF" firstAttribute="leading" secondItem="bNf-v2-GGh" secondAttribute="trailing" constant="7" id="Fue-FM-6Ei"/>
+                                        <constraint firstItem="TSi-OG-8L1" firstAttribute="top" secondItem="dmi-IS-Je7" secondAttribute="topMargin" id="JVl-td-WlB"/>
+                                        <constraint firstItem="xjv-AY-dEF" firstAttribute="width" secondItem="bNf-v2-GGh" secondAttribute="width" id="Jaj-hV-zQd"/>
+                                        <constraint firstItem="rgP-2g-TxB" firstAttribute="centerY" secondItem="dmi-IS-Je7" secondAttribute="centerY" id="Mhb-yt-cQ7"/>
+                                        <constraint firstItem="skC-Uc-MX0" firstAttribute="centerY" secondItem="dmi-IS-Je7" secondAttribute="centerY" id="NSy-Zu-Xap"/>
+                                        <constraint firstItem="eMx-hs-Pci" firstAttribute="leading" secondItem="TSi-OG-8L1" secondAttribute="leading" id="OMy-y1-UMZ"/>
+                                        <constraint firstItem="bNf-v2-GGh" firstAttribute="centerY" secondItem="dmi-IS-Je7" secondAttribute="centerY" id="ShB-NV-FgG"/>
+                                        <constraint firstItem="xjv-AY-dEF" firstAttribute="height" secondItem="bNf-v2-GGh" secondAttribute="height" id="SzK-Ca-8iK"/>
+                                        <constraint firstItem="xjv-AY-dEF" firstAttribute="centerY" secondItem="dmi-IS-Je7" secondAttribute="centerY" id="Wwa-3f-d9Y"/>
+                                        <constraint firstItem="TSi-OG-8L1" firstAttribute="leading" secondItem="dmi-IS-Je7" secondAttribute="leadingMargin" id="b6m-7Z-arb"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="accept_button" destination="bNf-v2-GGh" id="OAL-bz-6nx"/>
+                                    <outlet property="decline_button" destination="xjv-AY-dEF" id="tDY-4V-aTO"/>
+                                    <outlet property="inactiveFollowing_button" destination="rgP-2g-TxB" id="0kB-nS-rc9"/>
+                                    <outlet property="name_label" destination="eMx-hs-Pci" id="jjd-2f-WBV"/>
+                                    <outlet property="request_button" destination="skC-Uc-MX0" id="Ub3-SE-SYE"/>
+                                    <outlet property="username_label" destination="TSi-OG-8L1" id="U8J-2o-Ner"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                    </tableView>
+                    <connections>
+                        <outlet property="navTitle" destination="747-fX-cxd" id="FB1-bW-hPn"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C2x-s7-wvY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-813.04347826086962" y="3444.6428571428569"/>
         </scene>
     </scenes>
     <resources>

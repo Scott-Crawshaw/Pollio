@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		6C559DCAB840EB20EB6C6590 /* Pods_PollApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EF3CCE1927B1751DF959AE7 /* Pods_PollApp.framework */; };
+		73079DCC22F9CD8B0059D233 /* FollowerRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73079DCB22F9CD8B0059D233 /* FollowerRequestView.swift */; };
+		73079DCE22F9CE400059D233 /* FollowerRequestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73079DCD22F9CE400059D233 /* FollowerRequestCell.swift */; };
+		73079DD022FA04910059D233 /* RequestFollowButtonClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73079DCF22FA04910059D233 /* RequestFollowButtonClass.swift */; };
 		731DA04722E0EC370044749B /* TabSuperview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731DA04622E0EC370044749B /* TabSuperview.swift */; };
 		731DFA8922C267490095EA1A /* Slide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731DFA8822C267490095EA1A /* Slide.swift */; };
 		73241BA522C68E1A00104FA7 /* SlideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73241BA422C68E1A00104FA7 /* SlideViewController.swift */; };
@@ -68,6 +71,9 @@
 		2EF3CCE1927B1751DF959AE7 /* Pods_PollApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PollApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50C0732744EA6C212C75E088 /* Pods_PollAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PollAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		63B79D426906A945F3B53799 /* Pods-PollApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PollApp.debug.xcconfig"; path = "Target Support Files/Pods-PollApp/Pods-PollApp.debug.xcconfig"; sourceTree = "<group>"; };
+		73079DCB22F9CD8B0059D233 /* FollowerRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerRequestView.swift; sourceTree = "<group>"; };
+		73079DCD22F9CE400059D233 /* FollowerRequestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerRequestCell.swift; sourceTree = "<group>"; };
+		73079DCF22FA04910059D233 /* RequestFollowButtonClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestFollowButtonClass.swift; sourceTree = "<group>"; };
 		731DA04622E0EC370044749B /* TabSuperview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabSuperview.swift; sourceTree = "<group>"; };
 		731DFA8822C267490095EA1A /* Slide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slide.swift; sourceTree = "<group>"; };
 		73241BA422C68E1A00104FA7 /* SlideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideViewController.swift; sourceTree = "<group>"; };
@@ -192,6 +198,7 @@
 		BB726FFE22B7F3D5006C386B /* PollApp */ = {
 			isa = PBXGroup;
 			children = (
+				73079DCF22FA04910059D233 /* RequestFollowButtonClass.swift */,
 				BB5DEEC422BD6B23006A0C81 /* GoogleService-Info.plist */,
 				BB5DEEAB22BD3C38006A0C81 /* API.swift */,
 				BB7360D422B944B9002210D3 /* PollApp.entitlements */,
@@ -201,6 +208,8 @@
 				73A2BEB422BD566D00B71A37 /* fonts */,
 				BB14550022B958BA00CBF426 /* VerifyViewController.swift */,
 				BB72700322B7F3D5006C386B /* Main.storyboard */,
+				73079DCD22F9CE400059D233 /* FollowerRequestCell.swift */,
+				73079DCB22F9CD8B0059D233 /* FollowerRequestView.swift */,
 				BB4610C622F0A310008A6191 /* BioViewController.swift */,
 				BB4610C422F09CD3008A6191 /* SettingsViewController.swift */,
 				73A92E7322EF78A40063C3F4 /* MyProfileView.swift */,
@@ -522,6 +531,8 @@
 				73A92E7422EF78A40063C3F4 /* MyProfileView.swift in Sources */,
 				BB72700222B7F3D5006C386B /* ViewController.swift in Sources */,
 				BB9EA83D22F34E9A00037781 /* UserListViewController.swift in Sources */,
+				73079DCE22F9CE400059D233 /* FollowerRequestCell.swift in Sources */,
+				73079DCC22F9CD8B0059D233 /* FollowerRequestView.swift in Sources */,
 				BB5DEEAC22BD3C38006A0C81 /* API.swift in Sources */,
 				731DFA8922C267490095EA1A /* Slide.swift in Sources */,
 				73241BA522C68E1A00104FA7 /* SlideViewController.swift in Sources */,
@@ -529,6 +540,7 @@
 				BB4610C522F09CD3008A6191 /* SettingsViewController.swift in Sources */,
 				BB3A846722DCEE1E0082AB64 /* SearchTableViewController.swift in Sources */,
 				BBF1F33822F2003E00E358AB /* SearchViewCell.swift in Sources */,
+				73079DD022FA04910059D233 /* RequestFollowButtonClass.swift in Sources */,
 				7363BD5222F0BDBA007F00D1 /* YourProfileView.swift in Sources */,
 				731DA04722E0EC370044749B /* TabSuperview.swift in Sources */,
 				BB3D2F8222E0D5DD00723A10 /* PollTableViewCell.swift in Sources */,
