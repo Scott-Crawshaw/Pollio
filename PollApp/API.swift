@@ -188,6 +188,7 @@ class DatabaseHelper{
         let uid = Auth.auth().currentUser!.uid
         
         db.collection("followRequests").document(uid).updateData(["requests" : FieldValue.arrayRemove(["/users/" + requestUID])])
+        
     }
     
     static func deleteAccount(){
