@@ -14,11 +14,13 @@ import FirebaseFirestore
 class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefetching {
 
     var data : [[String : Any]] = []
+    
     var lastCurrentPageDoc = 0
     let countPerPage = 5
     var totalCount = 0
     var isFetchInProgress = false
     var refresh = false
+    var first = true
     
     @objc func refreshFeed(sender:AnyObject) {
         refresh = true
@@ -34,6 +36,7 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
         self.tableView.dataSource = self
         self.tableView.prefetchDataSource = self
         self.refreshControl?.addTarget(self, action: #selector(refreshFeed), for: UIControl.Event.valueChanged)
+        self.tableView.reloadData()
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -68,6 +71,9 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
         } else {
             self.tableView.restore()
         }
+        if first{
+            return 3
+        }
         return self.totalCount
     }
 
@@ -75,8 +81,10 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "feedCell", for: indexPath) as! PollTableViewCell
         if isLoadingCell(for: indexPath) {
+            cell.isHidden = true
             return cell
         }
+        cell.isHidden = false
         
         return self.modifyCell(cell: cell, indexPath: indexPath)
     }
@@ -139,7 +147,7 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
                         self.tableView.reloadRows(at: indexPathsToReload, with: .fade)
                     }
                 }
-                
+                self.first = false
                 self.isFetchInProgress = false
                 
             })
