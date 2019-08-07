@@ -59,7 +59,7 @@ class UserListViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "userCell", for: indexPath) as! FollowerRequestCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "userCell", for: indexPath) as! UserListViewCell
         print("got cell")
         cell.username_label.text = tableData[indexPath.row]["username"] as? String ?? "error"
         cell.name_label.text = tableData[indexPath.row]["name"] as? String ?? "error"
