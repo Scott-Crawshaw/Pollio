@@ -188,7 +188,9 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
         let functions = Functions.functions()
         var newData : [[String : Any]] = []
         print("let's get feed : " + lastCurrentPageDoc.description)
+        
         functions.httpsCallable("getFeed").call(["start": lastCurrentPageDoc, "end": lastCurrentPageDoc + countPerPage]) { (result, error) in
+            print(result?.data)
             newData = result?.data as! [[String : Any]]
             completed(newData, nil)
         }
