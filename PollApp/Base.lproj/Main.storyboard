@@ -1704,7 +1704,7 @@
                                     <action selector="seeFollowing:" destination="9bL-eO-Op8" eventType="touchUpInside" id="gZr-Hv-dqu"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BQJ-Gt-AA9">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BQJ-Gt-AA9" customClass="RequestFollowButtonClass" customModule="PollApp" customModuleProvider="target">
                                 <rect key="frame" x="32" y="299" width="342" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="2iU-nR-6cT"/>
@@ -1719,6 +1719,9 @@
                                         <real key="value" value="0.5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="buttonTouchDown:" destination="9bL-eO-Op8" eventType="touchDown" id="shj-xC-ZTC"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Fl-pf-bWg">
                                 <rect key="frame" x="25" y="42" width="25" height="25"/>
@@ -1779,6 +1782,7 @@
                     <tabBarItem key="tabBarItem" title="My Account" image="user" selectedImage="user" id="QTk-9c-oZd"/>
                     <connections>
                         <outlet property="back_button" destination="8Fl-pf-bWg" id="sNq-6e-jzh"/>
+                        <outlet property="followRequestButton" destination="BQJ-Gt-AA9" id="U3h-rG-bz8"/>
                         <outlet property="label_bio" destination="mf9-SL-3Wm" id="kkh-fZ-tsv"/>
                         <outlet property="label_followers" destination="xlZ-dr-yeY" id="W79-ZS-k1g"/>
                         <outlet property="label_following" destination="c3f-gL-Y1T" id="6yq-WY-3C3"/>
@@ -1867,20 +1871,7 @@
                                                 <action selector="declineButton:" destination="6xe-NJ-mAG" eventType="touchDown" id="4A3-ui-gZI"/>
                                             </connections>
                                         </button>
-                                        <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rgP-2g-TxB">
-                                            <rect key="frame" x="239" y="22.5" width="155" height="36"/>
-                                            <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="17"/>
-                                            <state key="normal" title="Following">
-                                                <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </state>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBorder" value="YES"/>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                                    <real key="value" value="0.5"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
-                                        </button>
-                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="skC-Uc-MX0">
+                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="skC-Uc-MX0" customClass="RequestFollowButtonClass" customModule="PollApp" customModuleProvider="target">
                                             <rect key="frame" x="239" y="22.5" width="155" height="36"/>
                                             <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="17"/>
                                             <state key="normal" title="Request to Follow">
@@ -1892,17 +1883,17 @@
                                                     <real key="value" value="0.5"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="changeButtonState:" destination="6xe-NJ-mAG" eventType="touchDown" id="YYS-sq-Flz"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="rgP-2g-TxB" firstAttribute="height" secondItem="skC-Uc-MX0" secondAttribute="height" id="0v6-fm-5Nu"/>
                                         <constraint firstItem="eMx-hs-Pci" firstAttribute="top" secondItem="TSi-OG-8L1" secondAttribute="bottom" constant="6" id="105-Ip-yZ3"/>
-                                        <constraint firstItem="rgP-2g-TxB" firstAttribute="width" secondItem="skC-Uc-MX0" secondAttribute="width" id="5pW-gZ-WX6"/>
                                         <constraint firstAttribute="bottom" secondItem="eMx-hs-Pci" secondAttribute="bottom" constant="10.5" id="Alh-OG-UYH"/>
                                         <constraint firstItem="xjv-AY-dEF" firstAttribute="leading" secondItem="bNf-v2-GGh" secondAttribute="trailing" constant="7" id="Fue-FM-6Ei"/>
                                         <constraint firstItem="TSi-OG-8L1" firstAttribute="top" secondItem="dmi-IS-Je7" secondAttribute="topMargin" id="JVl-td-WlB"/>
                                         <constraint firstItem="xjv-AY-dEF" firstAttribute="width" secondItem="bNf-v2-GGh" secondAttribute="width" id="Jaj-hV-zQd"/>
-                                        <constraint firstItem="rgP-2g-TxB" firstAttribute="centerY" secondItem="dmi-IS-Je7" secondAttribute="centerY" id="Mhb-yt-cQ7"/>
                                         <constraint firstItem="skC-Uc-MX0" firstAttribute="centerY" secondItem="dmi-IS-Je7" secondAttribute="centerY" id="NSy-Zu-Xap"/>
                                         <constraint firstItem="eMx-hs-Pci" firstAttribute="leading" secondItem="TSi-OG-8L1" secondAttribute="leading" id="OMy-y1-UMZ"/>
                                         <constraint firstItem="bNf-v2-GGh" firstAttribute="centerY" secondItem="dmi-IS-Je7" secondAttribute="centerY" id="ShB-NV-FgG"/>
@@ -1914,7 +1905,6 @@
                                 <connections>
                                     <outlet property="accept_button" destination="bNf-v2-GGh" id="OAL-bz-6nx"/>
                                     <outlet property="decline_button" destination="xjv-AY-dEF" id="tDY-4V-aTO"/>
-                                    <outlet property="inactiveFollowing_button" destination="rgP-2g-TxB" id="0kB-nS-rc9"/>
                                     <outlet property="name_label" destination="eMx-hs-Pci" id="jjd-2f-WBV"/>
                                     <outlet property="request_button" destination="skC-Uc-MX0" id="Ub3-SE-SYE"/>
                                     <outlet property="username_label" destination="TSi-OG-8L1" id="U8J-2o-Ner"/>

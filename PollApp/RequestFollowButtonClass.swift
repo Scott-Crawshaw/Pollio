@@ -5,7 +5,7 @@
 //  Created by Ben Stewart on 8/6/19.
 //  Copyright © 2019 Crawtech. All rights reserved.
 //
-
+import FirebaseAuth
 import UIKit
 
 class RequestFollowButtonClass: UIButton {
@@ -17,20 +17,48 @@ class RequestFollowButtonClass: UIButton {
         // Drawing code
     }
     */
+    var uid : String = ""
+    var followState : Int = 0
 
     override func awakeFromNib() {
-        //There needs to be 3 different states of a user's relationship with another
-        //Not Following, Requested, and Following -- the button class needs to display different things for these:
+        DatabaseHelper.getFollowingState(followerUID: Auth.auth().currentUser!.uid, followingUID: uid, callback: setButtonStatus)
+    }
+    
+    func setButtonStatus(state: Int){
+        if(state == 0) // not following
+        {
+            self.setTitle("Request to Follow", for: .normal)
+            followState = state
+        }
+        if(state == 1) // requested
+        {
+            self.setTitle("Requested", for: .normal)
+            followState = state
+        }
+        if(state == 2) // currently following
+        {
+            self.setTitle("Following", for: .normal)
+            followState = state
+        }
+    }
+    
+    func buttonPressed(_ sender: RequestFollowButtonClass)
+    {
+        if(followState == 0) // not following
+        {
+            DatabaseHelper.addFollowRequest(followUID: uid)
+            setButtonStatus(state: 1)
+        }
         
-        //IF FOLLOWING
-        //check database OR userdefaults if you (the main user) is following someone else
-        //if so, display "Following" on profile and remove user interaction
-        self.setTitle("Following", for: .normal)
+        if(followState == 1) // requested
+        {
+            self.setTitle("Requested", for: .normal)
+        }
         
-        //Requested
-        self.setTitle("Requested", for: .normal)
+        if(followState == 2) // currently following
+        {
+            self.setTitle("Following", for: .normal)
+        }
         
-        //Not Following
-        self.setTitle("Request to Follow", for: .normal)
     }
 }

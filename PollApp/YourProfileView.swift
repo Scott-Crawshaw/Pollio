@@ -16,6 +16,7 @@ class YourProfileView: UIViewController {
     @IBOutlet weak var label_name: UILabel!
     @IBOutlet weak var label_following: UIButton!
     @IBOutlet weak var label_followers: UIButton!
+    @IBOutlet weak var followRequestButton: RequestFollowButtonClass!
     
     @IBOutlet var back_button: UIButton!
     
@@ -24,6 +25,7 @@ class YourProfileView: UIViewController {
     override func viewDidLoad() { // Initialize Profile View for OTHER USERS
         super.viewDidLoad()
         tabBar.selectedItem = tabBar.items?.first
+        followRequestButton.uid = uid
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -74,6 +76,9 @@ class YourProfileView: UIViewController {
         self.present(newViewController, animated: true, completion: nil)
     }
     
+    @IBAction func buttonTouchDown(sender: RequestFollowButtonClass) {
+        followRequestButton.buttonPressed(sender)
+    }
     
     @IBAction func goBack(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)

@@ -13,7 +13,7 @@ class FollowerRequestView: UITableViewController {
     var infoRef : String = ""
     var arrName : String = ""
     var titleText : String = ""
-    var tableData : [[String : Any]] = []
+    var tableData : [String : [String]] = [:]
     
     @IBOutlet var navTitle: UINavigationItem!
     
@@ -29,16 +29,17 @@ class FollowerRequestView: UITableViewController {
         
         if infoRef != "" && arrName != "" && titleText != ""{
             navTitle.title = titleText
-            DatabaseHelper.getUserList(ref: infoRef, arrName: arrName, callback: populateData)
+            DatabaseHelper.getFollowRequests(callback: populateData)
         }
         else{
             self.dismiss(animated: true, completion: nil)
         }
     }
     
-    func populateData(result: [[String : Any]]?){
+    func populateData(result: [String : [String]]){
+        //the only key is "results" and its value is an array that looks like this ["/users/dsahjdhj", "/users/shvjadvha"]
         if result != nil{
-            tableData = result!
+            tableData = result
             self.tableView.reloadData()
         }
         else{
@@ -59,11 +60,18 @@ class FollowerRequestView: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "userCell", for: indexPath) as! UserListViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "userCell", for: indexPath) as! FollowerRequestCell
         print("got cell")
-        cell.username_label.text = tableData[indexPath.row]["username"] as? String ?? "error"
-        cell.name_label.text = tableData[indexPath.row]["name"] as? String ?? "error"
-        cell.uid = tableData[indexPath.row]["user"] as? String ?? ""
+        let user = tableData["results"]![indexPath.row]
+        user.subString(from: 7, to: user.count-1)
+
+        
+        cell.username_label.text = DatabaseHelper.getUserByUID(UID: user, callback: { (Dictionary<String, Any>?) in
+            return [
+        })
+        
+       // cell.name_label.text = tableData[indexPath.row]["name"] as? String ?? "error"
+        //cell.uid = tableData[indexPath.row]["user"] as? String ?? ""
         
         return cell
     }
@@ -71,7 +79,7 @@ class FollowerRequestView: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "yourProfile") as! YourProfileView
-        newViewController.uid = tableData[indexPath.row]["user"]! as! String
+       // newViewController.uid = tableData[indexPath.row]["user"]! as! String
         self.present(newViewController, animated: true, completion: nil)
     }
     
@@ -79,5 +87,6 @@ class FollowerRequestView: UITableViewController {
     @IBAction func goBack(sender: UIBarButtonItem){
         self.dismiss(animated: true, completion: nil)
     }
+    
     
 }
