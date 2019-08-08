@@ -44,6 +44,7 @@ class PollTableViewCell: UITableViewCell {
     }
     
     func resetCell(){
+        self.isHidden = false
         choice1_button.isHidden = false
         choice2_button.isHidden = false
         choice3_button.isHidden = false

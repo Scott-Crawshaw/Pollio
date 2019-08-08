@@ -15,18 +15,38 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
 
     var data : [[String : Any]] = []
     
-    var lastCurrentPageDoc = 0
-    let countPerPage = 10
     var totalCount = 0
-    var isFetchInProgress = false
     var refresh = false
-    var first = true
+    let initialGet = 2
     
     @objc func refreshFeed(sender:AnyObject) {
         refresh = true
         data = []
-        lastCurrentPageDoc = 0
-        self.fetch()
+        self.tableView.setEmptyMessage("Loading...")
+        self.totalCount = 0
+        self.tableView.reloadData()
+        
+        self.fetchTotalCount { (count, err) in
+            if err != nil{
+                return
+            }
+            self.totalCount = count ?? 0
+            if self.totalCount == 0{
+                self.tableView.setEmptyMessage("It looks like your feed is empty.\n\nTry finding some friends using the search tab.")
+                self.tableView.reloadData()
+                return
+            }
+            self.data = Array(repeating: ["author" : "nil"], count: self.totalCount)
+            self.tableView.reloadData()
+            var initialRows : [Int] = []
+            if self.totalCount > self.initialGet{
+                initialRows = Array(0...self.initialGet)
+            }
+            else{
+                initialRows = Array(0...self.totalCount)
+            }
+            self.newFetch(rows: initialRows, initial: true)
+        }
     }
     
     override func viewDidLoad() {
@@ -37,20 +57,13 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
         self.tableView.prefetchDataSource = self
         self.refreshControl?.addTarget(self, action: #selector(refreshFeed), for: UIControl.Event.valueChanged)
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if Auth.auth().currentUser == nil{
-            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let newViewController = storyBoard.instantiateViewController(withIdentifier: "login") as! ViewController
-            self.present(newViewController, animated: true, completion: nil)
+            returnToLogin()
         }
         else{
             self.refreshFeed(sender: self)
@@ -58,124 +71,73 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
         
     }
 
-    // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if self.totalCount == 0 {
-            self.tableView.setEmptyMessage("Loading...")
-        }
-        if first{
-            return countPerPage
-        }
         return self.totalCount
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "feedCell", for: indexPath) as! PollTableViewCell
+        
         if isLoadingCell(for: indexPath) {
             cell.isHidden = true
             return cell
         }
-        cell.isHidden = false
         
         return self.modifyCell(cell: cell, indexPath: indexPath)
+    }
+    func returnToLogin(){
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "login") as! ViewController
+        self.present(newViewController, animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         if Auth.auth().currentUser == nil{
-            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let newViewController = storyBoard.instantiateViewController(withIdentifier: "login") as! ViewController
-            self.present(newViewController, animated: true, completion: nil)
+            returnToLogin()
             return
         }
-        if indexPaths.contains(where: isLoadingCell) {
-            fetch()
-        }
+        self.newFetch(rows: indexPaths.map({$0.row}), initial: false)
     }
     
-    func fetch() {
-        
-        guard !isFetchInProgress else {
-            return
-        }
-        
-        isFetchInProgress = true
-        
-        fetchTotalCountIfNeeded { (totalCount, err) in
-            guard err == nil else {
-                if(self.refresh){
-                    self.refresh = false
-                    self.refreshControl?.endRefreshing()
-                }
-                self.isFetchInProgress = false
+    func newFetch(rows : [Int], initial : Bool){
+        fetchFeed(rows: rows) { (newData, err) in
+            if(self.refresh){
+                self.refresh = false
+                self.refreshControl?.endRefreshing()
+            }
+            if err != nil{
                 return
             }
-
-            self.totalCount = totalCount!
+            for i in 0...newData.count-1{
+                self.data[rows[i]] = newData[i]
+            }
+            self.tableView.restore()
             
-            self.fetchFeed(completed: { (newData, err) in
-
-                if(self.refresh){
-                    self.refresh = false
-                    self.refreshControl?.endRefreshing()
+            if initial{
+                var firstPaths : [IndexPath] = []
+                for i in 0...self.initialGet{
+                    firstPaths.append(IndexPath(row: i, section: 0))
                 }
-                
-                guard err == nil else {
-                    self.isFetchInProgress = false
-                    return
-                }
-                
-                guard newData.count > 0 else {
-                    self.isFetchInProgress = false
-                    self.tableView.setEmptyMessage("It looks like your feed is empty.\n\nTry finding some friends using the search tab.")
-                    return
-                }
-                self.tableView.restore()
-                
-                self.lastCurrentPageDoc += newData.count
-                
-                if self.data.count == 0 {
-                    self.data.append(contentsOf: newData)
-                    self.tableView.reloadData()
-                }
-                else {
-                    self.data.append(contentsOf: newData)
-                    let range = (self.data.count - newData.count)..<self.data.count
-                    let newIndexPathsToReload = range.map{ IndexPath(row: $0, section: 0) }
-                    let indexPathsToReload = self.visibleIndexPathsToReload(intersecting: newIndexPathsToReload)
-                    if indexPathsToReload.count > 0 {
-                        self.tableView.reloadRows(at: indexPathsToReload, with: .fade)
-                    }
-                }
-                if(self.first == true){
-                    self.first = false
-                    self.tableView.reloadData()
-                }
-                self.isFetchInProgress = false
-                
-            })
+                self.tableView.reloadRows(at: firstPaths, with: .automatic)
+            }
+            
         }
     }
     
-    func visibleIndexPathsToReload(intersecting indexPaths: [IndexPath]) -> [IndexPath] {
+    
+   func visibleIndexPathsToReload(intersecting indexPaths: [IndexPath]) -> [IndexPath] {
         let indexPathsForVisibleRows = tableView.indexPathsForVisibleRows ?? []
         let indexPathsIntersection = Set(indexPathsForVisibleRows).intersection(indexPaths)
         return Array(indexPathsIntersection)
     }
     
-    func fetchTotalCountIfNeeded(completed: @escaping (Int?, Error?)->Void) {
-        guard totalCount == 0 || refresh == true else {
-            completed(totalCount, nil)
-            return
-        }
-        
-        let feedCountRef = Firestore.firestore().collection("feedCount").document(Auth.auth().currentUser!.uid)
-        feedCountRef.getDocument { (doc, error) in
+    func fetchTotalCount(completed: @escaping (Int?, Error?)->Void) {
+        Firestore.firestore().collection("feedCount").document(Auth.auth().currentUser!.uid).getDocument { (doc, error) in
             if let error = error {
                 completed(nil, error)
             }
@@ -186,19 +148,18 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
         }
     }
     
-    func fetchFeed(completed: @escaping ([[String : Any]], Error?) -> Void) {
+    func fetchFeed(rows : [Int], completed: @escaping ([[String : Any]], Error?) -> Void) {
         let functions = Functions.functions()
-        var newData : [[String : Any]] = []
         
-        functions.httpsCallable("getFeed").call(["start": lastCurrentPageDoc, "end": lastCurrentPageDoc + countPerPage]) { (result, error) in
-            newData = result?.data as! [[String : Any]]
+        functions.httpsCallable("getFeed").call(["rows" : rows]) { (result, error) in
+            let newData = result?.data as! [[String : Any]]
             completed(newData, nil)
         }
         
     }
     
     func isLoadingCell(for indexPath: IndexPath) -> Bool {
-        return indexPath.row >= data.count
+        return data[indexPath.row]["author"] as! String == "nil"
     }
     
     
@@ -347,51 +308,6 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
         
     }
     
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 
