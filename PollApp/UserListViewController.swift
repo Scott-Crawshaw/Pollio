@@ -21,6 +21,7 @@ class UserListViewController: UITableViewController {
         super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        self.tableView.setEmptyMessage1("Loading...")
         self.tableView.reloadData()
     }
     
@@ -37,6 +38,7 @@ class UserListViewController: UITableViewController {
     }
     
     func populateData(result: [[String : Any]]?){
+        self.tableView.restore1()
         if result != nil{
             tableData = result!
             self.tableView.reloadData()
