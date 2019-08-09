@@ -34,12 +34,13 @@ class Slide: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet var nextButton : UIButton!
     @IBOutlet var username : UITextField!
     @IBOutlet var name : UITextField!
-    @IBOutlet var nextPage: UIButton!
+    @IBOutlet var progressSlide: UIProgressView!
     
     var scroller: UIPageControl!
     var cDict: [String: String] = [:]
     var numArray: [String] = []
     var selectedUsers: [String] = []
+    var timer : Timer!
     
     override func viewDidLoad() {
         UserDefaults.standard.set(false, forKey: "nextPage")
@@ -51,21 +52,36 @@ class Slide: UIViewController, UITableViewDataSource, UITableViewDelegate {
         super.viewWillAppear(animated)
     }
     
-    @IBAction func changeUsername(sender: UITextField){
-        UserDefaults.standard.set(sender.text?.lowercased(), forKey: "username")
-
-    }
     
     @IBAction func changeName(sender: UITextField){
         UserDefaults.standard.set(sender.text, forKey: "name")
     }
     
     @IBAction func addUser(sender: UIButton){
-        let nameText = UserDefaults.standard.string(forKey: "name")!
-        let usernameText = UserDefaults.standard.string(forKey: "username")!
-
-        DatabaseHelper.addUser(name: nameText, username: usernameText, followMethod: self.addInitialFollows)
+        let nameText = UserDefaults.standard.string(forKey: "name") ?? nil
+        let usernameText = UserDefaults.standard.string(forKey: "username") ?? nil
         
+        if nameText == nil || usernameText == nil || nameText == "" || nameText == " " || usernameText == "" || usernameText == " "{
+            let message = "It looks like your name or username is invalid. Please scroll back to the appropriate screen and adjust your information."
+            let alert = UIAlertController(title: "Invalid Name or Username", message: message, preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+        else{
+            progressSlide.isHidden = false
+            timer = Timer.scheduledTimer(timeInterval: 0.062, target: self, selector: #selector(adjustProgressBar), userInfo: nil, repeats: true)
+            DatabaseHelper.addUser(name: nameText!, username: usernameText!, followMethod: self.addInitialFollows)
+        }
+        
+    }
+    
+    @objc func adjustProgressBar(){
+        progressSlide.progress += 0.01
+        progressSlide.setProgress(progressSlide.progress, animated: true)
+        if(progressSlide.progress == 1.0)
+        {
+            timer.invalidate()
+        }
     }
     
     func addInitialFollows(userCreated: Bool){
@@ -77,6 +93,12 @@ class Slide: UIViewController, UITableViewDataSource, UITableViewDelegate {
                 let newViewController = storyBoard.instantiateViewController(withIdentifier: "main") as! TabSuperview
                 self.present(newViewController, animated: true, completion: nil)
             })
+        }
+        else{
+            let message = "Could not create new user at this time. Please wait a few moments and try again."
+            let alert = UIAlertController(title: "User Creation Error", message: message, preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
         
     }
@@ -94,6 +116,8 @@ class Slide: UIViewController, UITableViewDataSource, UITableViewDelegate {
                 let alert = UIAlertController(title: "Can't access contact", message: "Please go to Settings -> Pollio to enable contact permission", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 //self.inputViewController(alert, animated: true, completion: nil)
+                self.present(alert, animated: true, completion: nil)
+
                 return
             }
             
@@ -152,12 +176,6 @@ class Slide: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     }
     
-
-    @IBAction func editsChanged(_ sender: UITextField) {
-        DatabaseHelper.checkUsername(username: username.text!, callback: self.setUsernameStatus)
-    }
-    
-    
     @IBAction func editingChanged(_ sender: UITextField) {
         usernameImage.isHidden = true
         usernameLoading.startAnimating()
@@ -169,6 +187,7 @@ class Slide: UIViewController, UITableViewDataSource, UITableViewDelegate {
         {
             usernameImage.isHidden = true
             usernameLoading.stopAnimating()
+            UserDefaults.standard.set(nil, forKey: "username")
 
         }
         else if(isAvaliable == true)
@@ -176,11 +195,13 @@ class Slide: UIViewController, UITableViewDataSource, UITableViewDelegate {
             usernameImage.image = UIImage(named: "green_check")
             usernameImage.isHidden = false
             usernameLoading.stopAnimating()
+            UserDefaults.standard.set(username.text?.lowercased(), forKey: "username")
         }
         else{
             usernameImage.image = UIImage(named: "red_x")
             usernameImage.isHidden = false
             usernameLoading.stopAnimating()
+            UserDefaults.standard.set(nil, forKey: "username")
 
         }
     }

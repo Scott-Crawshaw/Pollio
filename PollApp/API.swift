@@ -224,6 +224,12 @@ class DatabaseHelper{
         }
     }
     
+    static func deleteNumber(){
+        let functions = Functions.functions()
+        functions.httpsCallable("deleteNumber").call() { (result, error) in
+        }
+    }
+    
     static func deleteAccount(){
         let uid = Auth.auth().currentUser!.uid
         let db = Firestore.firestore()
@@ -244,6 +250,17 @@ class DatabaseHelper{
     static func addVote(postID: String, option: String){
         let db = Firestore.firestore()
         db.collection("posts").document(postID).updateData(["results." + option : FieldValue.arrayUnion([Auth.auth().currentUser!.uid])])
+    }
+    
+    static func isUser(uid: String, callback: @escaping (Bool) -> Void){
+        let db = Firestore.firestore()
+        db.collection("users").document(uid).getDocument { (document, err) in
+            if let document = document, document.exists {
+                callback(true)
+            } else {
+                callback(false)
+            }
+        }
     }
     
     static func addUser(name: String, username: String, followMethod: @escaping (Bool) -> Void){

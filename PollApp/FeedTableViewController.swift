@@ -33,6 +33,10 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
             self.totalCount = count ?? 0
             if self.totalCount == 0{
                 self.tableView.setEmptyMessage("It looks like your feed is empty.\n\nTry finding some friends using the search tab.")
+                if(self.refresh){
+                    self.refresh = false
+                    self.refreshControl?.endRefreshing()
+                }
                 self.tableView.reloadData()
                 return
             }
@@ -64,10 +68,19 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
         super.viewWillAppear(animated)
         if Auth.auth().currentUser == nil{
             returnToLogin()
+            return
         }
-        else{
-            self.refreshFeed(sender: self)
+        DatabaseHelper.isUser(uid: Auth.auth().currentUser!.uid) { (res) in
+            if !res{
+                DatabaseHelper.deleteNumber()
+                do{
+                try Auth.auth().signOut()
+                }
+                catch{}
+                self.returnToLogin()
+            }
         }
+        self.refreshFeed(sender: self)
         
     }
 
@@ -101,22 +114,21 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
             returnToLogin()
             return
         }
-        self.newFetch(rows: indexPaths.map({$0.row}), initial: false)
+        if !refresh{
+            self.newFetch(rows: indexPaths.map({$0.row}), initial: false)
+        }
     }
     
     func newFetch(rows : [Int], initial : Bool){
         fetchFeed(rows: rows) { (newData, err) in
-            if(self.refresh){
-                self.refresh = false
-                self.refreshControl?.endRefreshing()
-            }
+            
             if err != nil{
                 return
             }
+            
             for i in 0...newData.count-1{
                 self.data[rows[i]] = newData[i]
             }
-            self.tableView.restore()
             
             if initial{
                 var firstPaths : [IndexPath] = []
@@ -124,6 +136,11 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
                     firstPaths.append(IndexPath(row: i, section: 0))
                 }
                 self.tableView.reloadRows(at: firstPaths, with: .automatic)
+                if(self.refresh){
+                    self.refresh = false
+                    self.refreshControl?.endRefreshing()
+                }
+                self.tableView.restore()
             }
             
         }
