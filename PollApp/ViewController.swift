@@ -27,12 +27,18 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         setGradientBackground()
         super.viewWillAppear(animated)
-
+        UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
+        UserDefaults.standard.synchronize()
     }
     
     @IBAction func sendText(sender: UIButton) {
         var number = String(field.text!).filter("01234567890".contains)
-        
+        if number.count < 10{
+            let alert = UIAlertController(title: "Invalid Phone Number", message: "The phone number you entered is invalid. Please try again.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
         if number.count == 10 {
             number = "1" + number
         }
@@ -49,8 +55,6 @@ class ViewController: UIViewController {
                 return
             }
             UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
-            
-
         }
     }
     
