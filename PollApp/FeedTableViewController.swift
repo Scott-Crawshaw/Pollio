@@ -326,6 +326,7 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
         cell.choice3_button.addTarget(self, action: #selector(vote(sender:)), for: .touchUpInside)
         cell.choice4_button.addTarget(self, action: #selector(vote(sender:)), for: .touchUpInside)
 
+        cell.resultsButton.addTarget(self, action: #selector(navToResults(sender:)), for: .touchUpInside)
         
         if options.count == 2{
             cell.choice2_text.text = options[0]
@@ -360,6 +361,10 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
         }
     
         return cell
+    }
+    
+    @objc func navToResults(sender: UIButton){
+        
     }
     
     @objc func vote(sender: UIButton){

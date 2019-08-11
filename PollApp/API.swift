@@ -201,6 +201,19 @@ class DatabaseHelper{
         }
     }
     
+    static func hasFollowRequests(callback: @escaping (Bool) -> Void){
+        let db = Firestore.firestore()
+        let uid = Auth.auth().currentUser!.uid
+        
+        db.collection("followRequests").document(uid).getDocument { (document, err) in
+            if (document?.data()?["requests"] as? [String] ?? []).count > 0{
+                callback(true)
+            } else {
+                callback(false)
+            }
+        }
+    }
+    
     static func getFollowingState(followerUID: String, followingUID: String, callback: @escaping (Int) -> Void){
         let db = Firestore.firestore()
         //0 : not following, 1 : requested, 2 : following
