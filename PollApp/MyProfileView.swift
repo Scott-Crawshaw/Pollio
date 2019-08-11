@@ -98,26 +98,36 @@ class MyProfileView: UIViewController, UITableViewDataSource, UITableViewDataSou
     }
     
     func newFetch(rows : [Int], initial : Bool){
-        fetchFeed(rows: rows) { (newData, err) in
-            
-            if err != nil{
-                return
-            }
-            
-            for i in 0...newData.count-1{
-                self.data[rows[i]] = newData[i]
-            }
-            
-            if initial{
-                var firstPaths : [IndexPath] = []
-                for i in 0...self.initialGet{
-                    firstPaths.append(IndexPath(row: i, section: 0))
+        var unfilledRows : [Int] = []
+        for i in rows{
+            if data.count > i{
+                if data[i]["author"] as! String == "nil"{
+                    unfilledRows.append(i)
                 }
-                self.tableView.reloadRows(at: firstPaths, with: .automatic)
-                
-                self.tableView.restore()
             }
-            
+        }
+        if unfilledRows.count > 0{
+            fetchFeed(rows: unfilledRows) { (newData, err) in
+                
+                if err != nil{
+                    return
+                }
+                
+                for i in 0...newData.count-1{
+                    self.data[unfilledRows[i]] = newData[i]
+                }
+                
+                if initial{
+                    var firstPaths : [IndexPath] = []
+                    for i in 0...self.initialGet{
+                        firstPaths.append(IndexPath(row: i, section: 0))
+                    }
+                    self.tableView.reloadRows(at: firstPaths, with: .automatic)
+
+                    self.tableView.restore()
+                }
+                
+            }
         }
     }
     
