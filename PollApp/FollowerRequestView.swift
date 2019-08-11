@@ -36,7 +36,7 @@ class FollowerRequestView: UITableViewController {
     
     func populateData(result: [String : [String]]){
         //the only key is "results" and its value is an array that looks like this ["/users/dsahjdhj", "/users/shvjadvha"]
-        if titleText != ""{
+        if result["requests"] != nil {
             print("\(result.count) + \(result)")
             tableData = result
             self.tableView.reloadData()
@@ -55,24 +55,23 @@ class FollowerRequestView: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return tableData.count
+        return tableData["requests"]?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "userCell", for: indexPath) as! FollowerRequestCell
-        //if(tableData["results"]?[indexPath.row] != nil)
-        //{
-        var user = tableData["requests"]![indexPath.row]
-        user = user.subString(from: 7, to: user.count-1)
+//        if(tableData["requests"]?[indexPath.row] != nil)
+//        {
+            var user = tableData["requests"]![indexPath.row]
+            user = user.subString(from: 7, to: user.count-1)
 
-        
-        DatabaseHelper.getUserByUID(UID: user, callback: { (result) in
-            cell.username_label.text = result?["username"] as? String ?? ""
-            cell.name_label.text = result?["name"] as? String ?? ""
-        })
-        cell.uid = user
+            DatabaseHelper.getUserByUID(UID: user, callback: { (result) in
+                cell.username_label.text = result?["username"] as? String ?? ""
+                cell.name_label.text = result?["name"] as? String ?? ""
+            })
+            cell.uid = user
 
-        //}
+//        }
         return cell
 
         
