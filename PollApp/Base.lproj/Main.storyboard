@@ -2161,6 +2161,9 @@
                                         </button>
                                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="skC-Uc-MX0" customClass="RequestFollowButtonClass" customModule="PollApp" customModuleProvider="target">
                                             <rect key="frame" x="253" y="22.5" width="141" height="36"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="141" id="qTb-l6-59o"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="17"/>
                                             <state key="normal" title="Request to Follow">
                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2172,7 +2175,7 @@
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                             <connections>
-                                                <action selector="changeButtonState:" destination="6xe-NJ-mAG" eventType="touchDown" id="YYS-sq-Flz"/>
+                                                <action selector="sendRequestToButton:" destination="6xe-NJ-mAG" eventType="touchDown" id="CaF-8o-fqT"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -2284,7 +2287,7 @@
     </scenes>
     <resources>
         <image name="Draft2" width="115" height="115"/>
-        <image name="adduser" width="45" height="45"/>
+        <image name="adduser" width="50" height="50"/>
         <image name="back" width="25" height="25"/>
         <image name="bars" width="69" height="69"/>
         <image name="chevron" width="75" height="75"/>

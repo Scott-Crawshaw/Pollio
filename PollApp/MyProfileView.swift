@@ -32,7 +32,7 @@ class MyProfileView: UIViewController, UITableViewDataSource, UITableViewDataSou
         self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         self.tableView.dataSource = self
         self.tableView.prefetchDataSource = self
-        
+        //implement HasFollowerRequest
         // Do any additional setup after loading the view.
     }
     

@@ -34,19 +34,20 @@ class FollowerRequestCell: UITableViewCell {
     
     
     @IBAction func acceptedButton(_ sender: UIButton) {
-        print("accepted")
         DatabaseHelper.acceptFollowRequest(requestUID: uid)
         //DatabaseHelper.getFollowingState(followerUID: Auth.auth().currentUser!.uid, followingUID: uid, callback: buttonDecision)
+        request_button.createdBySuperview(id: uid)
+
         accept_button.isHidden = true
         decline_button.isHidden = true
         request_button.isHidden = false
     }
 
     @IBAction func declineButton(_ sender: UIButton) {
-        print("declined")
-
         DatabaseHelper.declineFollowRequest(requestUID: uid)
         //DatabaseHelper.getFollowingState(followerUID: Auth.auth().currentUser!.uid, followingUID: uid, callback: buttonDecision)
+        request_button.createdBySuperview(id: uid)
+
         accept_button.isHidden = true
         decline_button.isHidden = true
         request_button.isHidden = false
@@ -54,12 +55,9 @@ class FollowerRequestCell: UITableViewCell {
     }
     
     
-    
-    @IBAction func changeButtonState(sender: RequestFollowButtonClass) {
+    @IBAction func sendRequestToButton(_ sender: RequestFollowButtonClass) {
         request_button.buttonPressed(sender)
     }
-    
-    
     
 }
 
