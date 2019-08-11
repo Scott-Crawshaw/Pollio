@@ -55,12 +55,9 @@ class FollowerRequestCell: UITableViewCell {
     }
     
     
-    
-    @IBAction func changeButtonState(_ sender: RequestFollowButtonClass) {
+    @IBAction func sendRequestToButton(_ sender: RequestFollowButtonClass) {
         request_button.buttonPressed(sender)
     }
-    
-    
     
 }
 

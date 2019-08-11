@@ -43,6 +43,7 @@ class RequestFollowButtonClass: UIButton {
             self.setTitle("Following", for: .normal)
             followState = state
         }
+        
     }
     
     func buttonPressed(_ sendy: RequestFollowButtonClass)
@@ -58,10 +59,19 @@ class RequestFollowButtonClass: UIButton {
             self.setTitle("Requested", for: .normal)
         }
         
+
+        if(followState == 3) //officially unfriended, see ya later
+        {
+            DatabaseHelper.unfollowUser(user: uid)
+            setButtonStatus(state: 0)
+        }
+        
         if(followState == 2) // currently following
         {
-            self.setTitle("Following", for: .normal)
+            self.setTitle("Unfollow?", for: .normal)
+            followState = 3 //ready to unfollow
         }
+        
         
     }
 }

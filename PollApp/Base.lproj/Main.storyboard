@@ -2151,7 +2151,7 @@
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                             <connections>
-                                                <action selector="changeButtonStateWithSender:" destination="6xe-NJ-mAG" eventType="touchDown" id="A5z-0y-iid"/>
+                                                <action selector="sendRequestToButton:" destination="6xe-NJ-mAG" eventType="touchDown" id="CaF-8o-fqT"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -2192,7 +2192,7 @@
     </scenes>
     <resources>
         <image name="Draft2" width="115" height="115"/>
-        <image name="adduser" width="45" height="45"/>
+        <image name="adduser" width="50" height="50"/>
         <image name="back" width="25" height="25"/>
         <image name="bars" width="69" height="69"/>
         <image name="chevron" width="75" height="75"/>
