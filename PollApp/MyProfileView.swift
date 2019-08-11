@@ -59,6 +59,12 @@ class MyProfileView: UIViewController {
     }
     
     @IBAction func followRequests(sender: UIButton){
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "followerRequestView") as! FollowerRequestView
+        
+        newViewController.titleText = "Follow Requests"
+        
+        self.present(newViewController, animated: true, completion: nil)
         
     }
     

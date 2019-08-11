@@ -19,9 +19,12 @@ class RequestFollowButtonClass: UIButton {
     */
     var uid : String = ""
     var followState : Int = 0
-
-    override func awakeFromNib() {
+    
+    func createdBySuperview(id: String)
+    {
+        uid = id
         DatabaseHelper.getFollowingState(followerUID: Auth.auth().currentUser!.uid, followingUID: uid, callback: setButtonStatus)
+
     }
     
     func setButtonStatus(state: Int){
@@ -42,7 +45,7 @@ class RequestFollowButtonClass: UIButton {
         }
     }
     
-    func buttonPressed(_ sender: RequestFollowButtonClass)
+    func buttonPressed(_ sendy: RequestFollowButtonClass)
     {
         if(followState == 0) // not following
         {

@@ -25,7 +25,6 @@ class YourProfileView: UIViewController {
     override func viewDidLoad() { // Initialize Profile View for OTHER USERS
         super.viewDidLoad()
         tabBar.selectedItem = tabBar.items?.first
-        followRequestButton.uid = uid
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,6 +46,8 @@ class YourProfileView: UIViewController {
             label_username.text = user?["username"] as? String ?? ""
             label_bio.text = user?["bio"] as? String ?? ""
             label_name.text = user?["name"] as? String ?? ""
+            followRequestButton.createdBySuperview(id: uid)
+
         }
         else{
             self.dismiss(animated: true, completion: nil)
@@ -76,9 +77,10 @@ class YourProfileView: UIViewController {
         self.present(newViewController, animated: true, completion: nil)
     }
     
-    @IBAction func buttonTouchDown(sender: RequestFollowButtonClass) {
+    @IBAction func sendRequest(_ sender: RequestFollowButtonClass) {
         followRequestButton.buttonPressed(sender)
     }
+    
     
     @IBAction func goBack(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
