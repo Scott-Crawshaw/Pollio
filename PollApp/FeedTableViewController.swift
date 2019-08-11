@@ -18,10 +18,8 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
     var refresh = false
     let initialGet = 2
     var timersMap : [Int : Timer] = [:]
-    let queue = DispatchQueue.global(qos: .userInteractive)
     
     @objc func refreshFeed(sender:AnyObject) {
-        print("uhhh dood")
         refresh = true
         data = []
         self.tableView.setEmptyMessage("Loading...")
@@ -55,7 +53,6 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
             else{
                 initialRows = Array(0...self.totalCount-1)
             }
-            print(initialRows)
             self.newFetch(rows: initialRows, initial: true)
         }
     }
@@ -67,7 +64,7 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
         self.tableView.dataSource = self
         self.tableView.prefetchDataSource = self
         self.refreshControl?.addTarget(self, action: #selector(refreshFeed), for: UIControl.Event.valueChanged)
-
+        
         NotificationCenter.default.addObserver(self, selector: #selector(appEnteringBackground), name:UIApplication.didEnterBackgroundNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(appEnteringForeground), name:UIApplication.willEnterForegroundNotification, object: nil)
     }
@@ -129,15 +126,17 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
             return
         }
         var currRows = indexPaths.map({$0.row})
-        if currRows[0] == 0{
-            currRows.remove(at: currRows.count-1)
-        }
-        else if currRows[currRows.count-1] == totalCount-1{
-            currRows.remove(at: 0)
-        }
-        else{
-            currRows.removeFirst()
-            currRows.removeLast()
+        if currRows.count > 3{
+            if currRows[0] == 0{
+                currRows.remove(at: currRows.count-1)
+            }
+            else if currRows[currRows.count-1] == totalCount-1{
+                currRows.remove(at: 0)
+            }
+            else{
+                currRows.removeFirst()
+                currRows.removeLast()
+            }
         }
         var remove : [Int] = []
         for (row, timer) in timersMap{
@@ -196,8 +195,6 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
     }
     
     func newFetch(rows : [Int], initial : Bool){
-        print(initial.description)
-        print(rows)
         var unfilledRows : [Int] = []
         for i in rows{
             if data.count > i{
