@@ -106,7 +106,7 @@ class PollCreatorViewController: UIViewController, UITextViewDelegate {
         
         if questionView.text == "" {
             
-            questionView.text = "Placeholder text ..."
+            questionView.text = "Enter your question here ..."
             questionView.textColor = UIColor.lightGray
         }
     }

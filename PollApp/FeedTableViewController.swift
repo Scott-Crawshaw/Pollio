@@ -14,17 +14,23 @@ import FirebaseFirestore
 class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefetching {
 
     var data : [[String : Any]] = []
-    
     var totalCount = 0
     var refresh = false
     let initialGet = 2
+    var timersMap : [Int : Timer] = [:]
+    let queue = DispatchQueue.global(qos: .userInteractive)
     
     @objc func refreshFeed(sender:AnyObject) {
+        print("uhhh dood")
         refresh = true
         data = []
         self.tableView.setEmptyMessage("Loading...")
         self.totalCount = 0
         self.tableView.reloadData()
+        for (_, timer) in timersMap{
+            timer.invalidate()
+        }
+        timersMap.removeAll()
         
         self.fetchTotalCount { (count, err) in
             if err != nil{
@@ -47,8 +53,9 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
                 initialRows = Array(0...self.initialGet)
             }
             else{
-                initialRows = Array(0...self.totalCount)
+                initialRows = Array(0...self.totalCount-1)
             }
+            print(initialRows)
             self.newFetch(rows: initialRows, initial: true)
         }
     }
@@ -60,7 +67,20 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
         self.tableView.dataSource = self
         self.tableView.prefetchDataSource = self
         self.refreshControl?.addTarget(self, action: #selector(refreshFeed), for: UIControl.Event.valueChanged)
-        
+
+        NotificationCenter.default.addObserver(self, selector: #selector(appEnteringBackground), name:UIApplication.didEnterBackgroundNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(appEnteringForeground), name:UIApplication.willEnterForegroundNotification, object: nil)
+    }
+    
+    @objc func appEnteringBackground(){
+        for (_, timer) in timersMap{
+            timer.invalidate()
+        }
+        timersMap.removeAll()
+    }
+    
+    @objc func appEnteringForeground(){
+        checkVisibility()
     }
     
     
@@ -93,7 +113,6 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
         let cell = tableView.dequeueReusableCell(withIdentifier: "feedCell", for: indexPath) as! PollTableViewCell
         
         if isLoadingCell(for: indexPath) {
@@ -103,6 +122,51 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
         
         return self.modifyCell(cell: cell, indexPath: indexPath)
     }
+    func checkVisibility(){
+        let indexPaths = tableView.indexPathsForVisibleRows ?? []
+        
+        if indexPaths.count == 0{
+            return
+        }
+        var currRows = indexPaths.map({$0.row})
+        if currRows[0] == 0{
+            currRows.remove(at: currRows.count-1)
+        }
+        else if currRows[currRows.count-1] == totalCount-1{
+            currRows.remove(at: 0)
+        }
+        else{
+            currRows.removeFirst()
+            currRows.removeLast()
+        }
+        var remove : [Int] = []
+        for (row, timer) in timersMap{
+            if !(currRows.contains(row)){
+                timer.invalidate()
+                remove.append(row)
+            }
+        }
+        for rm in remove{
+            timersMap.removeValue(forKey: rm)
+        }
+        for row in currRows{
+            if timersMap[row] == nil{
+                timersMap[row] = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(timerFireMethod), userInfo: row, repeats: true)
+            }
+        }
+    }
+    @objc func timerFireMethod(timer : Timer){
+        let row = timer.userInfo as? Int ?? -1
+        if row == -1{
+            return
+        }
+        /* uncomment for linearly progressing intervals
+        let prev = timer.timeInterval
+        timer.invalidate()
+        timersMap[row] = Timer.scheduledTimer(timeInterval: prev + 3, target: self, selector: #selector(timerFireMethod), userInfo: row, repeats: true)*/
+        timerFetch(row: row)
+    }
+    
     func returnToLogin(){
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "login") as! ViewController
@@ -119,39 +183,57 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
         }
     }
     
-    func newFetch(rows : [Int], initial : Bool){
-        fetchFeed(rows: rows) { (newData, err) in
-            
+    func timerFetch(row: Int){
+        fetchFeed(rows: [row]) { (newData, err) in
             if err != nil{
                 return
             }
+            self.data[row] = newData[0]
             
-            for i in 0...newData.count-1{
-                self.data[rows[i]] = newData[i]
-            }
-            
-            if initial{
-                var firstPaths : [IndexPath] = []
-                for i in 0...self.initialGet{
-                    firstPaths.append(IndexPath(row: i, section: 0))
-                }
-                self.tableView.reloadRows(at: firstPaths, with: .automatic)
-                if(self.refresh){
-                    self.refresh = false
-                    self.refreshControl?.endRefreshing()
-                }
-                self.tableView.restore()
-            }
-            
+            self.tableView.reloadRows(at: [IndexPath(row: row, section: 0)], with: .none)
+
         }
     }
     
-    
-   func visibleIndexPathsToReload(intersecting indexPaths: [IndexPath]) -> [IndexPath] {
-        let indexPathsForVisibleRows = tableView.indexPathsForVisibleRows ?? []
-        let indexPathsIntersection = Set(indexPathsForVisibleRows).intersection(indexPaths)
-        return Array(indexPathsIntersection)
+    func newFetch(rows : [Int], initial : Bool){
+        print(initial.description)
+        print(rows)
+        var unfilledRows : [Int] = []
+        for i in rows{
+            if data.count > i{
+                if data[i]["author"] as! String == "nil"{
+                    unfilledRows.append(i)
+                }
+            }
+        }
+        if unfilledRows.count > 0{
+            fetchFeed(rows: unfilledRows) { (newData, err) in
+                
+                if err != nil{
+                    return
+                }
+                
+                for i in 0...newData.count-1{
+                    self.data[unfilledRows[i]] = newData[i]
+                }
+                
+                if initial{
+                    var firstPaths : [IndexPath] = []
+                    for i in unfilledRows{
+                        firstPaths.append(IndexPath(row: i, section: 0))
+                    }
+                    self.tableView.reloadRows(at: firstPaths, with: .none)
+                    if(self.refresh){
+                        self.refresh = false
+                        self.refreshControl?.endRefreshing()
+                    }
+                    self.tableView.restore()
+                }
+                
+            }
+        }
     }
+    
     
     func fetchTotalCount(completed: @escaping (Int?, Error?)->Void) {
         Firestore.firestore().collection("feedCount").document(Auth.auth().currentUser!.uid).getDocument { (doc, error) in
@@ -167,7 +249,6 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
     
     func fetchFeed(rows : [Int], completed: @escaping ([[String : Any]], Error?) -> Void) {
         let functions = Functions.functions()
-        
         functions.httpsCallable("getFeed").call(["rows" : rows]) { (result, error) in
             let newData = result?.data as! [[String : Any]]
             completed(newData, nil)
