@@ -16,6 +16,7 @@ class YourProfileView: UIViewController {
     @IBOutlet weak var label_name: UILabel!
     @IBOutlet weak var label_following: UIButton!
     @IBOutlet weak var label_followers: UIButton!
+    @IBOutlet weak var followRequestButton: RequestFollowButtonClass!
     
     @IBOutlet var back_button: UIButton!
     
@@ -45,6 +46,8 @@ class YourProfileView: UIViewController {
             label_username.text = user?["username"] as? String ?? ""
             label_bio.text = user?["bio"] as? String ?? ""
             label_name.text = user?["name"] as? String ?? ""
+            followRequestButton.createdBySuperview(id: uid)
+
         }
         else{
             self.dismiss(animated: true, completion: nil)
@@ -72,6 +75,10 @@ class YourProfileView: UIViewController {
         newViewController.titleText = "Followers"
         
         self.present(newViewController, animated: true, completion: nil)
+    }
+    
+    @IBAction func sendRequest(_ sender: RequestFollowButtonClass) {
+        followRequestButton.buttonPressed(sender)
     }
     
     
