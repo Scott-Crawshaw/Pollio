@@ -18,15 +18,14 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
     var refresh = false
     let initialGet = 2
     var timersMap : [Int : Timer] = [:]
-    let queue = DispatchQueue.global(qos: .userInteractive)
     
     @objc func refreshFeed(sender:AnyObject) {
-        print("uhhh dood")
         refresh = true
         data = []
         self.tableView.setEmptyMessage("Loading...")
-        self.totalCount = 0
+        self.totalCount = 10
         self.tableView.reloadData()
+        tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .bottom, animated: false)
         for (_, timer) in timersMap{
             timer.invalidate()
         }
@@ -55,7 +54,6 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
             else{
                 initialRows = Array(0...self.totalCount-1)
             }
-            print(initialRows)
             self.newFetch(rows: initialRows, initial: true)
         }
     }
@@ -67,7 +65,7 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
         self.tableView.dataSource = self
         self.tableView.prefetchDataSource = self
         self.refreshControl?.addTarget(self, action: #selector(refreshFeed), for: UIControl.Event.valueChanged)
-
+        
         NotificationCenter.default.addObserver(self, selector: #selector(appEnteringBackground), name:UIApplication.didEnterBackgroundNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(appEnteringForeground), name:UIApplication.willEnterForegroundNotification, object: nil)
     }
@@ -129,15 +127,17 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
             return
         }
         var currRows = indexPaths.map({$0.row})
-        if currRows[0] == 0{
-            currRows.remove(at: currRows.count-1)
-        }
-        else if currRows[currRows.count-1] == totalCount-1{
-            currRows.remove(at: 0)
-        }
-        else{
-            currRows.removeFirst()
-            currRows.removeLast()
+        if currRows.count > 3{
+            if currRows[0] == 0{
+                currRows.remove(at: currRows.count-1)
+            }
+            else if currRows[currRows.count-1] == totalCount-1{
+                currRows.remove(at: 0)
+            }
+            else{
+                currRows.removeFirst()
+                currRows.removeLast()
+            }
         }
         var remove : [Int] = []
         for (row, timer) in timersMap{
@@ -179,6 +179,7 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
             return
         }
         if !refresh{
+            print("getting " + indexPaths.description)
             self.newFetch(rows: indexPaths.map({$0.row}), initial: false)
         }
     }
@@ -196,8 +197,6 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
     }
     
     func newFetch(rows : [Int], initial : Bool){
-        print(initial.description)
-        print(rows)
         var unfilledRows : [Int] = []
         for i in rows{
             if data.count > i{
@@ -257,6 +256,9 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
     }
     
     func isLoadingCell(for indexPath: IndexPath) -> Bool {
+        if indexPath.row >= data.count{
+            return true
+        }
         return data[indexPath.row]["author"] as! String == "nil"
     }
     
@@ -366,41 +368,39 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
         let cell = tableView.cellForRow(at: indexPath) as! PollTableViewCell
         let currentUID = Auth.auth().currentUser!.uid
         var option = "0"
+        var currData = data[index]
+        var res = currData["results"] as! [String : [String]]
         if sender == cell.choice1_button{
-            cell.results["0"]!.append(currentUID)
             option = "0"
         }
         if sender == cell.choice2_button{
             if cell.results.count != 4{
-                cell.results["0"]!.append(currentUID)
                 option = "0"
             }
             else{
-                cell.results["1"]!.append(currentUID)
                 option = "1"
             }
         }
         if sender == cell.choice3_button{
             if cell.results.count != 4{
-                cell.results["1"]!.append(currentUID)
                 option = "1"
             }
             else{
-                cell.results["2"]!.append(currentUID)
                 option = "2"
             }
         }
         if sender == cell.choice4_button{
             if cell.results.count != 4{
-                cell.results["2"]!.append(currentUID)
                 option = "2"
             }
             else{
-                cell.results["3"]!.append(currentUID)
                 option = "3"
             }
         }
-
+        cell.results[option]!.append(currentUID)
+        res[option]!.append(currentUID)
+        currData["results"] = res
+        data[index] = currData
         cell.showResults(choice: option)
         DatabaseHelper.addVote(postID: cell.postID, option: option)
         
