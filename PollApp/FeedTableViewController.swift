@@ -23,8 +23,9 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
         refresh = true
         data = []
         self.tableView.setEmptyMessage("Loading...")
-        self.totalCount = 0
+        self.totalCount = 10
         self.tableView.reloadData()
+        tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .bottom, animated: false)
         for (_, timer) in timersMap{
             timer.invalidate()
         }
@@ -178,6 +179,7 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
             return
         }
         if !refresh{
+            print("getting " + indexPaths.description)
             self.newFetch(rows: indexPaths.map({$0.row}), initial: false)
         }
     }
@@ -254,6 +256,9 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
     }
     
     func isLoadingCell(for indexPath: IndexPath) -> Bool {
+        if indexPath.row >= data.count{
+            return true
+        }
         return data[indexPath.row]["author"] as! String == "nil"
     }
     
@@ -363,41 +368,39 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
         let cell = tableView.cellForRow(at: indexPath) as! PollTableViewCell
         let currentUID = Auth.auth().currentUser!.uid
         var option = "0"
+        var currData = data[index]
+        var res = currData["results"] as! [String : [String]]
         if sender == cell.choice1_button{
-            cell.results["0"]!.append(currentUID)
             option = "0"
         }
         if sender == cell.choice2_button{
             if cell.results.count != 4{
-                cell.results["0"]!.append(currentUID)
                 option = "0"
             }
             else{
-                cell.results["1"]!.append(currentUID)
                 option = "1"
             }
         }
         if sender == cell.choice3_button{
             if cell.results.count != 4{
-                cell.results["1"]!.append(currentUID)
                 option = "1"
             }
             else{
-                cell.results["2"]!.append(currentUID)
                 option = "2"
             }
         }
         if sender == cell.choice4_button{
             if cell.results.count != 4{
-                cell.results["2"]!.append(currentUID)
                 option = "2"
             }
             else{
-                cell.results["3"]!.append(currentUID)
                 option = "3"
             }
         }
-
+        cell.results[option]!.append(currentUID)
+        res[option]!.append(currentUID)
+        currData["results"] = res
+        data[index] = currData
         cell.showResults(choice: option)
         DatabaseHelper.addVote(postID: cell.postID, option: option)
         

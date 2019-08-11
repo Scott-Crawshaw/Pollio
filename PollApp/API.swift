@@ -112,9 +112,10 @@ class DatabaseHelper{
         db.collection("following").document(user).updateData(["following": FieldValue.arrayUnion(follows)])
     }
     
-    static func unfollowUsers(user: String, follows: [String]){
+    static func unfollowUser(user: String){
         let db = Firestore.firestore()
-        db.collection("following").document(user).updateData(["following": FieldValue.arrayRemove(follows)])
+        let uid = Auth.auth().currentUser!.uid
+        db.collection("following").document(uid).updateData(["following": FieldValue.arrayRemove(["/users/"+user])])
     }
     
     static func addPost(data: [String: Any]){
