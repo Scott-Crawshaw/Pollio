@@ -28,6 +28,7 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating,
         })()
         
         resultSearchController.searchBar.delegate = self
+        self.resultSearchController.isActive = false;
         
         // Reload the table
         self.tableView.tableFooterView = UIView()

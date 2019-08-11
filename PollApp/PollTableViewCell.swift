@@ -28,6 +28,7 @@ class PollTableViewCell: UITableViewCell {
     @IBOutlet var visibility: UILabel!
     @IBOutlet var time: UILabel!
     @IBOutlet var username: UILabel!
+    @IBOutlet var resultsButton: UIButton!
     var results : [String : [String]]!
     var commentsDoc : String!
     var postID : String!
@@ -45,6 +46,9 @@ class PollTableViewCell: UITableViewCell {
     
     func resetCell(){
         self.isHidden = false
+        
+        resultsButton.isHidden = true
+    
         choice1_button.isHidden = false
         choice2_button.isHidden = false
         choice3_button.isHidden = false
@@ -79,7 +83,7 @@ class PollTableViewCell: UITableViewCell {
         
         let fullWidth = choice1_button.frame.width
         let fullHeight = choice1_button.frame.height
-        
+        resultsButton.isHidden = false
         if results.count == 2{
             let firstBarPercent = Float(results["0"]!.count) / totalVotes
             let secondBarPercent = Float(results["1"]!.count) / totalVotes
