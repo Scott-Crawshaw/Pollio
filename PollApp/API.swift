@@ -29,6 +29,24 @@ class DatabaseHelper{
         }
     }
     
+    static func getUserByUIDListener(UID: String, callback: @escaping (Dictionary<String, Any>?) -> Void) -> ListenerRegistration{
+        let db = Firestore.firestore()
+        let docRef = db.collection("users").document(UID)
+        
+        return docRef.addSnapshotListener { documentSnapshot, error in
+            guard let document = documentSnapshot else {
+                callback(nil)
+                return
+            }
+            guard let data = document.data() else {
+                callback(nil)
+                return
+            }
+            callback(data)
+        }
+    }
+    
+    
     static func getFollowingCount(UID: String, callback: @escaping (Int) -> Void) {
         let db = Firestore.firestore()
         let docRef = db.collection("following").document(UID)
@@ -56,6 +74,41 @@ class DatabaseHelper{
             else{
                 callback(0)
             }
+        }
+    }
+    
+    static func getFollowingCountListener(UID: String, callback: @escaping (Int) -> Void) -> ListenerRegistration {
+        let db = Firestore.firestore()
+        let docRef = db.collection("following").document(UID)
+        
+        return docRef.addSnapshotListener { documentSnapshot, error in
+            guard let document = documentSnapshot else {
+                callback(0)
+                return
+            }
+            guard let data = document.data() else {
+                callback(0)
+                return
+            }
+            let followingArr : [String] = data["following"] as? [String] ?? []
+            callback(followingArr.count)
+        }
+    }
+    
+    static func getFollowersCountListener(UID: String, callback: @escaping (Int) -> Void) -> ListenerRegistration {
+        let db = Firestore.firestore()
+        let docRef = db.collection("followers").document(UID)
+        return docRef.addSnapshotListener { documentSnapshot, error in
+            guard let document = documentSnapshot else {
+                callback(0)
+                return
+            }
+            guard let data = document.data() else {
+                callback(0)
+                return
+            }
+            let followingArr : [String] = data["followers"] as? [String] ?? []
+            callback(followingArr.count)
         }
     }
     
@@ -201,17 +254,28 @@ class DatabaseHelper{
         }
     }
     
-    static func hasFollowRequests(callback: @escaping (Bool) -> Void){
+    static func hasFollowRequestsListener(callback: @escaping (Bool) -> Void) -> ListenerRegistration{
         let db = Firestore.firestore()
         let uid = Auth.auth().currentUser!.uid
         
-        db.collection("followRequests").document(uid).getDocument { (document, err) in
-            if (document?.data()?["requests"] as? [String] ?? []).count > 0{
-                callback(true)
-            } else {
-                callback(false)
-            }
+        return db.collection("followRequests").document(uid)
+            .addSnapshotListener { documentSnapshot, error in
+                guard let document = documentSnapshot else {
+                    callback(false)
+                    return
+                }
+                guard let data = document.data() else {
+                    callback(false)
+                    return
+                }
+                if (data["requests"] as? [String] ?? []).count > 0{
+                    callback(true)
+                }
+                else {
+                    callback(false)
+                }
         }
+
     }
     
     static func getFollowingState(followerUID: String, followingUID: String, callback: @escaping (Int) -> Void){

@@ -24,6 +24,7 @@ class MyProfileView: UIViewController, UITableViewDataSource, UITableViewDataSou
     @IBOutlet var tableView: UITableView!
     
     var data : [[String : Any]] = []
+    var listeners : [ListenerRegistration] = []
     var totalCount = 0
     let initialGet = 2
     
@@ -38,10 +39,17 @@ class MyProfileView: UIViewController, UITableViewDataSource, UITableViewDataSou
     
     override func viewWillAppear(_ animated: Bool) {
         self.refreshFeed(sender: self)
-        DatabaseHelper.hasFollowRequests(callback: doesUserHaveRequest)
-        DatabaseHelper.getUserByUID(UID: Auth.auth().currentUser!.uid, callback: setInfo)
-        DatabaseHelper.getFollowingCount(UID: Auth.auth().currentUser!.uid, callback: setFollowing)
-        DatabaseHelper.getFollowersCount(UID: Auth.auth().currentUser!.uid, callback: setFollowers)
+        listeners.append(DatabaseHelper.hasFollowRequestsListener(callback: doesUserHaveRequest))
+        listeners.append(DatabaseHelper.getUserByUIDListener(UID: Auth.auth().currentUser!.uid, callback: setInfo))
+        listeners.append(DatabaseHelper.getFollowingCountListener(UID: Auth.auth().currentUser!.uid, callback: setFollowing))
+        listeners.append(DatabaseHelper.getFollowersCountListener(UID: Auth.auth().currentUser!.uid, callback: setFollowers))
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        listeners.forEach { (listener) in
+            listener.remove()
+        }
     }
     
     @objc func refreshFeed(sender:AnyObject) {
@@ -354,6 +362,9 @@ class MyProfileView: UIViewController, UITableViewDataSource, UITableViewDataSou
     {
         if(requests == true) {
             requestsButton.setImage(UIImage(named: "adduser_alert"), for: .normal)
+        }
+        else{
+            requestsButton.setImage(UIImage(named: "adduser"), for: .normal)
         }
     }
     

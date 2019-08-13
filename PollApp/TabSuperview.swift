@@ -8,28 +8,25 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseFirestore
 
 class TabSuperview: UITabBarController {
     
     
     @IBOutlet var tab: [UITabBar]!
-    
+    var listeners : [ListenerRegistration] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        DatabaseHelper.hasFollowRequests(callback: addBadge)
-        
-//        for elements in tab
-//        {
-//            print(elements.items)
-//        }
-       
-        // Do any additional setup after loading the view.
+        listeners.append(DatabaseHelper.hasFollowRequestsListener(callback: addBadge))
     }
+    
     func addBadge(val: Bool)
     {
-        if(val == true) {
+        if(val) {
             tab.first?.items?.last?.badgeValue = "!"
+        }
+        else{
+            tab.first?.items?.last?.badgeValue = nil
         }
         
     }
