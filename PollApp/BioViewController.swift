@@ -17,17 +17,25 @@ class BioViewController: UIViewController, UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         bioTextView.delegate = self
+        let polliopurp = UIColor(red: 125/255.0, green: 38/255.0, blue: 205/255.0, alpha: 1.0)
+        bioTextView.layer.borderWidth = 3.5
+        bioTextView.layer.borderColor = polliopurp .cgColor
+        
+        
+        
 
         // Do any additional setup after loading the view.
     }
+    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        setGradientBackground()
+        //setGradientBackground()
         super.viewWillAppear(animated)
         DatabaseHelper.getUserByUID(UID: Auth.auth().currentUser!.uid, callback: loadBio)
     }
@@ -50,7 +58,7 @@ class BioViewController: UIViewController, UITextViewDelegate {
         DatabaseHelper.editBio(bio: bioTextView.text)
         self.dismiss(animated: true, completion: nil)
     }
-    
+    /*
     func setGradientBackground() {
         let colorTop =  UIColor(red: 212/255.0, green: 119/255.0, blue: 230/255.0, alpha: 0.9).cgColor
         let colorBottom = UIColor(red: 161/255.0, green: 84/255.0, blue: 194/255.0, alpha: 1.0).cgColor
@@ -62,6 +70,7 @@ class BioViewController: UIViewController, UITextViewDelegate {
         
         self.view.layer.insertSublayer(gradientLayer, at:0)
     }
+ */
     
 
     /*
