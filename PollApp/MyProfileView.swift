@@ -19,6 +19,7 @@ class MyProfileView: UIViewController, UITableViewDataSource, UITableViewDataSou
     @IBOutlet weak var label_name: UILabel!
     @IBOutlet weak var label_following: UIButton!
     @IBOutlet weak var label_followers: UIButton!
+    @IBOutlet weak var requestsButton: UIButton!
     
     @IBOutlet var tableView: UITableView!
     
@@ -32,12 +33,12 @@ class MyProfileView: UIViewController, UITableViewDataSource, UITableViewDataSou
         self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         self.tableView.dataSource = self
         self.tableView.prefetchDataSource = self
-        //implement HasFollowerRequest
         // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.refreshFeed(sender: self)
+        DatabaseHelper.hasFollowRequests(callback: doesUserHaveRequest)
         DatabaseHelper.getUserByUID(UID: Auth.auth().currentUser!.uid, callback: setInfo)
         DatabaseHelper.getFollowingCount(UID: Auth.auth().currentUser!.uid, callback: setFollowing)
         DatabaseHelper.getFollowersCount(UID: Auth.auth().currentUser!.uid, callback: setFollowers)
@@ -343,6 +344,13 @@ class MyProfileView: UIViewController, UITableViewDataSource, UITableViewDataSou
         
         self.present(newViewController, animated: true, completion: nil)
         
+    }
+    
+    func doesUserHaveRequest(requests: Bool)
+    {
+        if(requests == true) {
+            requestsButton.setImage(UIImage(named: "adduser_alert"), for: .normal)
+        }
     }
     
 
