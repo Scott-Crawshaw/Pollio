@@ -107,9 +107,9 @@ class DatabaseHelper{
     }
     
     static func initialFollowUsers(user: String, follows: [String]){
-        let db = Firestore.firestore()
-        db.collection("following").document(user).setData(["following": []])
-        db.collection("following").document(user).updateData(["following": FieldValue.arrayUnion(follows)])
+        for follow in follows{
+            addFollowRequest(followUID: follow.subString(from: 7, to: follow.count-1))
+        }
     }
     
     static func unfollowUser(user: String){
@@ -248,11 +248,16 @@ class DatabaseHelper{
         let uid = Auth.auth().currentUser!.uid
         let db = Firestore.firestore()
         
-        db.collection("users").document(uid).delete()
-        do{
-        try Auth.auth().signOut()
+        db.collection("users").document(uid).delete(){ (err) in
+            if err != nil{
+                return
+            }
+            do{
+                try Auth.auth().signOut()
+            }
+            catch{}
         }
-        catch{}
+        
     }
     
     static func editBio(bio: String){

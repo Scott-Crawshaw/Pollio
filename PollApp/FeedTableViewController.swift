@@ -209,11 +209,13 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
             fetchFeed(rows: unfilledRows) { (newData, err) in
                 
                 if err != nil{
+                    self.tableView.restore()
                     return
                 }
-                
-                for i in 0...newData.count-1{
-                    self.data[unfilledRows[i]] = newData[i]
+                if newData.count > 0{
+                    for i in 0...newData.count-1{
+                        self.data[unfilledRows[i]] = newData[i]
+                    }
                 }
                 
                 if initial{
@@ -249,8 +251,8 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
     func fetchFeed(rows : [Int], completed: @escaping ([[String : Any]], Error?) -> Void) {
         let functions = Functions.functions()
         functions.httpsCallable("getFeed").call(["rows" : rows]) { (result, error) in
-            let newData = result?.data as! [[String : Any]]
-            completed(newData, nil)
+            let newData = result?.data as? [[String : Any]] ?? []
+            completed(newData, error)
         }
         
     }
@@ -320,6 +322,7 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
         cell.choice2_button.tag = indexPath.row
         cell.choice3_button.tag = indexPath.row
         cell.choice4_button.tag = indexPath.row
+        cell.resultsButton.tag = indexPath.row
         
         cell.choice1_button.addTarget(self, action: #selector(vote(sender:)), for: .touchUpInside)
         cell.choice2_button.addTarget(self, action: #selector(vote(sender:)), for: .touchUpInside)
@@ -364,7 +367,20 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
     }
     
     @objc func navToResults(sender: UIButton){
-        
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "results") as! ResultsViewController
+        let res = data[sender.tag]["results"] as! [String : [String]]
+        print(res)
+        for _ in 0...res.count-1{
+            newViewController.uids.append([])
+        }
+        for (option, users) in res{
+            let optionInt = Int(option) ?? -1
+            if optionInt != -1{
+                newViewController.uids[optionInt] = users
+            }
+        }
+        self.present(newViewController, animated: true, completion: nil)
     }
     
     @objc func vote(sender: UIButton){
