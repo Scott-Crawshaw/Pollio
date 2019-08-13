@@ -48,8 +48,9 @@ class MyProfileView: UIViewController, UITableViewDataSource, UITableViewDataSou
         data = []
         
         self.tableView.setEmptyMessage("Loading...")
-        self.totalCount = 0
+        self.totalCount = 10
         self.tableView.reloadData()
+        tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .bottom, animated: false)
         
         self.fetchTotalCount { (count, err) in
             if err != nil{
@@ -162,6 +163,9 @@ class MyProfileView: UIViewController, UITableViewDataSource, UITableViewDataSou
     }
     
     func isLoadingCell(for indexPath: IndexPath) -> Bool {
+        if indexPath.row >= data.count{
+            return true
+        }
         return data[indexPath.row]["author"] as! String == "nil"
     }
     
