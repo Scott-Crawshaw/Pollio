@@ -13,7 +13,6 @@ import FirebaseFirestore
 
 class MyProfileView: UIViewController, UITableViewDataSource, UITableViewDataSourcePrefetching{
     
-    @IBOutlet weak var tabBar: UITabBar!
     @IBOutlet weak var label_username: UILabel!
     @IBOutlet weak var label_bio: UILabel!
     @IBOutlet weak var label_name: UILabel!
@@ -30,7 +29,6 @@ class MyProfileView: UIViewController, UITableViewDataSource, UITableViewDataSou
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tabBar.selectedItem = tabBar.items?.first
         self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         self.tableView.dataSource = self
         self.tableView.prefetchDataSource = self
@@ -165,7 +163,7 @@ class MyProfileView: UIViewController, UITableViewDataSource, UITableViewDataSou
     func fetchFeed(rows : [Int], completed: @escaping ([[String : Any]], Error?) -> Void) {
         let functions = Functions.functions()
         
-        functions.httpsCallable("getUserPosts").call(["rows" : rows]) { (result, error) in
+        functions.httpsCallable("getUserPosts").call(["rows" : rows, "uid" : Auth.auth().currentUser!.uid]) { (result, error) in
             let newData = result?.data as! [[String : Any]]
             completed(newData, nil)
         }
@@ -243,6 +241,7 @@ class MyProfileView: UIViewController, UITableViewDataSource, UITableViewDataSou
         cell.choice3_button.addTarget(self, action: #selector(vote(sender:)), for: .touchUpInside)
         cell.choice4_button.addTarget(self, action: #selector(vote(sender:)), for: .touchUpInside)
         
+        cell.resultsButton.addTarget(self, action: #selector(navToResults(sender:)), for: .touchUpInside)
         
         if options.count == 2{
             cell.choice2_text.text = options[0]
@@ -272,6 +271,24 @@ class MyProfileView: UIViewController, UITableViewDataSource, UITableViewDataSou
         cell.generateListener()
         
         return cell
+    }
+    
+    @objc func navToResults(sender: UIButton){
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "results") as! ResultsViewController
+        let res = (tableView.cellForRow(at: IndexPath(row: sender.tag, section: 0)) as! PollTableViewCell).results ?? [:]
+        for _ in 0...res.count-1{
+            newViewController.uids.append([])
+            newViewController.headers.append("")
+        }
+        for (option, users) in res{
+            let optionInt = Int(option) ?? -1
+            if optionInt != -1{
+                newViewController.uids[optionInt] = users
+                newViewController.headers[optionInt] = (data[sender.tag]["options"] as? [String] ?? ["","","",""])[optionInt]
+            }
+        }
+        self.present(newViewController, animated: true, completion: nil)
     }
     
     @objc func vote(sender: UIButton){

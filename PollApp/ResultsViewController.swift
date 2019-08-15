@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class ResultsViewController: UITableViewController {
 
@@ -72,10 +73,17 @@ class ResultsViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let newViewController = storyBoard.instantiateViewController(withIdentifier: "yourProfile") as! YourProfileView
-        let user = tableData[indexPath.section][indexPath.row]["uid"] as? String ?? ""
-        newViewController.uid = user
-        self.present(newViewController, animated: true, completion: nil)
+        if Auth.auth().currentUser!.uid != tableData[indexPath.section][indexPath.row]["uid"] as? String ?? ""{
+            let newViewController = storyBoard.instantiateViewController(withIdentifier: "yourProfile") as! YourProfileView
+            let user = tableData[indexPath.section][indexPath.row]["uid"] as? String ?? ""
+            newViewController.uid = user
+            self.present(newViewController, animated: true, completion: nil)
+        }
+        else{
+            let newViewController = storyBoard.instantiateViewController(withIdentifier: "main") as! TabSuperview
+            newViewController.selectedIndex = 3
+            self.present(newViewController, animated: true, completion: nil)
+        }
     }
     
     

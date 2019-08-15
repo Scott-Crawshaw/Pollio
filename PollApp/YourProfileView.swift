@@ -8,10 +8,11 @@
 
 import UIKit
 import FirebaseFirestore
+import FirebaseFunctions
+import FirebaseAuth
 
-class YourProfileView: UIViewController {
+class YourProfileView: UIViewController, UITableViewDataSource, UITableViewDataSourcePrefetching {
     
-    @IBOutlet weak var tabBar: UITabBar!
     @IBOutlet weak var label_username: UILabel!
     @IBOutlet weak var label_bio: UILabel!
     @IBOutlet weak var label_name: UILabel!
@@ -21,16 +22,33 @@ class YourProfileView: UIViewController {
     
     @IBOutlet var back_button: UIButton!
     
+    @IBOutlet var tableView: UITableView!
+
+    
     var uid : String = ""
+    var data : [[String : Any]] = []
     var listeners : [ListenerRegistration] = []
+    var totalCount = 0
+    let initialGet = 2
+    var isFollowing = false
     
     override func viewDidLoad() { // Initialize Profile View for OTHER USERS
         super.viewDidLoad()
-        tabBar.selectedItem = tabBar.items?.first
+        self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        self.tableView.dataSource = self
+        self.tableView.prefetchDataSource = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print(uid)
+        DatabaseHelper.getFollowingState(followerUID: Auth.auth().currentUser!.uid, followingUID: uid){ (state) in
+            if state == 2{
+                self.isFollowing = true
+                self.refreshFeed(sender: self)
+            }
+            else{
+                self.tableView.setEmptyMessage("Follow this user to see their posts")
+            }
+        }
         DatabaseHelper.getUserByUID(UID: uid, callback: setInfo)
         listeners.append(DatabaseHelper.getFollowingCountListener(UID: uid, callback: setFollowing))
         listeners.append(DatabaseHelper.getFollowersCountListener(UID: uid, callback: setFollowers))
@@ -43,6 +61,287 @@ class YourProfileView: UIViewController {
         }
     }
     
+    @objc func refreshFeed(sender:AnyObject) {
+        data = []
+        self.tableView.setEmptyMessage("Loading...")
+        self.totalCount = 10
+        self.tableView.reloadData()
+        tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .bottom, animated: false)
+        
+        self.fetchTotalCount { (count, err) in
+            if err != nil{
+                return
+            }
+            self.totalCount = count ?? 0
+            if self.totalCount == 0{
+                self.tableView.setEmptyMessage("It looks like this user hasn't made any posts.")
+                self.tableView.reloadData()
+                return
+            }
+            self.data = Array(repeating: ["author" : "nil"], count: self.totalCount)
+            self.tableView.reloadData()
+            var initialRows : [Int] = []
+            if self.totalCount > self.initialGet{
+                initialRows = Array(0...self.initialGet)
+            }
+            else{
+                initialRows = Array(0...self.totalCount-1)
+            }
+            self.newFetch(rows: initialRows, initial: true)
+        }
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.totalCount
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "yourFeedCell", for: indexPath) as! PollTableViewCell
+        
+        if isLoadingCell(for: indexPath) {
+            cell.isHidden = true
+            return cell
+        }
+        
+        return self.modifyCell(cell: cell, indexPath: indexPath)
+    }
+    
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        if isFollowing{
+            self.newFetch(rows: indexPaths.map({$0.row}), initial: false)
+        }
+    }
+    
+    func newFetch(rows : [Int], initial : Bool){
+        var unfilledRows : [Int] = []
+        for i in rows{
+            if data.count > i{
+                if data[i]["author"] as! String == "nil"{
+                    unfilledRows.append(i)
+                }
+            }
+        }
+        if unfilledRows.count > 0{
+            fetchFeed(rows: unfilledRows) { (newData, err) in
+                
+                if err != nil{
+                    return
+                }
+                
+                for i in 0...newData.count-1{
+                    if unfilledRows[i] < self.data.count{
+                        self.data[unfilledRows[i]] = newData[i]
+                    }
+                }
+                
+                if initial{
+                    var firstPaths : [IndexPath] = []
+                    for i in unfilledRows{
+                        firstPaths.append(IndexPath(row: i, section: 0))
+                    }
+                    self.tableView.reloadRows(at: firstPaths, with: .automatic)
+                    
+                    self.tableView.restore()
+                }
+                
+            }
+        }
+    }
+    
+    
+    func visibleIndexPathsToReload(intersecting indexPaths: [IndexPath]) -> [IndexPath] {
+        let indexPathsForVisibleRows = tableView.indexPathsForVisibleRows ?? []
+        let indexPathsIntersection = Set(indexPathsForVisibleRows).intersection(indexPaths)
+        return Array(indexPathsIntersection)
+    }
+    
+    func fetchTotalCount(completed: @escaping (Int?, Error?)->Void) {
+        Firestore.firestore().collection("userPosts").document(uid).getDocument { (doc, error) in
+            if let error = error {
+                completed(nil, error)
+            }
+            else {
+                let allPosts = doc?.data()?["posts"] as? [String] ?? []
+                completed(allPosts.count, nil)
+            }
+        }
+    }
+    
+    func fetchFeed(rows : [Int], completed: @escaping ([[String : Any]], Error?) -> Void) {
+        let functions = Functions.functions()
+        
+        functions.httpsCallable("getUserPosts").call(["rows" : rows, "uid" : uid]) { (result, error) in
+            let newData = result?.data as! [[String : Any]]
+            completed(newData, nil)
+        }
+        
+    }
+    
+    func isLoadingCell(for indexPath: IndexPath) -> Bool {
+        if indexPath.row >= data.count{
+            return true
+        }
+        return data[indexPath.row]["author"] as! String == "nil"
+    }
+    
+    
+    func modifyCell(cell : PollTableViewCell, indexPath : IndexPath) -> UITableViewCell{
+        cell.resetCell()
+        cell.results = data[indexPath.row]["results"] as? [String : [String]]
+        cell.commentsDoc = data[indexPath.row]["comments"] as? String
+        cell.postID = cell.commentsDoc.subString(from: 10, to: cell.commentsDoc.count-1)
+        cell.username.text = data[indexPath.row]["username"] as? String ?? "Unknown"
+        let timeMap = data[indexPath.row]["time"] as! [String : Any]
+        let FBtime : Timestamp = Timestamp(seconds: timeMap["_seconds"] as! Int64, nanoseconds: timeMap["_nanoseconds"] as! Int32)
+        let time = FBtime.dateValue()
+        var timeText = ""
+        let calendar = Calendar.current
+        let dateFormatter = DateFormatter()
+        if calendar.isDateInToday(time){
+            timeText += "Today"
+        }
+        else if calendar.isDateInYesterday(time){
+            timeText += "Yesterday"
+        }
+        else if calendar.isDate(Date(), equalTo: time, toGranularity: .year){
+            dateFormatter.dateFormat = "MMM dd"
+            timeText += dateFormatter.string(from: time)
+        }
+        else{
+            dateFormatter.dateFormat = "MMM dd, yyyy"
+            timeText += dateFormatter.string(from: time)
+        }
+        timeText += " at "
+        dateFormatter.dateFormat = "h:mm a"
+        timeText += dateFormatter.string(from: time)
+        
+        cell.time.text = timeText
+        
+        let visArr = data[indexPath.row]["visibility"] as? [String : Bool] ?? ["author":false, "viewers":false]
+        
+        if visArr["author"]! && visArr["viewers"]!{
+            cell.visibility.text = "Public"
+        }
+        if visArr["author"]! && !visArr["viewers"]!{
+            cell.visibility.text = "Private"
+        }
+        if !visArr["author"]! && !visArr["viewers"]!{
+            cell.visibility.text = "Anonymous"
+        }
+        
+        cell.question.text = data[indexPath.row]["question"] as? String ?? "Unknown"
+        let options = data[indexPath.row]["options"] as? [String] ?? []
+        
+        
+        cell.choice1_bar.isHidden = true
+        cell.choice2_bar.isHidden = true
+        cell.choice3_bar.isHidden = true
+        cell.choice4_bar.isHidden = true
+        
+        cell.choice1_button.tag = indexPath.row
+        cell.choice2_button.tag = indexPath.row
+        cell.choice3_button.tag = indexPath.row
+        cell.choice4_button.tag = indexPath.row
+        
+        cell.choice1_button.addTarget(self, action: #selector(vote(sender:)), for: .touchUpInside)
+        cell.choice2_button.addTarget(self, action: #selector(vote(sender:)), for: .touchUpInside)
+        cell.choice3_button.addTarget(self, action: #selector(vote(sender:)), for: .touchUpInside)
+        cell.choice4_button.addTarget(self, action: #selector(vote(sender:)), for: .touchUpInside)
+        
+        cell.resultsButton.addTarget(self, action: #selector(navToResults(sender:)), for: .touchUpInside)
+        
+        if options.count == 2{
+            cell.choice2_text.text = options[0]
+            cell.choice3_text.text = options[1]
+            
+            cell.choice1_button.isHidden = true
+            cell.choice1_text.isHidden = true
+            cell.choice4_button.isHidden = true
+            cell.choice4_text.isHidden = true
+            
+        }
+        if options.count == 3{
+            cell.choice2_text.text = options[0]
+            cell.choice3_text.text = options[1]
+            cell.choice4_text.text = options[2]
+            
+            cell.choice1_button.isHidden = true
+            cell.choice1_text.isHidden = true
+        }
+        if options.count == 4{
+            cell.choice1_text.text = options[0]
+            cell.choice2_text.text = options[1]
+            cell.choice3_text.text = options[2]
+            cell.choice4_text.text = options[3]
+        }
+        cell.currentUser = Auth.auth().currentUser!.uid
+        cell.generateListener()
+        
+        return cell
+    }
+    
+    @objc func navToResults(sender: UIButton){
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "results") as! ResultsViewController
+        let res = (tableView.cellForRow(at: IndexPath(row: sender.tag, section: 0)) as! PollTableViewCell).results ?? [:]
+        for _ in 0...res.count-1{
+            newViewController.uids.append([])
+            newViewController.headers.append("")
+        }
+        for (option, users) in res{
+            let optionInt = Int(option) ?? -1
+            if optionInt != -1{
+                newViewController.uids[optionInt] = users
+                newViewController.headers[optionInt] = (data[sender.tag]["options"] as? [String] ?? ["","","",""])[optionInt]
+            }
+        }
+        self.present(newViewController, animated: true, completion: nil)
+    }
+    
+    @objc func vote(sender: UIButton){
+        let index = sender.tag
+        let indexPath = IndexPath(row: index, section: 0)
+        let cell = tableView.cellForRow(at: indexPath) as! PollTableViewCell
+        //let currentUID = Auth.auth().currentUser!.uid
+        var option = "0"
+        //var res = currData["results"] as! [String : [String]]
+        if sender == cell.choice1_button{
+            option = "0"
+        }
+        if sender == cell.choice2_button{
+            if cell.results.count != 4{
+                option = "0"
+            }
+            else{
+                option = "1"
+            }
+        }
+        if sender == cell.choice3_button{
+            if cell.results.count != 4{
+                option = "1"
+            }
+            else{
+                option = "2"
+            }
+        }
+        if sender == cell.choice4_button{
+            if cell.results.count != 4{
+                option = "2"
+            }
+            else{
+                option = "3"
+            }
+        }
+        cell.choice = option
+        DatabaseHelper.addVote(postID: cell.postID, option: option)
+        
+    }
+    
     func setFollowing(count: Int){
         label_following.setTitle("\(String(count)) Following", for: .normal)
     }
@@ -52,7 +351,6 @@ class YourProfileView: UIViewController {
     }
     
     func setInfo(user : [String : Any]?){
-        print(user)
         if user != nil{
             label_username.text = user?["username"] as? String ?? ""
             label_bio.text = user?["bio"] as? String ?? ""
