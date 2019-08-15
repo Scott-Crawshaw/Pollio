@@ -78,7 +78,7 @@ class PollTableViewCell: UITableViewCell {
             listener = nil
         }
         
-        resultsButton.backgroundColor = UIColor(red: 111/255, green: 113/255, blue: 121/255, alpha: 1)
+        resultsButton.backgroundColor = UIColor(red: 111/255, green: 113/255, blue: 121/255, alpha: 0.5)
         resultsButton.isEnabled = false
         
         choice1_button.isHidden = false
@@ -117,7 +117,7 @@ class PollTableViewCell: UITableViewCell {
         let fullWidth = choice1_button.frame.width
         let fullHeight = choice1_button.frame.height
         resultsButton.isEnabled = true
-        resultsButton.backgroundColor = UIColor(red: 161/255, green: 84/255, blue: 194/255, alpha: 1)
+        resultsButton.backgroundColor = UIColor(red: 111/255, green: 113/255, blue: 121/255, alpha: 1)
         if results.count == 2{
             let firstBarPercent = Float(results["0"]!.count) / totalVotes
             let secondBarPercent = Float(results["1"]!.count) / totalVotes
