@@ -42,7 +42,6 @@
 		BB72700A22B7F3D7006C386B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB72700822B7F3D7006C386B /* LaunchScreen.storyboard */; };
 		BB72701522B7F3D7006C386B /* PollAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB72701422B7F3D7006C386B /* PollAppTests.swift */; };
 		BB72702022B7F3D7006C386B /* PollAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB72701F22B7F3D7006C386B /* PollAppUITests.swift */; };
-		BB8FA5C92303365E0053DB7C /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8FA5C82303365E0053DB7C /* FeedViewController.swift */; };
 		BB9EA83D22F34E9A00037781 /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9EA83C22F34E9A00037781 /* UserListViewController.swift */; };
 		BB9EA83F22F3501100037781 /* UserListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9EA83E22F3501100037781 /* UserListViewCell.swift */; };
 		BBDB7F3D2300CE5100C15310 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDB7F3C2300CE5100C15310 /* ResultsViewController.swift */; };
@@ -115,7 +114,6 @@
 		BB72701F22B7F3D7006C386B /* PollAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollAppUITests.swift; sourceTree = "<group>"; };
 		BB72702122B7F3D7006C386B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB7360D422B944B9002210D3 /* PollApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PollApp.entitlements; sourceTree = "<group>"; };
-		BB8FA5C82303365E0053DB7C /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		BB9EA83C22F34E9A00037781 /* UserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
 		BB9EA83E22F3501100037781 /* UserListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewCell.swift; sourceTree = "<group>"; };
 		BBDB7F3C2300CE5100C15310 /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
@@ -222,7 +220,6 @@
 				7363BD5122F0BDBA007F00D1 /* YourProfileView.swift */,
 				73EF61DA22E4EB1B00293245 /* Media.xcassets */,
 				BB3D2F8522E22B9500723A10 /* FeedTableViewController.swift */,
-				BB8FA5C82303365E0053DB7C /* FeedViewController.swift */,
 				731DA04622E0EC370044749B /* TabSuperview.swift */,
 				BB3D2F8122E0D5DD00723A10 /* PollTableViewCell.swift */,
 				BB3A846622DCEE1E0082AB64 /* SearchTableViewController.swift */,
@@ -553,7 +550,6 @@
 				BB3D2F8222E0D5DD00723A10 /* PollTableViewCell.swift in Sources */,
 				BB72700022B7F3D5006C386B /* AppDelegate.swift in Sources */,
 				BB9EA83F22F3501100037781 /* UserListViewCell.swift in Sources */,
-				BB8FA5C92303365E0053DB7C /* FeedViewController.swift in Sources */,
 				BB4610C722F0A310008A6191 /* BioViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

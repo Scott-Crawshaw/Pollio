@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseFirestore
 
 class YourProfileView: UIViewController {
     
@@ -21,6 +22,7 @@ class YourProfileView: UIViewController {
     @IBOutlet var back_button: UIButton!
     
     var uid : String = ""
+    var listeners : [ListenerRegistration] = []
     
     override func viewDidLoad() { // Initialize Profile View for OTHER USERS
         super.viewDidLoad()
@@ -28,9 +30,17 @@ class YourProfileView: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        print(uid)
         DatabaseHelper.getUserByUID(UID: uid, callback: setInfo)
-        DatabaseHelper.getFollowingCount(UID: uid, callback: setFollowing)
-        DatabaseHelper.getFollowersCount(UID: uid, callback: setFollowers)
+        listeners.append(DatabaseHelper.getFollowingCountListener(UID: uid, callback: setFollowing))
+        listeners.append(DatabaseHelper.getFollowersCountListener(UID: uid, callback: setFollowers))
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        listeners.forEach { (listener) in
+            listener.remove()
+        }
     }
     
     func setFollowing(count: Int){
@@ -42,6 +52,7 @@ class YourProfileView: UIViewController {
     }
     
     func setInfo(user : [String : Any]?){
+        print(user)
         if user != nil{
             label_username.text = user?["username"] as? String ?? ""
             label_bio.text = user?["bio"] as? String ?? ""

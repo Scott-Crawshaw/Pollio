@@ -126,6 +126,24 @@ class DatabaseHelper{
         }
     }
     
+    static func getPostByIDListener(ID: String, callback: @escaping (Dictionary<String, Any>?) -> Void) -> ListenerRegistration{
+        let db = Firestore.firestore()
+        let docRef = db.collection("posts").document(ID)
+        
+        return docRef.addSnapshotListener { documentSnapshot, error in
+            guard let document = documentSnapshot else {
+                callback(nil)
+                return
+            }
+            guard let data = document.data() else {
+                callback(nil)
+                return
+            }
+            
+            callback(data)
+        }
+    }
+    
     
     static func getDocumentByReference(reference: String, callback: @escaping (Dictionary<String, Any>?) -> Void){
         let db = Firestore.firestore()
@@ -365,7 +383,8 @@ class DatabaseHelper{
             "posts" : posts,
             "searchName" : searchName,
             "username" : username,
-            "bio" : bio
+            "bio" : bio,
+            "uid" : uid
         ]
         
         let db = Firestore.firestore()

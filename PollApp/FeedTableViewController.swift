@@ -11,7 +11,7 @@ import FirebaseAuth
 import FirebaseFunctions
 import FirebaseFirestore
 
-class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefetching {
+class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefetching, UIPopoverPresentationControllerDelegate {
 
     var data : [[String : Any]] = []
     var totalCount = 0
@@ -23,9 +23,9 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
         refresh = true
         data = []
         self.tableView.setEmptyMessage("Loading...")
-        self.totalCount = 10
+        self.totalCount = 0
         self.tableView.reloadData()
-        tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .bottom, animated: false)
+        //tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .bottom, animated: false)
         for (_, timer) in timersMap{
             timer.invalidate()
         }
@@ -267,7 +267,6 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
     
     func modifyCell(cell : PollTableViewCell, indexPath : IndexPath) -> UITableViewCell{
         cell.resetCell()
-        cell.results = data[indexPath.row]["results"] as? [String : [String]]
         cell.commentsDoc = data[indexPath.row]["comments"] as? String
         cell.postID = cell.commentsDoc.subString(from: 10, to: cell.commentsDoc.count-1)
         cell.username.text = data[indexPath.row]["username"] as? String ?? "Unknown"
@@ -355,13 +354,8 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
             cell.choice3_text.text = options[2]
             cell.choice4_text.text = options[3]
         }
-        
-        let currentUser = Auth.auth().currentUser!.uid
-        for (choice, votes) in cell.results {
-            if votes.contains(currentUser){
-                cell.showResults(choice: choice)
-            }
-        }
+        cell.currentUser = Auth.auth().currentUser!.uid
+        cell.generateListener()
     
         return cell
     }
@@ -369,15 +363,16 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
     @objc func navToResults(sender: UIButton){
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "results") as! ResultsViewController
-        let res = data[sender.tag]["results"] as! [String : [String]]
-        print(res)
+        let res = (tableView.cellForRow(at: IndexPath(row: sender.tag, section: 0)) as! PollTableViewCell).results ?? [:]
         for _ in 0...res.count-1{
             newViewController.uids.append([])
+            newViewController.headers.append("")
         }
         for (option, users) in res{
             let optionInt = Int(option) ?? -1
             if optionInt != -1{
                 newViewController.uids[optionInt] = users
+                newViewController.headers[optionInt] = (data[sender.tag]["options"] as? [String] ?? ["","","",""])[optionInt]
             }
         }
         self.present(newViewController, animated: true, completion: nil)
@@ -387,10 +382,10 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
         let index = sender.tag
         let indexPath = IndexPath(row: index, section: 0)
         let cell = tableView.cellForRow(at: indexPath) as! PollTableViewCell
-        let currentUID = Auth.auth().currentUser!.uid
+        //let currentUID = Auth.auth().currentUser!.uid
         var option = "0"
-        var currData = data[index]
-        var res = currData["results"] as! [String : [String]]
+        //var currData = data[index]
+        //var res = currData["results"] as! [String : [String]]
         if sender == cell.choice1_button{
             option = "0"
         }
@@ -418,12 +413,14 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
                 option = "3"
             }
         }
-        cell.results[option]!.append(currentUID)
-        res[option]!.append(currentUID)
-        currData["results"] = res
-        data[index] = currData
-        cell.showResults(choice: option)
+        //cell.results[option]!.append(currentUID)
+        //res[option]!.append(currentUID)
+        //currData["results"] = res
+        //data[index] = currData
+        cell.choice = option
         DatabaseHelper.addVote(postID: cell.postID, option: option)
+        //cell.showResults()
+        
         
     }
     

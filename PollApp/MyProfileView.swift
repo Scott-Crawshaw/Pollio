@@ -40,7 +40,7 @@ class MyProfileView: UIViewController, UITableViewDataSource, UITableViewDataSou
     override func viewWillAppear(_ animated: Bool) {
         self.refreshFeed(sender: self)
         listeners.append(DatabaseHelper.hasFollowRequestsListener(callback: doesUserHaveRequest))
-        listeners.append(DatabaseHelper.getUserByUIDListener(UID: Auth.auth().currentUser!.uid, callback: setInfo))
+        DatabaseHelper.getUserByUID(UID: Auth.auth().currentUser!.uid, callback: setInfo)
         listeners.append(DatabaseHelper.getFollowingCountListener(UID: Auth.auth().currentUser!.uid, callback: setFollowing))
         listeners.append(DatabaseHelper.getFollowersCountListener(UID: Auth.auth().currentUser!.uid, callback: setFollowers))
     }
@@ -54,7 +54,7 @@ class MyProfileView: UIViewController, UITableViewDataSource, UITableViewDataSou
     
     @objc func refreshFeed(sender:AnyObject) {
         data = []
-        
+        print("hit")
         self.tableView.setEmptyMessage("Loading...")
         self.totalCount = 10
         self.tableView.reloadData()
@@ -122,9 +122,11 @@ class MyProfileView: UIViewController, UITableViewDataSource, UITableViewDataSou
                 if err != nil{
                     return
                 }
-                
+
                 for i in 0...newData.count-1{
-                    self.data[unfilledRows[i]] = newData[i]
+                    if unfilledRows[i] < self.data.count{
+                        self.data[unfilledRows[i]] = newData[i]
+                    }
                 }
                 
                 if initial{
@@ -266,13 +268,8 @@ class MyProfileView: UIViewController, UITableViewDataSource, UITableViewDataSou
             cell.choice3_text.text = options[2]
             cell.choice4_text.text = options[3]
         }
-        
-        let currentUser = Auth.auth().currentUser!.uid
-        for (choice, votes) in cell.results {
-            if votes.contains(currentUser){
-                cell.showResults(choice: choice)
-            }
-        }
+        cell.currentUser = Auth.auth().currentUser!.uid
+        cell.generateListener()
         
         return cell
     }
@@ -281,10 +278,9 @@ class MyProfileView: UIViewController, UITableViewDataSource, UITableViewDataSou
         let index = sender.tag
         let indexPath = IndexPath(row: index, section: 0)
         let cell = tableView.cellForRow(at: indexPath) as! PollTableViewCell
-        let currentUID = Auth.auth().currentUser!.uid
+        //let currentUID = Auth.auth().currentUser!.uid
         var option = "0"
-        var currData = data[index]
-        var res = currData["results"] as! [String : [String]]
+        //var res = currData["results"] as! [String : [String]]
         if sender == cell.choice1_button{
             option = "0"
         }
@@ -312,11 +308,7 @@ class MyProfileView: UIViewController, UITableViewDataSource, UITableViewDataSou
                 option = "3"
             }
         }
-        cell.results[option]!.append(currentUID)
-        res[option]!.append(currentUID)
-        currData["results"] = res
-        data[index] = currData
-        cell.showResults(choice: option)
+        cell.choice = option
         DatabaseHelper.addVote(postID: cell.postID, option: option)
         
     }
@@ -358,9 +350,8 @@ class MyProfileView: UIViewController, UITableViewDataSource, UITableViewDataSou
         
     }
     
-    func doesUserHaveRequest(requests: Bool)
-    {
-        if(requests == true) {
+    func doesUserHaveRequest(requests: Bool){
+        if(requests) {
             requestsButton.setImage(UIImage(named: "adduser_alert"), for: .normal)
         }
         else{
