@@ -17,17 +17,21 @@ class BioViewController: UIViewController, UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let grey = UIColor(red: 67/255.0, green: 67/255.0, blue: 67/255.0, alpha: 1.0)
+        let polliopurp = UIColor(red: 198/255.0, green: 76/255.0, blue: 222/255.0, alpha: 1.0)
+
+
         
         //setting up Text Field
         bioTextView.delegate = self
-        let polliopurp = UIColor(red: 198/255.0, green: 76/255.0, blue: 222/255.0, alpha: 1.0)
         bioTextView.layer.borderWidth = 3
-        bioTextView.layer.borderColor = polliopurp .cgColor
+        bioTextView.layer.borderColor = UIColor .darkGray .cgColor
         
         //setting up Button
         
-        submitButton.layer.borderWidth = 3
-        submitButton.layer.borderColor = UIColor .darkGray .cgColor
+
+        //submitButton.layer.borderWidth = 3
+        //submitButton.layer.borderColor = UIColor .darkGray .cgColor
         submitButton.layer.cornerRadius = 3.5
         
         
