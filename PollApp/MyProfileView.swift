@@ -13,7 +13,6 @@ import FirebaseFirestore
 
 class MyProfileView: UIViewController, UITableViewDataSource, UITableViewDataSourcePrefetching{
     
-    @IBOutlet weak var tabBar: UITabBar!
     @IBOutlet weak var label_username: UILabel!
     @IBOutlet weak var label_bio: UILabel!
     @IBOutlet weak var label_name: UILabel!
@@ -30,7 +29,6 @@ class MyProfileView: UIViewController, UITableViewDataSource, UITableViewDataSou
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tabBar.selectedItem = tabBar.items?.first
         self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         self.tableView.dataSource = self
         self.tableView.prefetchDataSource = self
@@ -40,7 +38,7 @@ class MyProfileView: UIViewController, UITableViewDataSource, UITableViewDataSou
     override func viewWillAppear(_ animated: Bool) {
         self.refreshFeed(sender: self)
         listeners.append(DatabaseHelper.hasFollowRequestsListener(callback: doesUserHaveRequest))
-        listeners.append(DatabaseHelper.getUserByUIDListener(UID: Auth.auth().currentUser!.uid, callback: setInfo))
+        DatabaseHelper.getUserByUID(UID: Auth.auth().currentUser!.uid, callback: setInfo)
         listeners.append(DatabaseHelper.getFollowingCountListener(UID: Auth.auth().currentUser!.uid, callback: setFollowing))
         listeners.append(DatabaseHelper.getFollowersCountListener(UID: Auth.auth().currentUser!.uid, callback: setFollowers))
     }
@@ -54,7 +52,7 @@ class MyProfileView: UIViewController, UITableViewDataSource, UITableViewDataSou
     
     @objc func refreshFeed(sender:AnyObject) {
         data = []
-        
+        print("hit")
         self.tableView.setEmptyMessage("Loading...")
         self.totalCount = 10
         self.tableView.reloadData()
@@ -122,9 +120,11 @@ class MyProfileView: UIViewController, UITableViewDataSource, UITableViewDataSou
                 if err != nil{
                     return
                 }
-                
+
                 for i in 0...newData.count-1{
-                    self.data[unfilledRows[i]] = newData[i]
+                    if unfilledRows[i] < self.data.count{
+                        self.data[unfilledRows[i]] = newData[i]
+                    }
                 }
                 
                 if initial{
@@ -163,7 +163,7 @@ class MyProfileView: UIViewController, UITableViewDataSource, UITableViewDataSou
     func fetchFeed(rows : [Int], completed: @escaping ([[String : Any]], Error?) -> Void) {
         let functions = Functions.functions()
         
-        functions.httpsCallable("getUserPosts").call(["rows" : rows]) { (result, error) in
+        functions.httpsCallable("getUserPosts").call(["rows" : rows, "uid" : Auth.auth().currentUser!.uid]) { (result, error) in
             let newData = result?.data as! [[String : Any]]
             completed(newData, nil)
         }
@@ -241,6 +241,7 @@ class MyProfileView: UIViewController, UITableViewDataSource, UITableViewDataSou
         cell.choice3_button.addTarget(self, action: #selector(vote(sender:)), for: .touchUpInside)
         cell.choice4_button.addTarget(self, action: #selector(vote(sender:)), for: .touchUpInside)
         
+        cell.resultsButton.addTarget(self, action: #selector(navToResults(sender:)), for: .touchUpInside)
         
         if options.count == 2{
             cell.choice2_text.text = options[0]
@@ -266,25 +267,37 @@ class MyProfileView: UIViewController, UITableViewDataSource, UITableViewDataSou
             cell.choice3_text.text = options[2]
             cell.choice4_text.text = options[3]
         }
-        
-        let currentUser = Auth.auth().currentUser!.uid
-        for (choice, votes) in cell.results {
-            if votes.contains(currentUser){
-                cell.showResults(choice: choice)
-            }
-        }
+        cell.currentUser = Auth.auth().currentUser!.uid
+        cell.generateListener()
         
         return cell
+    }
+    
+    @objc func navToResults(sender: UIButton){
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "results") as! ResultsViewController
+        let res = (tableView.cellForRow(at: IndexPath(row: sender.tag, section: 0)) as! PollTableViewCell).results ?? [:]
+        for _ in 0...res.count-1{
+            newViewController.uids.append([])
+            newViewController.headers.append("")
+        }
+        for (option, users) in res{
+            let optionInt = Int(option) ?? -1
+            if optionInt != -1{
+                newViewController.uids[optionInt] = users
+                newViewController.headers[optionInt] = (data[sender.tag]["options"] as? [String] ?? ["","","",""])[optionInt]
+            }
+        }
+        self.present(newViewController, animated: true, completion: nil)
     }
     
     @objc func vote(sender: UIButton){
         let index = sender.tag
         let indexPath = IndexPath(row: index, section: 0)
         let cell = tableView.cellForRow(at: indexPath) as! PollTableViewCell
-        let currentUID = Auth.auth().currentUser!.uid
+        //let currentUID = Auth.auth().currentUser!.uid
         var option = "0"
-        var currData = data[index]
-        var res = currData["results"] as! [String : [String]]
+        //var res = currData["results"] as! [String : [String]]
         if sender == cell.choice1_button{
             option = "0"
         }
@@ -312,11 +325,7 @@ class MyProfileView: UIViewController, UITableViewDataSource, UITableViewDataSou
                 option = "3"
             }
         }
-        cell.results[option]!.append(currentUID)
-        res[option]!.append(currentUID)
-        currData["results"] = res
-        data[index] = currData
-        cell.showResults(choice: option)
+        cell.choice = option
         DatabaseHelper.addVote(postID: cell.postID, option: option)
         
     }
@@ -358,9 +367,8 @@ class MyProfileView: UIViewController, UITableViewDataSource, UITableViewDataSou
         
     }
     
-    func doesUserHaveRequest(requests: Bool)
-    {
-        if(requests == true) {
+    func doesUserHaveRequest(requests: Bool){
+        if(requests) {
             requestsButton.setImage(UIImage(named: "adduser_alert"), for: .normal)
         }
         else{

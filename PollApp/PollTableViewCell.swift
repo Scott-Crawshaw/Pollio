@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseFirestore
 
 class PollTableViewCell: UITableViewCell {
 
@@ -15,7 +16,6 @@ class PollTableViewCell: UITableViewCell {
     @IBOutlet var choice3_bar: UILabel!
     @IBOutlet var choice2_bar: UILabel!
     @IBOutlet var choice1_bar: UILabel!
-    @IBOutlet var comments_button: UIButton!
     @IBOutlet var choice4_button: UIButton!
     @IBOutlet var choice3_button: UIButton!
     @IBOutlet var choice2_button: UIButton!
@@ -30,8 +30,11 @@ class PollTableViewCell: UITableViewCell {
     @IBOutlet var username: UILabel!
     @IBOutlet var resultsButton: UIButton!
     var results : [String : [String]]!
+    var choice : String!
     var commentsDoc : String!
     var postID : String!
+    var listener : ListenerRegistration!
+    var currentUser : String!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -44,11 +47,40 @@ class PollTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func generateListener(){
+        if postID == nil || postID.count == 0{
+            return
+        }
+        
+        listener = DatabaseHelper.getPostByIDListener(ID: postID, callback: updateResults)
+        
+    }
+    
+    func updateResults(data : [String : Any]?){
+        if data == nil{
+            return
+        }
+        
+        results = data?["results"] as? [String : [String]] ?? results
+        for (c, votes) in results {
+            if votes.contains(currentUser){
+                choice = c
+                showResults()
+                return
+            }
+        }
+    }
+    
     func resetCell(){
         self.isHidden = false
+        if listener != nil{
+            listener.remove()
+            listener = nil
+        }
         
-        resultsButton.isHidden = true
-    
+        resultsButton.backgroundColor = UIColor(red: 111/255, green: 113/255, blue: 121/255, alpha: 0.5)
+        resultsButton.isEnabled = false
+        
         choice1_button.isHidden = false
         choice2_button.isHidden = false
         choice3_button.isHidden = false
@@ -75,7 +107,8 @@ class PollTableViewCell: UITableViewCell {
         choice4_button.layer.borderWidth = 0.0
     }
     
-    func showResults(choice: String){
+    
+    func showResults(){
         var totalVotes : Float = 0.0
         for (_, votes) in results{
             totalVotes += Float(votes.count)
@@ -83,7 +116,8 @@ class PollTableViewCell: UITableViewCell {
         
         let fullWidth = choice1_button.frame.width
         let fullHeight = choice1_button.frame.height
-        resultsButton.isHidden = false
+        resultsButton.isEnabled = true
+        resultsButton.backgroundColor = UIColor(red: 111/255, green: 113/255, blue: 121/255, alpha: 1)
         if results.count == 2{
             let firstBarPercent = Float(results["0"]!.count) / totalVotes
             let secondBarPercent = Float(results["1"]!.count) / totalVotes
