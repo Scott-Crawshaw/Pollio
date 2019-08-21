@@ -176,7 +176,7 @@ class YourProfileView: UIViewController, UITableViewDataSource, UITableViewDataS
         let functions = Functions.functions()
         
         functions.httpsCallable("getUserPosts").call(["rows" : rows, "uid" : uid]) { (result, error) in
-            let newData = result?.data as! [[String : Any]]
+            let newData = result?.data as? [[String : Any]] ?? []
             completed(newData, nil)
         }
         
@@ -196,6 +196,12 @@ class YourProfileView: UIViewController, UITableViewDataSource, UITableViewDataS
         cell.commentsDoc = data[indexPath.row]["comments"] as? String
         cell.postID = cell.commentsDoc.subString(from: 10, to: cell.commentsDoc.count-1)
         cell.username.text = data[indexPath.row]["username"] as? String ?? "Unknown"
+        cell.currentUser = Auth.auth().currentUser!.uid
+        var author = data[indexPath.row]["author"] as? String ?? ""
+        if author != ""{
+            author = author.subString(from: 7, to: author.count-1)
+        }
+        cell.authorUID = author
         let timeMap = data[indexPath.row]["time"] as! [String : Any]
         let FBtime : Timestamp = Timestamp(seconds: timeMap["_seconds"] as! Int64, nanoseconds: timeMap["_nanoseconds"] as! Int32)
         let time = FBtime.dateValue()
@@ -223,12 +229,14 @@ class YourProfileView: UIViewController, UITableViewDataSource, UITableViewDataS
         cell.time.text = timeText
         
         let visArr = data[indexPath.row]["visibility"] as? [String : Bool] ?? ["author":false, "viewers":false]
-        
+        cell.visibilityNum = 2
         if visArr["author"]! && visArr["viewers"]!{
             cell.visibility.text = "Public"
+            cell.visibilityNum = 0
         }
         if visArr["author"]! && !visArr["viewers"]!{
             cell.visibility.text = "Private"
+            cell.visibilityNum = 1
         }
         if !visArr["author"]! && !visArr["viewers"]!{
             cell.visibility.text = "Anonymous"

@@ -272,11 +272,16 @@ class DatabaseHelper{
         }
     }
     
-    static func hasFollowRequestsListener(callback: @escaping (Bool) -> Void) -> ListenerRegistration{
+    static func hasFollowRequestsListener(callback: @escaping (Bool) -> Void) -> ListenerRegistration?{
         let db = Firestore.firestore()
-        let uid = Auth.auth().currentUser!.uid
+        let uid = Auth.auth().currentUser?.uid ?? nil
         
-        return db.collection("followRequests").document(uid)
+        if uid == nil{
+            callback(false)
+            return nil
+        }
+        
+        return db.collection("followRequests").document(uid!)
             .addSnapshotListener { documentSnapshot, error in
                 guard let document = documentSnapshot else {
                     callback(false)

@@ -17,7 +17,10 @@ class TabSuperview: UITabBarController {
     var listeners : [ListenerRegistration] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-        listeners.append(DatabaseHelper.hasFollowRequestsListener(callback: addBadge))
+        guard let listen = DatabaseHelper.hasFollowRequestsListener(callback: addBadge) else {
+            return
+        }
+        listeners.append(listen)
     }
     
     func addBadge(val: Bool)

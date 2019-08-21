@@ -1565,7 +1565,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="user bio  - 74 characters" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BOt-JS-KAg">
-                                <rect key="frame" x="32" y="148" width="336" height="24"/>
+                                <rect key="frame" x="32" y="148" width="336" height="23.5"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans Light" pointSize="17"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -1635,7 +1635,6 @@
                             <constraint firstAttribute="trailing" secondItem="YNW-eX-x44" secondAttribute="trailing" id="0eE-dp-8JQ"/>
                             <constraint firstItem="YNW-eX-x44" firstAttribute="top" secondItem="Zk5-h0-lng" secondAttribute="top" constant="271" id="Dgy-4U-5fl"/>
                             <constraint firstItem="oPd-rb-ZGD" firstAttribute="leading" secondItem="khc-Zc-ofd" secondAttribute="trailing" constant="8" id="ETR-gL-agL"/>
-                            <constraint firstItem="pq1-8l-sfD" firstAttribute="top" secondItem="BOt-JS-KAg" secondAttribute="bottom" constant="78" id="GTa-ke-UYJ"/>
                             <constraint firstItem="Zk5-h0-lng" firstAttribute="trailing" secondItem="Me8-Y1-fAX" secondAttribute="trailing" constant="39" id="Hb2-e3-qp4"/>
                             <constraint firstItem="Ph2-Pf-NG9" firstAttribute="top" secondItem="Zk5-h0-lng" secondAttribute="top" constant="23" id="Hkh-AB-BUc"/>
                             <constraint firstItem="BOt-JS-KAg" firstAttribute="leading" secondItem="Zk5-h0-lng" secondAttribute="leading" constant="32" id="IzH-QB-Zuc"/>

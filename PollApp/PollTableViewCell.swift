@@ -35,6 +35,8 @@ class PollTableViewCell: UITableViewCell {
     var postID : String!
     var listener : ListenerRegistration!
     var currentUser : String!
+    var authorUID : String!
+    var visibilityNum : Int!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -113,11 +115,14 @@ class PollTableViewCell: UITableViewCell {
         for (_, votes) in results{
             totalVotes += Float(votes.count)
         }
-        
+
         let fullWidth = choice1_button.frame.width
         let fullHeight = choice1_button.frame.height
-        resultsButton.isEnabled = true
-        resultsButton.backgroundColor = UIColor(red: 111/255, green: 113/255, blue: 121/255, alpha: 1)
+        
+        if (visibilityNum == 0) || (visibilityNum == 1 && authorUID == currentUser){
+            resultsButton.isEnabled = true
+            resultsButton.backgroundColor = UIColor(red: 111/255, green: 113/255, blue: 121/255, alpha: 1)
+        }
         if results.count == 2{
             let firstBarPercent = Float(results["0"]!.count) / totalVotes
             let secondBarPercent = Float(results["1"]!.count) / totalVotes
