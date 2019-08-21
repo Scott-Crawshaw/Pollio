@@ -1150,29 +1150,26 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="WC8-Ja-C2Z">
-                                <rect key="frame" x="20" y="210" width="374" height="285"/>
+                                <rect key="frame" x="20" y="168" width="374" height="285"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <accessibility key="accessibilityConfiguration" hint="Add your bio here"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="285" id="QvE-RM-6Eu"/>
+                                    <constraint firstAttribute="height" constant="285" id="Apq-6x-d0z"/>
                                 </constraints>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" red="0.77647058820000003" green="0.29803921570000003" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="27"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="2"/>
-                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Your Bio" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dCl-29-Cxk">
-                                <rect key="frame" x="20" y="96" width="374" height="64"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dCl-29-Cxk">
+                                <rect key="frame" x="20" y="90" width="374" height="81"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="64" id="hcI-QW-DNC"/>
+                                    <constraint firstAttribute="height" constant="40" id="hcI-QW-DNC"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="35"/>
-                                <color key="textColor" red="0.77647058820000003" green="0.29803921570000003" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans SemiBold" pointSize="27"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Jp-K0-wQt">
@@ -1184,25 +1181,15 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XIz-vG-eig">
-                                <rect key="frame" x="107" y="607" width="200" height="50"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="mV4-vY-cL3"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="36"/>
+                                <rect key="frame" x="20" y="475" width="374" height="47"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans SemiBold" pointSize="25"/>
                                 <size key="titleShadowOffset" width="0.5" height="0.30000000000000004"/>
-                                <state key="normal" title="Update">
+                                <state key="normal" title="Done">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBorder" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                        <real key="value" value="0.29999999999999999"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="submitBio:" destination="n8T-ax-k2G" eventType="touchUpInside" id="Sl3-h4-Ln5"/>
@@ -1211,16 +1198,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="r06-rv-xUw" firstAttribute="bottom" secondItem="XIz-vG-eig" secondAttribute="bottom" constant="205" id="3Nn-ba-VSB"/>
-                            <constraint firstItem="XIz-vG-eig" firstAttribute="top" secondItem="dCl-29-Cxk" secondAttribute="bottom" constant="447" id="8tT-dL-FVy"/>
-                            <constraint firstItem="WC8-Ja-C2Z" firstAttribute="centerX" secondItem="XIz-vG-eig" secondAttribute="centerX" id="9qe-SI-6Vn"/>
-                            <constraint firstItem="dCl-29-Cxk" firstAttribute="top" secondItem="3Jp-K0-wQt" secondAttribute="bottom" constant="3" id="CDR-FT-qJK"/>
-                            <constraint firstItem="dCl-29-Cxk" firstAttribute="trailing" secondItem="WC8-Ja-C2Z" secondAttribute="trailing" id="Gxi-gp-ZVW"/>
-                            <constraint firstItem="dCl-29-Cxk" firstAttribute="leading" secondItem="WC8-Ja-C2Z" secondAttribute="leading" id="KAM-Fe-vYa"/>
-                            <constraint firstItem="WC8-Ja-C2Z" firstAttribute="top" secondItem="dCl-29-Cxk" secondAttribute="bottom" constant="50" id="MJj-9c-oMw"/>
+                            <constraint firstItem="WC8-Ja-C2Z" firstAttribute="trailing" secondItem="XIz-vG-eig" secondAttribute="trailing" id="AZE-9y-Myj"/>
+                            <constraint firstItem="dCl-29-Cxk" firstAttribute="top" secondItem="3Jp-K0-wQt" secondAttribute="bottom" constant="20" id="CDR-FT-qJK"/>
+                            <constraint firstItem="WC8-Ja-C2Z" firstAttribute="leading" secondItem="XIz-vG-eig" secondAttribute="leading" id="GY7-uY-HP2"/>
+                            <constraint firstItem="XIz-vG-eig" firstAttribute="top" secondItem="WC8-Ja-C2Z" secondAttribute="bottom" constant="22" id="MUp-jz-XN5"/>
                             <constraint firstItem="3Jp-K0-wQt" firstAttribute="leading" secondItem="JOs-ge-B40" secondAttribute="leadingMargin" id="SlE-Dp-TIe"/>
+                            <constraint firstItem="WC8-Ja-C2Z" firstAttribute="trailing" secondItem="dCl-29-Cxk" secondAttribute="trailing" id="Yds-Up-DeY"/>
+                            <constraint firstItem="WC8-Ja-C2Z" firstAttribute="leading" secondItem="dCl-29-Cxk" secondAttribute="leading" id="aAf-5y-6uf"/>
+                            <constraint firstItem="WC8-Ja-C2Z" firstAttribute="top" secondItem="3Jp-K0-wQt" secondAttribute="bottom" constant="75" id="pMA-H7-9nv"/>
                             <constraint firstItem="dCl-29-Cxk" firstAttribute="trailing" secondItem="JOs-ge-B40" secondAttribute="trailingMargin" id="rNo-61-2Ob"/>
-                            <constraint firstItem="XIz-vG-eig" firstAttribute="leading" secondItem="r06-rv-xUw" secondAttribute="leading" constant="107" id="tdd-X2-P3v"/>
                             <constraint firstItem="3Jp-K0-wQt" firstAttribute="leading" secondItem="dCl-29-Cxk" secondAttribute="leading" id="xpV-3d-rWE"/>
                             <constraint firstItem="3Jp-K0-wQt" firstAttribute="top" secondItem="JOs-ge-B40" secondAttribute="topMargin" constant="-4" id="zib-O5-UzZ"/>
                         </constraints>
