@@ -28,8 +28,6 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating,
         })()
         
         resultSearchController.searchBar.delegate = self
-        print("dis")
-        self.resultSearchController.searchBar.text = ""
         // Reload the table
         self.tableView.tableFooterView = UIView()
         tableView.reloadData()
@@ -40,7 +38,11 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating,
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-
+    
+    func dismissSearch() {
+        resultSearchController.dismiss(animated: false, completion: nil)
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -88,6 +90,7 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating,
         tableView.setEmptyMessage1("Loading...")
         tableData = []
         self.tableView.reloadData()
+        dismissSearch()
     }
     
     func updateData(data : [[String : Any]]){
