@@ -28,6 +28,7 @@ class FollowerRequestView: UITableViewController {
         if titleText != ""{
             navTitle.title = titleText
             DatabaseHelper.getFollowRequests(callback: populateData)
+            tableView.setEmptyMessage1("Loading...")
         }
         else{
             self.dismiss(animated: true, completion: nil)
@@ -37,9 +38,14 @@ class FollowerRequestView: UITableViewController {
     func populateData(result: [String : [String]]){
         //the only key is "results" and its value is an array that looks like this ["/users/dsahjdhj", "/users/shvjadvha"]
         if result["requests"] != nil {
-            print("\(result.count) + \(result)")
-            tableData = result
-            self.tableView.reloadData()
+            if result["requests"]!.count > 0{
+                tableData = result
+                tableView.restore1()
+                self.tableView.reloadData()
+            }
+            else{
+                tableView.setEmptyMessage1("No Follow Requests")
+            }
         }
         else{
             self.dismiss(animated: true, completion: nil)

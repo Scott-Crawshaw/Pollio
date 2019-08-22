@@ -36,14 +36,23 @@ class MyProfileView: UIViewController, UITableViewDataSource, UITableViewDataSou
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        guard let user = Auth.auth().currentUser?.uid else{
+            self.view.window!.rootViewController?.dismiss(animated: false, completion: {
+                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let newViewController = storyBoard.instantiateViewController(withIdentifier: "login") as! ViewController
+                self.present(newViewController, animated: true, completion: nil)
+            })
+            
+            return
+        }
         self.refreshFeed(sender: self)
         let listen = DatabaseHelper.hasFollowRequestsListener(callback: doesUserHaveRequest) ?? nil
         if listen != nil{
             listeners.append(listen!)
         }
-        DatabaseHelper.getUserByUID(UID: Auth.auth().currentUser!.uid, callback: setInfo)
-        listeners.append(DatabaseHelper.getFollowingCountListener(UID: Auth.auth().currentUser!.uid, callback: setFollowing))
-        listeners.append(DatabaseHelper.getFollowersCountListener(UID: Auth.auth().currentUser!.uid, callback: setFollowers))
+        DatabaseHelper.getUserByUID(UID: user, callback: setInfo)
+        listeners.append(DatabaseHelper.getFollowingCountListener(UID: user, callback: setFollowing))
+        listeners.append(DatabaseHelper.getFollowersCountListener(UID: user, callback: setFollowers))
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -181,7 +190,7 @@ class MyProfileView: UIViewController, UITableViewDataSource, UITableViewDataSou
     
     func modifyCell(cell : PollTableViewCell, indexPath : IndexPath) -> UITableViewCell{
         cell.resetCell()
-        cell.currentUser = Auth.auth().currentUser!.uid
+        cell.currentUser = Auth.auth().currentUser?.uid ?? ""
         cell.results = data[indexPath.row]["results"] as? [String : [String]]
         cell.commentsDoc = data[indexPath.row]["comments"] as? String
         cell.postID = cell.commentsDoc.subString(from: 10, to: cell.commentsDoc.count-1)

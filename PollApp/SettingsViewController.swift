@@ -44,7 +44,7 @@ class SettingsViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0{
-            self.view.window!.rootViewController?.dismiss(animated: true, completion:
+            self.view.window!.rootViewController?.dismiss(animated: false, completion:
                 {
                 do{
                     try Auth.auth().signOut()
@@ -76,7 +76,7 @@ class SettingsViewController: UITableViewController {
     }
     
     func deleteAccount(sender: UIAlertAction){
-        self.view.window!.rootViewController?.dismiss(animated: true, completion: {
+        self.view.window!.rootViewController?.dismiss(animated: false, completion: {
             DatabaseHelper.deleteAccount()
             
             let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)

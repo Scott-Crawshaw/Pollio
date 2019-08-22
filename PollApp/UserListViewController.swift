@@ -73,7 +73,7 @@ class UserListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        if tableData[indexPath.row]["user"] as? String ?? "" == Auth.auth().currentUser!.uid{
+        if tableData[indexPath.row]["user"] as? String ?? "" != Auth.auth().currentUser!.uid{
             let newViewController = storyBoard.instantiateViewController(withIdentifier: "yourProfile") as! YourProfileView
             newViewController.uid = tableData[indexPath.row]["user"] as? String ?? ""
             self.present(newViewController, animated: true, completion: nil)
