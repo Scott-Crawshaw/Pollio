@@ -17,7 +17,6 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
     var totalCount = 0
     var refresh = false
     let initialGet = 2
-    var timersMap : [Int : Timer] = [:]
     
     @objc func refreshFeed(sender:AnyObject) {
         refresh = true
@@ -26,15 +25,8 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
         self.totalCount = 0
         self.tableView.reloadData()
         //tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .bottom, animated: false)
-        for (_, timer) in timersMap{
-            timer.invalidate()
-        }
-        timersMap.removeAll()
-        
+
         self.fetchTotalCount { (count, err) in
-            if err != nil{
-                return
-            }
             self.totalCount = count ?? 0
             if self.totalCount == 0{
                 self.tableView.setEmptyMessage("It looks like your feed is empty.\n\nTry finding some friends using the search tab.")
@@ -65,20 +57,6 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
         self.tableView.dataSource = self
         self.tableView.prefetchDataSource = self
         self.refreshControl?.addTarget(self, action: #selector(refreshFeed), for: UIControl.Event.valueChanged)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(appEnteringBackground), name:UIApplication.didEnterBackgroundNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(appEnteringForeground), name:UIApplication.willEnterForegroundNotification, object: nil)
-    }
-    
-    @objc func appEnteringBackground(){
-        for (_, timer) in timersMap{
-            timer.invalidate()
-        }
-        timersMap.removeAll()
-    }
-    
-    @objc func appEnteringForeground(){
-        checkVisibility()
     }
     
     
@@ -120,53 +98,7 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
         
         return self.modifyCell(cell: cell, indexPath: indexPath)
     }
-    func checkVisibility(){
-        let indexPaths = tableView.indexPathsForVisibleRows ?? []
-        
-        if indexPaths.count == 0{
-            return
-        }
-        var currRows = indexPaths.map({$0.row})
-        if currRows.count > 3{
-            if currRows[0] == 0{
-                currRows.remove(at: currRows.count-1)
-            }
-            else if currRows[currRows.count-1] == totalCount-1{
-                currRows.remove(at: 0)
-            }
-            else{
-                currRows.removeFirst()
-                currRows.removeLast()
-            }
-        }
-        var remove : [Int] = []
-        for (row, timer) in timersMap{
-            if !(currRows.contains(row)){
-                timer.invalidate()
-                remove.append(row)
-            }
-        }
-        for rm in remove{
-            timersMap.removeValue(forKey: rm)
-        }
-        for row in currRows{
-            if timersMap[row] == nil{
-                timersMap[row] = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(timerFireMethod), userInfo: row, repeats: true)
-            }
-        }
-    }
-    @objc func timerFireMethod(timer : Timer){
-        let row = timer.userInfo as? Int ?? -1
-        if row == -1{
-            return
-        }
-        /* uncomment for linearly progressing intervals
-        let prev = timer.timeInterval
-        timer.invalidate()
-        timersMap[row] = Timer.scheduledTimer(timeInterval: prev + 3, target: self, selector: #selector(timerFireMethod), userInfo: row, repeats: true)*/
-        timerFetch(row: row)
-    }
-    
+
     func returnToLogin(){
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "login") as! ViewController
@@ -183,18 +115,7 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
             self.newFetch(rows: indexPaths.map({$0.row}), initial: false)
         }
     }
-    
-    func timerFetch(row: Int){
-        fetchFeed(rows: [row]) { (newData, err) in
-            if err != nil{
-                return
-            }
-            self.data[row] = newData[0]
-            
-            self.tableView.reloadRows(at: [IndexPath(row: row, section: 0)], with: .none)
 
-        }
-    }
     
     func newFetch(rows : [Int], initial : Bool){
         var unfilledRows : [Int] = []
@@ -252,7 +173,7 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
         let functions = Functions.functions()
         functions.httpsCallable("getFeed").call(["rows" : rows]) { (result, error) in
             let newData = result?.data as? [[String : Any]] ?? []
-            completed(newData, error)
+            completed(newData, nil)
         }
         
     }
@@ -267,9 +188,15 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
     
     func modifyCell(cell : PollTableViewCell, indexPath : IndexPath) -> UITableViewCell{
         cell.resetCell()
+        cell.currentUser = Auth.auth().currentUser!.uid
         cell.commentsDoc = data[indexPath.row]["comments"] as? String
         cell.postID = cell.commentsDoc.subString(from: 10, to: cell.commentsDoc.count-1)
         cell.username.text = data[indexPath.row]["username"] as? String ?? "Unknown"
+        var author = data[indexPath.row]["author"] as? String ?? ""
+        if author != ""{
+            author = author.subString(from: 7, to: author.count-1)
+        }
+        cell.authorUID = author
         let timeMap = data[indexPath.row]["time"] as! [String : Any]
         let FBtime : Timestamp = Timestamp(seconds: timeMap["_seconds"] as! Int64, nanoseconds: timeMap["_nanoseconds"] as! Int32)
         let time = FBtime.dateValue()
@@ -298,11 +225,15 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
         
         let visArr = data[indexPath.row]["visibility"] as? [String : Bool] ?? ["author":false, "viewers":false]
         
+        cell.visibilityNum = 2
+        
         if visArr["author"]! && visArr["viewers"]!{
             cell.visibility.text = "Public"
+            cell.visibilityNum = 0
         }
         if visArr["author"]! && !visArr["viewers"]!{
             cell.visibility.text = "Private"
+            cell.visibilityNum = 1
         }
         if !visArr["author"]! && !visArr["viewers"]!{
             cell.visibility.text = "Anonymous"
@@ -312,10 +243,21 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
         let options = data[indexPath.row]["options"] as? [String] ?? []
         
         
-        cell.choice1_bar.isHidden = true
-        cell.choice2_bar.isHidden = true
-        cell.choice3_bar.isHidden = true
-        cell.choice4_bar.isHidden = true
+        cell.choice1_view.isHidden = true
+        cell.choice2_view.isHidden = true
+        cell.choice3_view.isHidden = true
+        cell.choice4_view.isHidden = true
+        
+        let barHeight = cell.choice1_button.frame.height
+        cell.choice1_view.frame.size = CGSize(width: 0, height: barHeight)
+        cell.choice2_view.frame.size = CGSize(width: 0, height: barHeight)
+        cell.choice3_view.frame.size = CGSize(width: 0, height: barHeight)
+        cell.choice4_view.frame.size = CGSize(width: 0, height: barHeight)
+        
+        cell.choice1_view.layoutIfNeeded()
+        cell.choice2_view.layoutIfNeeded()
+        cell.choice3_view.layoutIfNeeded()
+        cell.choice4_view.layoutIfNeeded()
         
         cell.choice1_button.tag = indexPath.row
         cell.choice2_button.tag = indexPath.row
@@ -354,7 +296,6 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
             cell.choice3_text.text = options[2]
             cell.choice4_text.text = options[3]
         }
-        cell.currentUser = Auth.auth().currentUser!.uid
         cell.generateListener()
     
         return cell
@@ -381,11 +322,17 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
     @objc func vote(sender: UIButton){
         let index = sender.tag
         let indexPath = IndexPath(row: index, section: 0)
-        let cell = tableView.cellForRow(at: indexPath) as! PollTableViewCell
+        guard let cell = tableView.cellForRow(at: indexPath) as? PollTableViewCell else{
+            return
+        }
         //let currentUID = Auth.auth().currentUser!.uid
         var option = "0"
         //var currData = data[index]
         //var res = currData["results"] as! [String : [String]]
+        
+        if cell.choice != "-1"{
+            DatabaseHelper.removeVote(postID: cell.postID, option: cell.choice)
+        }
         if sender == cell.choice1_button{
             option = "0"
         }

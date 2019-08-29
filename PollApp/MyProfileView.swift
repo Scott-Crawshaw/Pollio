@@ -36,11 +36,23 @@ class MyProfileView: UIViewController, UITableViewDataSource, UITableViewDataSou
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        guard let user = Auth.auth().currentUser?.uid else{
+            self.view.window!.rootViewController?.dismiss(animated: false, completion: {
+                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let newViewController = storyBoard.instantiateViewController(withIdentifier: "login") as! ViewController
+                self.present(newViewController, animated: true, completion: nil)
+            })
+            
+            return
+        }
         self.refreshFeed(sender: self)
-        listeners.append(DatabaseHelper.hasFollowRequestsListener(callback: doesUserHaveRequest))
-        DatabaseHelper.getUserByUID(UID: Auth.auth().currentUser!.uid, callback: setInfo)
-        listeners.append(DatabaseHelper.getFollowingCountListener(UID: Auth.auth().currentUser!.uid, callback: setFollowing))
-        listeners.append(DatabaseHelper.getFollowersCountListener(UID: Auth.auth().currentUser!.uid, callback: setFollowers))
+        let listen = DatabaseHelper.hasFollowRequestsListener(callback: doesUserHaveRequest) ?? nil
+        if listen != nil{
+            listeners.append(listen!)
+        }
+        DatabaseHelper.getUserByUID(UID: user, callback: setInfo)
+        listeners.append(DatabaseHelper.getFollowingCountListener(UID: user, callback: setFollowing))
+        listeners.append(DatabaseHelper.getFollowersCountListener(UID: user, callback: setFollowers))
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -59,10 +71,8 @@ class MyProfileView: UIViewController, UITableViewDataSource, UITableViewDataSou
         tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .bottom, animated: false)
         
         self.fetchTotalCount { (count, err) in
-            if err != nil{
-                return
-            }
             self.totalCount = count ?? 0
+            print(self.totalCount)
             if self.totalCount == 0{
                 self.tableView.setEmptyMessage("It looks like this user hasn't made any posts.")
                 self.tableView.reloadData()
@@ -164,7 +174,7 @@ class MyProfileView: UIViewController, UITableViewDataSource, UITableViewDataSou
         let functions = Functions.functions()
         
         functions.httpsCallable("getUserPosts").call(["rows" : rows, "uid" : Auth.auth().currentUser!.uid]) { (result, error) in
-            let newData = result?.data as! [[String : Any]]
+            let newData = result?.data as? [[String : Any]] ?? []
             completed(newData, nil)
         }
         
@@ -180,10 +190,16 @@ class MyProfileView: UIViewController, UITableViewDataSource, UITableViewDataSou
     
     func modifyCell(cell : PollTableViewCell, indexPath : IndexPath) -> UITableViewCell{
         cell.resetCell()
+        cell.currentUser = Auth.auth().currentUser?.uid ?? ""
         cell.results = data[indexPath.row]["results"] as? [String : [String]]
         cell.commentsDoc = data[indexPath.row]["comments"] as? String
         cell.postID = cell.commentsDoc.subString(from: 10, to: cell.commentsDoc.count-1)
         cell.username.text = data[indexPath.row]["username"] as? String ?? "Unknown"
+        var author = data[indexPath.row]["author"] as? String ?? ""
+        if author != ""{
+            author = author.subString(from: 7, to: author.count-1)
+        }
+        cell.authorUID = author
         let timeMap = data[indexPath.row]["time"] as! [String : Any]
         let FBtime : Timestamp = Timestamp(seconds: timeMap["_seconds"] as! Int64, nanoseconds: timeMap["_nanoseconds"] as! Int32)
         let time = FBtime.dateValue()
@@ -211,12 +227,14 @@ class MyProfileView: UIViewController, UITableViewDataSource, UITableViewDataSou
         cell.time.text = timeText
         
         let visArr = data[indexPath.row]["visibility"] as? [String : Bool] ?? ["author":false, "viewers":false]
-        
+        cell.visibilityNum = 2
         if visArr["author"]! && visArr["viewers"]!{
             cell.visibility.text = "Public"
+            cell.visibilityNum = 0
         }
         if visArr["author"]! && !visArr["viewers"]!{
             cell.visibility.text = "Private"
+            cell.visibilityNum = 1
         }
         if !visArr["author"]! && !visArr["viewers"]!{
             cell.visibility.text = "Anonymous"
@@ -226,10 +244,21 @@ class MyProfileView: UIViewController, UITableViewDataSource, UITableViewDataSou
         let options = data[indexPath.row]["options"] as? [String] ?? []
         
         
-        cell.choice1_bar.isHidden = true
-        cell.choice2_bar.isHidden = true
-        cell.choice3_bar.isHidden = true
-        cell.choice4_bar.isHidden = true
+        cell.choice1_view.isHidden = true
+        cell.choice2_view.isHidden = true
+        cell.choice3_view.isHidden = true
+        cell.choice4_view.isHidden = true
+        
+        let barHeight = cell.choice1_button.frame.height
+        cell.choice1_view.frame.size = CGSize(width: 0, height: barHeight)
+        cell.choice2_view.frame.size = CGSize(width: 0, height: barHeight)
+        cell.choice3_view.frame.size = CGSize(width: 0, height: barHeight)
+        cell.choice4_view.frame.size = CGSize(width: 0, height: barHeight)
+        
+        cell.choice1_view.layoutIfNeeded()
+        cell.choice2_view.layoutIfNeeded()
+        cell.choice3_view.layoutIfNeeded()
+        cell.choice4_view.layoutIfNeeded()
         
         cell.choice1_button.tag = indexPath.row
         cell.choice2_button.tag = indexPath.row
@@ -267,7 +296,6 @@ class MyProfileView: UIViewController, UITableViewDataSource, UITableViewDataSou
             cell.choice3_text.text = options[2]
             cell.choice4_text.text = options[3]
         }
-        cell.currentUser = Auth.auth().currentUser!.uid
         cell.generateListener()
         
         return cell

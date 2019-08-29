@@ -272,11 +272,16 @@ class DatabaseHelper{
         }
     }
     
-    static func hasFollowRequestsListener(callback: @escaping (Bool) -> Void) -> ListenerRegistration{
+    static func hasFollowRequestsListener(callback: @escaping (Bool) -> Void) -> ListenerRegistration?{
         let db = Firestore.firestore()
-        let uid = Auth.auth().currentUser!.uid
+        let uid = Auth.auth().currentUser?.uid ?? nil
         
-        return db.collection("followRequests").document(uid)
+        if uid == nil{
+            callback(false)
+            return nil
+        }
+        
+        return db.collection("followRequests").document(uid!)
             .addSnapshotListener { documentSnapshot, error in
                 guard let document = documentSnapshot else {
                     callback(false)
@@ -351,6 +356,11 @@ class DatabaseHelper{
     static func addVote(postID: String, option: String){
         let db = Firestore.firestore()
         db.collection("posts").document(postID).updateData(["results." + option : FieldValue.arrayUnion([Auth.auth().currentUser!.uid])])
+    }
+    
+    static func removeVote(postID: String, option: String){
+        let db = Firestore.firestore()
+        db.collection("posts").document(postID).updateData(["results." + option : FieldValue.arrayRemove([Auth.auth().currentUser!.uid])])
     }
     
     static func isUser(uid: String, callback: @escaping (Bool) -> Void){
