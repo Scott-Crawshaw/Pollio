@@ -296,7 +296,10 @@ class YourProfileView: UIViewController, UITableViewDataSource, UITableViewDataS
     @objc func navToResults(sender: UIButton){
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "results") as! ResultsViewController
-        let res = (tableView.cellForRow(at: IndexPath(row: sender.tag, section: 0)) as! PollTableViewCell).results ?? [:]
+        let res = (tableView.cellForRow(at: IndexPath(row: sender.tag, section: 0)) as? PollTableViewCell)?.results ?? [:]
+        if res.count == 0{
+            return
+        }
         for _ in 0...res.count-1{
             newViewController.uids.append([])
             newViewController.headers.append("")

@@ -2137,19 +2137,19 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T4G-Ja-cys">
-                                <rect key="frame" x="32" y="76" width="122" height="35"/>
+                                <rect key="frame" x="32" y="88" width="122" height="35"/>
                                 <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans SemiBold" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="user bio  - 74 characters" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mf9-SL-3Wm">
-                                <rect key="frame" x="32" y="158" width="336" height="23.5"/>
+                                <rect key="frame" x="32" y="170" width="336" height="23.5"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans Light" pointSize="17"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="realname" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o89-lb-ozC">
-                                <rect key="frame" x="32" y="116" width="116" height="35"/>
+                                <rect key="frame" x="32" y="128" width="116" height="35"/>
                                 <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans SemiBold" pointSize="25"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -2193,7 +2193,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Fl-pf-bWg">
-                                <rect key="frame" x="20" y="51" width="38" height="25"/>
+                                <rect key="frame" x="20" y="56" width="38" height="25"/>
                                 <state key="normal" image="back"/>
                                 <connections>
                                     <action selector="goBack:" destination="9bL-eO-Op8" eventType="touchUpInside" id="NXV-Cv-FAD"/>
@@ -2231,14 +2231,14 @@
                             <constraint firstItem="8Fl-pf-bWg" firstAttribute="leading" secondItem="NeG-dc-af3" secondAttribute="leadingMargin" id="Mp8-aa-QFs"/>
                             <constraint firstItem="mf9-SL-3Wm" firstAttribute="leading" secondItem="o89-lb-ozC" secondAttribute="leading" id="N67-3l-icR"/>
                             <constraint firstItem="o89-lb-ozC" firstAttribute="leading" secondItem="b9u-yV-24Q" secondAttribute="leading" constant="32" id="OSj-YJ-Rne"/>
-                            <constraint firstItem="T4G-Ja-cys" firstAttribute="top" secondItem="b9u-yV-24Q" secondAttribute="top" constant="32" id="Ors-J7-PLZ"/>
+                            <constraint firstItem="T4G-Ja-cys" firstAttribute="top" secondItem="b9u-yV-24Q" secondAttribute="top" constant="44" id="Ors-J7-PLZ"/>
                             <constraint firstItem="qwT-vW-f90" firstAttribute="top" secondItem="BQJ-Gt-AA9" secondAttribute="bottom" constant="20" id="QHg-z6-QhH"/>
                             <constraint firstItem="c3f-gL-Y1T" firstAttribute="width" secondItem="xlZ-dr-yeY" secondAttribute="width" id="WZP-eB-IkU"/>
                             <constraint firstItem="qwT-vW-f90" firstAttribute="bottom" secondItem="b9u-yV-24Q" secondAttribute="bottom" id="b3M-Pe-qPC"/>
                             <constraint firstItem="BQJ-Gt-AA9" firstAttribute="leading" secondItem="b9u-yV-24Q" secondAttribute="leading" constant="32" id="g1K-NQ-9Fu"/>
                             <constraint firstItem="BQJ-Gt-AA9" firstAttribute="top" secondItem="c3f-gL-Y1T" secondAttribute="bottom" constant="8" symbolic="YES" id="gDK-NF-dfA"/>
                             <constraint firstItem="qwT-vW-f90" firstAttribute="leading" secondItem="NeG-dc-af3" secondAttribute="leading" id="gwY-Tt-jvb"/>
-                            <constraint firstItem="T4G-Ja-cys" firstAttribute="top" secondItem="8Fl-pf-bWg" secondAttribute="bottom" id="iId-et-b9O"/>
+                            <constraint firstItem="T4G-Ja-cys" firstAttribute="top" secondItem="8Fl-pf-bWg" secondAttribute="bottom" constant="7" id="iId-et-b9O"/>
                             <constraint firstItem="xlZ-dr-yeY" firstAttribute="leading" secondItem="b9u-yV-24Q" secondAttribute="leading" constant="32" id="kiY-b7-fLp"/>
                             <constraint firstItem="BQJ-Gt-AA9" firstAttribute="centerX" secondItem="mf9-SL-3Wm" secondAttribute="centerX" constant="3" id="mMh-R1-dbX"/>
                             <constraint firstItem="mf9-SL-3Wm" firstAttribute="top" secondItem="o89-lb-ozC" secondAttribute="bottom" constant="7" id="pf2-sd-2SH"/>
