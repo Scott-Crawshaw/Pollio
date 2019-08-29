@@ -244,10 +244,21 @@ class MyProfileView: UIViewController, UITableViewDataSource, UITableViewDataSou
         let options = data[indexPath.row]["options"] as? [String] ?? []
         
         
-        cell.choice1_bar.isHidden = true
-        cell.choice2_bar.isHidden = true
-        cell.choice3_bar.isHidden = true
-        cell.choice4_bar.isHidden = true
+        cell.choice1_view.isHidden = true
+        cell.choice2_view.isHidden = true
+        cell.choice3_view.isHidden = true
+        cell.choice4_view.isHidden = true
+        
+        let barHeight = cell.choice1_button.frame.height
+        cell.choice1_view.frame.size = CGSize(width: 0, height: barHeight)
+        cell.choice2_view.frame.size = CGSize(width: 0, height: barHeight)
+        cell.choice3_view.frame.size = CGSize(width: 0, height: barHeight)
+        cell.choice4_view.frame.size = CGSize(width: 0, height: barHeight)
+        
+        cell.choice1_view.layoutIfNeeded()
+        cell.choice2_view.layoutIfNeeded()
+        cell.choice3_view.layoutIfNeeded()
+        cell.choice4_view.layoutIfNeeded()
         
         cell.choice1_button.tag = indexPath.row
         cell.choice2_button.tag = indexPath.row
