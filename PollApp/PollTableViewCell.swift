@@ -29,8 +29,10 @@ class PollTableViewCell: UITableViewCell {
     @IBOutlet var time: UILabel!
     @IBOutlet var username: UILabel!
     @IBOutlet var resultsButton: UIButton!
+    @IBOutlet var cellView: UIView!
+    @IBOutlet var cView: UIView!
     var results : [String : [String]]!
-    var choice : String!
+    var choice = "-1"
     var commentsDoc : String!
     var postID : String!
     var listener : ListenerRegistration!
@@ -107,6 +109,9 @@ class PollTableViewCell: UITableViewCell {
         choice2_button.layer.borderWidth = 0.0
         choice3_button.layer.borderWidth = 0.0
         choice4_button.layer.borderWidth = 0.0
+        
+        choice = "-1"
+    
     }
     
     
@@ -118,6 +123,13 @@ class PollTableViewCell: UITableViewCell {
 
         let fullWidth = choice1_button.frame.width
         let fullHeight = choice1_button.frame.height
+        let animationLength = 1.0
+        
+        self.choice1_button.layer.borderWidth = 0
+        self.choice2_button.layer.borderWidth = 0
+        self.choice3_button.layer.borderWidth = 0
+        self.choice4_button.layer.borderWidth = 0
+        
         
         if (visibilityNum == 0) || (visibilityNum == 1 && authorUID == currentUser){
             resultsButton.isEnabled = true
@@ -126,20 +138,24 @@ class PollTableViewCell: UITableViewCell {
         if results.count == 2{
             let firstBarPercent = Float(results["0"]!.count) / totalVotes
             let secondBarPercent = Float(results["1"]!.count) / totalVotes
+            
+            UIView.animate(withDuration: animationLength) {
+                self.choice2_bar.frame.size = CGSize(width: fullWidth * CGFloat(firstBarPercent), height: fullHeight)
+                self.choice2_bar.isHidden = false
+                
+                self.choice3_bar.frame.size = CGSize(width: fullWidth * CGFloat(secondBarPercent), height: fullHeight)
+                self.choice3_bar.isHidden = false
+                
+                if self.choice == "0"{
+                    self.choice2_button.layer.borderColor = UIColor.black.cgColor
+                    self.choice2_button.layer.borderWidth = 1
+                }
+                if self.choice == "1"{
+                    self.choice3_button.layer.borderColor = UIColor.black.cgColor
+                    self.choice3_button.layer.borderWidth = 1
+                }
+                self.cView.layoutIfNeeded()
 
-            choice2_bar.frame.size = CGSize(width: fullWidth * CGFloat(firstBarPercent), height: fullHeight)
-            choice2_bar.isHidden = false
-            
-            choice3_bar.frame.size = CGSize(width: fullWidth * CGFloat(secondBarPercent), height: fullHeight)
-            choice3_bar.isHidden = false
-            
-            if choice == "0"{
-                choice2_button.layer.borderColor = UIColor.black.cgColor
-                choice2_button.layer.borderWidth = 1
-            }
-            if choice == "1"{
-                choice3_button.layer.borderColor = UIColor.black.cgColor
-                choice3_button.layer.borderWidth = 1
             }
             
         }
@@ -147,27 +163,30 @@ class PollTableViewCell: UITableViewCell {
             let firstBarPercent = Float(results["0"]!.count) / totalVotes
             let secondBarPercent = Float(results["1"]!.count) / totalVotes
             let thirdBarPercent = Float(results["2"]!.count) / totalVotes
+            UIView.animate(withDuration: animationLength) {
+                
+            self.choice2_bar.frame.size = CGSize(width: fullWidth * CGFloat(firstBarPercent), height: fullHeight)
+            self.choice2_bar.isHidden = false
             
-            choice2_bar.frame.size = CGSize(width: fullWidth * CGFloat(firstBarPercent), height: fullHeight)
-            choice2_bar.isHidden = false
+            self.choice3_bar.frame.size = CGSize(width: fullWidth * CGFloat(secondBarPercent), height: fullHeight)
+            self.choice3_bar.isHidden = false
             
-            choice3_bar.frame.size = CGSize(width: fullWidth * CGFloat(secondBarPercent), height: fullHeight)
-            choice3_bar.isHidden = false
+            self.choice4_bar.frame.size = CGSize(width: fullWidth * CGFloat(thirdBarPercent), height: fullHeight)
+            self.choice4_bar.isHidden = false
             
-            choice4_bar.frame.size = CGSize(width: fullWidth * CGFloat(thirdBarPercent), height: fullHeight)
-            choice4_bar.isHidden = false
-            
-            if choice == "0"{
-                choice2_button.layer.borderColor = UIColor.black.cgColor
-                choice2_button.layer.borderWidth = 1
+            if self.choice == "0"{
+                self.choice2_button.layer.borderColor = UIColor.black.cgColor
+                self.choice2_button.layer.borderWidth = 1
             }
-            if choice == "1"{
-                choice3_button.layer.borderColor = UIColor.black.cgColor
-                choice3_button.layer.borderWidth = 1
+            if self.choice == "1"{
+                self.choice3_button.layer.borderColor = UIColor.black.cgColor
+                self.choice3_button.layer.borderWidth = 1
             }
-            if choice == "2"{
-                choice4_button.layer.borderColor = UIColor.black.cgColor
-                choice4_button.layer.borderWidth = 1
+            if self.choice == "2"{
+                self.choice4_button.layer.borderColor = UIColor.black.cgColor
+                self.choice4_button.layer.borderWidth = 1
+            }
+                
             }
             
         }
@@ -177,40 +196,42 @@ class PollTableViewCell: UITableViewCell {
             let thirdBarPercent = Float(results["2"]!.count) / totalVotes
             let fourthBarPercent = Float(results["3"]!.count) / totalVotes
 
+            UIView.animate(withDuration: animationLength) {
+                
+            self.choice1_bar.frame.size = CGSize(width: fullWidth * CGFloat(firstBarPercent), height: fullHeight)
+            self.choice1_bar.isHidden = false
             
-            choice1_bar.frame.size = CGSize(width: fullWidth * CGFloat(firstBarPercent), height: fullHeight)
-            choice1_bar.isHidden = false
+            self.choice2_bar.frame.size = CGSize(width: fullWidth * CGFloat(secondBarPercent), height: fullHeight)
+            self.choice2_bar.isHidden = false
             
-            choice2_bar.frame.size = CGSize(width: fullWidth * CGFloat(secondBarPercent), height: fullHeight)
-            choice2_bar.isHidden = false
+            self.choice3_bar.frame.size = CGSize(width: fullWidth * CGFloat(thirdBarPercent), height: fullHeight)
+            self.choice3_bar.isHidden = false
             
-            choice3_bar.frame.size = CGSize(width: fullWidth * CGFloat(thirdBarPercent), height: fullHeight)
-            choice3_bar.isHidden = false
+            self.choice4_bar.frame.size = CGSize(width: fullWidth * CGFloat(fourthBarPercent), height: fullHeight)
+            self.choice4_bar.isHidden = false
             
-            choice4_bar.frame.size = CGSize(width: fullWidth * CGFloat(fourthBarPercent), height: fullHeight)
-            choice4_bar.isHidden = false
-            
-            if choice == "0"{
-                choice1_button.layer.borderColor = UIColor.black.cgColor
-                choice1_button.layer.borderWidth = 1
+            if self.choice == "0"{
+                self.choice1_button.layer.borderColor = UIColor.black.cgColor
+                self.choice1_button.layer.borderWidth = 1
             }
-            if choice == "1"{
-                choice2_button.layer.borderColor = UIColor.black.cgColor
-                choice2_button.layer.borderWidth = 1
+            if self.choice == "1"{
+                self.choice2_button.layer.borderColor = UIColor.black.cgColor
+                self.choice2_button.layer.borderWidth = 1
             }
-            if choice == "2"{
-                choice3_button.layer.borderColor = UIColor.black.cgColor
-                choice3_button.layer.borderWidth = 1
+            if self.choice == "2"{
+                self.choice3_button.layer.borderColor = UIColor.black.cgColor
+                self.choice3_button.layer.borderWidth = 1
             }
-            if choice == "3"{
-                choice4_button.layer.borderColor = UIColor.black.cgColor
-                choice4_button.layer.borderWidth = 1
+            if self.choice == "3"{
+                self.choice4_button.layer.borderColor = UIColor.black.cgColor
+                self.choice4_button.layer.borderWidth = 1
+            }
             }
         }
-        choice1_button.isEnabled = false
+        /*choice1_button.isEnabled = false
         choice2_button.isEnabled = false
         choice3_button.isEnabled = false
-        choice4_button.isEnabled = false
+        choice4_button.isEnabled = false*/
 
     }
 

@@ -635,6 +635,8 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="cView" destination="Etz-ec-mYx" id="oaZ-WA-41J"/>
+                                    <outlet property="cellView" destination="Jh2-bJ-YtF" id="5p1-Hx-ZlT"/>
                                     <outlet property="choice1_bar" destination="SPN-Bl-mMh" id="suW-fD-yy9"/>
                                     <outlet property="choice1_button" destination="8lp-WX-8PY" id="4qI-wT-eqB"/>
                                     <outlet property="choice1_text" destination="Jd9-lT-Ept" id="7M4-D7-kJd"/>
@@ -647,6 +649,7 @@
                                     <outlet property="choice4_bar" destination="qwX-J6-jnN" id="tDl-1i-7Yd"/>
                                     <outlet property="choice4_button" destination="jmD-Ca-nkJ" id="nff-cO-UxJ"/>
                                     <outlet property="choice4_text" destination="GPM-PM-Gx4" id="RUr-fz-RlP"/>
+                                    <outlet property="contentView" destination="Etz-ec-mYx" id="owB-uW-AF9"/>
                                     <outlet property="question" destination="qTV-oI-q8s" id="Xxa-UR-Ud0"/>
                                     <outlet property="resultsButton" destination="oNz-yv-hKR" id="YG7-sS-Cdw"/>
                                     <outlet property="time" destination="yhJ-62-qG4" id="SaM-aI-2rg"/>

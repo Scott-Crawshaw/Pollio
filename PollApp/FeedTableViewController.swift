@@ -311,11 +311,17 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
     @objc func vote(sender: UIButton){
         let index = sender.tag
         let indexPath = IndexPath(row: index, section: 0)
-        let cell = tableView.cellForRow(at: indexPath) as! PollTableViewCell
+        guard let cell = tableView.cellForRow(at: indexPath) as? PollTableViewCell else{
+            return
+        }
         //let currentUID = Auth.auth().currentUser!.uid
         var option = "0"
         //var currData = data[index]
         //var res = currData["results"] as! [String : [String]]
+        
+        if cell.choice != "-1"{
+            DatabaseHelper.removeVote(postID: cell.postID, option: cell.choice)
+        }
         if sender == cell.choice1_button{
             option = "0"
         }

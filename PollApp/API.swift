@@ -358,6 +358,11 @@ class DatabaseHelper{
         db.collection("posts").document(postID).updateData(["results." + option : FieldValue.arrayUnion([Auth.auth().currentUser!.uid])])
     }
     
+    static func removeVote(postID: String, option: String){
+        let db = Firestore.firestore()
+        db.collection("posts").document(postID).updateData(["results." + option : FieldValue.arrayRemove([Auth.auth().currentUser!.uid])])
+    }
+    
     static func isUser(uid: String, callback: @escaping (Bool) -> Void){
         let db = Firestore.firestore()
         db.collection("users").document(uid).getDocument { (document, err) in
