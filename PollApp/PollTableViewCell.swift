@@ -100,17 +100,6 @@ class PollTableViewCell: UITableViewCell {
         choice3_view.isHidden = true
         choice4_view.isHidden = true
         
-        let barHeight = choice1_button.frame.height
-        choice1_view.frame.size = CGSize(width: 0, height: barHeight)
-        choice2_view.frame.size = CGSize(width: 0, height: barHeight)
-        choice3_view.frame.size = CGSize(width: 0, height: barHeight)
-        choice4_view.frame.size = CGSize(width: 0, height: barHeight)
-        
-        choice1_view.layoutIfNeeded()
-        choice2_view.layoutIfNeeded()
-        choice3_view.layoutIfNeeded()
-        choice4_view.layoutIfNeeded()
-        
         choice1_text.isHidden = false
         choice2_text.isHidden = false
         choice3_text.isHidden = false
