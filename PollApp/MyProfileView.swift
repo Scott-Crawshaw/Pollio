@@ -125,11 +125,12 @@ class MyProfileView: UIViewController, UITableViewDataSource, UITableViewDataSou
                 if err != nil{
                     return
                 }
-
+                if newData.count > 0{
                 for i in 0...newData.count-1{
                     if unfilledRows[i] < self.data.count{
                         self.data[unfilledRows[i]] = newData[i]
                     }
+                }
                 }
                 
                 if initial{

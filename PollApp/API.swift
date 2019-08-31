@@ -201,14 +201,14 @@ class DatabaseHelper{
         let searchTerm = search.lowercased()
         let functions = Functions.functions()
         functions.httpsCallable("searchUsers").call(["search": searchTerm]) { (result, error) in
-            callback(result?.data as! [[String : Any]])
+            callback(result?.data as? [[String : Any]] ?? [])
         }
     }
     
     static func getUserList(ref: String, arrName: String, callback: @escaping ([[String : Any]]?) -> Void){
         let functions = Functions.functions()
         functions.httpsCallable("getUserList").call(["ref": ref, "arrName" : arrName]) { (result, error) in
-            callback(result?.data as? [[String : Any]])
+            callback(result?.data as? [[String : Any]] ?? [])
         }
     }
     
