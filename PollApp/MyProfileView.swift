@@ -29,13 +29,6 @@ class MyProfileView: UIViewController, UITableViewDataSource, UITableViewDataSou
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
-        self.tableView.dataSource = self
-        self.tableView.prefetchDataSource = self
-        // Do any additional setup after loading the view.
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
         guard let user = Auth.auth().currentUser?.uid else{
             self.view.window!.rootViewController?.dismiss(animated: false, completion: {
                 let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
@@ -50,13 +43,16 @@ class MyProfileView: UIViewController, UITableViewDataSource, UITableViewDataSou
         if listen != nil{
             listeners.append(listen!)
         }
-        DatabaseHelper.getUserByUID(UID: user, callback: setInfo)
+        listeners.append(DatabaseHelper.getUserByUIDListener(UID: user, callback: setInfo))
         listeners.append(DatabaseHelper.getFollowingCountListener(UID: user, callback: setFollowing))
         listeners.append(DatabaseHelper.getFollowersCountListener(UID: user, callback: setFollowers))
+        self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        self.tableView.dataSource = self
+        self.tableView.prefetchDataSource = self
+        // Do any additional setup after loading the view.
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+    deinit {
         listeners.forEach { (listener) in
             listener.remove()
         }
@@ -68,7 +64,6 @@ class MyProfileView: UIViewController, UITableViewDataSource, UITableViewDataSou
         self.tableView.setEmptyMessage("Loading...")
         self.totalCount = 10
         self.tableView.reloadData()
-        tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .bottom, animated: false)
         
         self.fetchTotalCount { (count, err) in
             self.totalCount = count ?? 0
@@ -194,7 +189,9 @@ class MyProfileView: UIViewController, UITableViewDataSource, UITableViewDataSou
         cell.results = data[indexPath.row]["results"] as? [String : [String]]
         cell.commentsDoc = data[indexPath.row]["comments"] as? String
         cell.postID = cell.commentsDoc.subString(from: 10, to: cell.commentsDoc.count-1)
-        cell.username.text = data[indexPath.row]["username"] as? String ?? "Unknown"
+        cell.username.setTitle(data[indexPath.row]["username"] as? String ?? "Unknown", for: .normal)
+        cell.username.tag = indexPath.row
+
         var author = data[indexPath.row]["author"] as? String ?? ""
         if author != ""{
             author = author.subString(from: 7, to: author.count-1)
@@ -264,6 +261,8 @@ class MyProfileView: UIViewController, UITableViewDataSource, UITableViewDataSou
         cell.choice2_button.tag = indexPath.row
         cell.choice3_button.tag = indexPath.row
         cell.choice4_button.tag = indexPath.row
+        cell.resultsButton.tag = indexPath.row
+
         
         cell.choice1_button.addTarget(self, action: #selector(vote(sender:)), for: .touchUpInside)
         cell.choice2_button.addTarget(self, action: #selector(vote(sender:)), for: .touchUpInside)
@@ -271,6 +270,8 @@ class MyProfileView: UIViewController, UITableViewDataSource, UITableViewDataSou
         cell.choice4_button.addTarget(self, action: #selector(vote(sender:)), for: .touchUpInside)
         
         cell.resultsButton.addTarget(self, action: #selector(navToResults(sender:)), for: .touchUpInside)
+        
+        cell.username.addTarget(self, action: #selector(usernameClicked(sender:)), for: .touchUpInside)
         
         if options.count == 2{
             cell.choice2_text.text = options[0]
@@ -301,10 +302,33 @@ class MyProfileView: UIViewController, UITableViewDataSource, UITableViewDataSou
         return cell
     }
     
+    @objc func usernameClicked(sender: UILabel){
+        guard let cell = tableView.cellForRow(at: IndexPath(row: sender.tag, section: 0)) as? PollTableViewCell else{
+            return
+        }
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let uid = cell.authorUID else{
+            return
+        }
+        if Auth.auth().currentUser!.uid != uid{
+            let newViewController = storyBoard.instantiateViewController(withIdentifier: "yourProfile") as! YourProfileView
+            newViewController.uid = uid
+            self.present(newViewController, animated: true, completion: nil)
+        }
+        else{
+            let newViewController = storyBoard.instantiateViewController(withIdentifier: "main") as! TabSuperview
+            newViewController.selectedIndex = 3
+            self.present(newViewController, animated: true, completion: nil)
+        }
+        
+    }
+    
     @objc func navToResults(sender: UIButton){
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "results") as! ResultsViewController
-        let res = (tableView.cellForRow(at: IndexPath(row: sender.tag, section: 0)) as! PollTableViewCell).results ?? [:]
+        guard let res = (tableView.cellForRow(at: IndexPath(row: sender.tag, section: 0)) as? PollTableViewCell)?.results else{
+            return
+        }
         for _ in 0...res.count-1{
             newViewController.uids.append([])
             newViewController.headers.append("")
@@ -326,6 +350,9 @@ class MyProfileView: UIViewController, UITableViewDataSource, UITableViewDataSou
         //let currentUID = Auth.auth().currentUser!.uid
         var option = "0"
         //var res = currData["results"] as! [String : [String]]
+        if cell.choice != "-1"{
+            DatabaseHelper.removeVote(postID: cell.postID, option: cell.choice)
+        }
         if sender == cell.choice1_button{
             option = "0"
         }

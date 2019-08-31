@@ -23,7 +23,7 @@ class PollTableViewCell: UITableViewCell {
     @IBOutlet var question: UILabel!
     @IBOutlet var visibility: UILabel!
     @IBOutlet var time: UILabel!
-    @IBOutlet var username: UILabel!
+    @IBOutlet var username: UIButton!
     @IBOutlet var resultsButton: UIButton!
     @IBOutlet var cellView: UIView!
     @IBOutlet var cView: UIView!
@@ -81,7 +81,7 @@ class PollTableViewCell: UITableViewCell {
             listener.remove()
             listener = nil
         }
-        
+        username.titleLabel?.adjustsFontSizeToFitWidth = true
         resultsButton.backgroundColor = UIColor(red: 111/255, green: 113/255, blue: 121/255, alpha: 0.5)
         resultsButton.isEnabled = false
         
