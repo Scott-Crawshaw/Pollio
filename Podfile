@@ -16,6 +16,7 @@ target 'PollApp' do
   pod 'Firebase/Firestore'
   pod 'Fabric', '~> 1.10.2'
   pod 'Crashlytics', '~> 3.13.2'
+  pod 'Firebase/Messaging'
 
   target 'PollAppTests' do
     inherit! :search_paths

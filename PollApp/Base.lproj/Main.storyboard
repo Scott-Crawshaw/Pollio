@@ -1946,14 +1946,6 @@
                                 <color key="shadowColor" red="0.49019607840000001" green="0.14901960780000001" blue="0.80392156859999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <size key="shadowOffset" width="0.5" height="-1"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="• Vote on polls to voice your thoughts and opinions" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Qsv-bj-YMt">
-                                <rect key="frame" x="13" y="249" width="387" height="61"/>
-                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="22"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                                <color key="shadowColor" red="0.63529411759999999" green="0.36470588240000001" blue="1" alpha="0.48512414380000002" colorSpace="custom" customColorSpace="sRGB"/>
-                                <size key="shadowOffset" width="1.5" height="-1"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="• Connect with friends and see how they respond to polls" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="D1v-fB-Rxc">
                                 <rect key="frame" x="23" y="432" width="371" height="61"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="22"/>
@@ -1977,11 +1969,19 @@
                                     <constraint firstAttribute="width" constant="211" id="iZ4-Vg-ZXG"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="• Vote on polls to voice your thoughts and opinions" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Qsv-bj-YMt">
+                                <rect key="frame" x="13" y="258" width="387" height="61"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="22"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" red="0.63529411759999999" green="0.36470588240000001" blue="1" alpha="0.48512414380000002" colorSpace="custom" customColorSpace="sRGB"/>
+                                <size key="shadowOffset" width="1.5" height="-1"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="2Ao-M8-l3j" firstAttribute="centerX" secondItem="4Vu-lt-7Jq" secondAttribute="centerX" id="0qs-CJ-R4w"/>
-                            <constraint firstItem="Qsv-bj-YMt" firstAttribute="top" secondItem="2Ao-M8-l3j" secondAttribute="bottom" constant="13" id="6vf-Mi-92u"/>
+                            <constraint firstItem="Qsv-bj-YMt" firstAttribute="top" secondItem="2Ao-M8-l3j" secondAttribute="bottom" constant="22" id="6vf-Mi-92u"/>
                             <constraint firstItem="2Ao-M8-l3j" firstAttribute="leading" secondItem="hcj-OD-7NY" secondAttribute="leadingMargin" id="7Pv-FK-n6D"/>
                             <constraint firstItem="Uyj-0P-1zh" firstAttribute="trailing" secondItem="noG-yX-97G" secondAttribute="trailing" constant="14" id="8WQ-zz-nTh"/>
                             <constraint firstItem="noG-yX-97G" firstAttribute="leading" secondItem="Uyj-0P-1zh" secondAttribute="leading" constant="13" id="93a-AC-GMI"/>
@@ -1997,7 +1997,7 @@
                             <constraint firstItem="D1v-fB-Rxc" firstAttribute="top" secondItem="noG-yX-97G" secondAttribute="bottom" constant="28" id="jEd-ZR-tJX"/>
                             <constraint firstItem="Uyj-0P-1zh" firstAttribute="trailing" secondItem="2Ao-M8-l3j" secondAttribute="trailing" constant="20" id="jco-Zf-lk1"/>
                             <constraint firstItem="Uyj-0P-1zh" firstAttribute="trailing" secondItem="4Vu-lt-7Jq" secondAttribute="trailing" constant="23" id="oFu-9j-KP3"/>
-                            <constraint firstItem="noG-yX-97G" firstAttribute="top" secondItem="Qsv-bj-YMt" secondAttribute="bottom" constant="33" id="sQN-Yp-Gj3"/>
+                            <constraint firstItem="noG-yX-97G" firstAttribute="top" secondItem="Qsv-bj-YMt" secondAttribute="bottom" constant="24" id="sQN-Yp-Gj3"/>
                             <constraint firstItem="Uyj-0P-1zh" firstAttribute="bottom" secondItem="07l-Bb-RIy" secondAttribute="bottom" constant="99" id="tRB-E9-CWK"/>
                             <constraint firstItem="D1v-fB-Rxc" firstAttribute="leading" secondItem="Uyj-0P-1zh" secondAttribute="leading" constant="23" id="v3j-Fu-HgA"/>
                         </constraints>
