@@ -73,9 +73,12 @@ class ResultsViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        if Auth.auth().currentUser!.uid != tableData[indexPath.section][indexPath.row]["uid"] as? String ?? ""{
+        guard let uid = tableData[indexPath.section][indexPath.row]["uid"] as? String else{
+            return
+        }
+        if Auth.auth().currentUser!.uid != uid{
             let newViewController = storyBoard.instantiateViewController(withIdentifier: "yourProfile") as! YourProfileView
-            let user = tableData[indexPath.section][indexPath.row]["uid"] as? String ?? ""
+            let user = uid
             newViewController.uid = user
             self.present(newViewController, animated: true, completion: nil)
         }

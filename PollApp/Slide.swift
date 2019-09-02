@@ -11,7 +11,7 @@ import Contacts
 import FirebaseAuth
 
 
-class Slide: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class Slide: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -44,6 +44,9 @@ class Slide: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     override func viewDidLoad() {
         UserDefaults.standard.set(false, forKey: "nextPage")
+        if username != nil{
+            username.delegate = self
+        }
         
     }
 
@@ -73,6 +76,14 @@ class Slide: UIViewController, UITableViewDataSource, UITableViewDelegate {
             DatabaseHelper.addUser(name: nameText!, username: usernameText!, followMethod: self.addInitialFollows)
         }
         
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let maxLength = 15
+        let currentString: NSString = textField.text! as NSString
+        let newString: NSString =
+            currentString.replacingCharacters(in: range, with: string) as NSString
+        return newString.length <= maxLength
     }
     
     @objc func adjustProgressBar(){

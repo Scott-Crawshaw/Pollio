@@ -52,16 +52,6 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
-        self.tableView.dataSource = self
-        self.tableView.prefetchDataSource = self
-        self.refreshControl?.addTarget(self, action: #selector(refreshFeed), for: UIControl.Event.valueChanged)
-    }
-    
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         if Auth.auth().currentUser == nil{
             returnToLogin()
             return
@@ -70,16 +60,19 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
             if !res{
                 DatabaseHelper.deleteNumber()
                 do{
-                try Auth.auth().signOut()
+                    try Auth.auth().signOut()
                 }
                 catch{}
                 self.returnToLogin()
             }
         }
         self.refreshFeed(sender: self)
-        
+        self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        self.tableView.dataSource = self
+        self.tableView.prefetchDataSource = self
+        self.refreshControl?.addTarget(self, action: #selector(refreshFeed), for: UIControl.Event.valueChanged)
     }
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -191,7 +184,8 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
         cell.currentUser = Auth.auth().currentUser!.uid
         cell.commentsDoc = data[indexPath.row]["comments"] as? String
         cell.postID = cell.commentsDoc.subString(from: 10, to: cell.commentsDoc.count-1)
-        cell.username.text = data[indexPath.row]["username"] as? String ?? "Unknown"
+        cell.username.setTitle(data[indexPath.row]["username"] as? String ?? "Unknown", for: .normal)
+        cell.username.tag = indexPath.row
         var author = data[indexPath.row]["author"] as? String ?? ""
         if author != ""{
             author = author.subString(from: 7, to: author.count-1)
@@ -272,6 +266,8 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
 
         cell.resultsButton.addTarget(self, action: #selector(navToResults(sender:)), for: .touchUpInside)
         
+        cell.username.addTarget(self, action: #selector(usernameClicked(sender:)), for: .touchUpInside)
+                
         if options.count == 2{
             cell.choice2_text.text = options[0]
             cell.choice3_text.text = options[1]
@@ -301,10 +297,33 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
         return cell
     }
     
+    @objc func usernameClicked(sender: UILabel){
+        guard let cell = tableView.cellForRow(at: IndexPath(row: sender.tag, section: 0)) as? PollTableViewCell else{
+            return
+        }
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let uid = cell.authorUID else{
+            return
+        }
+        if Auth.auth().currentUser!.uid != uid{
+            let newViewController = storyBoard.instantiateViewController(withIdentifier: "yourProfile") as! YourProfileView
+            newViewController.uid = uid
+            self.present(newViewController, animated: true, completion: nil)
+        }
+        else{
+            let newViewController = storyBoard.instantiateViewController(withIdentifier: "main") as! TabSuperview
+            newViewController.selectedIndex = 3
+            self.present(newViewController, animated: true, completion: nil)
+        }
+        
+    }
+    
     @objc func navToResults(sender: UIButton){
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "results") as! ResultsViewController
-        let res = (tableView.cellForRow(at: IndexPath(row: sender.tag, section: 0)) as! PollTableViewCell).results ?? [:]
+        guard let res = (tableView.cellForRow(at: IndexPath(row: sender.tag, section: 0)) as? PollTableViewCell)?.results else{
+            return
+        }
         for _ in 0...res.count-1{
             newViewController.uids.append([])
             newViewController.headers.append("")
