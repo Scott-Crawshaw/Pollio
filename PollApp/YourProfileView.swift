@@ -49,6 +49,10 @@ class YourProfileView: UIViewController, UITableViewDataSource, UITableViewDataS
         self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         self.tableView.dataSource = self
         self.tableView.prefetchDataSource = self
+        
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action:  #selector(refreshFeed(sender:)), for: .valueChanged)
+        tableView.refreshControl = refreshControl
     }
 
     deinit {
@@ -71,6 +75,7 @@ class YourProfileView: UIViewController, UITableViewDataSource, UITableViewDataS
             if self.totalCount == 0{
                 self.tableView.setEmptyMessage("It looks like this user hasn't made any posts.")
                 self.tableView.reloadData()
+                self.tableView.refreshControl?.endRefreshing()
                 return
             }
             self.data = Array(repeating: ["author" : "nil"], count: self.totalCount)
@@ -125,6 +130,7 @@ class YourProfileView: UIViewController, UITableViewDataSource, UITableViewDataS
             fetchFeed(rows: unfilledRows) { (newData, err) in
                 
                 if err != nil{
+                    self.tableView.refreshControl?.endRefreshing()
                     return
                 }
                 if newData.count > 0{
@@ -141,7 +147,7 @@ class YourProfileView: UIViewController, UITableViewDataSource, UITableViewDataS
                         firstPaths.append(IndexPath(row: i, section: 0))
                     }
                     self.tableView.reloadRows(at: firstPaths, with: .automatic)
-                    
+                    self.tableView.refreshControl?.endRefreshing()
                     self.tableView.restore()
                 }
                 

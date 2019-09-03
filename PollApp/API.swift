@@ -49,7 +49,7 @@ class DatabaseHelper{
     static func deletePost(pid : String, callback : @escaping (AnyObject) -> Void){
         let db = Firestore.firestore()
         db.collection("posts").document(pid).delete()
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5), execute: {
             callback(self)
         })
         

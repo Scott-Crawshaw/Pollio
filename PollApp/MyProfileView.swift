@@ -49,6 +49,10 @@ class MyProfileView: UIViewController, UITableViewDataSource, UITableViewDataSou
         self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         self.tableView.dataSource = self
         self.tableView.prefetchDataSource = self
+        
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action:  #selector(refreshFeed(sender:)), for: .valueChanged)
+        tableView.refreshControl = refreshControl
         // Do any additional setup after loading the view.
     }
     
@@ -69,6 +73,7 @@ class MyProfileView: UIViewController, UITableViewDataSource, UITableViewDataSou
             if self.totalCount == 0{
                 self.tableView.setEmptyMessage("It looks like this user hasn't made any posts.")
                 self.tableView.reloadData()
+                self.tableView.refreshControl?.endRefreshing()
                 return
             }
             self.data = Array(repeating: ["author" : "nil"], count: self.totalCount)
@@ -121,6 +126,7 @@ class MyProfileView: UIViewController, UITableViewDataSource, UITableViewDataSou
             fetchFeed(rows: unfilledRows) { (newData, err) in
                 
                 if err != nil{
+                    self.tableView.refreshControl?.endRefreshing()
                     return
                 }
                 if newData.count > 0{
@@ -137,8 +143,9 @@ class MyProfileView: UIViewController, UITableViewDataSource, UITableViewDataSou
                         firstPaths.append(IndexPath(row: i, section: 0))
                     }
                     self.tableView.reloadRows(at: firstPaths, with: .automatic)
-
+                    self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .bottom, animated: false)
                     self.tableView.restore()
+                    self.tableView.refreshControl?.endRefreshing()
                 }
                 
             }
@@ -191,6 +198,9 @@ class MyProfileView: UIViewController, UITableViewDataSource, UITableViewDataSou
         cell.username.setTitle(data[indexPath.row]["username"] as? String ?? "Unknown", for: .normal)
         cell.username.tag = indexPath.row
         cell.trash.tag = indexPath.row
+        cell.trash.isHidden = false
+        cell.loading.stopAnimating()
+        cell.loading.isHidden = true
 
         var author = data[indexPath.row]["author"] as? String ?? ""
         if author != ""{
@@ -306,17 +316,23 @@ class MyProfileView: UIViewController, UITableViewDataSource, UITableViewDataSou
     }
     
     @objc func deletePost(sender: UIButton){
-        guard let cell = tableView.cellForRow(at: IndexPath(row: sender.tag, section: 0)) as? PollTableViewCell else{
-            return
-        }
-        cell.trash.isHidden = true
-        cell.loading.isHidden = false
-        cell.loading.startAnimating()
-        guard let pid = cell.postID else{
-            return
-        }
-        
-        DatabaseHelper.deletePost(pid : pid, callback : self.refreshFeed)
+        let message = "Are you sure you would like to delete this poll? This action cannot be undone."
+        let alert = UIAlertController(title: "Are you sure?", message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Delete Poll", style: .default, handler: { (alert) in
+            guard let cell = self.tableView.cellForRow(at: IndexPath(row: sender.tag, section: 0)) as? PollTableViewCell else{
+                return
+            }
+            cell.trash.isHidden = true
+            cell.loading.isHidden = false
+            cell.loading.startAnimating()
+            guard let pid = cell.postID else{
+                return
+            }
+            
+            DatabaseHelper.deletePost(pid : pid, callback : self.refreshFeed)
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
     @objc func usernameClicked(sender: UILabel){

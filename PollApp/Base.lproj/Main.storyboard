@@ -1626,8 +1626,8 @@
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="To1-sI-ciR">
-                                                                    <rect key="frame" x="8" y="8" width="31" height="25"/>
+                                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="To1-sI-ciR">
+                                                                    <rect key="frame" x="8" y="8" width="20" height="17"/>
                                                                     <state key="normal" image="icons8-trash-50"/>
                                                                 </button>
                                                                 <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="SBu-So-VxR">
@@ -1702,7 +1702,7 @@
                                                                 <constraint firstItem="4cC-wP-731" firstAttribute="top" secondItem="JvM-pA-SXg" secondAttribute="top" id="efl-b6-d2w"/>
                                                                 <constraint firstItem="u68-KE-Cbd" firstAttribute="top" secondItem="JvM-pA-SXg" secondAttribute="bottom" constant="8" symbolic="YES" id="f7W-OH-T3O"/>
                                                                 <constraint firstItem="3Rt-Bo-NOx" firstAttribute="leading" secondItem="Pn6-VC-OGc" secondAttribute="leading" id="f9s-Vm-S1D"/>
-                                                                <constraint firstItem="v6n-t7-Yfe" firstAttribute="leading" secondItem="To1-sI-ciR" secondAttribute="trailing" constant="66" id="fZ7-J3-ZRM"/>
+                                                                <constraint firstItem="v6n-t7-Yfe" firstAttribute="leading" secondItem="To1-sI-ciR" secondAttribute="trailing" constant="77" id="fZ7-J3-ZRM"/>
                                                                 <constraint firstItem="F2O-JS-hfz" firstAttribute="centerY" secondItem="u68-KE-Cbd" secondAttribute="centerY" id="fcS-5e-Rlj"/>
                                                                 <constraint firstItem="F2O-JS-hfz" firstAttribute="top" secondItem="GPQ-gx-6Ka" secondAttribute="top" id="fce-8Q-K5a"/>
                                                                 <constraint firstItem="LDJ-T0-vZk" firstAttribute="leading" secondItem="cEN-0a-cmR" secondAttribute="leadingMargin" id="fnf-gg-9GM"/>
