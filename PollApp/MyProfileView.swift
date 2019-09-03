@@ -190,6 +190,7 @@ class MyProfileView: UIViewController, UITableViewDataSource, UITableViewDataSou
         cell.postID = cell.commentsDoc.subString(from: 10, to: cell.commentsDoc.count-1)
         cell.username.setTitle(data[indexPath.row]["username"] as? String ?? "Unknown", for: .normal)
         cell.username.tag = indexPath.row
+        cell.trash.tag = indexPath.row
 
         var author = data[indexPath.row]["author"] as? String ?? ""
         if author != ""{
@@ -239,7 +240,7 @@ class MyProfileView: UIViewController, UITableViewDataSource, UITableViewDataSou
         cell.question.text = data[indexPath.row]["question"] as? String ?? "Unknown"
         let options = data[indexPath.row]["options"] as? [String] ?? []
         
-        
+        cell.loading.isHidden = true
         cell.choice1_view.isHidden = true
         cell.choice2_view.isHidden = true
         cell.choice3_view.isHidden = true
@@ -270,6 +271,9 @@ class MyProfileView: UIViewController, UITableViewDataSource, UITableViewDataSou
         
         cell.resultsButton.addTarget(self, action: #selector(navToResults(sender:)), for: .touchUpInside)
         
+        cell.trash.addTarget(self, action: #selector(deletePost(sender:)), for: .touchUpInside)
+
+        
         cell.username.addTarget(self, action: #selector(usernameClicked(sender:)), for: .touchUpInside)
         
         if options.count == 2{
@@ -299,6 +303,20 @@ class MyProfileView: UIViewController, UITableViewDataSource, UITableViewDataSou
         cell.generateListener()
         
         return cell
+    }
+    
+    @objc func deletePost(sender: UIButton){
+        guard let cell = tableView.cellForRow(at: IndexPath(row: sender.tag, section: 0)) as? PollTableViewCell else{
+            return
+        }
+        cell.trash.isHidden = true
+        cell.loading.isHidden = false
+        cell.loading.startAnimating()
+        guard let pid = cell.postID else{
+            return
+        }
+        
+        DatabaseHelper.deletePost(pid : pid, callback : self.refreshFeed)
     }
     
     @objc func usernameClicked(sender: UILabel){

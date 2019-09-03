@@ -31,6 +31,8 @@ class PollTableViewCell: UITableViewCell {
     @IBOutlet var choice2_view: UIView!
     @IBOutlet var choice3_view: UIView!
     @IBOutlet var choice4_view: UIView!
+    @IBOutlet weak var trash: UIButton!
+    @IBOutlet weak var loading: UIActivityIndicatorView!
     var results : [String : [String]]!
     var choice = "-1"
     var commentsDoc : String!
