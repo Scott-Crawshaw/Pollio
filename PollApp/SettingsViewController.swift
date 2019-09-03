@@ -11,7 +11,7 @@ import FirebaseAuth
 
 class SettingsViewController: UITableViewController {
 
-    var data : [String] = ["Logout", "Delete Account", "Edit Bio"]
+    var data : [String] = ["Logout", "Submit Feedback", "Edit Bio"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,11 +61,9 @@ class SettingsViewController: UITableViewController {
             })
         }
         if indexPath.row == 1{
-            let message = "All of your data will be completely removed from our servers. This action cannot be undone."
-            let alert = UIAlertController(title: "Are you sure?", message: message, preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "Delete Account", style: UIAlertAction.Style.default, handler: deleteAccount))
-            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let newViewController = storyBoard.instantiateViewController(withIdentifier: "feedback") as! FeedbackViewController
+            self.present(newViewController, animated: true, completion: nil)
         }
         
         if indexPath.row == 2{
@@ -135,4 +133,9 @@ class SettingsViewController: UITableViewController {
     }
     */
 
+    /* let message = "All of your data will be completely removed from our servers. This action cannot be undone."
+     let alert = UIAlertController(title: "Are you sure?", message: message, preferredStyle: UIAlertController.Style.alert)
+     alert.addAction(UIAlertAction(title: "Delete Account", style: UIAlertAction.Style.default, handler: deleteAccount))
+     alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
+     self.present(alert, animated: true, completion: nil)*/
 }

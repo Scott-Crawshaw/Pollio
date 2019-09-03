@@ -60,14 +60,12 @@ class MyProfileView: UIViewController, UITableViewDataSource, UITableViewDataSou
     
     @objc func refreshFeed(sender:AnyObject) {
         data = []
-        print("hit")
         self.tableView.setEmptyMessage("Loading...")
         self.totalCount = 10
         self.tableView.reloadData()
         
         self.fetchTotalCount { (count, err) in
             self.totalCount = count ?? 0
-            print(self.totalCount)
             if self.totalCount == 0{
                 self.tableView.setEmptyMessage("It looks like this user hasn't made any posts.")
                 self.tableView.reloadData()

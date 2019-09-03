@@ -46,6 +46,11 @@ class DatabaseHelper{
         }
     }
     
+    static func submitFeedback(feedback: String){
+        let db = Firestore.firestore()
+        db.collection("feedback").addDocument(data: ["uid" : Auth.auth().currentUser!.uid, "feedback" : feedback, "time" : FieldValue.serverTimestamp(), "version" : Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "unknown", "ios" : UIDevice.current.systemVersion])
+    }
+    
     
     static func getFollowingCount(UID: String, callback: @escaping (Int) -> Void) {
         let db = Firestore.firestore()

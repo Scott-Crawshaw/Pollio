@@ -104,7 +104,6 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
             return
         }
         if !refresh{
-            print("getting " + indexPaths.description)
             self.newFetch(rows: indexPaths.map({$0.row}), initial: false)
         }
     }

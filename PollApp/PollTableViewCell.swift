@@ -118,7 +118,6 @@ class PollTableViewCell: UITableViewCell {
     func showResults(){
         var totalVotes : Float = 0.0
         for (_, votes) in results{
-            print(votes)
             totalVotes += Float(votes.count)
         }
 
@@ -137,10 +136,8 @@ class PollTableViewCell: UITableViewCell {
             resultsButton.backgroundColor = UIColor(red: 111/255, green: 113/255, blue: 121/255, alpha: 1)
         }
         if results.count == 2{
-            print(Float(results["0"]!.count).description + ", " + totalVotes.description)
             let firstBarPercent = Float(results["0"]!.count) / totalVotes
             let secondBarPercent = Float(results["1"]!.count) / totalVotes
-            print(firstBarPercent.description + ", " + secondBarPercent.description)
             UIView.animate(withDuration: animationLength) {
                 self.choice2_view.frame.size = CGSize(width: fullWidth * CGFloat(firstBarPercent), height: fullHeight)
                 self.choice2_view.isHidden = false
