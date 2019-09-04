@@ -2,7 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "icons8-add-new-50.pdf",
+      "filename" : "icons8-add-new-25.png",
       "scale" : "1x"
     },
     {
@@ -12,7 +12,7 @@
     },
     {
       "idiom" : "universal",
-      "filename" : "icons8-add-new-51.png",
+      "filename" : "icons8-add-new-100.png",
       "scale" : "3x"
     }
   ],
