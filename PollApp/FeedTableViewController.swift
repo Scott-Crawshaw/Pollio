@@ -16,7 +16,7 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
     var data : [[String : Any]] = []
     var totalCount = 0
     var refresh = false
-    let initialGet = 2
+    let initialGet = 5
     
     @objc func refreshFeed(sender:AnyObject) {
         refresh = true

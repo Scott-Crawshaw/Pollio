@@ -13,10 +13,17 @@ class MainCreateViewController: UIViewController {
     @IBOutlet weak var scrollview: UIScrollView!
     
     @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var heightConst: NSLayoutConstraint!
     
+    @IBOutlet var mainView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
         setGradientBackground()
+        if heightConst.constant < mainView.frame.height - mainView.safeAreaInsets.bottom - mainView.safeAreaInsets.top{
+            heightConst.constant = mainView.frame.height - mainView.safeAreaInsets.bottom - mainView.safeAreaInsets.top - 100
+            mainView.layoutIfNeeded()
+            contentView.layoutIfNeeded()
+        }
         //scrollview.contentSize = CGSize(width: self.contentView.frame.width, height: self.contentView.frame.height+1000)
 
         // Do any additional setup after loading the view.

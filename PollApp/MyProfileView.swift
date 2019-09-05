@@ -25,7 +25,7 @@ class MyProfileView: UIViewController, UITableViewDataSource, UITableViewDataSou
     var data : [[String : Any]] = []
     var listeners : [ListenerRegistration] = []
     var totalCount = 0
-    let initialGet = 2
+    let initialGet = 5
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -143,7 +143,7 @@ class MyProfileView: UIViewController, UITableViewDataSource, UITableViewDataSou
                         firstPaths.append(IndexPath(row: i, section: 0))
                     }
                     self.tableView.reloadRows(at: firstPaths, with: .automatic)
-                    self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .bottom, animated: false)
+                    self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
                     self.tableView.restore()
                     self.tableView.refreshControl?.endRefreshing()
                 }

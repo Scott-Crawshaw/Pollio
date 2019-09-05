@@ -14,8 +14,8 @@ target 'PollApp' do
   pod 'Firebase/Auth'
   pod 'Firebase/Core'
   pod 'Firebase/Firestore'
-  pod 'Fabric', '~> 1.10.2'
-  pod 'Crashlytics', '~> 3.13.2'
+  pod 'Fabric'
+  pod 'Crashlytics'
   pod 'Firebase/Messaging'
 
   target 'PollAppTests' do

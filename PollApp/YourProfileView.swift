@@ -29,7 +29,7 @@ class YourProfileView: UIViewController, UITableViewDataSource, UITableViewDataS
     var data : [[String : Any]] = []
     var listeners : [ListenerRegistration] = []
     var totalCount = 0
-    let initialGet = 2
+    let initialGet = 5
     var isFollowing = false
     
     override func viewDidLoad() { // Initialize Profile View for OTHER USERS
