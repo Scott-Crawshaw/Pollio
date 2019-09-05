@@ -2873,7 +2873,7 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OJD-WY-PLW">
-                                <rect key="frame" x="20" y="111" width="374" height="142"/>
+                                <rect key="frame" x="20" y="120" width="374" height="133"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="20"/>
@@ -2927,7 +2927,7 @@
                             <constraint firstItem="pxZ-vG-HpQ" firstAttribute="leading" secondItem="JJo-wk-bpx" secondAttribute="leading" id="knP-M2-7ET"/>
                             <constraint firstItem="3qx-JL-vbX" firstAttribute="centerX" secondItem="ABJ-hO-eOu" secondAttribute="centerX" constant="-3.5" id="lbx-7n-5fG"/>
                             <constraint firstItem="3qx-JL-vbX" firstAttribute="leading" secondItem="LOK-e1-BQI" secondAttribute="leadingMargin" constant="32" id="ma1-9X-pF7"/>
-                            <constraint firstItem="OJD-WY-PLW" firstAttribute="top" secondItem="gTa-ca-Lrf" secondAttribute="bottom" constant="8" symbolic="YES" id="oae-7N-Qil"/>
+                            <constraint firstItem="OJD-WY-PLW" firstAttribute="top" secondItem="gTa-ca-Lrf" secondAttribute="bottom" constant="17" id="oae-7N-Qil"/>
                             <constraint firstItem="JJo-wk-bpx" firstAttribute="top" secondItem="pxZ-vG-HpQ" secondAttribute="bottom" constant="21" id="pFh-Ik-rcO"/>
                             <constraint firstItem="Pql-lx-UhO" firstAttribute="centerY" secondItem="3qx-JL-vbX" secondAttribute="centerY" id="qm1-jT-ZMd"/>
                             <constraint firstItem="pxZ-vG-HpQ" firstAttribute="top" secondItem="FV3-YI-YGQ" secondAttribute="bottom" constant="21" id="rgL-d5-Gfs"/>
