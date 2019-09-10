@@ -172,8 +172,8 @@ PODS:
   - SDWebImage/Core (5.0.6)
 
 DEPENDENCIES:
-  - Crashlytics (~> 3.13.2)
-  - Fabric (~> 1.10.2)
+  - Crashlytics
+  - Fabric
   - Firebase/Analytics
   - Firebase/Auth
   - Firebase/Core
@@ -245,6 +245,6 @@ SPEC CHECKSUMS:
   Protobuf: 3f617b9a6e73605565086864c9bc26b2bf2dd5a3
   SDWebImage: 920f1a2ff1ca8296ad34f6e0510a1ef1d70ac965
 
-PODFILE CHECKSUM: a3bd5ccd81d3ab71b235836c6c4a97c48478ff0d
+PODFILE CHECKSUM: 37b7344dcebc8d7bb863e7ae56380a957ece50b3
 
 COCOAPODS: 1.7.2

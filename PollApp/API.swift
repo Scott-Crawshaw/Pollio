@@ -46,6 +46,20 @@ class DatabaseHelper{
         }
     }
     
+    static func deletePost(pid : String, callback : @escaping (AnyObject) -> Void){
+        let db = Firestore.firestore()
+        db.collection("posts").document(pid).delete()
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5), execute: {
+            callback(self)
+        })
+        
+    }
+    
+    static func submitFeedback(feedback: String){
+        let db = Firestore.firestore()
+        db.collection("feedback").addDocument(data: ["uid" : Auth.auth().currentUser!.uid, "feedback" : feedback, "time" : FieldValue.serverTimestamp(), "version" : Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "unknown", "ios" : UIDevice.current.systemVersion])
+    }
+    
     
     static func getFollowingCount(UID: String, callback: @escaping (Int) -> Void) {
         let db = Firestore.firestore()

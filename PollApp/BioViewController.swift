@@ -17,10 +17,6 @@ class BioViewController: UIViewController, UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let grey = UIColor(red: 67/255.0, green: 67/255.0, blue: 67/255.0, alpha: 1.0)
-        let polliopurp = UIColor(red: 198/255.0, green: 76/255.0, blue: 222/255.0, alpha: 1.0)
-
-
         
         //setting up Text Field
         bioTextView.delegate = self

@@ -32,7 +32,6 @@ class PollCreatorViewController: UIViewController, UITextViewDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        setGradientBackground()
         super.viewWillAppear(animated)
     }
     
@@ -48,17 +47,6 @@ class PollCreatorViewController: UIViewController, UITextViewDelegate {
         self.present(alert, animated: true, completion: nil)
     }
     
-    func setGradientBackground() {
-        let colorTop =  UIColor(red: 212/255.0, green: 119/255.0, blue: 230/255.0, alpha: 0.9).cgColor
-        let colorBottom = UIColor(red: 161/255.0, green: 84/255.0, blue: 194/255.0, alpha: 0.9).cgColor
-        
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.colors = [colorTop,colorBottom]
-        gradientLayer.locations = [0.0, 1.0]
-        gradientLayer.frame = self.view.bounds
-        
-        self.view.layer.insertSublayer(gradientLayer, at:0)
-    }
     
     @IBAction func textFieldDidBeginEditing2(_ textField: UITextField) {
         animateViewMoving(up: true, moveValue: 100)

@@ -47,8 +47,6 @@ class ViewController: UIViewController {
         
         let resultViewController = storyBoard.instantiateViewController(withIdentifier: "VerifyViewController") as! VerifyViewController
         
-        self.present(resultViewController, animated:true, completion:nil)
-        
         PhoneAuthProvider.provider().verifyPhoneNumber(number, uiDelegate: nil) { (verificationID, error) in
             if let error = error {
                 self.showMessagePrompt(message: error.localizedDescription)
@@ -56,6 +54,10 @@ class ViewController: UIViewController {
             }
             UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
         }
+        
+        self.present(resultViewController, animated:true, completion:nil)
+        
+        
     }
     
     func showMessagePrompt(message: String){

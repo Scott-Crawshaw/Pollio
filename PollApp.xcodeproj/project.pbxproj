@@ -28,6 +28,7 @@
 		73EF61DB22E4EB1B00293245 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73EF61DA22E4EB1B00293245 /* Media.xcassets */; };
 		9602B756FC916F2BE8025048 /* Pods_PollAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50C0732744EA6C212C75E088 /* Pods_PollAppTests.framework */; };
 		BB14550122B958BA00CBF426 /* VerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB14550022B958BA00CBF426 /* VerifyViewController.swift */; };
+		BB2693F5232035610064EBC5 /* MainCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2693F4232035610064EBC5 /* MainCreateViewController.swift */; };
 		BB3A846722DCEE1E0082AB64 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3A846622DCEE1E0082AB64 /* SearchTableViewController.swift */; };
 		BB3D2F8222E0D5DD00723A10 /* PollTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3D2F8122E0D5DD00723A10 /* PollTableViewCell.swift */; };
 		BB3D2F8622E22B9500723A10 /* FeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3D2F8522E22B9500723A10 /* FeedTableViewController.swift */; };
@@ -45,6 +46,7 @@
 		BB9EA83D22F34E9A00037781 /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9EA83C22F34E9A00037781 /* UserListViewController.swift */; };
 		BB9EA83F22F3501100037781 /* UserListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9EA83E22F3501100037781 /* UserListViewCell.swift */; };
 		BBDB7F3D2300CE5100C15310 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDB7F3C2300CE5100C15310 /* ResultsViewController.swift */; };
+		BBEB3AE8231D77B600321948 /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEB3AE7231D77B600321948 /* FeedbackViewController.swift */; };
 		BBF1F33822F2003E00E358AB /* SearchViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF1F33722F2003E00E358AB /* SearchViewCell.swift */; };
 		ECD13F2BBD4BA55E374062DA /* Pods_PollAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98270D507219851B08D7A341 /* Pods_PollAppUITests.framework */; };
 /* End PBXBuildFile section */
@@ -93,6 +95,7 @@
 		8D1FC14EB0E5B63229D0D9A6 /* Pods-PollAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PollAppTests.release.xcconfig"; path = "Target Support Files/Pods-PollAppTests/Pods-PollAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		98270D507219851B08D7A341 /* Pods_PollAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PollAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB14550022B958BA00CBF426 /* VerifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyViewController.swift; sourceTree = "<group>"; };
+		BB2693F4232035610064EBC5 /* MainCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCreateViewController.swift; sourceTree = "<group>"; };
 		BB3A846622DCEE1E0082AB64 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		BB3D2F8122E0D5DD00723A10 /* PollTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollTableViewCell.swift; sourceTree = "<group>"; };
 		BB3D2F8522E22B9500723A10 /* FeedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewController.swift; sourceTree = "<group>"; };
@@ -117,6 +120,7 @@
 		BB9EA83C22F34E9A00037781 /* UserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
 		BB9EA83E22F3501100037781 /* UserListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewCell.swift; sourceTree = "<group>"; };
 		BBDB7F3C2300CE5100C15310 /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
+		BBEB3AE7231D77B600321948 /* FeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
 		BBF1F33722F2003E00E358AB /* SearchViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewCell.swift; sourceTree = "<group>"; };
 		BDDF97E7AC452DF08ED85B36 /* Pods-PollAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PollAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-PollAppUITests/Pods-PollAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E56D390605BA2557300FFF0D /* Pods-PollApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PollApp.release.xcconfig"; path = "Target Support Files/Pods-PollApp/Pods-PollApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -215,6 +219,7 @@
 				73079DCB22F9CD8B0059D233 /* FollowerRequestView.swift */,
 				BB4610C622F0A310008A6191 /* BioViewController.swift */,
 				BB4610C422F09CD3008A6191 /* SettingsViewController.swift */,
+				BBEB3AE7231D77B600321948 /* FeedbackViewController.swift */,
 				73A92E7322EF78A40063C3F4 /* MyProfileView.swift */,
 				BB9EA83C22F34E9A00037781 /* UserListViewController.swift */,
 				7363BD5122F0BDBA007F00D1 /* YourProfileView.swift */,
@@ -226,6 +231,7 @@
 				BBF1F33722F2003E00E358AB /* SearchViewCell.swift */,
 				BB9EA83E22F3501100037781 /* UserListViewCell.swift */,
 				BB487F2222D3B97800BED4A4 /* PollCreatorViewController.swift */,
+				BB2693F4232035610064EBC5 /* MainCreateViewController.swift */,
 				73241BA422C68E1A00104FA7 /* SlideViewController.swift */,
 				734C0A6222D527FD008F8A3A /* ItemCell.swift */,
 				BB72700822B7F3D7006C386B /* LaunchScreen.storyboard */,
@@ -547,6 +553,8 @@
 				73079DD022FA04910059D233 /* RequestFollowButtonClass.swift in Sources */,
 				7363BD5222F0BDBA007F00D1 /* YourProfileView.swift in Sources */,
 				731DA04722E0EC370044749B /* TabSuperview.swift in Sources */,
+				BB2693F5232035610064EBC5 /* MainCreateViewController.swift in Sources */,
+				BBEB3AE8231D77B600321948 /* FeedbackViewController.swift in Sources */,
 				BB3D2F8222E0D5DD00723A10 /* PollTableViewCell.swift in Sources */,
 				BB72700022B7F3D5006C386B /* AppDelegate.swift in Sources */,
 				BB9EA83F22F3501100037781 /* UserListViewCell.swift in Sources */,
@@ -639,7 +647,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
