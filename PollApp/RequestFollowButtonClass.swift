@@ -54,23 +54,30 @@ class RequestFollowButtonClass: UIButton {
             setButtonStatus(state: 1)
         }
         
-        if(followState == 1) // requested
+        else if(followState == 1) // requested
         {
-            self.setTitle("Requested", for: .normal)
+            self.setTitle("Unrequest?", for: .normal)
+            followState = 4
         }
         
-
-        if(followState == 3) //officially unfriended, see ya later
+        else if(followState == 2) // currently following
+        {
+            self.setTitle("Unfollow?", for: .normal)
+            followState = 3 //ready to unfollow
+        }
+        
+        else if(followState == 3) //officially unfriended, see ya later
         {
             DatabaseHelper.unfollowUser(user: uid)
             setButtonStatus(state: 0)
         }
         
-        if(followState == 2) // currently following
+        else if(followState == 4) //pulled back follow request like a psychopath
         {
-            self.setTitle("Unfollow?", for: .normal)
-            followState = 3 //ready to unfollow
+            DatabaseHelper.removeFollowRequest(followUID: uid)
+            setButtonStatus(state: 0)
         }
+        
         
         
     }
