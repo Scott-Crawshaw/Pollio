@@ -22,6 +22,7 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating,
             controller.searchResultsUpdater = self
             controller.dimsBackgroundDuringPresentation = false
             controller.searchBar.sizeToFit()
+            controller.searchBar.placeholder = "Search \"all\" to see everyone"
             
             tableView.tableHeaderView = controller.searchBar
             

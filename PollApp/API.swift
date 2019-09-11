@@ -212,7 +212,7 @@ class DatabaseHelper{
     }
     
     static func searchUsers(search: String, callback: @escaping ([[String : Any]]) -> Void){
-        let searchTerm = search.lowercased()
+        let searchTerm = search.lowercased().replacingOccurrences(of: " ", with: "")
         let functions = Functions.functions()
         functions.httpsCallable("searchUsers").call(["search": searchTerm]) { (result, error) in
             callback(result?.data as? [[String : Any]] ?? [])
@@ -235,9 +235,17 @@ class DatabaseHelper{
     
     static func checkUsername(username: String, callback: @escaping (Bool) -> Void){
         let db = Firestore.firestore()
+        if username == "all" || username == " " || username == ""{
+            callback(false)
+            return
+        }
         let query = db.collection("users").whereField("username", isEqualTo: username).limit(to: 1)
         query.getDocuments { (result, error) in
-            if result!.isEmpty {
+            guard let res = result else{
+                callback(false)
+                return
+            }
+            if res.isEmpty {
                 callback(true)
             }
             else{
