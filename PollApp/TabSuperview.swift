@@ -17,16 +17,16 @@ class TabSuperview: UITabBarController {
     var listeners : [ListenerRegistration] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let listen = DatabaseHelper.hasFollowRequestsListener(callback: addBadge) else {
+        guard let listen = DatabaseHelper.countFollowRequestsListener(callback: addBadge) else {
             return
         }
         listeners.append(listen)
     }
     
-    func addBadge(val: Bool)
+    func addBadge(val: Int)
     {
-        if(val) {
-            tab.first?.items?.last?.badgeValue = "!"
+        if(val > 0) {
+            tab.first?.items?.last?.badgeValue = val.description
         }
         else{
             tab.first?.items?.last?.badgeValue = nil

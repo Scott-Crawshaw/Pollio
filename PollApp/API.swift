@@ -323,6 +323,32 @@ class DatabaseHelper{
 
     }
     
+    static func countFollowRequestsListener(callback: @escaping (Int) -> Void) -> ListenerRegistration?{
+        let db = Firestore.firestore()
+        let uid = Auth.auth().currentUser?.uid ?? nil
+        
+        if uid == nil{
+            callback(0)
+            return nil
+        }
+        
+        return db.collection("followRequests").document(uid!)
+            .addSnapshotListener { documentSnapshot, error in
+                guard let document = documentSnapshot else {
+                    callback(0)
+                    return
+                }
+                guard let data = document.data() else {
+                    callback(0)
+                    return
+                }
+                
+                callback((data["requests"] as? [String] ?? []).count)
+
+        }
+        
+    }
+    
     static func getFollowingState(followerUID: String, followingUID: String, callback: @escaping (Int) -> Void){
         let db = Firestore.firestore()
         //0 : not following, 1 : requested, 2 : following
