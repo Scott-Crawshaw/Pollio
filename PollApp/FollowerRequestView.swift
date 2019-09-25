@@ -24,9 +24,10 @@ class FollowerRequestView: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+    
         if titleText != ""{
             navTitle.title = titleText
+            tableData = [:]
             DatabaseHelper.getFollowRequests(callback: populateData)
             tableView.setEmptyMessage1("Loading...")
         }
