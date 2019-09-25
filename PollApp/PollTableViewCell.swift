@@ -119,27 +119,27 @@ class PollTableViewCell: UITableViewCell {
     
     func showResults(){
         var totalVotes : Float = 0.0
-        for (_, votes) in results{
+            for (_, votes) in self.results{
             totalVotes += Float(votes.count)
         }
 
-        let fullWidth = choice1_button.frame.width
-        let fullHeight = choice1_button.frame.height
+            let fullWidth = self.choice1_button.frame.width
+            let fullHeight = self.choice1_button.frame.height
         let animationLength = 1.0
-        
+        print("oh fuck")
         self.choice1_button.layer.borderWidth = 0
         self.choice2_button.layer.borderWidth = 0
         self.choice3_button.layer.borderWidth = 0
         self.choice4_button.layer.borderWidth = 0
         
         
-        if (visibilityNum == 0) || (visibilityNum == 1 && authorUID == currentUser){
-            resultsButton.isEnabled = true
-            resultsButton.backgroundColor = UIColor(red: 111/255, green: 113/255, blue: 121/255, alpha: 1)
+            if (self.visibilityNum == 0) || (self.visibilityNum == 1 && self.authorUID == self.currentUser){
+            self.resultsButton.isEnabled = true
+            self.resultsButton.backgroundColor = UIColor(red: 111/255, green: 113/255, blue: 121/255, alpha: 1)
         }
-        if results.count == 2{
-            let firstBarPercent = Float(results["0"]!.count) / totalVotes
-            let secondBarPercent = Float(results["1"]!.count) / totalVotes
+            if self.results.count == 2{
+            let firstBarPercent = Float(self.results["0"]!.count) / totalVotes
+            let secondBarPercent = Float(self.results["1"]!.count) / totalVotes
             UIView.animate(withDuration: animationLength) {
                 self.choice2_view.frame.size = CGSize(width: fullWidth * CGFloat(firstBarPercent), height: fullHeight)
                 self.choice2_view.isHidden = false
@@ -159,13 +159,13 @@ class PollTableViewCell: UITableViewCell {
                 }
                 self.cView.layoutIfNeeded()
 
-            }
-            
+
+            }            
         }
-        if results.count == 3{
-            let firstBarPercent = Float(results["0"]!.count) / totalVotes
-            let secondBarPercent = Float(results["1"]!.count) / totalVotes
-            let thirdBarPercent = Float(results["2"]!.count) / totalVotes
+            if self.results.count == 3{
+                let firstBarPercent = Float(self.results["0"]!.count) / totalVotes
+                let secondBarPercent = Float(self.results["1"]!.count) / totalVotes
+                let thirdBarPercent = Float(self.results["2"]!.count) / totalVotes
             UIView.animate(withDuration: animationLength) {
                 
             self.choice2_view.frame.size = CGSize(width: fullWidth * CGFloat(firstBarPercent), height: fullHeight)
@@ -196,11 +196,11 @@ class PollTableViewCell: UITableViewCell {
             }
             
         }
-        if results.count == 4{
-            let firstBarPercent = Float(results["0"]!.count) / totalVotes
-            let secondBarPercent = Float(results["1"]!.count) / totalVotes
-            let thirdBarPercent = Float(results["2"]!.count) / totalVotes
-            let fourthBarPercent = Float(results["3"]!.count) / totalVotes
+            if self.results.count == 4{
+                let firstBarPercent = Float(self.results["0"]!.count) / totalVotes
+                let secondBarPercent = Float(self.results["1"]!.count) / totalVotes
+                let thirdBarPercent = Float(self.results["2"]!.count) / totalVotes
+                let fourthBarPercent = Float(self.results["3"]!.count) / totalVotes
 
             UIView.animate(withDuration: animationLength) {
                 
@@ -237,6 +237,7 @@ class PollTableViewCell: UITableViewCell {
                 self.choice4_button.layer.borderWidth = 1
             }
             }
+        
         }
         /*choice1_button.isEnabled = false
         choice2_button.isEnabled = false
