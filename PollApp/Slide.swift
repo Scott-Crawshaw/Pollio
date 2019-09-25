@@ -102,6 +102,7 @@ class Slide: UIViewController, UITableViewDataSource, UITableViewDelegate, UITex
             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: {
                 let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                 let newViewController = storyBoard.instantiateViewController(withIdentifier: "main") as! TabSuperview
+                newViewController.modalPresentationStyle = .overFullScreen
                 self.present(newViewController, animated: true, completion: nil)
             })
         }

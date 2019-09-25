@@ -37,11 +37,13 @@ class VerifyViewController: UIViewController {
             if((authResult?.additionalUserInfo!.isNewUser)!){
                 let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                 let newViewController = storyBoard.instantiateViewController(withIdentifier: "SlideViewController") as! SlideViewController
+                newViewController.modalPresentationStyle = .overFullScreen
                 self.present(newViewController, animated: true, completion: nil)
             }
             else{
                 let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                 let newViewController = storyBoard.instantiateViewController(withIdentifier: "main") as! TabSuperview
+                newViewController.modalPresentationStyle = .overFullScreen
                 self.present(newViewController, animated: true, completion: nil)
             }
         }

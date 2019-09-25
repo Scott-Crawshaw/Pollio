@@ -87,11 +87,14 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating,
         if uid != Auth.auth().currentUser!.uid{
             let newViewController = storyBoard.instantiateViewController(withIdentifier: "yourProfile") as! YourProfileView
             newViewController.uid = uid
+            tableView.deselectRow(at: indexPath, animated: false)
             self.present(newViewController, animated: true, completion: nil)
         }
         else{
             let newViewController = storyBoard.instantiateViewController(withIdentifier: "main") as! TabSuperview
             newViewController.selectedIndex = 3
+            tableView.deselectRow(at: indexPath, animated: false)
+            newViewController.modalPresentationStyle = .overFullScreen
             self.present(newViewController, animated: true, completion: nil)
         }
     }

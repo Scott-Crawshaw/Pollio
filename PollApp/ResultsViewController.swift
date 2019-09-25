@@ -85,6 +85,7 @@ class ResultsViewController: UITableViewController {
         else{
             let newViewController = storyBoard.instantiateViewController(withIdentifier: "main") as! TabSuperview
             newViewController.selectedIndex = 3
+            newViewController.modalPresentationStyle = .overFullScreen
             self.present(newViewController, animated: true, completion: nil)
         }
     }
