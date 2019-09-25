@@ -65,6 +65,7 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
                 catch{}
                 self.returnToLogin()
             }
+            
         }
         self.refreshFeed(sender: self)
         self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
@@ -95,7 +96,9 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
     func returnToLogin(){
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "login") as! ViewController
+        newViewController.modalPresentationStyle = .overFullScreen
         self.present(newViewController, animated: true, completion: nil)
+        self.dismiss(animated: false, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {

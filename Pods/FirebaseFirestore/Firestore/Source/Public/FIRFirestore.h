@@ -176,6 +176,63 @@ NS_SWIFT_NAME(Firestore)
  */
 - (void)disableNetworkWithCompletion:(nullable void (^)(NSError *_Nullable error))completion;
 
+/**
+ * Clears the persistent storage. This includes pending writes and cached documents.
+ *
+ * Must be called while the firestore instance is not started (after the app is shutdown or when
+ * the app is first initialized). On startup, this method must be called before other methods
+ * (other than `FIRFirestore.settings`). If the firestore instance is still running, the function
+ * will complete with an error code of `FailedPrecondition`.
+ *
+ * Note: `clearPersistence(completion:)` is primarily intended to help write reliable tests that
+ * use Firestore. It uses the most efficient mechanism possible for dropping existing data but
+ * does not attempt to securely overwrite or otherwise make cached data unrecoverable. For
+ * applications that are sensitive to the disclosure of cache data in between user sessions we
+ * strongly recommend not to enable persistence in the first place.
+ */
+- (void)clearPersistenceWithCompletion:(nullable void (^)(NSError *_Nullable error))completion;
+
+/**
+ * Waits until all currently pending writes for the active user have been acknowledged by the
+ * backend.
+ *
+ * The completion block is called immediately without error if there are no outstanding writes.
+ * Otherwise, the completion block is called when all previously issued writes (including those
+ * written in a previous app session) have been acknowledged by the backend. The completion
+ * block does not wait for writes that were added after the method is called. If you
+ * wish to wait for additional writes, you have to call `waitForPendingWritesWithCompletion`
+ * again.
+ *
+ * Any outstanding `waitForPendingWritesWithCompletion` completion blocks are called with an
+ * error during user change.
+ */
+- (void)waitForPendingWritesWithCompletion:(void (^)(NSError *_Nullable error))completion;
+
+#pragma mark - Terminating
+
+/**
+ * Terminates this `FIRFirestore` instance.
+ *
+ * After calling `terminate` only the `clearPersistence` method may be used. Any other method
+ * will throw an error.
+ *
+ * To restart after termination, simply create a new instance of FIRFirestore with
+ * `firestore` or `firestoreForApp` methods.
+ *
+ * Termination does not cancel any pending writes and any tasks that are awaiting a response from
+ * the server will not be resolved. The next time you start this instance, it will resume
+ * attempting to send these writes to the server.
+ *
+ * Note: Under normal circumstances, calling this method is not required. This
+ * method is useful only when you want to force this instance to release all of its resources or
+ * in combination with `clearPersistence` to ensure that all local state is destroyed
+ * between test runs.
+ *
+ * @param completion A block to execute once everything has been terminated.
+ */
+- (void)terminateWithCompletion:(nullable void (^)(NSError *_Nullable error))completion
+    NS_SWIFT_NAME(terminate(completion:));
+
 @end
 
 NS_ASSUME_NONNULL_END
