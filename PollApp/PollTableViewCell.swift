@@ -126,7 +126,6 @@ class PollTableViewCell: UITableViewCell {
             let fullWidth = self.choice1_button.frame.width
             let fullHeight = self.choice1_button.frame.height
         let animationLength = 1.0
-        print("oh fuck")
         self.choice1_button.layer.borderWidth = 0
         self.choice2_button.layer.borderWidth = 0
         self.choice3_button.layer.borderWidth = 0
