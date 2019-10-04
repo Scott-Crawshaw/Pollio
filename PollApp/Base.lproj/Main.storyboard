@@ -437,7 +437,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="Feed" id="Gbl-Cr-BxQ" customClass="FeedTableViewController" customModule="PollApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="A7n-wk-nrc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="769"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <imageView key="tableHeaderView" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Draft2" id="cD1-XB-6cb">
@@ -828,7 +828,7 @@
             <objects>
                 <tableViewController id="y3p-Z1-88z" customClass="SearchTableViewController" customModule="PollApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="hfa-Co-DVM">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="769"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <searchBar key="tableHeaderView" contentMode="redraw" id="TJ0-x7-scL">
@@ -903,20 +903,8 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" systemItem="search" id="msk-4B-v8x"/>
-                    <connections>
-                        <outlet property="searchDisplayController" destination="5c4-rr-aZX" id="nn8-W0-WpH"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W9j-xD-duI" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="5c4-rr-aZX">
-                    <connections>
-                        <outlet property="delegate" destination="y3p-Z1-88z" id="4yg-Ka-kqQ"/>
-                        <outlet property="searchBar" destination="TJ0-x7-scL" id="t5W-OW-PN2"/>
-                        <outlet property="searchContentsController" destination="y3p-Z1-88z" id="W6O-os-HV2"/>
-                        <outlet property="searchResultsDataSource" destination="y3p-Z1-88z" id="iFJ-XV-xxj"/>
-                        <outlet property="searchResultsDelegate" destination="y3p-Z1-88z" id="Jq1-hu-XRn"/>
-                    </connections>
-                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="-320.28985507246381" y="2762.6116071428569"/>
         </scene>
@@ -1253,14 +1241,14 @@
             <objects>
                 <viewController storyboardIdentifier="myProfile" id="Od1-6e-2vf" customClass="MyProfileView" customModule="PollApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wT8-s0-6Iw">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="769"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YNW-eX-x44">
-                                <rect key="frame" x="0.0" y="315" width="414" height="498"/>
+                                <rect key="frame" x="0.0" y="315" width="414" height="405"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VyA-7Z-Qig">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="509"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="416"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="myFeedCell" rowHeight="367" id="2FF-oQ-tYw" customClass="PollTableViewCell" customModule="PollApp" customModuleProvider="target">
@@ -2735,7 +2723,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gcM-kY-3xx">
-                                <rect key="frame" x="20" y="40" width="25" height="53"/>
+                                <rect key="frame" x="20" y="40" width="50" height="53"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="44"/>
                                 <state key="normal" image="back"/>
                                 <connections>
@@ -2937,7 +2925,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pql-lx-UhO">
-                                <rect key="frame" x="379" y="611.5" width="15" height="22"/>
+                                <rect key="frame" x="379" y="607.5" width="30" height="30"/>
                                 <state key="normal" image="info_icon"/>
                                 <connections>
                                     <action selector="moreInformationWithSender:" destination="gaQ-2B-Zom" eventType="touchUpInside" id="G31-du-UKL"/>
