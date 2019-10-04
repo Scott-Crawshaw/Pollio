@@ -351,7 +351,6 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="To get started, enter your phone number below." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="0ZD-DU-Qdh">
                                 <rect key="frame" x="30" y="397" width="355" height="71"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="0ZD-DU-Qdh" secondAttribute="height" multiplier="5:1" id="XNz-Z0-LqK"/>
                                     <constraint firstAttribute="height" constant="71" id="Yud-0R-VR8"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans Light" pointSize="23"/>
@@ -397,7 +396,6 @@
                             <constraint firstItem="0ZD-DU-Qdh" firstAttribute="top" secondItem="6Yd-2M-aVD" secondAttribute="top" constant="120" id="eYo-7B-gic"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6Yd-2M-aVD" secondAttribute="trailing" constant="35" id="fzH-qm-20X"/>
                             <constraint firstItem="0ZD-DU-Qdh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="piv-lE-mee"/>
-                            <constraint firstItem="0ZD-DU-Qdh" firstAttribute="centerX" secondItem="6Yd-2M-aVD" secondAttribute="centerX" constant="-1.5" id="rLi-s8-ngw"/>
                             <constraint firstItem="0ZD-DU-Qdh" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" constant="-20.5" id="vEB-sf-bnk"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0ZD-DU-Qdh" secondAttribute="trailing" constant="29" id="vSe-Mf-1cd"/>
                         </constraints>
@@ -1250,14 +1248,14 @@
             <objects>
                 <viewController storyboardIdentifier="myProfile" id="Od1-6e-2vf" customClass="MyProfileView" customModule="PollApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wT8-s0-6Iw">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="769"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YNW-eX-x44">
-                                <rect key="frame" x="0.0" y="315" width="414" height="405"/>
+                                <rect key="frame" x="0.0" y="315" width="414" height="498"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VyA-7Z-Qig">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="416"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="509"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="myFeedCell" rowHeight="367" id="2FF-oQ-tYw" customClass="PollTableViewCell" customModule="PollApp" customModuleProvider="target">
