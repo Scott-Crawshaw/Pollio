@@ -29,6 +29,15 @@ class DatabaseHelper{
         }
     }
     
+    static func updateToken(token: String){
+        let db = Firestore.firestore()
+        guard let uid = Auth.auth().currentUser?.uid else{
+            return
+        }
+        let docRef = db.collection("tokens").document(uid)
+        docRef.setData(["token" : token])
+    }
+    
     static func getUserByUIDListener(UID: String, callback: @escaping (Dictionary<String, Any>?) -> Void) -> ListenerRegistration{
         let db = Firestore.firestore()
         let docRef = db.collection("users").document(UID)
