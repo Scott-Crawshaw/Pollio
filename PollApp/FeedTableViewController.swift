@@ -295,7 +295,6 @@ class FeedTableViewController: UITableViewController, UITableViewDataSourcePrefe
             cell.choice4_text.text = options[3]
         }
         cell.generateListener()
-    
         return cell
     }
     

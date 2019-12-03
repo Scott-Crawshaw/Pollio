@@ -55,7 +55,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         let dataDict:[String: String] = ["token": fcmToken]
         NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
         DatabaseHelper.updateToken(token: fcmToken)
-        print("yeet")
         // Note: This callback is fired at each app startup and whenever a new token is generated.
     }
     

@@ -62,6 +62,11 @@ class YourProfileView: UIViewController, UITableViewDataSource, UITableViewDataS
     }
     
     @objc func refreshFeed(sender:AnyObject) {
+        if !isFollowing{
+            self.tableView.setEmptyMessage("Follow this user to see their posts")
+            self.tableView.refreshControl?.endRefreshing()
+            return
+        }
         data = []
         self.tableView.setEmptyMessage("Loading...")
         self.totalCount = 10

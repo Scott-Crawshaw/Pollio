@@ -437,7 +437,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="Feed" id="Gbl-Cr-BxQ" customClass="FeedTableViewController" customModule="PollApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="A7n-wk-nrc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="769"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <imageView key="tableHeaderView" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Draft2" id="cD1-XB-6cb">
@@ -445,17 +445,17 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="feedCell" rowHeight="367" id="Ovb-bP-DbZ" customClass="PollTableViewCell" customModule="PollApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="82" width="414" height="367"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="feedCell" rowHeight="367.5" id="Ovb-bP-DbZ" customClass="PollTableViewCell" customModule="PollApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="82" width="414" height="367.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ovb-bP-DbZ" id="Etz-ec-mYx">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="367"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="367.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jh2-bJ-YtF">
-                                            <rect key="frame" x="20" y="11" width="374" height="345"/>
+                                            <rect key="frame" x="20" y="11" width="374" height="345.5"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Oh no! Something went wrong." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qTV-oI-q8s">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Oh no! Something went wrong." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qTV-oI-q8s">
                                                     <rect key="frame" x="11" y="45" width="352" height="73"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="Twl-eq-FWI"/>
@@ -465,10 +465,10 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oNz-yv-hKR">
-                                                    <rect key="frame" x="0.0" y="315" width="374" height="30"/>
+                                                    <rect key="frame" x="0.0" y="315" width="374" height="30.5"/>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                                     <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="17"/>
-                                                    <state key="normal" title="Results">
+                                                    <state key="normal" title="0 Votes">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
                                                 </button>
@@ -587,7 +587,7 @@
                                                     </state>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O9j-a3-NFa">
-                                                    <rect key="frame" x="11" y="213" width="352" height="36"/>
+                                                    <rect key="frame" x="11" y="213" width="352" height="36.5"/>
                                                     <color key="backgroundColor" red="0.73333333333333328" green="0.396078431372549" blue="0.83137254901960778" alpha="0.2520869006849315" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="17"/>
                                                     <state key="normal">
@@ -618,7 +618,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choice 3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="czz-G9-2UE">
-                                                    <rect key="frame" x="11" y="213" width="352" height="36"/>
+                                                    <rect key="frame" x="11" y="213" width="352" height="36.5"/>
                                                     <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1241,14 +1241,14 @@
             <objects>
                 <viewController storyboardIdentifier="myProfile" id="Od1-6e-2vf" customClass="MyProfileView" customModule="PollApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wT8-s0-6Iw">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="769"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YNW-eX-x44">
-                                <rect key="frame" x="0.0" y="315" width="414" height="405"/>
+                                <rect key="frame" x="0.0" y="315" width="414" height="498"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VyA-7Z-Qig">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="416"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="509"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="myFeedCell" rowHeight="367" id="2FF-oQ-tYw" customClass="PollTableViewCell" customModule="PollApp" customModuleProvider="target">
@@ -1274,7 +1274,7 @@
                                                                     <rect key="frame" x="0.0" y="315" width="374" height="30"/>
                                                                     <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                                                     <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="17"/>
-                                                                    <state key="normal" title="Results">
+                                                                    <state key="normal" title="0 Votes">
                                                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     </state>
                                                                 </button>
@@ -2000,7 +2000,7 @@
                                                                     <rect key="frame" x="0.0" y="315" width="374" height="30"/>
                                                                     <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                                                     <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="17"/>
-                                                                    <state key="normal" title="Results">
+                                                                    <state key="normal" title="0 Votes">
                                                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     </state>
                                                                 </button>
@@ -2723,7 +2723,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gcM-kY-3xx">
-                                <rect key="frame" x="20" y="40" width="50" height="53"/>
+                                <rect key="frame" x="20" y="40" width="25" height="53"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="44"/>
                                 <state key="normal" image="back"/>
                                 <connections>
@@ -2925,7 +2925,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pql-lx-UhO">
-                                <rect key="frame" x="379" y="607.5" width="30" height="30"/>
+                                <rect key="frame" x="379" y="611.5" width="15" height="22"/>
                                 <state key="normal" image="info_icon"/>
                                 <connections>
                                     <action selector="moreInformationWithSender:" destination="gaQ-2B-Zom" eventType="touchUpInside" id="G31-du-UKL"/>

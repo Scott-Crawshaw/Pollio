@@ -66,15 +66,22 @@ class PollTableViewCell: UITableViewCell {
         if data == nil{
             return
         }
-        
+        var votesCount = 0
         results = data?["results"] as? [String : [String]] ?? results
         for (c, votes) in results {
+            votesCount += votes.count
             if votes.contains(currentUser){
                 choice = c
                 showResults()
-                return
             }
         }
+        if votesCount != 1{
+            resultsButton.setTitle(votesCount.description + " Votes", for: .normal)
+        }
+        else{
+            resultsButton.setTitle(votesCount.description + " Vote", for: .normal)
+        }
+        
     }
     
     func resetCell(){
